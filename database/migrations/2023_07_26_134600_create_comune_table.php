@@ -13,13 +13,12 @@ return new class extends Migration
      */
     public function up()
     {
-        Schema::create('users', function (Blueprint $table) {
-            $table->id();
-            $table->string('name');
-            $table->string('email')->unique();
-            $table->timestamp('email_verified_at')->nullable();
-            $table->string('password');
-            $table->rememberToken();
+        Schema::create('comune', function (Blueprint $table) {
+            $table->bigIncrements('codice_comune')->unsigned()->index();
+            $table->string('CAP', 10)->unique();
+            $table->string('nome_comune', 500)->unique();
+            $table->bigInteger('stato_ref')->unsigned()->index();
+            $table->foreign('stato_ref')->references('codice_stato')->on('stato');
             $table->timestamps();
         });
     }
@@ -31,6 +30,6 @@ return new class extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('users');
+        Schema::dropIfExists('comune');
     }
 };
