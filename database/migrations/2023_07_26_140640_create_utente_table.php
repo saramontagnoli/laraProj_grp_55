@@ -20,7 +20,7 @@ return new class extends Migration
             $table->date('data_nascita');
             $table->string('username', 50)->unique();
             $table->string('password', 65);
-            $table->string('role', 20);
+            $table->integer('role');
             $table->string('email', 60)->unique();
             $table->string('indirizzo', 100);
             $table->bigInteger('occupazione_ref')->unsigned()->index();

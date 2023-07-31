@@ -124,5 +124,13 @@ class DatabaseSeeder extends Seeder
             ['codice_auto' => 7, 'targa' => 'FA254FA', 'foto_auto' => '/assets/img/alfa_romeo_giulia.jpg', 'allestimento' => 'Optional: aria condizionata, radio', 'costo_giorno' => 75.00, 'num_posti' => 4, 'modello_ref' => 7],
             ['codice_auto' => 8, 'targa' => 'FA000CK', 'foto_auto' => '/assets/img/bmw_m4.jpg', 'allestimento' => 'Optional: aria condizionata, radio, turbo', 'costo_giorno' => 70.00, 'num_posti' => 4, 'modello_ref' => 4]
         ]);
+
+        DB::table('utente')->insert([
+            ['codice_utente' => 1, 'nome' => 'Sara', 'cognome' => 'Montagnoli', 'data_nascita' => '2001.10.31', 'username' => 'clieclie', 'password' => '3Esp6L54', 'role' => 2, 'email' => 'sara@gmail.com', 'indirizzo' => 'via caso 13', 'occupazione_ref' => 4, 'comune_ref' => 2],
+            ['codice_utente' => 2, 'nome' => 'Giada', 'cognome' => 'Remedia', 'data_nascita' => '2001.09.26', 'username' => 'staffstaff', 'password' => '3Esp6L54', 'role' => 3, 'email' => 'giada@gmail.com', 'indirizzo' => 'via nulla 10', 'occupazione_ref' => 4, 'comune_ref' => 4],
+            ['codice_utente' => 3, 'nome' => 'Admin', 'cognome' => 'Admin', 'data_nascita' => '1990.11.11', 'username' => 'adminadmin', 'password' => '3Esp6L54', 'role' => 4, 'email' => 'admin@gmail.com', 'indirizzo' => 'via roma 11', 'occupazione_ref' => 1, 'comune_ref' => 1],
+            ['codice_utente' => 4, 'nome' => 'Luca', 'cognome' => 'Bianchi', 'data_nascita' => '1997.06.11', 'username' => 'lucabianchi', 'password' => 'ciao01!', 'role' => 2, 'email' => 'lucabianchi@gmail.com', 'indirizzo' => 'via napoli 11', 'occupazione_ref' => 2, 'comune_ref' => 3],
+            ['codice_utente' => 5, 'nome' => 'Marco', 'cognome' => 'Verdi', 'data_nascita' => '1998.01.27', 'username' => 'marcoverdi98', 'password' => 'ciaociao01!', 'role' => 2, 'email' => 'marcoverdi@gmail.com', 'indirizzo' => 'via torino 5', 'occupazione_ref' => 3, 'comune_ref' => 4]
+        ]);
     }
 }
