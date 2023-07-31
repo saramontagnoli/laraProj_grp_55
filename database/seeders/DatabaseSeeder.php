@@ -50,5 +50,16 @@ class DatabaseSeeder extends Seeder
             ['codice_modello' => 10, 'nome_modello' => 'R8', 'marca_ref' => 3]
         ]);
 
+        DB::table('stato')->insert([
+            ['codice_stato' => 1, 'nome_stato' => 'Italia'],
+            ['codice_stato' => 2, 'nome_stato' => 'Germania'],
+            ['codice_stato' => 3, 'nome_stato' => 'Spagna'],
+            ['codice_stato' => 4, 'nome_stato' => 'Portogallo'],
+            ['codice_stato' => 5, 'nome_stato' => 'Austria'],
+            ['codice_stato' => 6, 'nome_stato' => 'Svizzera'],
+            ['codice_stato' => 7, 'nome_stato' => 'Francia'],
+            ['codice_stato' => 8, 'nome_stato' => 'Belgio']
+        ]);
+
     }
 }
