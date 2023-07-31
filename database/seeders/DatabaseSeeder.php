@@ -126,11 +126,24 @@ class DatabaseSeeder extends Seeder
         ]);
 
         DB::table('utente')->insert([
-            ['codice_utente' => 1, 'nome' => 'Sara', 'cognome' => 'Montagnoli', 'data_nascita' => '2001.10.31', 'username' => 'clieclie', 'password' => '3Esp6L54', 'role' => 2, 'email' => 'sara@gmail.com', 'indirizzo' => 'via caso 13', 'occupazione_ref' => 4, 'comune_ref' => 2],
-            ['codice_utente' => 2, 'nome' => 'Giada', 'cognome' => 'Remedia', 'data_nascita' => '2001.09.26', 'username' => 'staffstaff', 'password' => '3Esp6L54', 'role' => 3, 'email' => 'giada@gmail.com', 'indirizzo' => 'via nulla 10', 'occupazione_ref' => 4, 'comune_ref' => 4],
-            ['codice_utente' => 3, 'nome' => 'Admin', 'cognome' => 'Admin', 'data_nascita' => '1990.11.11', 'username' => 'adminadmin', 'password' => '3Esp6L54', 'role' => 4, 'email' => 'admin@gmail.com', 'indirizzo' => 'via roma 11', 'occupazione_ref' => 1, 'comune_ref' => 1],
-            ['codice_utente' => 4, 'nome' => 'Luca', 'cognome' => 'Bianchi', 'data_nascita' => '1997.06.11', 'username' => 'lucabianchi', 'password' => 'ciao01!', 'role' => 2, 'email' => 'lucabianchi@gmail.com', 'indirizzo' => 'via napoli 11', 'occupazione_ref' => 2, 'comune_ref' => 3],
-            ['codice_utente' => 5, 'nome' => 'Marco', 'cognome' => 'Verdi', 'data_nascita' => '1998.01.27', 'username' => 'marcoverdi98', 'password' => 'ciaociao01!', 'role' => 2, 'email' => 'marcoverdi@gmail.com', 'indirizzo' => 'via torino 5', 'occupazione_ref' => 3, 'comune_ref' => 4]
+            ['codice_utente' => 1, 'nome' => 'Sara', 'cognome' => 'Montagnoli', 'data_nascita' => '2001-10-31', 'username' => 'clieclie', 'password' => '3Esp6L54', 'role' => 2, 'email' => 'sara@gmail.com', 'indirizzo' => 'via caso 13', 'occupazione_ref' => 4, 'comune_ref' => 2],
+            ['codice_utente' => 2, 'nome' => 'Giada', 'cognome' => 'Remedia', 'data_nascita' => '2001-09-26', 'username' => 'staffstaff', 'password' => '3Esp6L54', 'role' => 3, 'email' => 'giada@gmail.com', 'indirizzo' => 'via nulla 10', 'occupazione_ref' => 4, 'comune_ref' => 4],
+            ['codice_utente' => 3, 'nome' => 'Admin', 'cognome' => 'Admin', 'data_nascita' => '1990-11-11', 'username' => 'adminadmin', 'password' => '3Esp6L54', 'role' => 4, 'email' => 'admin@gmail.com', 'indirizzo' => 'via roma 11', 'occupazione_ref' => 1, 'comune_ref' => 1],
+            ['codice_utente' => 4, 'nome' => 'Luca', 'cognome' => 'Bianchi', 'data_nascita' => '1997-06-11', 'username' => 'lucabianchi', 'password' => 'ciao01!', 'role' => 2, 'email' => 'lucabianchi@gmail.com', 'indirizzo' => 'via napoli 11', 'occupazione_ref' => 2, 'comune_ref' => 3],
+            ['codice_utente' => 5, 'nome' => 'Marco', 'cognome' => 'Verdi', 'data_nascita' => '1998-01-27', 'username' => 'marcoverdi98', 'password' => 'ciaociao01!', 'role' => 2, 'email' => 'marcoverdi@gmail.com', 'indirizzo' => 'via torino 5', 'occupazione_ref' => 3, 'comune_ref' => 4]
+        ]);
+
+        DB::table('faq')->insert([
+            ['codice_faq' => 1, 'domanda' => 'Posso noleggiare più auto contemporaneamente?', 'risposta' => 'Si, si possono noleggiare contemporaneamente più macchina sotto lo stesso nome', 'admin_ref' => 3],
+            ['codice_faq' => 2, 'domanda' => 'Come noleggio una macchina?', 'risposta' => 'Per noleggiare una macchina si deveno specificare le caratteristiche desiderate. Successivamente si apre la scheda della macchina da noleggiare e si cliccka sul buttone "NOLEGGIA"', 'admin_ref' => 3],
+            ['codice_faq' => 3, 'domanda' => 'Per quanto tempo posso noleggiare un auto?', 'risposta' => 'Non ci sono limiti di tempo per il noleggio delle auto.', 'admin_ref' => 3],
+        ]);
+
+        DB::table('noleggio')->insert([
+            ['codice_noleggio' => 1, 'data_inizio' => '2023-07-31', 'data_fine' => '2023-08-13', 'utente_ref' => 1, 'auto_ref' => 1],
+            ['codice_noleggio' => 2, 'data_inizio' => '2023-08-05', 'data_fine' => '2023-08-08', 'utente_ref' => 4, 'auto_ref' => 5],
+            ['codice_noleggio' => 3, 'data_inizio' => '2023-07-25', 'data_fine' => '2023-08-25', 'utente_ref' => 5, 'auto_ref' => 8],
+            ['codice_noleggio' => 4, 'data_inizio' => '2023-07-28', 'data_fine' => '2023-08-28', 'utente_ref' => 5, 'auto_ref' => 6],
         ]);
     }
 }
