@@ -15,8 +15,8 @@ return new class extends Migration
     {
         Schema::create('faq', function (Blueprint $table) {
             $table->bigIncrements('codice_faq')->unsigned()->index();
-            $table->string('domanda', 150);
-            $table->string('risposta', 150);
+            $table->string('domanda', 600);
+            $table->string('risposta', 600);
             $table->bigInteger('admin_ref')->unsigned()->index();
             $table->foreign('admin_ref')->references('codice_utente')->on('utente');
             $table->timestamps();
