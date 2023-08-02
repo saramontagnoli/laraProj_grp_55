@@ -14,62 +14,100 @@
     overflow-x:hidden; /* indica che il contenuto che supera la larghezza dell'elemento sarà nascosto e non visibile */
 }
 
+/*
+    Classe formattazione specifica per ogni bottone della navbar
+    Definizione di grandezze, bordi, cursore, testo, ecc
+*/
 .element_navbar
 {
     padding:8px 16px; /* valore padding 8px top e bottom e 16px right e left */
     width:auto; /* imposta larghezza degli elementi in base al loro contenuto */
     border:none; /* rimuove il bordo di un elemento HTML */
-    display:block;
-    outline:0;
-    vertical-align:middle;
-    overflow:hidden;
-    text-decoration:none;
-    text-align:center;
-    color: black;
-    cursor:pointer;
-    white-space:nowrap;
-    -webkit-touch-callout:none;
-    -webkit-user-select:none;
-    -moz-user-select:none;
-    -ms-user-select:none;
-    user-select:none;
+    outline:0; /* contorno che circonda un elemento quando viene selezionato o riceve il focus */
+    vertical-align:middle; /* allinea verticalmente un elemento all'interno del contenitore */
+    overflow:hidden; /* nasconde il contenuto che supera i limiti di un elemento con dimensione fissa o predefinta*/
+    text-decoration:none; /* rimuove tutte le decorazioni del testo, es sottolineature, ecc */
+    text-align:center; /* centra orizzontalmente il testo all'interno di un elemento */
+    color: black; /* colore del testo nero */
+    cursor:pointer; /* il cursore diventa un dito puntatore quando passa sopra l'elemento */
+    white-space:nowrap; /* impedisce il wrap del contenuto di un elemento su una nuova riga */
+    -webkit-touch-callout:none; /* impedisce la visualizzazione del menu che solitamente appare sui dispositivi mobili */
+    -webkit-user-select:none; /* impedisce agli utenti di selezionare, copiare o incollare il testo all'interno dell'elemento */
+    -moz-user-select:none; /* impedisce agli utenti di selezionare il testo all'interno dell'elemento (browser Mozilla, es FireFox) */
+    -ms-user-select:none; /* impedisce agli utenti di selezionare il testo all'interno dell'elemento (specifico per browser Microsoft Edge)*/
+    user-select:none; /* impedisce di selezionare testi o elementi */
 }
 
-a{background-color:transparent}
-a:active,a:hover{outline-width:0}
 
+/*
+    Proprietà da applicare quando l'elemento della barra di navigazione è disabilitato
+ */
 .element_navbar:disabled
 {
-    cursor:not-allowed;
-    opacity:0.3;
+    cursor:not-allowed; /* indica che se l'elemento è disabilitato l'utente non può cliccarci */
+    opacity:0.3; /* imposta l'opacità di un elemento al 30% della sua opacità completa */
 }
 
-.posizione_sx
-{
-    float:left!important;
-}
 
-.posizione_dx
-{
-    float:right!important;
-}
-
+/*
+    Proprietà da applicare quando si passa sopra con il cursore all'elemento della navbar
+ */
 .element_navbar:hover
 {
     color:#000!important;
     background-color:#ccc!important;
+    outline-width:0; /* imposta l'opacità di un elemento al 30% della sua opacità completa */
 }
 
 
+/*
+    Proprietà da applicare a tutti i tag <a>
+ */
+a
+{
+    background-color:transparent; /* imposta colore di sfondo trasparente, quindi il contenuto dell'elemento è visibile attraverso il colore di sfondo */
+}
+
+
+/*
+    Proprietà da applicare quando il tag <a> viene attivato o quando si passa il cursore sul tag <a>
+ */
+a:active
+{
+    outline-width:0; /* bordo esterno che circanda l'elemento quando riceve il focus totalmente assente */
+}
+
+
+/*
+    Classe per allineare un elemento a sinistra
+ */
+.posizione_sx
+{
+    float:left!important; /* posiziona elemento a sx rispetto agli altri, ignorando qualsiasi altro valore definito da altre regole css */
+}
+
+
+/*
+    Classe per allineare un elemento a sinistra
+ */
+.posizione_dx
+{
+    float:right!important; /* posiziona elemento a dx rispetto agli altri, ignorando qualsiasi altro valore definito da altre regole css */
+}
+
+
+/*
+    Classe per la formattazione del footer
+ */
 .footer
 {
-    padding-top: 10px;
-    position: fixed;
-    left: 0;
-    bottom: 0;
-    width: 100%;
-    height: 35px;
-    background-color: black;
-    color: white;
-    text-align: center;
+    padding-top: 10px; /* margine superiore interno di 10 pixel */
+    position: fixed; /* fissa l'elemento in una posizione specifica */
+    left: 0; /* distanza di 0 pixel da sinistra */
+    bottom: 0; /* distanza di 0 pixel dal basso */
+    width: 100%; /* larghezza dell'elemento al 100% della larghezza del contenitore */
+    height: 35px; /* altezza dell'elemento a 35 pixel */
+    background-color: black; /* colore di sfondo nero */
+    color: white; /* colore di testo bianco */
+    text-align: center; /* allineamenteo del testo al centro all'intenro dell'elemento */
 }
