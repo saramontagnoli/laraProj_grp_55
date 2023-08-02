@@ -5,15 +5,15 @@
 <div class="slideshow-container">
 
     <div class="mySlides fade">
-        <img src="{{ asset('assets/img/audi_r8.jpg') }}" style="width:100%">
+        <img src="{{ asset('assets/img/audi_r8.jpg') }}" style="width:100%; height: 600px">
     </div>
 
     <div class="mySlides fade">
-        <img src="{{ asset('assets/img/lancia_ypsilon.png') }}" style="width:100%">
+        <img src="{{ asset('assets/img/lancia_ypsilon.png') }}" style="width:100%; height: 600px">
     </div>
 
     <div class="mySlides fade">
-        <img src="{{ asset('assets/img/bmw_m4.jpg') }}" style="width:100%">
+        <img src="{{ asset('assets/img/bmw_m4.jpg') }}" style="width:100%; height: 600px">
     </div>
 
 </div>
