@@ -1,4 +1,5 @@
 @extends('layouts.struttura')
+
 @section('content')
 
 <div class="slideshow-container">
