@@ -61,23 +61,6 @@
 }
 
 
-/*
-    Proprietà da applicare a tutti i tag <a>
- */
-a
-{
-    background-color:transparent; /* imposta colore di sfondo trasparente, quindi il contenuto dell'elemento è visibile attraverso il colore di sfondo */
-}
-
-
-/*
-    Proprietà da applicare quando il tag <a> viene attivato o quando si passa il cursore sul tag <a>
- */
-a:active
-{
-    outline-width:0; /* bordo esterno che circanda l'elemento quando riceve il focus totalmente assente */
-}
-
 
 /*
     Classe per allineare un elemento a sinistra
@@ -111,42 +94,4 @@ a:active
     background-color: black; /* colore di sfondo nero */
     color: white; /* colore di testo bianco */
     text-align: center; /* allineamenteo del testo al centro all'intenro dell'elemento */
-}
-
-
-
-
-
-.immagine_column
-{
-    width: 50%;
-    height: 200px;
-}
-
-.scritta_column
-{
-    text-decoration: none;
-    color: black;
-}
-
-/* Create two equal columns that floats next to each other */
-.colonna {
-    float: left;
-    width: 33.33%;
-    height: 300px; /* Should be removed. Only for demonstration */
-    text-align: center!important;
-    vertical-align: center!important;
-    box-sizing: border-box;
-}
-
-.separatore
-{
-    border-right: 5px solid #000000;
-}
-
-/* Clear floats after the columns */
-.riga:after {
-    content: "";
-    display: table;
-    clear: both;
 }
