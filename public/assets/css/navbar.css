@@ -1,3 +1,5 @@
+* {box-sizing: border-box;}
+
 /*
     Classe formattazione generica della navbar
     Definizione tipo di font, grandezza font
@@ -95,3 +97,5 @@
     color: white; /* colore di testo bianco */
     text-align: center; /* allineamenteo del testo al centro all'intenro dell'elemento */
 }
+
+
