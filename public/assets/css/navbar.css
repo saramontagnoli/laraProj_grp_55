@@ -1,4 +1,8 @@
 /*
+    CSS NAVBAR
+*/
+
+/*
     Classe formattazione generica della navbar
     Definizione tipo di font, grandezza font
 */
@@ -38,6 +42,19 @@
     user-select:none; /* impedisce di selezionare testi o elementi */
 }
 
+@media (max-width:800px){
+
+    .navbar .element_navbar {
+        display:block;
+        margin:10px 0px;
+        text-align:left;
+        width: 100%;
+    }
+
+    .navbar .element_navbar {
+        width: 100%;
+    }
+}
 
 /*
     Proprietà da applicare quando l'elemento della barra di navigazione è disabilitato
@@ -60,7 +77,6 @@
 }
 
 
-
 /*
     Classe per allineare un elemento a sinistra
  */
@@ -80,51 +96,139 @@
 
 
 /*
-    Classe per la formattazione del footer
+    CSS COLONNE NOLEGGIO, CONTATTI E FAQ
  */
-.footer
-{
-    padding-top: 10px; /* margine superiore interno di 10 pixel */
-    left: 0; /* distanza di 0 pixel da sinistra */
-    bottom: 0; /* distanza di 0 pixel dal basso */
-    width: 100%; /* larghezza dell'elemento al 100% d   ella larghezza del contenitore */
-    height: 35px; /* altezza dell'elemento a 35 pixel */
-    background-color: black; /* colore di sfondo nero */
-    color: white; /* colore di testo bianco */
-    text-align: center; /* allineamenteo del testo al centro all'intenro dell'elemento */
-}
 
+/*
+    Classi di formattazione per le immagini inserite nelle colonne
+*/
 .imm
 {
-    width: 50%;
-    height: 200px;
+    width: 50%; /* indica che la larghezza dell'immagine è il 50% del suo contenitore */
+    height: 200px; /* indica che l'altezza dell'immagine è 200 pixel */
 }
 
-.tit
+
+/*
+    Classe di formattazione per il titolo dell'immagine delle colonne
+*/
+.titolo
 {
-    text-decoration: none;
-    color: black;
+    text-decoration: none; /* indica che non deve essere presente nessuna decorazione al testo */
+    color: black; /* indica che il colore del testo è nero */
 }
 
-/* Create two equal columns that floats next to each other */
-.col {
-    float: left;
-    width: 33.33%;
-    height: 300px; /* Should be removed. Only for demonstration */
-    text-align: center!important;
-    vertical-align: center!important;
-    box-sizing: border-box;
+
+/*
+    Classe di formattazione per la grandezza e stile delle colonne definite per il corpo della home
+*/
+.colonna_click {
+    float: left; /* posiziona a sinistra l'elemento rispetto al suo contenitore */
+    width: 33.33%; /* larghezza che la colonna deve occupare */
+    height: 300px; /* altezza della colonna definita */
+    text-align: center!important; /* allineamento del contenuto della colonna al centro del contenitore */
+    vertical-align: center!important; /* allineamento verticale del contenuto al centro */
+    box-sizing: border-box; /* box di un elemento comprende contenuto stesso, padding e bordo */
 }
 
-.sep
+
+/*
+    Classe di formattazione per separare le tre colonne
+*/
+.separatore
 {
-    border-right: 5px solid #000000;
+    border-right: 5px solid #000000; /* inserisce un bordo visibile di 5 pixel nero sul lato destro */
 }
 
-/* Clear floats after the columns */
+
+/*
+    Classe di formattazione per la riga definita per il corpo della home
+    Sever per creare un'area vuota e pulita dopo l'elemento definito con classe riga
+*/
 .riga:after {
-    content: "";
-    display: table;
-    clear: both;
+    content: ""; /* aggiunge un contenuto vuoto all'elemento */
+    display: table; /* imposta il tipo di visualizzazione su tabella */
+    clear: both; /* cancella entrambi i lati dell'elemento per evitare che vengano affiancati altri elementi */
 }
 
+@media (max-width:720px){
+
+    .colonna_click {
+        display:block;
+        margin:10px 0px;
+        text-align:left;
+        width: 100%;
+    }
+
+    .colonna_click {
+        margin:0% 3%;
+        width: 100%;
+    }
+}
+
+
+/*
+    CSS FOOTER
+*/
+
+/*
+    Formattazione del tag <footer> per impostare il footer della pagina
+*/
+footer{
+    background:#000; /* colore di sfondo nero */
+    padding:30px 0px; /* spazio di riempimento di 30 pixel parte superiore e inferiore, 0 pixel destra e sinistra */
+    font-family: 'Play', sans-serif; /* specifica i font da utilizzare */
+    text-align:center; /* allineamento del testo al centro */
+    width:100%;
+    color:gray;
+    font-size:0.8em;
+    text-decoration:none;
+    transition:0.5s;
+}
+
+.rigafoot{
+    width:100%;
+    padding:0.6% 0%;
+    color:gray;
+    text-decoration:none;
+    transition:0.5s;
+    display:inline-block;
+    font-size:0.8em;
+}
+
+.link_footer{
+    text-decoration:none;
+    color:gray;
+    transition:0.5s;
+}
+
+.link_footer:hover{
+    color:#fff;
+}
+
+ul{
+    width:100%;
+}
+
+ul li{
+    display:inline-block;
+    margin:0px 30px;
+}
+
+.link_footer i{
+    font-size:2em;
+    margin:0% 1%;
+}
+
+@media (max-width:720px){
+
+    .rigafoot ul li{
+        display:block;
+        margin:10px 0px;
+        text-align:left;
+    }
+
+    .rigafoot .link_footer li{
+        margin:0% 3%;
+    }
+}

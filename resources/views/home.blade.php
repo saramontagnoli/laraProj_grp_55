@@ -35,24 +35,24 @@
     <div class="riga">
 
         <a href="">
-            <div class="col sep" style="background-color: transparent">
+            <div class="colonna_click separatore" style="background-color: transparent">
                 <img src="{{asset('assets/img/icona_contatti.jpeg')}}" alt="come noleggiare un'auto" class="imm">
-                <h3 class="tit">COME NOLEGGIARE</h3>
+                <h3 class="titolo">COME NOLEGGIARE</h3>
             </div>
         </a>
 
         <a href="">
-            <div class="col sep" style="background-color: transparent">
+            <div class="colonna_click separatore" style="background-color: transparent">
 
                 <img src="{{asset('assets/img/icona_chisiamo.png')}}" alt="informazioni sull'azienda" class="imm">
-                <h3 class="tit">CHI SIAMO</h3>
+                <h3 class="titolo">CHI SIAMO</h3>
             </div>
         </a>
 
         <a href="">
-            <div class="col" style="background-color: transparent">
+            <div class="colonna_click" style="background-color: transparent">
                 <img src="{{asset('assets/img/icona_faq.jpg')}}" alt="domande più frequenti" class="imm">
-                <h3 class="tit">F.A.Q.</h3>
+                <h3 class="titolo">F.A.Q.</h3>
             </div>
         </a>
     </div>
