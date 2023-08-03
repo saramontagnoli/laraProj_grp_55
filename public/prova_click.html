@@ -3,57 +3,21 @@
 <head>
     <meta charset="UTF-8">
     <title>Prova del cazzo</title>
-
-    <style>
-
-        .immagine_column
-        {
-            width: 50%;
-            height: 200px;
-        }
-
-        .scritta_column
-        {
-            text-decoration: none;
-            color: black;
-        }
-
-        /* Create two equal columns that floats next to each other */
-        .column {
-            float: left;
-            width: 33.33%;
-            height: 300px; /* Should be removed. Only for demonstration */
-            text-align: center!important;
-            vertical-align: center!important;
-            box-sizing: border-box;
-        }
-
-        .separatore
-        {
-            border-right: 5px solid #000000;
-        }
-
-        /* Clear floats after the columns */
-        .row:after {
-            content: "";
-            display: table;
-            clear: both;
-        }
-    </style>
+    <link rel="stylesheet" href="assets/css/navbar.css">
 </head>
 <body>
 
-<div class="row">
+<div class="riga">
 
     <a href="">
-        <div class="column separatore" style="background-color: transparent">
+        <div class="colonna separatore" style="background-color: transparent">
             <img src="assets/img/icona_contatti.jpeg" alt="come noleggiare un'auto" class="immagine_column">
             <h3 class="scritta_column">COME NOLEGGIARE</h3>
         </div>
     </a>
 
     <a href="">
-        <div class="column separatore" style="background-color: transparent">
+        <div class="colonna separatore" style="background-color: transparent">
 
             <img src="assets/img/icona_chisiamo.png" alt="informazioni sull'azienda" class="immagine_column">
             <h3 class="scritta_column">CHI SIAMO</h3>
@@ -61,7 +25,7 @@
     </a>
 
     <a href="">
-        <div class="column" style="background-color: transparent">
+        <div class="colonna" style="background-color: transparent">
             <img src="assets/img/icona_faq.jpg" alt="domande più frequenti" class="immagine_column">
             <h3 class="scritta_column">F.A.Q.</h3>
         </div>
