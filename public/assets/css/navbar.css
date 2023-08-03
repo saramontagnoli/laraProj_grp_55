@@ -38,6 +38,43 @@
     user-select:none; /* impedisce di selezionare testi o elementi */
 }
 
+.element_column
+{
+    padding:8px 16px; /* valore padding 8px top e bottom e 16px right e left */
+    width:auto; /* imposta larghezza degli elementi in base al loro contenuto */
+    border:none; /* rimuove il bordo di un elemento HTML */
+    outline:0; /* contorno che circonda un elemento quando viene selezionato o riceve il focus */
+    vertical-align:middle; /* allinea verticalmente un elemento all'interno del contenitore */
+    overflow:hidden; /* nasconde il contenuto che supera i limiti di un elemento con dimensione fissa o predefinta*/
+    text-decoration:none; /* rimuove tutte le decorazioni del testo, es sottolineature, ecc */
+    text-align:center; /* centra orizzontalmente il testo all'interno di un elemento */
+    color: black; /* colore del testo nero */
+    cursor:pointer; /* il cursore diventa un dito puntatore quando passa sopra l'elemento */
+    white-space:nowrap; /* impedisce il wrap del contenuto di un elemento su una nuova riga */
+    -webkit-touch-callout:none; /* impedisce la visualizzazione del menu che solitamente appare sui dispositivi mobili */
+    -webkit-user-select:none; /* impedisce agli utenti di selezionare, copiare o incollare il testo all'interno dell'elemento */
+    -moz-user-select:none; /* impedisce agli utenti di selezionare il testo all'interno dell'elemento (browser Mozilla, es FireFox) */
+    -ms-user-select:none; /* impedisce agli utenti di selezionare il testo all'interno dell'elemento (specifico per browser Microsoft Edge)*/
+    user-select:none; /* impedisce di selezionare testi o elementi */
+}
+
+.element_click:disabled
+{
+    cursor:not-allowed; /* indica che se l'elemento è disabilitato l'utente non può cliccarci */
+    opacity:0.3; /* imposta l'opacità di un elemento al 30% della sua opacità completa */
+}
+
+
+/*
+    Proprietà da applicare quando si passa sopra con il cursore all'elemento della navbar
+ */
+.element_click:hover
+{
+    color:#000!important;
+    background-color:#ccc!important;
+    outline-width:0; /* imposta l'opacità di un elemento al 30% della sua opacità completa */
+}
+
 
 /*
     Proprietà da applicare quando l'elemento della barra di navigazione è disabilitato

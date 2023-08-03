@@ -5,26 +5,17 @@
     <title>Prova del cazzo</title>
 
     <style>
-        div
-        {
-            font-family: Verdana, sans-serif; /* specifica il tipo di carattere ad usare, se non trova il primo utilizza il secondo specificato*/
-            font-size: 15px; /* grandezza del font della pagina */
-            line-height: 1.5; /* altezza di una riga all'interno di un elemento, detetrmina lo spazio verticale tra le linee di testo */
-            margin: 0; /* imposta il margine degli elementi a 0, ovvero lo spazio tra l'elemento stesso e gli altri elementi circostanti*/
-            -ms-text-size-adjust:100%; /* adattamento di dimensione del testo nei browser internet explorer */
-            -webkit-text-size-adjust:100%; /* specifica come il browser webkit dovrebbe gestire il ridimensionamento del testo nella pagina web (Chrome e Safari) */
-            box-sizing:border-box; /* indica che il box-model dell'elemento è calcolato includendo padding bordo all'interno delle dimensioni */
-            overflow-x:hidden; /* indica che il contenuto che supera la larghezza dell'elemento sarà nascosto e non visibile */
-        }
 
-        * {
-            box-sizing: border-box;
-        }
-
-        img
+        .immagine_column
         {
             width: 50%;
             height: 200px;
+        }
+
+        .scritta_column
+        {
+            text-decoration: none;
+            color: black;
         }
 
         /* Create two equal columns that floats next to each other */
@@ -34,7 +25,7 @@
             height: 300px; /* Should be removed. Only for demonstration */
             text-align: center!important;
             vertical-align: center!important;
-
+            box-sizing: border-box;
         }
 
         .separatore
@@ -53,18 +44,28 @@
 <body>
 
 <div class="row">
-    <div class="column separatore" style="background-color: transparent">
-        <img src="assets/img/icona_contatti.jpeg">
-        <h3>CONTATTI</h3>
-    </div>
-    <div class="column separatore" style="background-color: transparent">
-        <img src="assets/img/icona_chisiamo.png">
-        <h3>CHI SIAMO</h3>
-    </div>
-    <div class="column" style="background-color: transparent">
-        <img src="assets/img/icona_faq.jpg">
-        <h3>F.A.Q.</h3>
-    </div>
+
+    <a href="">
+        <div class="column separatore" style="background-color: transparent">
+            <img src="assets/img/icona_contatti.jpeg" class="immagine_column">
+            <h3 class="scritta_column">COME NOLEGGIARE</h3>
+        </div>
+    </a>
+
+    <a href="">
+        <div class="column separatore" style="background-color: transparent">
+
+            <img src="assets/img/icona_chisiamo.png" class="immagine_column">
+            <h3 class="scritta_column">CHI SIAMO</h3>
+        </div>
+    </a>
+
+    <a href="">
+        <div class="column" style="background-color: transparent">
+            <img src="assets/img/icona_faq.jpg" class="immagine_column">
+            <h3 class="scritta_column">F.A.Q.</h3>
+        </div>
+    </a>
 </div>
 
 </body>
