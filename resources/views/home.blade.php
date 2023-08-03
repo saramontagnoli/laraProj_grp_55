@@ -36,7 +36,7 @@
 
         <a href="">
             <div class="col sep" style="background-color: transparent">
-                <img src="assets/img/icona_contatti.jpeg" alt="come noleggiare un'auto" class="imm">
+                <img src="{{asset('assets/img/icona_contatti.jpeg')}}" alt="come noleggiare un'auto" class="imm">
                 <h3 class="tit">COME NOLEGGIARE</h3>
             </div>
         </a>
@@ -44,14 +44,14 @@
         <a href="">
             <div class="col sep" style="background-color: transparent">
 
-                <img src="assets/img/icona_chisiamo.png" alt="informazioni sull'azienda" class="imm">
+                <img src="{{asset('assets/img/icona_chisiamo.png')}}" alt="informazioni sull'azienda" class="imm">
                 <h3 class="tit">CHI SIAMO</h3>
             </div>
         </a>
 
         <a href="">
             <div class="col" style="background-color: transparent">
-                <img src="assets/img/icona_faq.jpg" alt="domande più frequenti" class="imm">
+                <img src="{{asset('assets/img/icona_faq.jpg')}}" alt="domande più frequenti" class="imm">
                 <h3 class="tit">F.A.Q.</h3>
             </div>
         </a>

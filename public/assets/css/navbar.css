@@ -85,10 +85,9 @@
 .footer
 {
     padding-top: 10px; /* margine superiore interno di 10 pixel */
-    position: fixed; /* fissa l'elemento in una posizione specifica */
     left: 0; /* distanza di 0 pixel da sinistra */
     bottom: 0; /* distanza di 0 pixel dal basso */
-    width: 100%; /* larghezza dell'elemento al 100% della larghezza del contenitore */
+    width: 100%; /* larghezza dell'elemento al 100% d   ella larghezza del contenitore */
     height: 35px; /* altezza dell'elemento a 35 pixel */
     background-color: black; /* colore di sfondo nero */
     color: white; /* colore di testo bianco */
