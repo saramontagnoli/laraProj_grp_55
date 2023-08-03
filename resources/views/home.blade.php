@@ -62,8 +62,4 @@
     <!-- Inclusione dello script JS che permette di far scorrere in automatico le immagini-->
     <script src="{{ asset('assets/js/carosello.js') }}"></script>
 
-    <div>
-
-        ciaoC CAJOICBWEJBFOEWBF7
-    </div>
 @endsection
