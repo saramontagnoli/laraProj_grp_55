@@ -1,0 +1,33 @@
+.imm
+{
+    width: 50%;
+    height: 200px;
+}
+
+.tit
+{
+    text-decoration: none;
+    color: black;
+}
+
+/* Create two equal columns that floats next to each other */
+.col {
+    float: left;
+    width: 33.33%;
+    height: 300px; /* Should be removed. Only for demonstration */
+    text-align: center!important;
+    vertical-align: center!important;
+    box-sizing: border-box;
+}
+
+.sep
+{
+    border-right: 5px solid #000000;
+}
+
+/* Clear floats after the columns */
+.riga:after {
+    content: "";
+    display: table;
+    clear: both;
+}
