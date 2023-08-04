@@ -3,7 +3,7 @@
     <!-- Sezione del contenuto del footer -->
     <div>
         <!-- Sezione del footer che identifica la prima riga contenente i loghi dei social -->
-        <div class="rigafoot">
+        <div class="rigafooter">
             <!-- Loghi social cliccabili -->
             <a href="#" class="link_footer"><i class="fa fa-facebook"></i></a>
             <a href="#" class="link_footer"><i class="fa fa-instagram"></i></a>
@@ -12,7 +12,7 @@
         </div>
 
         <!-- Sezione del footer che ientifica la seconda riga contenente dei link ai contenuti del sito -->
-        <div class="rigafoot">
+        <div class="rigafooter">
             <!-- Lista di link ai contenuti della pagina -->
             <ul>
                 <li><a href="#" class="link_footer">Auto</a></li>

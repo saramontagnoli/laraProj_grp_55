@@ -179,39 +179,56 @@
 
 /*
     Formattazione del tag <footer> per impostare il footer della pagina
+    Modifica di colori, font, grandezza e decorazioni
 */
 footer{
     background:#000; /* colore di sfondo nero */
     padding:30px 0px; /* spazio di riempimento di 30 pixel parte superiore e inferiore, 0 pixel destra e sinistra */
     font-family: 'Play', sans-serif; /* specifica i font da utilizzare */
     text-align:center; /* allineamento del testo al centro */
-    width:100%;
-    color:gray;
-    font-size:0.8em;
-    text-decoration:none;
-    transition:0.5s;
+    width:100%; /* l'elemento occupa il 100% dello spazio del suo contenitore */
+    color:gray; /* colore del testo grigio */
+    font-size:0.8em; /* imposta dimensione font 80% della dimensione del testo di default */
+    text-decoration:none; /* nessuna decorazione al testo come sottolineature, ecc */
+    transition:0.5s; /* durata di transizione per gli effetti di transizione tra le proprietà CSS (durata = 0.5 secondi) */
 }
 
-.rigafoot{
-    width:100%;
-    padding:0.6% 0%;
-    color:gray;
-    text-decoration:none;
-    transition:0.5s;
-    display:inline-block;
-    font-size:0.8em;
+/*
+    Classe di formattazione per la singola riga all'interno del footer
+    Definizione di dimensioni, transition, font
+*/
+.rigafooter{
+    width:100%; /* l'elemento occupa il 100% dello spazio del suo contenitore */
+    padding:15px 0px; /* spazio di riempimento di 30 pixel parte superiore e inferiore, 0 pixel destra e sinistra */
+    color:gray; /* colore font grigio */
+    text-decoration:none; /* nessuna decorazione per il testo all'interno dell'elemento */
+    transition:0.5s; /* durata di transizione per gli effetti di transizione tra le proprietà CSS (durata = 0.5 secondi) */
+    display:inline-block; /* possono essere posizionati elementi di fianco, senza andare a riga nuova, comportamento di un elemento inline */
+    font-size:0.8em; /* imposta dimensione font 80% della dimensione del testo di default */
 }
 
+
+/*
+    Classe di formattazione per i link contenuti nel footer
+*/
 .link_footer{
-    text-decoration:none;
-    color:gray;
-    transition:0.5s;
+    text-decoration:none; /* nessuna decorazione per il testo dell'elemento */
+    color:gray; /* colore del font grigio */
+    transition:0.5s; /* durata di transizione per gli effetti di transizione tra le proprietà CSS (durata = 0.5 secondi) */
 }
 
+
+/*
+    Classe di formattazione quando si passa sopra con il cursore ad un elemento con classe link_footer
+    Cambia il colore del font
+*/
 .link_footer:hover{
-    color:#fff;
+    color:#fff; /* colore del font bianco */
 }
 
+/*
+    Classe di formattazione per la lista non ordinata
+*/
 ul{
     width:100%;
 }
