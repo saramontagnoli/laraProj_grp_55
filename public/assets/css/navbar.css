@@ -16,9 +16,10 @@
     -webkit-text-size-adjust:100%; /* specifica come il browser webkit dovrebbe gestire il ridimensionamento del testo nella pagina web (Chrome e Safari) */
     box-sizing:border-box; /* indica che il box-model dell'elemento è calcolato includendo padding bordo all'interno delle dimensioni */
     overflow-x:hidden; /* indica che il contenuto che supera la larghezza dell'elemento sarà nascosto e non visibile */
-    border-bottom: 1px outset;
-    padding-bottom: 15px;
+    border-bottom: 1px outset; /* inserisce un bordo nella parte inferiore della navbar spesso 1 pixel */
+    padding-bottom: 15px; /* inserisce uno spazio nella parte inferiore della navbar di 15 pixel */
 }
+
 
 /*
     Classe formattazione specifica per ogni bottone della navbar
@@ -44,6 +45,12 @@
     user-select:none; /* impedisce di selezionare testi o elementi */
 }
 
+
+/*
+    Definizione di regole quando la navbar è più piccola di 800 pixel
+    La definizione di queste regole serve per rendere il sito responsive
+    La classe ridimensiona semplicemente la grandezza e la posizione deli button della navbar
+*/
 @media (max-width:800px){
 
     .navbar .element_navbar {
@@ -52,11 +59,8 @@
         text-align:left;
         width: 100%;
     }
-
-    .navbar .element_navbar {
-        width: 100%;
-    }
 }
+
 
 /*
     Proprietà da applicare quando l'elemento della barra di navigazione è disabilitato
@@ -73,9 +77,9 @@
  */
 .element_navbar:hover
 {
-    color:#000!important;
-    background-color:#ccc!important;
-    outline-width:0; /* imposta l'opacità di un elemento al 30% della sua opacità completa */
+    color:#000!important; /* colore del font nero */
+    background-color:#ccc!important; /* colore di sfondo grigio */
+    outline-width:0; /* imposta la larghezza del contorno di un elemento */
 }
 
 
@@ -89,11 +93,11 @@
 
 
 /*
-    Classe per allineare un elemento a sinistra
+    Classe per allineare un elemento a destra
  */
 .posizione_dx
 {
-    text-align: right; /* posiziona elemento a dx rispetto agli altri, ignorando qualsiasi altro valore definito da altre regole css */
+    text-align: right; /* allinea gli elementi a destra */
 }
 
 
@@ -153,17 +157,17 @@
     clear: both; /* cancella entrambi i lati dell'elemento per evitare che vengano affiancati altri elementi */
 }
 
-@media (max-width:720px){
+/*
+    Definizione di regole quando la finestra del sito è più piccola di 800 pixel
+    La definizione di queste regole serve per rendere il sito responsive
+    La classe ridimensiona semplicemente la grandezza e la posizione delle colonne faq, chi siamo e come noleggiare
+*/
+@media (max-width:800px){
 
     .colonna_click {
         display:block;
         margin:10px 0px;
         text-align:left;
-        width: 100%;
-    }
-
-    .colonna_click {
-        margin:0% 3%;
         width: 100%;
     }
 }
