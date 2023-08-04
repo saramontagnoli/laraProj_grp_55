@@ -284,25 +284,28 @@ footer{
     CSS F.A.Q.
 */
 
-
-.accordion {
+/*
+    Classe di formattazione per lo specchietto della domanda
+    Si specificano vari colori, spaziature, allineamento testuale, ecc
+*/
+.domanda {
     background-color: #eee;
     color: #444;
     cursor: pointer;
     padding: 18px;
     width: 100%;
     border: none;
-    text-align: left;
+    text-align: center;
     outline: none;
     font-size: 15px;
     transition: 0.4s;
 }
 
-.active, .accordion:hover {
+.active, .domanda:hover {
     background-color: #ccc;
 }
 
-.accordion:after {
+.domanda:after {
     content: '\002B';
     color: #777;
     font-weight: bold;
@@ -314,10 +317,30 @@ footer{
     content: "\2212";
 }
 
-.panel {
+.risposta {
     padding: 0 18px;
     background-color: white;
+    text-align: center;
     max-height: 0;
     overflow: hidden;
     transition: max-height 0.2s ease-out;
+}
+
+
+/*
+    Classe per allineare un elemento al centro della pagina
+ */
+.posizione_cx
+{
+    text-align: center!important; /* posiziona elemento a cx */
+}
+
+
+/*
+    Classe di formattazione per aggiungere margini sinistro e destro al paragrafo
+*/
+.margini_testo
+{
+    padding-left: 100px;
+    padding-right: 100px;
 }

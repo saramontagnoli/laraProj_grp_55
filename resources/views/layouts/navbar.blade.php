@@ -3,7 +3,7 @@
     <!-- Sezione del sito contenente nome del sito, funge da home button -->
     <div class="posizione_sx">
         <!-- Link cliccabile per la home denominato con il nome del sito -->
-        <a href="" class="element_navbar">Formula Rent</a>
+        <a href="" class="element_navbar">Formula Rent &nbsp; <i class="fa fa-car"></i></a>
     </div>
 
     <!-- Opzioni di navigazione del sito sempre disponibili nella barra di navigazione in alto -->
