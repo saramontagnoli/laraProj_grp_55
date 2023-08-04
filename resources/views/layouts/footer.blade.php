@@ -14,7 +14,7 @@
         <!-- Sezione del footer che ientifica la seconda riga contenente dei link ai contenuti del sito -->
         <div class="rigafooter">
             <!-- Lista di link ai contenuti della pagina -->
-            <ul>
+            <ul class="listafooter">
                 <li><a href="#" class="link_footer">Auto</a></li>
                 <li><a href="#" class="link_footer">Come noleggiare</a></li>
                 <li><a href="#" class="link_footer">Contatti</a></li>
