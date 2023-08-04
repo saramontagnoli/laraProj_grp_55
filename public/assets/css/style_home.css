@@ -290,13 +290,13 @@ footer{
     Si specificano vari colori, spaziature, allineamento testuale, ecc
 */
 .domanda {
-    background-color: #eee;
-    color: #444;
-    cursor: pointer;
-    padding: 18px;
-    width: 100%;
-    border: none;
-    text-align: center;
+    background-color: #eee; /* colore di sfondo leggermente grigio */
+    color: #444; /* colore del font grigio scuro */
+    cursor: pointer; /* il cursore diventa un dito puntatore per cliccare */
+    padding: 18px; /* inserisce uno spazio di 18 pixel all'interno dell'elemento */
+    width: 100%; /* larghezza dell'elemento fitta al 100% il suo contenitore */
+    border: none; /* nessun bordo presente per l'elemento */
+    text-align: center; /* testo allineato al centro */
     outline: none;
     font-size: 15px;
     transition: 0.4s;
