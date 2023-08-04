@@ -157,10 +157,12 @@
     clear: both; /* cancella entrambi i lati dell'elemento per evitare che vengano affiancati altri elementi */
 }
 
+
 /*
     Definizione di regole quando la finestra del sito è più piccola di 800 pixel
     La definizione di queste regole serve per rendere il sito responsive
     La classe ridimensiona semplicemente la grandezza e la posizione delle colonne faq, chi siamo e come noleggiare
+    La classe di formattazione elimina poi il separatore nero tra le varie colonne
 */
 @media (max-width:800px){
 
@@ -169,6 +171,11 @@
         margin:10px 0px;
         text-align:left;
         width: 100%;
+    }
+
+    .separatore
+    {
+        border-right: 0; /* inserisce un bordo visibile di 5 pixel nero sul lato destro */
     }
 }
 
@@ -192,6 +199,7 @@ footer{
     text-decoration:none; /* nessuna decorazione al testo come sottolineature, ecc */
     transition:0.5s; /* durata di transizione per gli effetti di transizione tra le proprietà CSS (durata = 0.5 secondi) */
 }
+
 
 /*
     Classe di formattazione per la singola riga all'interno del footer
@@ -226,32 +234,90 @@ footer{
     color:#fff; /* colore del font bianco */
 }
 
+
 /*
-    Classe di formattazione per la lista non ordinata
+    Classe di formattazione per la lista non ordinata presente nel footer
 */
-ul{
-    width:100%;
+.listafooter{
+    width:100%; /* l'elemento occupa il 100% del suo contenitore */
 }
 
-ul li{
-    display:inline-block;
-    margin:0px 30px;
+
+/*
+    Classe di formattazione per ogni punto della lista avente come classe listafooter
+*/
+.listafooter li{
+    display:inline-block; /* possono essere posizionati elementi di fianco, senza andare a riga nuova, comportamento di un elemento inline */
+    margin:0px 30px; /* definizione margine 0 pixel superiore e inferiore, 30 pixel destro e sinistro. */
 }
 
+
+/*
+    Classe di formattazione per il tag <i> contenente loghi social avente come classe link_footer
+*/
 .link_footer i{
-    font-size:2em;
-    margin:0% 1%;
+    font-size:2em; /* definizione della grnadezza del font */
+    margin:0% 1%; /* definizione dei margini */
 }
 
-@media (max-width:720px){
 
-    .rigafoot ul li{
+/*
+    Definizione di regole quando la finestra del sito è più piccola di 800 pixel
+    La definizione di queste regole serve per rendere il sito responsive
+    La classe ridimensiona semplicemente la grandezza e la posizione degli elementi del footer
+*/
+@media (max-width:800px){
+
+    .listafooter li{
         display:block;
         margin:10px 0px;
         text-align:left;
     }
 
-    .rigafoot .link_footer li{
+    .link_footer li{
         margin:0% 3%;
     }
+}
+
+
+/*
+    CSS F.A.Q.
+*/
+
+
+.accordion {
+    background-color: #eee;
+    color: #444;
+    cursor: pointer;
+    padding: 18px;
+    width: 100%;
+    border: none;
+    text-align: left;
+    outline: none;
+    font-size: 15px;
+    transition: 0.4s;
+}
+
+.active, .accordion:hover {
+    background-color: #ccc;
+}
+
+.accordion:after {
+    content: '\002B';
+    color: #777;
+    font-weight: bold;
+    float: right;
+    margin-left: 5px;
+}
+
+.active:after {
+    content: "\2212";
+}
+
+.panel {
+    padding: 0 18px;
+    background-color: white;
+    max-height: 0;
+    overflow: hidden;
+    transition: max-height 0.2s ease-out;
 }
