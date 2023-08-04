@@ -5,18 +5,21 @@
     <!-- Slideshow automatico di immagini ogni 4 secondi -->
     <div class="slideshow-container">
 
-        <!-- Prima immagine dello slideshow -->
+        <!-- Sezione della prima immagine dello slideshow -->
         <div class="mySlides fade">
+            <!-- Prima immagine slideshow -->
             <img src="{{ asset('assets/img/audi_r8.jpg') }}" style="width:100%; height: 600px">
         </div>
 
-        <!-- Seconda immagine dello slideshow -->
+        <!-- Sezione della seconda immagine dello slideshow -->
         <div class="mySlides fade">
+            <!-- Seconda immagine slideshow -->
             <img src="{{ asset('assets/img/lancia_ypsilon.png') }}" style="width:100%; height: 600px">
         </div>
 
-        <!-- Terza immagine dello slideshow -->
+        <!-- Sezione della terza immagine dello slideshow -->
         <div class="mySlides fade">
+            <!-- Terza immagine slideshow -->
             <img src="{{ asset('assets/img/bmw_m4.jpg') }}" style="width:100%; height: 600px">
         </div>
 
