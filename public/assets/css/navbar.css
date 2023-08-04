@@ -135,6 +135,7 @@
     text-align: center!important; /* allineamento del contenuto della colonna al centro del contenitore */
     vertical-align: center!important; /* allineamento verticale del contenuto al centro */
     box-sizing: border-box; /* box di un elemento comprende contenuto stesso, padding e bordo */
+    background-color: transparent;
 }
 
 
