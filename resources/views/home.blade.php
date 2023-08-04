@@ -8,21 +8,20 @@
         <!-- Sezione della prima immagine dello slideshow -->
         <div class="mySlides fade">
             <!-- Prima immagine slideshow -->
-            <img src="{{ asset('assets/img/audi_r8.jpg') }}" style="width:100%; height: 600px">
+            <img src="{{ asset('assets/img/audi_r8.jpg') }}" alt="immagine prima auto" style="width:100%; height: 600px">
         </div>
 
         <!-- Sezione della seconda immagine dello slideshow -->
         <div class="mySlides fade">
             <!-- Seconda immagine slideshow -->
-            <img src="{{ asset('assets/img/lancia_ypsilon.png') }}" style="width:100%; height: 600px">
+            <img src="{{ asset('assets/img/lancia_ypsilon.png') }}" alt="immagine seconda auto" style="width:100%; height: 600px">
         </div>
 
         <!-- Sezione della terza immagine dello slideshow -->
         <div class="mySlides fade">
             <!-- Terza immagine slideshow -->
-            <img src="{{ asset('assets/img/bmw_m4.jpg') }}" style="width:100%; height: 600px">
+            <img src="{{ asset('assets/img/bmw_m4.jpg') }}" alt="immagine terza auto" style="width:100%; height: 600px">
         </div>
-
     </div>
     <br>
 
@@ -37,6 +36,7 @@
     <hr>
     <br> <br>
 
+    <!-- Sezione che identifica la riga per le colonne COME NOLEGGIARE, CHI SIAMO e FAQ -->
     <div class="riga">
 
         <a href="">
