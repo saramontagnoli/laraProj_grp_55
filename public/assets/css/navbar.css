@@ -16,6 +16,7 @@
     -webkit-text-size-adjust:100%; /* specifica come il browser webkit dovrebbe gestire il ridimensionamento del testo nella pagina web (Chrome e Safari) */
     box-sizing:border-box; /* indica che il box-model dell'elemento è calcolato includendo padding bordo all'interno delle dimensioni */
     overflow-x:hidden; /* indica che il contenuto che supera la larghezza dell'elemento sarà nascosto e non visibile */
+    border-bottom: 1px outset;
 }
 
 /*
