@@ -302,6 +302,7 @@ footer{
     transition: 0.4s; /* durata di transizione per gli effetti di transizione tra le proprietà CSS (durata = 0.4 secondi) */
 }
 
+
 /*
     Classe di formattazione quando si passa con il cursore sopra alla domanda
     Impostazione di cambio colore di sfondo
@@ -309,6 +310,7 @@ footer{
 .domanda:hover {
     background-color: #ccc; /* colore di sfondo di un grigio più scuro */
 }
+
 
 /*
     Classe di formattazione per la domanda
@@ -323,6 +325,7 @@ footer{
     margin-left: 5px; /* inserimento di un margine sinistro di 5 pixel */
 }
 
+
 /*
     Classe di formattazione per la domanda una volta aperta
     After è un selettore utilizzato per selezionare e modificare l'elemento inserito dopo il contenuto dell'elemento selezionato
@@ -332,22 +335,24 @@ footer{
     content: "\2212"; /* inserimento del simbolo - */
 }
 
+
 /*
-    Classe di formattazione per la risposta
+    Classe di formattazione per la risposta nella pagina dedlle F.A.Q.
+    Si definiscono colori, transition e posizionamento
 */
 .risposta {
-    padding: 0 18px;
-    background-color: white;
-    text-align: center;
-    max-height: 0;
-    overflow: hidden;
-    transition: max-height 0.2s ease-out;
+    padding: 0 18px; /* inserimento padding 0 pixel sopra e sotto, 10 pixel a destra e sinistra */
+    background-color: white; /* colore di sfondo bianco */
+    text-align: center; /* testo allineato al centro */
+    max-height: 0; /* imposta l'altezza dell'elemento a 0, ovvero l'elemento è nascosto */
+    overflow: hidden; /* l'overflow viene nascosto se presente */
+    transition: max-height 0.2s ease-out; /* imposta una transizione fluida con uscita graduale durata 0.2 secondi sull'altezza massima */
 }
 
 
 /*
     Classe per allineare un elemento al centro della pagina
- */
+*/
 .posizione_cx
 {
     text-align: center!important; /* posiziona elemento a cx */
@@ -359,6 +364,6 @@ footer{
 */
 .margini_testo
 {
-    padding-left: 100px;
-    padding-right: 100px;
+    padding-left: 100px; /* inserimento di un padding a sinistra di 100 pixel */
+    padding-right: 100px; /* inserimento di un padding a destra di 100 pixel */
 }
