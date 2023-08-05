@@ -1,20 +1,30 @@
 /*
     CLASSI GENERICHE
 */
+
+/*
+    Classe di formattazione per il tag <html>
+    Definisce il font da utilizzare per tutte le pagine e la grandezza del font
+*/
 html
 {
     font-family: Verdana, sans-serif; /* specifica il tipo di carattere ad usare, se non trova il primo utilizza il secondo specificato*/
     font-size: 15px; /* grandezza del font della pagina */
 }
 
+
+/*
+    Classe di formattazione per il tag <p>
+    Evita che il testo esca dal contenitore definito
+*/
 p {
     word-wrap: break-word; /* Per evitare che il testo esca dal contenitore */
 }
 
-main {
-    margin-bottom: 60px; /* Altezza del footer */
-}
 
+/*
+
+*/
 .colonna
 {
     float: left; /* posiziona a sinistra l'elemento rispetto al suo contenitore */
