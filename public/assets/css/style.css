@@ -13,9 +13,15 @@ body {font-family: Verdana, sans-serif;}
 
 /* Slideshow container */
 .slideshow-container {
-    max-width: 1000px; /* Limita la larghezza massima a 1000px. */
     position: relative; /* Posiziona il contenitore in modo relativo rispetto al suo contesto. */
-    margin: auto; /* Centra il contenitore orizzontamente utilizzando i margini automatici. */
+    align-content: center!important;
+}
+
+.immaginecarosello
+{
+    width: 100%;
+    height: 800px;
+    box-shadow: 10px 10px 5px #dedede;
 }
 
 

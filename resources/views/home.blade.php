@@ -8,20 +8,25 @@
         <!-- Sezione della prima immagine dello slideshow -->
         <div class="mySlides fade">
             <!-- Prima immagine slideshow -->
-            <img src="{{ asset('assets/img/audi_r8.jpg') }}" alt="immagine prima auto" style="width:100%; height: 600px">
+            <img src="{{ asset('assets/img/ferrari_portofino.webp') }}" alt="immagine prima auto" class="immaginecarosello">
         </div>
 
         <!-- Sezione della seconda immagine dello slideshow -->
         <div class="mySlides fade">
             <!-- Seconda immagine slideshow -->
-            <img src="{{ asset('assets/img/lancia_ypsilon.png') }}" alt="immagine seconda auto" style="width:100%; height: 600px">
+            <img src="{{ asset('assets/img/lancia_ypsilon.png') }}" alt="immagine seconda auto" class="immaginecarosello">
         </div>
 
         <!-- Sezione della terza immagine dello slideshow -->
         <div class="mySlides fade">
             <!-- Terza immagine slideshow -->
-            <img src="{{ asset('assets/img/bmw_m4.jpg') }}" alt="immagine terza auto" style="width:100%; height: 600px">
+            <img src="{{ asset('assets/img/bmw_m4.jpg') }}" alt="immagine terza auto" class="immaginecarosello">
         </div>
+
+        <div class="w3-display-middle w3-margin-top w3-center">
+            <h1 class="w3-xxlarge"><span class="w3-padding w3-black w3-opacity-min"><b>FR</b></span> <span class="w3-padding w3-black w3-opacity-min">Formula Rent</span></h1>
+        </div>
+
     </div>
     <br>
 
