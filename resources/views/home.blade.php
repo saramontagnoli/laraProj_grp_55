@@ -38,7 +38,6 @@
 
     <!-- Sezione che identifica la riga per le colonne COME NOLEGGIARE, CHI SIAMO e FAQ -->
     <div class="riga">
-
         <!-- Prima sezione cliccabile contenente immagine e titolo della colonna -->
         <a href="">
             <div class="colonna_click separatore">
@@ -49,7 +48,7 @@
         </a>
 
         <!-- Seconda sezione cliccabile contenente immagine e titolo della colonna -->
-        <a href="">
+        <a href="{{ url('/chisiamo') }}">
             <div class="colonna_click separatore">
                 <!-- Immagine e titolo di CHI SIAMO -->
                 <img src="{{asset('assets/img/icona_chisiamo.png')}}" alt="informazioni sull'azienda" class="imm">

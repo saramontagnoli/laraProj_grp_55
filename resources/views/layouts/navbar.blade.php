@@ -10,7 +10,7 @@
     <div class="posizione_dx">
         <a href="" class="element_navbar ">Auto</a>
         <a href="" class="element_navbar ">Come noleggiare</a>
-        <a href="" class="element_navbar ">Chi siamo</a>
+        <a href="{{ url('/chisiamo') }}" class="element_navbar ">Chi siamo</a>
         <a href="{{ url('/faq') }}" class="element_navbar ">F.A.Q.</a>
         <a href="" class="element_navbar ">Registrazione</a>
         <a href="" class="element_navbar ">Login</a>
