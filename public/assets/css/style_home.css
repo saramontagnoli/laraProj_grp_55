@@ -367,7 +367,7 @@ footer{
 /*
     Classe di formattazione per il titolo della pagina delle F.A.Q.
 */
-.titolo_faq
+.titolo_info
 {
     background-color: #f1f1f1; /* colore di sfondo */
     padding: 30px; /* aggiunta di un padding di 30 pixel */
@@ -392,15 +392,26 @@ footer{
 */
 
 /*
-
+    Classe di formattazione per le colonne della pagina CHI SIAMO
 */
-.colonna_chisiamo
+.colonna1_chisiamo
 {
     float: left; /* posiziona a sinistra l'elemento rispetto al suo contenitore */
-    width: 50%; /* larghezza che la colonna deve occupare */
+    width: 60%; /* larghezza che la colonna deve occupare */
     height: 300px; /* altezza della colonna definita */
     text-align: center!important; /* allineamento del contenuto della colonna al centro del contenitore */
     vertical-align: center!important; /* allineamento verticale del contenuto al centro */
     box-sizing: border-box; /* box di un elemento comprende contenuto stesso, padding e bordo */
-    background-color: transparent;
+    background-color: transparent; /* colore di sfondo trasparente */
+}
+
+.colonna2_chisiamo
+{
+    float: left; /* posiziona a sinistra l'elemento rispetto al suo contenitore */
+    width: 40%; /* larghezza che la colonna deve occupare */
+    height: 300px; /* altezza della colonna definita */
+    text-align: center!important; /* allineamento del contenuto della colonna al centro del contenitore */
+    vertical-align: center!important; /* allineamento verticale del contenuto al centro */
+    box-sizing: border-box; /* box di un elemento comprende contenuto stesso, padding e bordo */
+    background-color: transparent; /* colore di sfondo trasparente */
 }

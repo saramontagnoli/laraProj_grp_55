@@ -3,7 +3,7 @@
 @section('content')
 
     <!-- Titolo pagina F.A.Q. -->
-    <h2 class="posizione_cx titolo_faq"><i class="fa fa-question-circle"></i>&nbsp; PAGINA F.A.Q. &nbsp;<i class="fa fa-question-circle"></i></h2>
+    <h2 class="posizione_cx titolo_info"><i class="fa fa-question-circle"></i>&nbsp; PAGINA F.A.Q. &nbsp;<i class="fa fa-question-circle"></i></h2>
 
     <!-- Sezione della pagina della F.A.Q. destinata alla spiegazione di cosa sono le F.A.Q. e quali argomenti riguardano -->
     <div class="posizione_cx margini_testo">
