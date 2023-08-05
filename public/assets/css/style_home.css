@@ -1,3 +1,10 @@
+html
+{
+    font-family: Verdana, sans-serif; /* specifica il tipo di carattere ad usare, se non trova il primo utilizza il secondo specificato*/
+    font-size: 15px; /* grandezza del font della pagina */
+}
+
+
 /*
     CSS NAVBAR
 */
@@ -8,8 +15,6 @@
 */
 .navbar
 {
-    font-family: Verdana, sans-serif; /* specifica il tipo di carattere ad usare, se non trova il primo utilizza il secondo specificato*/
-    font-size: 15px; /* grandezza del font della pagina */
     line-height: 1.5; /* altezza di una riga all'interno di un elemento, detetrmina lo spazio verticale tra le linee di testo */
     /*margin: 0;*/ /* imposta il margine degli elementi a 0, ovvero lo spazio tra l'elemento stesso e gli altri elementi circostanti*/
     -ms-text-size-adjust:100%; /* adattamento di dimensione del testo nei browser internet explorer */
@@ -360,10 +365,42 @@ footer{
 
 
 /*
+    Classe di formattazione per il titolo della pagina delle F.A.Q.
+*/
+.titolo_faq
+{
+    background-color: #f1f1f1; /* colore di sfondo */
+    padding: 30px; /* aggiunta di un padding di 30 pixel */
+    text-align: center; /* testo allineato al centro */
+    font-size: 35px; /* grandezza del font 35 pixel */
+    letter-spacing:4px; /* spazizatura di 4 pixel tra le varie lettere */
+}
+
+
+/*
     Classe di formattazione per aggiungere margini sinistro e destro al paragrafo
 */
 .margini_testo
 {
     padding-left: 100px; /* inserimento di un padding a sinistra di 100 pixel */
     padding-right: 100px; /* inserimento di un padding a destra di 100 pixel */
+}
+
+
+/*
+    CSS pagina CHI SIAMO
+*/
+
+/*
+
+*/
+.colonna_chisiamo
+{
+    float: left; /* posiziona a sinistra l'elemento rispetto al suo contenitore */
+    width: 50%; /* larghezza che la colonna deve occupare */
+    height: 300px; /* altezza della colonna definita */
+    text-align: center!important; /* allineamento del contenuto della colonna al centro del contenitore */
+    vertical-align: center!important; /* allineamento verticale del contenuto al centro */
+    box-sizing: border-box; /* box di un elemento comprende contenuto stesso, padding e bordo */
+    background-color: transparent;
 }
