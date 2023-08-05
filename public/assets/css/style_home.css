@@ -60,7 +60,7 @@ html
 
     .navbar .element_navbar {
         display:block;
-        margin:10px 0px;
+        margin:10px 0;
         text-align:left;
         width: 100%;
     }
@@ -175,7 +175,7 @@ html
 
     .colonna_click {
         display:block;
-        margin:10px 0px;
+        margin:10px 0;
         text-align:left;
         width: 100%;
     }
@@ -197,7 +197,7 @@ html
 */
 footer{
     background:#000; /* colore di sfondo nero */
-    padding:30px 0px; /* spazio di riempimento di 30 pixel parte superiore e inferiore, 0 pixel destra e sinistra */
+    padding:30px 0; /* spazio di riempimento di 30 pixel parte superiore e inferiore, 0 pixel destra e sinistra */
     font-family: 'Play', sans-serif; /* specifica i font da utilizzare */
     text-align:center; /* allineamento del testo al centro */
     width:100%; /* l'elemento occupa il 100% dello spazio del suo contenitore */
@@ -214,7 +214,7 @@ footer{
 */
 .rigafooter{
     width:100%; /* l'elemento occupa il 100% dello spazio del suo contenitore */
-    padding:15px 0px; /* spazio di riempimento di 30 pixel parte superiore e inferiore, 0 pixel destra e sinistra */
+    padding:15px 0; /* spazio di riempimento di 30 pixel parte superiore e inferiore, 0 pixel destra e sinistra */
     color:gray; /* colore font grigio */
     text-decoration:none; /* nessuna decorazione per il testo all'interno dell'elemento */
     transition:0.5s; /* durata di transizione per gli effetti di transizione tra le proprietà CSS (durata = 0.5 secondi) */
@@ -255,7 +255,7 @@ footer{
 */
 .listafooter li{
     display:inline-block; /* possono essere posizionati elementi di fianco, senza andare a riga nuova, comportamento di un elemento inline */
-    margin:0px 30px; /* definizione margine 0 pixel superiore e inferiore, 30 pixel destro e sinistro. */
+    margin:0 30px; /* definizione margine 0 pixel superiore e inferiore, 30 pixel destro e sinistro. */
 }
 
 
@@ -264,7 +264,7 @@ footer{
 */
 .link_footer i{
     font-size:2em; /* definizione della grnadezza del font */
-    margin:0% 1%; /* definizione dei margini */
+    margin:0 1%; /* definizione dei margini */
 }
 
 
@@ -277,12 +277,12 @@ footer{
 
     .listafooter li{
         display:block;
-        margin:10px 0px;
+        margin:10px 0;
         text-align:left;
     }
 
     .link_footer li{
-        margin:0% 3%;
+        margin:0 3%;
     }
 }
 
