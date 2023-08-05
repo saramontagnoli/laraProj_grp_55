@@ -32,8 +32,9 @@ p {
     text-align: center!important; /* allineamento del contenuto della colonna al centro del contenitore */
     vertical-align: center!important; /* allineamento verticale del contenuto al centro */
     box-sizing: border-box; /* box di un elemento comprende contenuto stesso, padding e bordo */
-    background-color: transparent;
+    background-color: transparent; /* colore di sfondo trasparente */
 }
+
 
 /*
     CSS NAVBAR
@@ -147,7 +148,7 @@ p {
 {
     width: 50%; /* indica che la larghezza dell'immagine è il 50% del suo contenitore */
     height: 200px; /* indica che l'altezza dell'immagine è 200 pixel */
-    box-shadow: 10px 10px 5px #dedede;
+    box-shadow: 10px 10px 5px #dedede; /* aggiunta di ombreggiatura all'immagine */
 }
 
 
@@ -187,7 +188,7 @@ p {
     content: ""; /* aggiunge un contenuto vuoto all'elemento */
     display: table; /* imposta il tipo di visualizzazione su tabella */
     clear: both; /* cancella entrambi i lati dell'elemento per evitare che vengano affiancati altri elementi */
-    box-sizing: border-box;
+    box-sizing: border-box; /* box di un elemento comprende contenuto stesso, padding e bordo */
 }
 
 
@@ -437,14 +438,21 @@ footer{
     height: fit-content;/* altezza della colonna definita */
 }
 
+
+/*
+    Classe di formattazione per l'immagine contenuta nella pagina CHI SIAMO
+*/
 .immagine_chisiamo
 {
-    width: 100%; /* indica che la larghezza dell'immagine è il 50% del suo contenitore */
-    height: fit-content; /* indica che l'altezza dell'immagine è 200 pixel */
+    width: 100%; /* indica che la larghezza dell'immagine è il 100% del suo contenitore */
+    height: fit-content; /* indica che l'altezza dipende dal contenuto posto dentro l'elemento */
     opacity: 0.8; /* set dell'opacità dell'immagine */
 }
 
-
+/*
+    Quando lo schermo diventa più piccolo di 800 pixel allora le colonne finiscono una sotto l'altra
+    L'immagine rimane sopra e la descrizione finisce sotto
+*/
 @media (max-width:800px){
 
     .colonna1_chisiamo
@@ -465,15 +473,9 @@ footer{
 }
 
 
+/*
 
-
-
-
-
-
-
-
-
+*/
 
 .w3-display-middle{position:absolute;top:50%;left:50%;transform:translate(-50%,-50%);-ms-transform:translate(-50%,-50%)}
 
