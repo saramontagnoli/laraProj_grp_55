@@ -7,14 +7,14 @@
     <div class="riga">
         <div class="colonna1_chisiamo">
             <!-- Immagine e titolo di COME NOLEGGIARE -->
-            <img src="assets/img/ferrari_portofino.jpg" alt="come noleggiare un'auto" class="imm">
-            <h3 class="titolo">COME NOLEGGIARE</h3>
+            <img src="{{asset("assets/img/ferrari_portofino.webp")}}" alt="come noleggiare un'auto" class="immagine_chisiamo">
         </div>
 
         <div class="colonna2_chisiamo">
             <!-- Immagine e titolo di CHI SIAMO -->
-            <img src="assets/img/ferrari_purosangue.jpg" alt="informazioni sull'azienda" class="imm">
-            <h3 class="titolo">CHI SIAMO</h3>
+            <p>Formula Rent s.p.a. nasce nel 1995 per offrire ai clienti il servizio migliore di noleggio auto.</p>
+            <p>L'azienda offre tutti i range di prezzo e di auto presenti sul mercato.</p>
+            <p>Le proposte spaziano dalle comuni auto fino alle auto sportive.</p>
         </div>
     </div>
 

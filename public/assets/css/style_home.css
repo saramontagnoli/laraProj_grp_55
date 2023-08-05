@@ -161,6 +161,7 @@ html
     content: ""; /* aggiunge un contenuto vuoto all'elemento */
     display: table; /* imposta il tipo di visualizzazione su tabella */
     clear: both; /* cancella entrambi i lati dell'elemento per evitare che vengano affiancati altri elementi */
+    box-sizing: border-box;
 }
 
 
@@ -398,20 +399,56 @@ footer{
 {
     float: left; /* posiziona a sinistra l'elemento rispetto al suo contenitore */
     width: 60%; /* larghezza che la colonna deve occupare */
-    height: 300px; /* altezza della colonna definita */
+    height: fit-content;/* altezza della colonna definita */
     text-align: center!important; /* allineamento del contenuto della colonna al centro del contenitore */
     vertical-align: center!important; /* allineamento verticale del contenuto al centro */
     box-sizing: border-box; /* box di un elemento comprende contenuto stesso, padding e bordo */
     background-color: transparent; /* colore di sfondo trasparente */
 }
 
+
 .colonna2_chisiamo
 {
     float: left; /* posiziona a sinistra l'elemento rispetto al suo contenitore */
     width: 40%; /* larghezza che la colonna deve occupare */
-    height: 300px; /* altezza della colonna definita */
+    height: fit-content;/* altezza della colonna definita */
     text-align: center!important; /* allineamento del contenuto della colonna al centro del contenitore */
     vertical-align: center!important; /* allineamento verticale del contenuto al centro */
     box-sizing: border-box; /* box di un elemento comprende contenuto stesso, padding e bordo */
     background-color: transparent; /* colore di sfondo trasparente */
+}
+
+
+.immagine_chisiamo
+{
+    width: 100%; /* indica che la larghezza dell'immagine è il 50% del suo contenitore */
+    height: 80%; /* indica che l'altezza dell'immagine è 200 pixel */
+}
+
+
+@media (max-width:800px){
+
+    .colonna1_chisiamo
+    {
+        display:block;
+        margin:10px 0px;
+        text-align:left;
+        width: 100%;
+    }
+
+    .colonna2_chisiamo
+    {
+        display:block;
+        margin:10px 0px;
+        text-align:center;
+        width: 100%;
+    }
+}
+
+p {
+    word-wrap: break-word; /* Per evitare che il testo esca dal contenitore */
+}
+
+main {
+    margin-bottom: 60px; /* Altezza del footer */
 }
