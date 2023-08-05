@@ -15,13 +15,13 @@ body {font-family: Verdana, sans-serif;}
 .slideshow-container {
     position: relative; /* Posiziona il contenitore in modo relativo rispetto al suo contesto. */
     align-content: center!important;
+    box-shadow: 10px 10px 5px #dedede;
 }
 
 .immaginecarosello
 {
     width: 100%;
     height: 800px;
-    box-shadow: 10px 10px 5px #dedede;
 }
 
 

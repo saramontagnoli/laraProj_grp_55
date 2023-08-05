@@ -146,6 +146,7 @@ p {
 {
     width: 50%; /* indica che la larghezza dell'immagine è il 50% del suo contenitore */
     height: 200px; /* indica che l'altezza dell'immagine è 200 pixel */
+    box-shadow: 10px 10px 5px #dedede;
 }
 
 
