@@ -116,7 +116,7 @@ class DatabaseSeeder extends Seeder
 
         DB::table('auto')->insert([
             ['codice_auto' => 1, 'targa' => 'GF856ZN', 'foto_auto' => '/assets/img/fiat_punto.jpeg', 'allestimento' => 'Optional: aria condizionata, radio', 'costo_giorno' => 50.00, 'num_posti' => 5, 'modello_ref' => 6],
-            ['codice_auto' => 2, 'targa' => 'GT422GT', 'foto_auto' => '/assets/img/ferrari_portofino.jpg', 'allestimento' => 'Optional: aria condizionata, radio, turbo', 'costo_giorno' => 500.00, 'num_posti' => 4, 'modello_ref' => 1],
+            ['codice_auto' => 2, 'targa' => 'GT422GT', 'foto_auto' => '/assets/img/ferrari_portofino.webp', 'allestimento' => 'Optional: aria condizionata, radio, turbo', 'costo_giorno' => 500.00, 'num_posti' => 4, 'modello_ref' => 1],
             ['codice_auto' => 3, 'targa' => 'DE235DE', 'foto_auto' => '/assets/img/fiat_punto2.jpg', 'allestimento' => 'Optional: base', 'costo_giorno' => 45.00, 'num_posti' => 5, 'modello_ref' => 6],
             ['codice_auto' => 4, 'targa' => 'EF578FH', 'foto_auto' => '/assets/img/lancia_ypsilon.png', 'allestimento' => 'Optional: aria condizionata, radio', 'costo_giorno' => 50.00, 'num_posti' => 5, 'modello_ref' => 5],
             ['codice_auto' => 5, 'targa' => 'FH255EB', 'foto_auto' => '/assets/img/audi_r8.jpg', 'allestimento' => 'Optional: aria condizionata, radio', 'costo_giorno' => 65.00, 'num_posti' => 2, 'modello_ref' => 10],
