@@ -13,9 +13,11 @@
             <!-- Immagine di CHI SIAMO -->
             <img src="{{asset("assets/img/ferrari_portofino.webp")}}" alt="come noleggiare un'auto" class="immagine_chisiamo">
         </div>
-
         <!-- Sezione definita per la colonna di destra contenente la descrizione di CHI SIAMO -->
         <div class="colonna colonna2_chisiamo">
+
+            <!-- A capo di spaziatura per l'allineamento del testo -->
+            <br><br>
             <!-- Paragrafi descrittivi di CHI SIAMO -->
             <p>Formula Rent s.p.a. nasce nel 1995 per offrire ai clienti il servizio migliore di noleggio auto.</p>
             <p>L'azienda offre tutti i range di prezzo e di auto presenti sul mercato.</p>
@@ -26,4 +28,6 @@
         </div>
     </div>
 
+    <!-- A capo per spaziature e formato della pagina -->
+    <br>
 @endsection

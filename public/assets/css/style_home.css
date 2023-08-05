@@ -439,6 +439,7 @@ footer{
 {
     width: 100%; /* indica che la larghezza dell'immagine è il 50% del suo contenitore */
     height: fit-content; /* indica che l'altezza dell'immagine è 200 pixel */
+    opacity: 0.8; /* set dell'opacità dell'immagine */
 }
 
 
