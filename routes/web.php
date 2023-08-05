@@ -13,14 +13,17 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
+//Rotta di definizione della home
 Route::get('/', function () {
     return view('home');
 });
 
+//Rotta di definizione delle faq
 Route::get('/faq', function () {
     return view('faq');
 });
 
+//Rotta di definizione della pagina chi siamo
 Route::get('/chisiamo', function () {
     return view('chisiamo');
 });
