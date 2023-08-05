@@ -1,9 +1,28 @@
+/*
+    CLASSI GENERICHE
+*/
 html
 {
     font-family: Verdana, sans-serif; /* specifica il tipo di carattere ad usare, se non trova il primo utilizza il secondo specificato*/
     font-size: 15px; /* grandezza del font della pagina */
 }
 
+p {
+    word-wrap: break-word; /* Per evitare che il testo esca dal contenitore */
+}
+
+main {
+    margin-bottom: 60px; /* Altezza del footer */
+}
+
+.colonna
+{
+    float: left; /* posiziona a sinistra l'elemento rispetto al suo contenitore */
+    text-align: center!important; /* allineamento del contenuto della colonna al centro del contenitore */
+    vertical-align: center!important; /* allineamento verticale del contenuto al centro */
+    box-sizing: border-box; /* box di un elemento comprende contenuto stesso, padding e bordo */
+    background-color: transparent;
+}
 
 /*
     CSS NAVBAR
@@ -134,13 +153,8 @@ html
     Classe di formattazione per la grandezza e stile delle colonne definite per il corpo della home
 */
 .colonna_click {
-    float: left; /* posiziona a sinistra l'elemento rispetto al suo contenitore */
     width: 33.33%; /* larghezza che la colonna deve occupare */
     height: 300px; /* altezza della colonna definita */
-    text-align: center!important; /* allineamento del contenuto della colonna al centro del contenitore */
-    vertical-align: center!important; /* allineamento verticale del contenuto al centro */
-    box-sizing: border-box; /* box di un elemento comprende contenuto stesso, padding e bordo */
-    background-color: transparent;
 }
 
 
@@ -393,36 +407,28 @@ footer{
 */
 
 /*
-    Classe di formattazione per le colonne della pagina CHI SIAMO
+    Classe di formattazione per la colonna a sinistra della pagina CHI SIAMO
 */
 .colonna1_chisiamo
 {
-    float: left; /* posiziona a sinistra l'elemento rispetto al suo contenitore */
     width: 60%; /* larghezza che la colonna deve occupare */
     height: fit-content;/* altezza della colonna definita */
-    text-align: center!important; /* allineamento del contenuto della colonna al centro del contenitore */
-    vertical-align: center!important; /* allineamento verticale del contenuto al centro */
-    box-sizing: border-box; /* box di un elemento comprende contenuto stesso, padding e bordo */
-    background-color: transparent; /* colore di sfondo trasparente */
 }
 
 
+/*
+    Classe di formattazione per la colonna a destra della pagina CHI SIAMO
+*/
 .colonna2_chisiamo
 {
-    float: left; /* posiziona a sinistra l'elemento rispetto al suo contenitore */
     width: 40%; /* larghezza che la colonna deve occupare */
     height: fit-content;/* altezza della colonna definita */
-    text-align: center!important; /* allineamento del contenuto della colonna al centro del contenitore */
-    vertical-align: center!important; /* allineamento verticale del contenuto al centro */
-    box-sizing: border-box; /* box di un elemento comprende contenuto stesso, padding e bordo */
-    background-color: transparent; /* colore di sfondo trasparente */
 }
-
 
 .immagine_chisiamo
 {
     width: 100%; /* indica che la larghezza dell'immagine è il 50% del suo contenitore */
-    height: 80%; /* indica che l'altezza dell'immagine è 200 pixel */
+    height: fit-content; /* indica che l'altezza dell'immagine è 200 pixel */
 }
 
 
@@ -443,12 +449,4 @@ footer{
         text-align:center;
         width: 100%;
     }
-}
-
-p {
-    word-wrap: break-word; /* Per evitare che il testo esca dal contenitore */
-}
-
-main {
-    margin-bottom: 60px; /* Altezza del footer */
 }
