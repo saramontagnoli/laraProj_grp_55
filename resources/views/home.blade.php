@@ -1,5 +1,4 @@
 @extends('layouts.struttura')
-
 @section('content')
 
     <!-- Slideshow automatico di immagini ogni 4 secondi -->
@@ -45,10 +44,10 @@
     <!-- Sezione che identifica la riga per le colonne COME NOLEGGIARE, CHI SIAMO e FAQ -->
     <div class="riga">
         <!-- Prima sezione cliccabile contenente immagine e titolo della colonna -->
-        <a href="">
+        <a href="{{ url('/comenoleggiare') }}">
             <div class="colonna colonna_click separatore">
                 <!-- Immagine e titolo di COME NOLEGGIARE -->
-                <img src="{{asset('assets/img/icona_contatti.jpeg')}}" alt="come noleggiare un'auto" class="imm">
+                <img src="{{asset('assets/img/icona_noleggio.png')}}" alt="come noleggiare un'auto" class="imm">
                 <h3 class="titolo">COME NOLEGGIARE</h3>
             </div>
         </a>

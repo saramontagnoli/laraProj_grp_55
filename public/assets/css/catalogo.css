@@ -8,11 +8,10 @@
 */
 .imgauto_catalogo{
     border-radius: 10px 10px 0 0; /* imposta un ragggio di curvatura di 10 pixel negli angoli superiori */
-    height: 250px; /* definizione dell'altezza delle immagini */
+    height: 85%; /* definizione dell'altezza delle immagini */
     width: 100%; /* definizione della larghezza delle immagini rispetto al contenitore */
     display: flex; /* l'elemento è flessibile, permette di allineare gli elementi figli in modo flessibile  */
 }
-
 
 /*
     Classe di formattazione per la card auto contenuta nel catalogo
@@ -21,6 +20,7 @@
 .cardauto{
     box-shadow:0 4px 10px 0 rgba(0,0,0,0.2),0 4px 20px 0 rgba(0,0,0,0.19); /* imposta posizione, grandezza e colore delle ombre */
     border-radius: 10px 10px 10px 10px; /* imposta un raggio di curvatura di 10 pixel in tutti gli angoli della card  */
+    height: 250px;
 }
 
 
@@ -30,7 +30,7 @@
 */
 .colonnacatalogo {
     float: left; /* imposta l'elemento per fluttuare a sinistra rispetto al contenitore */
-    width: 500px; /* definizione della larghezza della colonna */
+    width: 33.3%; /* definizione della larghezza della colonna */
     color: black; /* definizione del colore del font */
     padding: 15px; /* aggiunta di un padding di 15 pixel */
 }
@@ -55,4 +55,26 @@
     text-align: center; /* allineamento testuale al centro */
     margin: 3%; /* definizione di un margine al 3% */
 }
+
+.contenitore-offerte-filtri{
+    display: grid;
+    grid-template-columns: 2fr 8fr; /* Tre colonne con larghezza uguale */
+    gap: 0px; /* Spazio tra le colonne */
+    border-radius: 25px;
+    border: 2px solid #73AD21;
+    padding: 5px 50px 5px 50px;
+    width: auto;
+    height: auto;
+    .colonna:nth-child(1) {
+        background-color: #cbd5e0;
+    }
+
+}
+.contenitore-filtri{
+    border-right: #1a202c;
+}
+.contenitore-offerte{
+    width: 100%;
+}
+
 

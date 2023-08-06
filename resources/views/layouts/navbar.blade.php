@@ -8,8 +8,8 @@
 
     <!-- Opzioni di navigazione del sito sempre disponibili nella barra di navigazione in alto -->
     <div class="posizione_dx">
-        <a href="" class="element_navbar ">Auto</a>
-        <a href="" class="element_navbar ">Come noleggiare</a>
+        <a href="{{ url('/catalogoauto') }}" class="element_navbar ">Auto</a>
+        <a href="{{ url('/comenoleggiare') }}" class="element_navbar ">Come noleggiare</a>
         <a href="{{ url('/chisiamo') }}" class="element_navbar ">Chi siamo</a>
         <a href="{{ url('/faq') }}" class="element_navbar ">F.A.Q.</a>
         <a href="" class="element_navbar ">Registrazione</a>

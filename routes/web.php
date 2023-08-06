@@ -1,7 +1,6 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
-
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -29,6 +28,11 @@ Route::get('/chisiamo', function () {
 });
 
 //Rotta di definizione della pagina catalogoauto
-Route::get('/catalogo', function () {
+Route::get('/catalogoauto', function () {
     return view('catalogoauto');
+});
+
+//Rotta di definizione della pagina comenoleggiare
+Route::get('/comenoleggiare', function () {
+    return view('comenoleggiare');
 });
