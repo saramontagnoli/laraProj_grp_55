@@ -63,9 +63,44 @@ body {font-family: Verdana, sans-serif;}
     to {opacity: 1}
 }
 
-/* On smaller screens, decrease text size */
 /* quando la larghezza dello schermo è massimo 300px:
     riduci la dimensione del carattere a 11px per migliorare la leggibilità su schermi stretti. */
 @media only screen and (max-width: 300px) {
     .text {font-size: 11px}
+}
+
+
+/*
+    Centra il nome dell'azienda sopra al carosello
+    Definisce solo la posizione
+*/
+.titolo_centrato
+{
+    position:absolute; /* definisce la posizione dell'elemento come assoluta */
+    top:50%; /* utilizzato per l'allineamento centrale */
+    left:50%; /* utilizzato per l'allineamento centrale */
+    transform:translate(-50%,-50%); /* utilizzato per l'allineamento centrale */
+    -ms-transform:translate(-50%,-50%); /* utilizzato per supportare internet explorer */
+    text-align:center!important; /* testo centrato al centro */
+}
+
+
+/*
+    Definisce la grandezza del nome dell'azienda posto al centro del carosello
+*/
+.nomeazienda
+{
+    font-size:36px!important; /* definisce la grandezza della scritta a 36 pixel */
+}
+
+
+/*
+    Definisce lo stile del nome dell'azienda posto al centro del carosello
+*/
+.formato_azienda
+{
+    padding:8px 16px!important; /* definisce un padding di 8 pixel per sopra e sotto, di 16 pixel per destra e sinistra */
+    color:#fff!important; /* definisce il colore bianco come colore del font */
+    background-color:#000!important; /* definisce il colore di sfondo nero */
+    opacity:0.75; /* applica un'opacità al 70% */
 }

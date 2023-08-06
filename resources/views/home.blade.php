@@ -23,8 +23,9 @@
             <img src="{{ asset('assets/img/bmw_m4.jpg') }}" alt="immagine terza auto" class="immaginecarosello">
         </div>
 
+        <!-- Titolo centrato nel carosello con sfondo scuro opaco -->
         <div class="titolo_centrato">
-            <h1 class="logoazienda"><span class="formato_azienda"><b>FR</b></span> <span class="formato_azienda">Formula Rent</span></h1>
+            <h1 class="nomeazienda"><span class="formato_azienda"><b>FR</b></span> <span class="formato_azienda">Formula Rent</span></h1>
         </div>
 
     </div>

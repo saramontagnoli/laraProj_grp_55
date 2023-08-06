@@ -449,6 +449,7 @@ footer{
     opacity: 0.8; /* set dell'opacità dell'immagine */
 }
 
+
 /*
     Quando lo schermo diventa più piccolo di 800 pixel allora le colonne finiscono una sotto l'altra
     L'immagine rimane sopra e la descrizione finisce sotto
@@ -471,38 +472,3 @@ footer{
         width: 100%;
     }
 }
-
-
-/*
-
-*/
-
-.titolo_centrato
-{
-    position:absolute;
-    top:50%;
-    left:50%;
-    transform:translate(-50%,-50%);
-    -ms-transform:translate(-50%,-50%);
-    text-align:center!important;
-}
-
-.logoazienda
-{
-    font-size:36px!important
-}
-
-.formato_azienda
-{
-    padding:8px 16px!important;
-    color:#fff!important;
-    background-color:#000!important;
-    opacity:0.75;
-}
-
-
-
-
-
-
-
