@@ -29,20 +29,30 @@
     Si definiscono posizione, colori, padding
 */
 .colonnacatalogo {
-    float: left;
-    width: 500px;
-    color: black;
-    padding: 15px;
-}
-.rigacatalogo {
-    margin-bottom:50px;
-    flex-wrap: wrap;
-    display: flex;
-    justify-content: center;
+    float: left; /* imposta l'elemento per fluttuare a sinistra rispetto al contenitore */
+    width: 500px; /* definizione della larghezza della colonna */
+    color: black; /* definizione del colore del font */
+    padding: 15px; /* aggiunta di un padding di 15 pixel */
 }
 
+
+/*
+    Classe di formattazione della riga del catalogo
+    Si definiscono margini e visualizzazione
+*/
+.rigacatalogo {
+    margin-bottom:50px; /* imposta un margine inferiore di 50 pixel */
+    flex-wrap: wrap; /* elementi flessibili all'interno di un contenitore vanno a capo quando raggiungono il bordo */
+    display: flex; /* crea container flessibile che organizza gli elementi figli utilizzando un layout flessibile. */
+    justify-content: center; /* giustifica il contenuto testuale al centro */
+}
+
+
+/*
+    Classe di formattazione per il nome dell'auto all'interno della singola card
+*/
 .nomeauto {
-    text-align: center;
-    margin: 3%;
+    text-align: center; /* allineamento testuale al centro */
+    margin: 3%; /* definizione di un margine al 3% */
 }
 
