@@ -27,3 +27,8 @@ Route::get('/faq', function () {
 Route::get('/chisiamo', function () {
     return view('chisiamo');
 });
+
+//Rotta di definizione della pagina catalogoauto
+Route::get('/catalogo', function () {
+    return view('catalogoauto');
+});

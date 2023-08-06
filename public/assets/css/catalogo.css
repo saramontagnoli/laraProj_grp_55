@@ -1,0 +1,42 @@
+
+.container:after,.w3-container:before{
+    content:"";
+    display:table;
+    clear:both
+}
+
+.img-offerte{
+    border-radius: 10px 10px 0px 0px;
+    height: 250px;
+    width: 100%;
+    display: flex;
+}
+
+
+.card3{
+    box-shadow:0 4px 10px 0 rgba(0,0,0,0.2),0 4px 20px 0 rgba(0,0,0,0.19);
+    border-radius: 10px 10px 10px 10px;
+}
+
+.column3 {
+    float: left;
+    width: 500px;
+    color: black;
+    padding: 15px;
+}
+.row3 {
+    margin-bottom:50px;
+    flex-wrap: wrap;
+    display: flex;
+    justify-content: center;
+}
+
+.container3 {
+    text-align: center;
+    margin: 3%;
+}
+
+.titolo2{
+    text-align: center;
+    font-family: Verdana, "Courier New", monospace;
+}
