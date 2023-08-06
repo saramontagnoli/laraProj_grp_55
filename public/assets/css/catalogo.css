@@ -1,16 +1,33 @@
+/*
+    CSS CATALOGO AUTO
+*/
+
+/*
+    Classe di formattazione per le immagini del catalogo auto
+    Definizione dedlle grandezze
+*/
 .imgauto_catalogo{
-    border-radius: 10px 10px 0px 0px;
-    height: 250px;
-    width: 100%;
-    display: flex;
+    border-radius: 10px 10px 0 0; /* imposta un ragggio di curvatura di 10 pixel negli angoli superiori */
+    height: 250px; /* definizione dell'altezza delle immagini */
+    width: 100%; /* definizione della larghezza delle immagini rispetto al contenitore */
+    display: flex; /* l'elemento è flessibile, permette di allineare gli elementi figli in modo flessibile  */
 }
 
 
+/*
+    Classe di formattazione per la card auto contenuta nel catalogo
+    Definizione delle ombre e dei raggi
+*/
 .cardauto{
-    box-shadow:0 4px 10px 0 rgba(0,0,0,0.2),0 4px 20px 0 rgba(0,0,0,0.19);
-    border-radius: 10px 10px 10px 10px;
+    box-shadow:0 4px 10px 0 rgba(0,0,0,0.2),0 4px 20px 0 rgba(0,0,0,0.19); /* imposta posizione, grandezza e colore delle ombre */
+    border-radius: 10px 10px 10px 10px; /* imposta un raggio di curvatura di 10 pixel in tutti gli angoli della card  */
 }
 
+
+/*
+    Classe di formattazione della colonna del catalogo
+    Si definiscono posizione, colori, padding
+*/
 .colonnacatalogo {
     float: left;
     width: 500px;
