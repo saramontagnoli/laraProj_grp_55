@@ -2,7 +2,7 @@
 
 @section('content')
 
-    <!-- offerte -->
+    <!-- Sezione dedicata al catalogo delle auto noleggiabili -->
     <div class="rigacatalogo">
         <div class="colonnacatalogo">
             <a href="" style="text-decoration: none; color:black">
