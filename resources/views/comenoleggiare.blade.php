@@ -1,6 +1,7 @@
 <!-- Si estende la struttura definita per le pagine del sito web -->
 @extends('layouts.struttura')
 
+<!-- Definizione della sezione del contenuto della pagina come noleggiare -->
 @section('content')
 
     <!-- Titolo della pagina COME NOLEGGIARE con icone di profilo -->

@@ -1,6 +1,7 @@
 <!-- Si estende la struttura definita per le pagine del sito web -->
 @extends('layouts.struttura')
 
+<!-- Definizione della sezione del contenuto della pagina del catalogo generale delle auto -->
 @section('content')
 
     <!-- Sezione dedicata al catalogo delle auto noleggiabili -->

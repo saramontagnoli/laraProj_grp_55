@@ -1,6 +1,7 @@
 <!-- Si estende la struttura definita per le pagine del sito web -->
 @extends('layouts.struttura')
 
+<!-- Definizione della sezione del contenuto della pagina della home -->
 @section('content')
 
     <!-- Slideshow automatico di immagini ogni 4 secondi -->

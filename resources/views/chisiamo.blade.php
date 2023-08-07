@@ -1,6 +1,7 @@
 <!-- Si estende la struttura definita per le pagine del sito web -->
 @extends('layouts.struttura')
 
+<!-- Definizione della sezione del contenuto della pagina chi siamo -->
 @section('content')
 
     <!-- Titolo della pagina CHI SIAMO con icone di profilo -->
