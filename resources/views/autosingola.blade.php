@@ -4,7 +4,7 @@
 
     <br>
 
-    <a href="{{url('/catalogoauto')}}" class="previous">&laquo; INDIETRO </a>
+    <a href="{{url('/catalogoauto')}}" class="buttonindietro">&laquo; INDIETRO </a>
 
     @if(count($data) < 1)
         <div>
