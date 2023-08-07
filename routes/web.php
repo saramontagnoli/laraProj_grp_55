@@ -30,7 +30,7 @@ Route::get('/chisiamo', function () {
 //Rotta di definizione della pagina catalogoauto
 Route::get('/catalogoauto', [ControllerCatalogoAuto::class, 'showCatalogoAuto']);
 
-Route::get('/catalogo/{id_offerta}', [ControllerCatalogoAuto::class, 'showCatalogoAutoSpec']);
+Route::get('/catalogoauto/{codice_auto}', [ControllerCatalogoAuto::class, 'showCatalogoAutoSpec']);
 
 //Rotta di definizione della pagina comenoleggiare
 Route::get('/comenoleggiare', function () {

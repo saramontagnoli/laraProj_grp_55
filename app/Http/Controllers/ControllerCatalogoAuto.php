@@ -24,7 +24,7 @@ class ControllerCatalogoAuto extends Controller
     public function showCatalogoAutoSpec($codice_auto)
     {
         $data = $this->_catalogModel->getAutoSpec($codice_auto);
-        return view('catalogoauto', compact('data'));
+        return view('autosingola', compact('data'));
     }
 
 }
