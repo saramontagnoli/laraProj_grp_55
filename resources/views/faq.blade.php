@@ -1,5 +1,7 @@
+<!-- Si estende la struttura definita per le pagine del sito web -->
 @extends('layouts.struttura')
 
+<!-- Definizione della sezione del contenuto della pagina delle F.A.Q. -->
 @section('content')
 
     <!-- Titolo pagina F.A.Q. -->
