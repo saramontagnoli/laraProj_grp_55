@@ -11,7 +11,7 @@ class ControllerCatalogoAuto extends Controller
     protected $_catalogModel;
 
     public function __construct() {
-        $this->_catalogModel = new CatalogoAuto;
+        $this->_catalogModel = new CatalogoAuto();
     }
 
     public function showCatalogoAuto()
