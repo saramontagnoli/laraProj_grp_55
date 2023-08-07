@@ -32,7 +32,6 @@
     <!-- Inclusione dello script JS che permette di cliccare sulla domande e far apparire la risposta -->
     <script src="{{ asset('assets/js/faq.js') }}"></script>
 
-
     <br> <br> <br>
 
 @endsection
