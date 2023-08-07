@@ -6,7 +6,7 @@
     <div class="rigacatalogo">
         @foreach ($data as $auto)
             <div class="colonnacatalogo">
-                <a href="" style="text-decoration: none; color:black">
+                <a href="{{ url('/catalogoauto/'.$auto->codice_auto) }}" style="text-decoration: none; color:black">
                     <div class="cardauto">
                         <img class="imgauto_catalogo" src="{{$auto->foto_auto}}" alt="IMMAGINE NON DISPONIBILE AL MOMENTO">
                         <div class="nomeauto">
