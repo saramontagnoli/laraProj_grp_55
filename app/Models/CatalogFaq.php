@@ -13,6 +13,7 @@ class CatalogFaq {
      * Metodo che permette di restituire tutte le faq contenute all'interno della tabella faq del database
      */
     public function getFaq() {
+        //query di estrazione di tutte le faq
         return faq::all();
     }
 
