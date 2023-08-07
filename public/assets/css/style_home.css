@@ -472,3 +472,8 @@ footer{
         width: 100%;
     }
 }
+
+.separatorepiccolo
+{
+    border-right: 1px solid #9ca3af;
+}

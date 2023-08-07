@@ -23,7 +23,7 @@
             <div class="riga">
 
                 <!-- Definizione della colonna a sinistra -->
-                <div class="colonna colonna1">
+                <div class="colonna colonna1 separatorepiccolo">
                     <!-- Targa dell'auto selezionata -->
                     <h1 style="text-align: center" class="titolo_info"><b>{{$auto->targa}}</b></h1>
                     <br>
