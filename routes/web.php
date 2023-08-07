@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\ControllerFaq;
 use Illuminate\Support\Facades\Route;
 /*
 |--------------------------------------------------------------------------
@@ -18,9 +19,7 @@ Route::get('/', function () {
 });
 
 //Rotta di definizione delle faq
-Route::get('/faq', function () {
-    return view('faq');
-});
+Route::get('/faq', [ControllerFaq::class, 'showFaq']);
 
 //Rotta di definizione della pagina chi siamo
 Route::get('/chisiamo', function () {
