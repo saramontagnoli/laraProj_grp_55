@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\ControllerCatalogoAuto;
 use App\Http\Controllers\ControllerFaq;
 use Illuminate\Support\Facades\Route;
 /*
@@ -27,9 +28,9 @@ Route::get('/chisiamo', function () {
 });
 
 //Rotta di definizione della pagina catalogoauto
-Route::get('/catalogoauto', function () {
-    return view('catalogoauto');
-});
+Route::get('/catalogoauto', [ControllerCatalogoAuto::class, 'showCatalogoAuto']);
+
+Route::get('/catalogo/{id_offerta}', [ControllerCatalogoAuto::class, 'showCatalogoAutoSpec']);
 
 //Rotta di definizione della pagina comenoleggiare
 Route::get('/comenoleggiare', function () {
