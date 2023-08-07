@@ -78,3 +78,13 @@
 {
     background-color: #ddd; /* il colore si sfondo diventa un grigio leggermente più scuro */
 }
+
+
+/*
+    Classe di formattazione del separatore tra le due colonne della pagina della singola auto
+*/
+.separatorepiccolo
+{
+    border-right: 1px solid #9ca3af; /* linea continua sottile spessore 1 pixel grigio chiaro */
+}
+
