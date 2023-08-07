@@ -18,7 +18,7 @@ Route::get('/', function () {
     return view('home');
 });
 
-//Rotta di definizione delle faq
+//Rotta di definizione delle faq al quale è associato il controller ControllerFaq
 Route::get('/faq', [ControllerFaq::class, 'showFaq']);
 
 //Rotta di definizione della pagina chi siamo
