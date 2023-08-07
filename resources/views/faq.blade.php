@@ -13,16 +13,17 @@
 
     <br><br>
 
-    <!-- Varie domande e risposte F.A.Q. -->
+    <!-- Sezione delle varie domande e risposte F.A.Q. -->
 
-
+    <!-- Per ogni elemento estratto dal database stampo lo slot per la domanda e lo slot nascosto per la risposta -->
     @foreach($data as $faq)
-        <!-- Button di apertura della risposta alla domanda 1 -->
+        <!-- Button di apertura della risposta alla domanda -->
         <button class="domanda">{{$faq->domanda}}</button>
+        <!-- Sezione nascosta della risposta, verrà visualizzata dopo il click sulla domanda -->
         <div class="risposta">
             <p>{{$faq->risposta}}</p>
         </div>
-
+        <!-- A capo di spaziatura per la formattazione della pagina delle F.A.Q. -->
         <br>
     @endforeach
 
