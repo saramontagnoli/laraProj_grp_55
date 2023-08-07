@@ -11,12 +11,12 @@
     <div class="riga">
 
         <!-- Sezione definita per la colonna di sinistra contenente l'immagine di CHI SIAMO -->
-        <div class="colonna colonna1_chisiamo">
+        <div class="colonna colonna1">
             <!-- Immagine di CHI SIAMO -->
             <img src="{{asset("assets/img/ferrari_portofino.webp")}}" alt="come noleggiare un'auto" class="immagine_chisiamo">
         </div>
         <!-- Sezione definita per la colonna di destra contenente la descrizione di CHI SIAMO -->
-        <div class="colonna colonna2_chisiamo">
+        <div class="colonna colonna2">
 
             <!-- A capo di spaziatura per l'allineamento del testo -->
             <br><br>

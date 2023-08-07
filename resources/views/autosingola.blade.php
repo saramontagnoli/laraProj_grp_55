@@ -19,9 +19,9 @@
     <!-- Se non c'è alcun errore si procede a stampare tutte le informazioni dell'auto -->
     @else
         @foreach($data as $auto)
-            <p> Targa: {{$auto->targa}} </p>
+            <div class="riga">
 
-            <p> Allestimento: {{$auto->allestimento}} </p>
+            </div>
         @endforeach
     @endif
     <br><br><br><br>

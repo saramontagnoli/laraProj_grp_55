@@ -422,7 +422,7 @@ footer{
 /*
     Classe di formattazione per la colonna a sinistra della pagina CHI SIAMO
 */
-.colonna1_chisiamo
+.colonna1
 {
     width: 60%; /* larghezza che la colonna deve occupare */
     height: fit-content;/* altezza della colonna definita */
@@ -432,7 +432,7 @@ footer{
 /*
     Classe di formattazione per la colonna a destra della pagina CHI SIAMO
 */
-.colonna2_chisiamo
+.colonna2
 {
     width: 40%; /* larghezza che la colonna deve occupare */
     height: fit-content;/* altezza della colonna definita */
@@ -456,7 +456,7 @@ footer{
 */
 @media (max-width:800px){
 
-    .colonna1_chisiamo
+    .colonna1
     {
         display:block;
         margin:10px 0;
@@ -464,7 +464,7 @@ footer{
         width: 100%;
     }
 
-    .colonna2_chisiamo
+    .colonna2
     {
         display:block;
         margin:10px 0;
