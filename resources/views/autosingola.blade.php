@@ -2,6 +2,10 @@
 
 @section('content')
 
+    <br>
+
+    <a href="{{url('/catalogoauto')}}" class="previous">&laquo; INDIETRO </a>
+
     @if(count($data) < 1)
         <div>
             <strong>Sorry!</strong> No Product Found.
