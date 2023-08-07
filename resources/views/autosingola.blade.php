@@ -34,19 +34,19 @@
 
                     <div style="font-weight: bolder; font-size: xx-large">SCHEDA AUTO</div>
                     <br><br><br>
-                    <div style="background-color: 	#EFEFEF">
+                    <div style="background-color:#EFEFEF">
                         <br>
                         <p style="font-weight: bold">Allestimento Auto:</p>
                         <p style="font-size: 14pt">{{$auto->allestimento}}</p>
                         <br>
                     </div>
                     <hr>
-                    <div style="background-color: 	#EFEFEF">
+                    <div style="background-color:#EFEFEF">
                         <p style="font-weight: bold">Costo/giorno:</p>
                         <p style="font-size: 14pt">{{$auto->costo_giorno}}</p>
                     </div>
                     <hr>
-                    <div style="background-color: 	#EFEFEF">
+                    <div style="background-color:#EFEFEF">
                         <p style="font-weight: bold">Numero di posti:</p>
                         <p style="font-size: 14pt">{{$auto->num_posti}}</p>
                     </div>
