@@ -1,3 +1,4 @@
+<!-- Si estende la struttura definita per le pagine del sito web -->
 @extends('layouts.struttura')
 
 @section('content')
@@ -14,7 +15,7 @@
         @foreach($data as $auto)
             <p> Targa: {{$auto->targa}} </p>
 
-            <p> Targa: {{$auto->allestimento}} </p>
+            <p> Allestimento: {{$auto->allestimento}} </p>
         @endforeach
     @endif
     <br><br><br><br>
