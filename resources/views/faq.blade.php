@@ -29,22 +29,9 @@
         <br>
     @endforeach
 
-    <script>
-        var acc = document.getElementsByClassName("domanda");
-        var i;
+    <!-- Inclusione dello script JS che permette di cliccare sulla domande e far apparire la risposta -->
+    <script src="{{ asset('assets/js/faq.js') }}"></script>
 
-        for (i = 0; i < acc.length; i++) {
-            acc[i].addEventListener("click", function() {
-                this.classList.toggle("active");
-                var panel = this.nextElementSibling;
-                if (panel.style.maxHeight) {
-                    panel.style.maxHeight = null;
-                } else {
-                    panel.style.maxHeight = panel.scrollHeight + "px";
-                }
-            });
-        }
-    </script>
 
     <br> <br> <br>
 
