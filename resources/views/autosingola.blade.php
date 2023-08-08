@@ -25,7 +25,7 @@
                 <!-- Definizione della colonna a sinistra -->
                 <div class="colonna colonna1 separatorepiccolo">
                     <!-- Targa dell'auto selezionata -->
-                    <h1 style="text-align: center" class="titolo_info"><b>{{$auto->targa}}</b></h1>
+                    <h1 class="titolo_info"><b>{{$auto->targa}}</b></h1>
                     <br>
                     <!-- Immagine dell'auto selezionata -->
                     <img class="immagine_chisiamo" style="padding-left: 70px" src="{{ asset($auto->foto_auto) }}" alt="ImmagineAuto" height="200px">
@@ -43,7 +43,7 @@
                     <br><br><br>
 
                     <!-- Descrizione dell'allestimento dell'auto -->
-                    <div style="background-color:#EFEFEF">
+                    <div class="sfondoauto">
                         <br>
                         <p style="font-weight: bold">Allestimento Auto:</p>
                         <p style="font-size: 14pt">{{$auto->allestimento}}</p>
@@ -52,19 +52,18 @@
                     <hr>
 
                     <!-- Costo dell'auto al giorno -->
-                    <div style="background-color:#EFEFEF">
+                    <div class="sfondoauto">
                         <p style="font-weight: bold">Costo/giorno:</p>
                         <p style="font-size: 14pt">{{$auto->costo_giorno}}</p>
                     </div>
                     <hr>
 
                     <!-- Numero di posti dell'auto -->
-                    <div style="background-color:#EFEFEF">
+                    <div class="sfondoauto">
                         <p style="font-weight: bold">Numero di posti:</p>
                         <p style="font-size: 14pt">{{$auto->num_posti}}</p>
                     </div>
                 </div>
-
             </div>
         @endforeach
     @endif

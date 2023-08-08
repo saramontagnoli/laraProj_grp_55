@@ -88,3 +88,11 @@
     border-right: 1px solid #9ca3af; /* linea continua sottile spessore 1 pixel grigio chiaro */
 }
 
+
+/*
+    Classe di formattazione per lo sfondo colorato nella scheda singola dell'auto
+*/
+.sfondoauto
+{
+    background-color:#EFEFEF; /* colore di sfondo grigio chiaro */
+}
