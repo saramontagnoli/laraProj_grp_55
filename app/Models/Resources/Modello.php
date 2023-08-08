@@ -10,7 +10,7 @@ use Illuminate\Database\Eloquent\Model;
  */
 class Modello extends Model {
 
-    use HasFactory;
+    use HasFactory; //che cazzo è?
 
     //associazione alla tabella modello del database
     protected $table = 'modello';

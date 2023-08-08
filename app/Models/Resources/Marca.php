@@ -10,7 +10,8 @@ use Illuminate\Database\Eloquent\Model;
  */
 class Marca extends Model {
 
-    use HasFactory;
+    use HasFactory; //che cazzo è?
+
     //associazione alla tabella marca del database
     protected $table = 'marca';
 

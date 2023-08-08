@@ -10,7 +10,8 @@ use Illuminate\Database\Eloquent\Model;
  */
 class Auto extends Model {
 
-    use HasFactory;
+    use HasFactory; //che cazzo è?
+
     //associazione alla tabella auto del database
     protected $table = 'auto';
 
