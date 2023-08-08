@@ -3,7 +3,7 @@
 namespace App\Models;
 
 use App\Models\Resources\Auto;
-use App\Models\Resources\Faq;
+use Illuminate\Support\Facades\DB;
 
 /*
  * Classe CatalogoAuto con i metodi getCatalogoAuto() e getAutoSpec()
@@ -14,8 +14,11 @@ class CatalogoAuto {
      * Metodo che permette di restituire tutte le auto contenute all'interno della tabella auto del database
      */
     public function getCatalogoAuto() {
-        //query di estrazione di tutte le auto
-        return auto::all();
+        //query di estrazione di tutte le auto comprese marca e modello
+        return DB::table('auto')
+            ->join('modello', 'auto.modello_ref', '=', 'modello.codice_modello')
+            ->join('marca', 'modello.marca_ref', '=', 'marca.codice_marca')
+            ->get();
     }
 
     /*
@@ -24,7 +27,14 @@ class CatalogoAuto {
     public function getAutoSpec($codice_auto)
     {
         //query di estrazione della singola auto definita da $codice_auto
-        return auto::where('codice_auto', $codice_auto)->get();
+
+        return DB::table('auto')
+            ->join('modello', 'auto.modello_ref', '=', 'modello.codice_modello')
+            ->join('marca', 'modello.marca_ref', '=', 'marca.codice_marca')
+            ->where('codice_auto', $codice_auto)
+            ->get();
+
+        //return auto::where('codice_auto', $codice_auto)->get();
     }
 
 

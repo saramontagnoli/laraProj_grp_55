@@ -25,8 +25,10 @@
 
                         <!-- Inserimento della targa dell'auto -->
                         <div class="nomeauto">
-                            <p style="">{{$auto->targa}}</p>
+                            <p class="titolo">{{$auto->nome_marca}} - {{$auto->nome_modello}} </p>
                         </div>
+
+
                     </div>
                 </a>
             </div>

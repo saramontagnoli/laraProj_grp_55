@@ -25,7 +25,7 @@
                 <!-- Definizione della colonna a sinistra -->
                 <div class="colonna colonna1 separatorepiccolo">
                     <!-- Targa dell'auto selezionata -->
-                    <h1 class="titolo_info"><b>{{$auto->targa}}</b></h1>
+                    <h1 class="titolo_info"><b>{{$auto->nome_marca}} {{$auto->nome_modello}}</b></h1>
                     <br>
                     <!-- Immagine dell'auto selezionata -->
                     <img class="immagine_chisiamo" style="padding-left: 70px" src="{{ asset($auto->foto_auto) }}" alt="ImmagineAuto" height="200px">
@@ -42,6 +42,15 @@
                     <div style="font-weight: bolder; font-size: xx-large">SCHEDA AUTO</div>
                     <br><br><br>
 
+                    <!-- Descrizione della targa dell'auto -->
+                    <div class="sfondoauto">
+                        <br>
+                        <p style="font-weight: bold">Targa Auto:</p>
+                        <p style="font-size: 14pt">{{$auto->targa}}</p>
+                        <br>
+                    </div>
+                    <hr>
+
                     <!-- Descrizione dell'allestimento dell'auto -->
                     <div class="sfondoauto">
                         <br>
@@ -54,7 +63,7 @@
                     <!-- Costo dell'auto al giorno -->
                     <div class="sfondoauto">
                         <p style="font-weight: bold">Costo/giorno:</p>
-                        <p style="font-size: 14pt">{{$auto->costo_giorno}}</p>
+                        <p style="font-size: 14pt">{{$auto->costo_giorno}} €</p>
                     </div>
                     <hr>
 
