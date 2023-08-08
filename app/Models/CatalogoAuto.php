@@ -3,6 +3,8 @@
 namespace App\Models;
 
 use App\Models\Resources\Auto;
+use App\Models\Resources\Marca;
+use App\Models\Resources\Modello;
 use Illuminate\Support\Facades\DB;
 
 /*
@@ -15,10 +17,17 @@ class CatalogoAuto {
      */
     public function getCatalogoAuto() {
         //query di estrazione di tutte le auto comprese marca e modello
-        return DB::table('auto')
-            ->join('modello', 'auto.modello_ref', '=', 'modello.codice_modello')
+
+        return Auto::join('modello', 'auto.modello_ref', '=', 'modello.codice_modello')
             ->join('marca', 'modello.marca_ref', '=', 'marca.codice_marca')
             ->get();
+
+
+        //return DB::table('auto')
+          //  ->join('modello', 'auto.modello_ref', '=', 'modello.codice_modello')
+            //->join('marca', 'modello.marca_ref', '=', 'marca.codice_marca')
+            //->get();
+
     }
 
     /*

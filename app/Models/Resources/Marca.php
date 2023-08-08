@@ -2,6 +2,7 @@
 
 namespace App\Models\Resources;
 
+use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
 /*
@@ -9,6 +10,7 @@ use Illuminate\Database\Eloquent\Model;
  */
 class Marca extends Model {
 
+    use HasFactory;
     //associazione alla tabella marca del database
     protected $table = 'marca';
 

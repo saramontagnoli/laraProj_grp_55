@@ -2,6 +2,7 @@
 
 namespace App\Models\Resources;
 
+use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
 /*
@@ -9,6 +10,7 @@ use Illuminate\Database\Eloquent\Model;
  */
 class Auto extends Model {
 
+    use HasFactory;
     //associazione alla tabella auto del database
     protected $table = 'auto';
 

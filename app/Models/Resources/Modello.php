@@ -2,12 +2,15 @@
 
 namespace App\Models\Resources;
 
+use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
 /*
  * Model per la definizione dei MODELLI
  */
 class Modello extends Model {
+
+    use HasFactory;
 
     //associazione alla tabella modello del database
     protected $table = 'modello';
