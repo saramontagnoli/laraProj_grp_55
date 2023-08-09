@@ -2,7 +2,7 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\CatalogoAuto;
+use App\Models\Auto;
 use Illuminate\Support\Facades\Log;
 
 /*
@@ -10,39 +10,24 @@ use Illuminate\Support\Facades\Log;
  */
 class ControllerCatalogoAuto extends Controller
 {
-    //definizione della variabile che conterrà il catalogo completo delle auto
-    protected $_catalogAuto;
+    // Ottiene tutte le offerte (assieme alle aziende a cui appartengono) per il Catalogo.
+    function showCatalogoAuto()
+    {
+        $auto = Auto::join("modello", "auto.modello_ref", "=", "modello.codice_modello")
+            ->join("marca", "modello.marca_ref", "=", "marca.codice_marca")
+            ->get();
 
-    /*
-     * Costruttore della classe ControllerCatalogoAuto
-     */
-    public function __construct() {
-        //la variabile viene inizializzata come variabile di CatalogoAuto()
-        $this->_catalogAuto = new CatalogoAuto();
+        return view('catalogoauto', ['cardAuto'=>$auto]);
     }
 
-    /*
-     * Metodo che consente di mostrare tutte le auto mediante la vista catalogoauto
-     */
-    public function showCatalogoAuto()
+    function showAutoSpec($ccodice_auto)
     {
-        //estrazione delle auto mediante il metodo getCatalogoAuto() della classe CatalogoAuto()
-        $data = $this->_catalogAuto->getCatalogoAuto();
+        $auto = Auto::join("modello", "auto.modello_ref", "=", "modello.codice_modello")
+            ->join("marca", "modello.marca_ref", "=", "marca.codice_marca")
+            ->where('codice_auto', $ccodice_auto)
+            ->get();
 
-        //ritorno della vista del catalogo completo di tutte le auto noleggiabili
-        return view('catalogoauto', compact('data'));
-    }
-
-    /*
-     * Metodo che consente di mostrare una singola auto tra tutte quelle del catalogo
-     */
-    public function showCatalogoAutoSpec($codice_auto)
-    {
-        //estrazione dell'auto specifica selezionata con il metodo getAutoSpec() della classe CatalogoAuto()
-        $data = $this->_catalogAuto->getAutoSpec($codice_auto);
-
-        //ritorno della vista dell'auto singola contenente tutte le informazioni
-        return view('autosingola', compact('data'));
+        return view('autosingola', ['cardAuto'=>$auto]);
     }
 
 }
