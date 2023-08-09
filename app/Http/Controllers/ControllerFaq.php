@@ -2,7 +2,7 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\CatalogFaq;
+use App\Models\Faq;
 use Illuminate\Support\Facades\Log;
 
 /*
@@ -10,25 +10,10 @@ use Illuminate\Support\Facades\Log;
  */
 class ControllerFaq extends Controller
 {
-    //deifnizione variabile contenente tutti gli elementi faq
-    protected $_listFaq;
-
-    /*
-     * Il costruttore del Controller permette di definire la variabile _listFaq come un CatalogFaq
-     */
-    public function __construct() {
-        $this->_listFaq = new CatalogFaq();
-    }
-
-    /*
-     * Il metodo showFaq permette di avere la vista delle faq riempita con le informazioni del database
-     */
-    public function showFaq()
+    // Ottiene l'intera lista di FAQ, utilizzata per la pagina di Gestione FAQ
+    function showFaq()
     {
-        //mediante il metodo getFaq della classe CatalogGaq vengono estratte tutte le informazioni contenute nella tabellaf aq del database
-        $data = $this->_listFaq->getFaq();
-
-        //ritorno della vista faq, al quale viene associata la variabile data
-        return view('faq', compact('data'));
+        $data = faq::all();
+        return view('faq', ['faq'=>$data]);
     }
 }
