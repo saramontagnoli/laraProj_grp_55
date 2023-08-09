@@ -28,7 +28,10 @@ Route::get('/chisiamo', function () {
 });
 
 //Rotta di definizione della pagina catalogoauto
-Route::get('/catalogoauto', [ControllerCatalogoAuto::class, 'showCatalogoAuto']);
+Route::get('/catalogoauto', [ControllerCatalogoAuto::class, 'showCatalogoAuto'])->name('catalogoauto');
+
+// Rotta per la ricerca di un'azienda dalla barra di ricerca apposita.
+Route::post('/catalogoauto', [ControllerCatalogoAuto::class, 'showCatalogoAutoFiltri']);
 
 //Rotta di definizione della singola pagina di un auto
 Route::get('/catalogoauto/{codice_auto}', [ControllerCatalogoAuto::class, 'showAutoSpec']);

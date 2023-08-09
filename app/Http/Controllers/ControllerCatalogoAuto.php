@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\Auto;
 use Illuminate\Support\Facades\Log;
+use Illuminate\Http\Request;
 
 /*
  * Classe Controller per il catalogo auto
@@ -29,5 +30,38 @@ class ControllerCatalogoAuto extends Controller
 
         return view('autosingola', ['cardAuto'=>$auto]);
     }
+
+    function showCatalogoAutoFiltri(Request $request)
+    {
+        $filtro_ricerca = $request->input("generico");
+
+        // Query di base per ottenere la lista di offerte e le aziende che le pubblicano
+        $dbQuery = Auto::join("modello", "auto.modello_ref", "=", "modello.codice_modello")
+            ->join("marca", "modello.marca_ref", "=", "marca.codice_marca")
+            ->get();
+
+        if($filtro_ricerca != null)
+        {
+            $dbQuery = Auto::join("modello", "auto.modello_ref", "=", "modello.codice_modello")
+                ->join("marca", "modello.marca_ref", "=", "marca.codice_marca")
+                ->where("auto.targa", "LIKE", "%" . $filtro_ricerca . "%")
+                ->get();
+        }
+
+        // Questo è l'array che contiene i dati che vengono inviati alla View
+        $cardAuto = Array();
+
+        $cardAuto["cardAuto"] = $dbQuery;
+
+
+// Ritorno la View con i dati inseriti nell'array, che verranno visualizzati sulla View stessa.
+        return view("catalogoauto", $cardAuto);
+    }
+
+
+
+
+
+
 
 }

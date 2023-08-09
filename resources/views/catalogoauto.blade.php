@@ -6,6 +6,18 @@
 
     <!-- Sezione dedicata al catalogo delle auto noleggiabili -->
 
+    <form method="POST" action="{{ route('catalogoauto') }}" id="catalog-search-form">
+        @csrf
+        <h2>Ricerca generica</h2>
+        <!-- Input per il filtro di ricerca -->
+        <input type="text" name="generico" placeholder="Ricerca...">
+
+        <!-- Pulsante di invio del form -->
+        <button type="submit">Cerca</button>
+    </form>
+
+
+
     <!-- Definizione della riga del catalogo -->
     <div class="rigacatalogo">
 
@@ -27,7 +39,6 @@
                         <div class="nomeauto">
                             <p class="titolo">{{$auto['nome_marca']}} - {{$auto['nome_modello']}} </p>
                         </div>
-
 
                     </div>
                 </a>
