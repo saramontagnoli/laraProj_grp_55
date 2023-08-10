@@ -7,18 +7,18 @@
     <!-- Sezione dedicata al catalogo delle auto noleggiabili -->
     <h1 class="titolo_info">CATALOGO AUTO NOLEGGIABILI</h1>
 
-    <form method="POST" action="{{ route('catalogoauto') }}" id="catalog-search-form">
+    <form method="POST" action="{{ route('catalogoauto') }}">
         @csrf
         <h2>Filtri di ricerca</h2>
         <!-- Input per il filtro di ricerca -->
         <label>
             Inserire prezzo min:
-            <input type="number" name="min" placeholder="Prezzo min" min="0">
+            <input type="number" step="0.01" name="min" placeholder="Prezzo min" min="0">
         </label>
 
         <label>
             Inserire prezzo max:
-            <input type="number" name="max" placeholder="Prezzo max" min="0">
+            <input type="number" step="0.01" name="max" placeholder="Prezzo max" min="0">
         </label>
 
         <!-- Pulsante di invio del form -->
