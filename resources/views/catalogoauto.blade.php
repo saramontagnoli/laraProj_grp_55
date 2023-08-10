@@ -11,13 +11,19 @@
         @csrf
         <h2>Filtri di ricerca</h2>
         <!-- Input per il filtro di ricerca -->
-        <input type="number" name="min" placeholder="Prezzo min">
-        <input type="number" name="max" placeholder="Prezzo max">
+        <label>
+            Inserire prezzo min:
+            <input type="number" name="min" placeholder="Prezzo min" min="0">
+        </label>
+
+        <label>
+            Inserire prezzo max:
+            <input type="number" name="max" placeholder="Prezzo max" min="0">
+        </label>
 
         <!-- Pulsante di invio del form -->
         <button type="submit">Cerca</button>
     </form>
-
 
 
     <!-- Definizione della riga del catalogo -->
@@ -25,7 +31,6 @@
 
         <!-- Per ogni auto estratta dalla tabella del database viene stampata la relativa card -->
         @if(count($cardAuto)> 0)
-
             @foreach ($cardAuto as $auto)
 
                 <!--  -->
@@ -41,7 +46,7 @@
 
                             <!-- Inserimento della targa dell'auto -->
                             <div class="nomeauto">
-                                <p class="titolo">{{$auto['nome_marca']}} - {{$auto['nome_modello']}} </p>
+                                <p class="titolo">{{$auto['nome_marca']}} {{$auto['nome_modello']}} - {{$auto['costo_giorno']}}€ </p>
                             </div>
 
                         </div>
@@ -49,7 +54,7 @@
                 </div>
             @endforeach
         @else
-            <div>NOT FOUND</div>
+            <div style="padding-top: 30px"> SORRY! CARS NOT FOUND</div>
         @endif
     </div>
 @endsection

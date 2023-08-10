@@ -40,17 +40,27 @@ class ControllerCatalogoAuto extends Controller
         $dbQuery = Auto::join("modello", "auto.modello_ref", "=", "modello.codice_modello")
             ->join("marca", "modello.marca_ref", "=", "marca.codice_marca");
 
-        if($filtro_max != null)
+        if ($filtro_min < $filtro_max)
         {
-            $minimo = $dbQuery->where("auto.costo_giorno", "<=", $filtro_max);
-            $cardAuto['minimo'] = $minimo;
+            if($filtro_max != null)
+            {
+                $massimo = $dbQuery->where("auto.costo_giorno", "<=", $filtro_max);
+                $cardAuto['massimo'] = $massimo;
+            }
+
+            if($filtro_min != null)
+            {
+                $minimo = $dbQuery->where("auto.costo_giorno", ">=", $filtro_min);
+                $cardAuto['minimo'] = $minimo;
+            }
         }
 
-        if($filtro_min != null)
+        if($filtro_min > $filtro_max)
         {
-            $massimo = $dbQuery->where("auto.costo_giorno", ">=", $filtro_min);
-            $cardAuto['massimo'] = $minimo;
+            $popupMessage = "Errore. Il prezzo minimo deve essere minore del prezzo massimo!";
+            echo "<script>alert('$popupMessage');</script>";
         }
+
 
         $dbQuery = $dbQuery->get();
 
