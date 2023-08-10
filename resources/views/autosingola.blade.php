@@ -7,7 +7,7 @@
     <br>
 
     <!-- Button indietro che permette di tornare al catalogo generale delle auto -->
-    <a href="{{url('/catalogoauto')}}" class="buttonindietro">&laquo; INDIETRO </a>
+    <a href="{{ route('catalogoauto') }}" class="buttonindietro">&laquo; INDIETRO </a>
 
     <!-- Se non sono stati trovati i dati dell'auto -->
     @if(count($cardAuto) < 1)

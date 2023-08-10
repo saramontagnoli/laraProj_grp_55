@@ -5,12 +5,14 @@
 @section('content')
 
     <!-- Sezione dedicata al catalogo delle auto noleggiabili -->
+    <h1 class="titolo_info">CATALOGO AUTO NOLEGGIABILI</h1>
 
     <form method="POST" action="{{ route('catalogoauto') }}" id="catalog-search-form">
         @csrf
-        <h2>Ricerca generica</h2>
+        <h2>Filtri di ricerca</h2>
         <!-- Input per il filtro di ricerca -->
-        <input type="text" name="generico" placeholder="Ricerca...">
+        <input type="number" name="min" placeholder="Prezzo min">
+        <input type="number" name="max" placeholder="Prezzo max">
 
         <!-- Pulsante di invio del form -->
         <button type="submit">Cerca</button>
@@ -22,27 +24,32 @@
     <div class="rigacatalogo">
 
         <!-- Per ogni auto estratta dalla tabella del database viene stampata la relativa card -->
-        @foreach ($cardAuto as $auto)
+        @if(count($cardAuto)> 0)
 
-            <!--  -->
-            <div class="colonnacatalogo">
-                <!-- Definizione del link cliccabile per ogni auto -->
-                <a href="{{ url('/catalogoauto/'.$auto['codice_auto']) }}" style="text-decoration: none; color:black">
+            @foreach ($cardAuto as $auto)
 
-                    <!-- Definizione della card dedll'auto con le informazioni -->
-                    <div class="cardauto">
+                <!--  -->
+                <div class="colonnacatalogo">
+                    <!-- Definizione del link cliccabile per ogni auto -->
+                    <a href="{{ url('/catalogoauto/'.$auto['codice_auto']) }}" style="text-decoration: none; color:black">
 
-                        <!-- Inserimento dell'immagine dal path definito all'interno del database -->
-                        <img class="imgauto_catalogo" src="{{$auto['foto_auto']}}" alt="IMMAGINE NON DISPONIBILE AL MOMENTO">
+                        <!-- Definizione della card dedll'auto con le informazioni -->
+                        <div class="cardauto">
 
-                        <!-- Inserimento della targa dell'auto -->
-                        <div class="nomeauto">
-                            <p class="titolo">{{$auto['nome_marca']}} - {{$auto['nome_modello']}} </p>
+                            <!-- Inserimento dell'immagine dal path definito all'interno del database -->
+                            <img class="imgauto_catalogo" src="{{$auto['foto_auto']}}" alt="IMMAGINE NON DISPONIBILE AL MOMENTO">
+
+                            <!-- Inserimento della targa dell'auto -->
+                            <div class="nomeauto">
+                                <p class="titolo">{{$auto['nome_marca']}} - {{$auto['nome_modello']}} </p>
+                            </div>
+
                         </div>
-
-                    </div>
-                </a>
-            </div>
-        @endforeach
+                    </a>
+                </div>
+            @endforeach
+        @else
+            <div>NOT FOUND</div>
+        @endif
     </div>
 @endsection

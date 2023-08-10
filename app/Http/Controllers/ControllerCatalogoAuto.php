@@ -33,20 +33,26 @@ class ControllerCatalogoAuto extends Controller
 
     function showCatalogoAutoFiltri(Request $request)
     {
-        $filtro_ricerca = $request->input("generico");
+        $filtro_min = $request->input("min");
+        $filtro_max = $request->input("max");
 
         // Query di base per ottenere la lista di offerte e le aziende che le pubblicano
         $dbQuery = Auto::join("modello", "auto.modello_ref", "=", "modello.codice_modello")
-            ->join("marca", "modello.marca_ref", "=", "marca.codice_marca")
-            ->get();
+            ->join("marca", "modello.marca_ref", "=", "marca.codice_marca");
 
-        if($filtro_ricerca != null)
+        if($filtro_max != null)
         {
-            $dbQuery = Auto::join("modello", "auto.modello_ref", "=", "modello.codice_modello")
-                ->join("marca", "modello.marca_ref", "=", "marca.codice_marca")
-                ->where("auto.targa", "LIKE", "%" . $filtro_ricerca . "%")
-                ->get();
+            $minimo = $dbQuery->where("auto.costo_giorno", "<=", $filtro_max);
+            $cardAuto['minimo'] = $minimo;
         }
+
+        if($filtro_min != null)
+        {
+            $massimo = $dbQuery->where("auto.costo_giorno", ">=", $filtro_min);
+            $cardAuto['massimo'] = $minimo;
+        }
+
+        $dbQuery = $dbQuery->get();
 
         // Questo è l'array che contiene i dati che vengono inviati alla View
         $cardAuto = Array();
