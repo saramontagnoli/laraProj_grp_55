@@ -14,5 +14,6 @@
         <a href="{{ url('/faq') }}" class="element_navbar ">F.A.Q.</a>
         <a href="" class="element_navbar ">Registrazione</a>
         <a href="" class="element_navbar ">Login</a>
+        <a href="" class="element_navbar ">Prova</a>
     </div>
 </nav>
