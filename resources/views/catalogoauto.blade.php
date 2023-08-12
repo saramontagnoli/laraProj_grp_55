@@ -9,7 +9,7 @@
 
     <form method="POST" action="{{ route('catalogoauto') }}">
         @csrf
-        <h2>Filtri di ricerca</h2>
+        <h2>Filtri di ricerca:</h2>
         <!-- Input per il filtro di ricerca -->
         <label>
             Inserire prezzo min:
