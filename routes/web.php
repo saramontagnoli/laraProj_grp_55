@@ -2,6 +2,7 @@
 
 use App\Http\Controllers\ControllerCatalogoAuto;
 use App\Http\Controllers\ControllerFaq;
+use App\Http\Controllers\UserController;
 use Illuminate\Support\Facades\Route;
 /*
 |--------------------------------------------------------------------------
@@ -40,3 +41,12 @@ Route::get('/catalogoauto/{codice_auto}', [ControllerCatalogoAuto::class, 'showA
 Route::get('/comenoleggiare', function () {
     return view('comenoleggiare');
 });
+
+Route::get('/user', [UserController::class, 'index'])
+    ->name('user')->middleware('can:isUser');
+
+Route::get('/user/profilo', [UserController::class, 'profilo'])
+    ->name('user/profilo')->middleware('can:isUser');
+
+
+require __DIR__.'/auth.php';
