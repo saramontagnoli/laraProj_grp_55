@@ -18,7 +18,7 @@ return new class extends Migration
             $table->string('domanda', 600);
             $table->string('risposta', 600);
             $table->bigInteger('admin_ref')->unsigned()->index();
-            $table->foreign('admin_ref')->references('codice_utente')->on('utente');
+            $table->foreign('admin_ref')->references('codice_utente')->on('users');
             $table->timestamps();
         });
     }

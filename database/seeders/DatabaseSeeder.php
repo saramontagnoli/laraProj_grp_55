@@ -125,7 +125,7 @@ class DatabaseSeeder extends Seeder
             ['codice_auto' => 8, 'targa' => 'FA000CK', 'foto_auto' => 'assets/img/bmw_m4.jpg', 'allestimento' => 'Optional: aria condizionata, radio, turbo', 'costo_giorno' => 70.00, 'num_posti' => 4, 'modello_ref' => 4]
         ]);
 
-        DB::table('utente')->insert([
+        DB::table('users')->insert([
             ['codice_utente' => 1, 'nome' => 'Sara', 'cognome' => 'Montagnoli', 'data_nascita' => '2001-10-31', 'username' => 'clieclie', 'password' => '3Esp6L54', 'role' => 2, 'email' => 'sara@gmail.com', 'indirizzo' => 'via caso 13', 'occupazione_ref' => 4, 'comune_ref' => 2],
             ['codice_utente' => 2, 'nome' => 'Giada', 'cognome' => 'Remedia', 'data_nascita' => '2001-09-26', 'username' => 'staffstaff', 'password' => '3Esp6L54', 'role' => 3, 'email' => 'giada@gmail.com', 'indirizzo' => 'via nulla 10', 'occupazione_ref' => 4, 'comune_ref' => 4],
             ['codice_utente' => 3, 'nome' => 'Admin', 'cognome' => 'Admin', 'data_nascita' => '1990-11-11', 'username' => 'adminadmin', 'password' => '3Esp6L54', 'role' => 4, 'email' => 'admin@gmail.com', 'indirizzo' => 'via roma 11', 'occupazione_ref' => 1, 'comune_ref' => 1],

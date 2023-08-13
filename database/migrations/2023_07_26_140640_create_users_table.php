@@ -13,7 +13,7 @@ return new class extends Migration
      */
     public function up()
     {
-        Schema::create('utente', function (Blueprint $table) {
+        Schema::create('users', function (Blueprint $table) {
             $table->bigIncrements('codice_utente')->unsigned()->index();
             $table->string('nome', 50);
             $table->string('cognome', 70);
@@ -38,6 +38,6 @@ return new class extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('utente');
+        Schema::dropIfExists('users');
     }
 };
