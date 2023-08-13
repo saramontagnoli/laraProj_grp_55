@@ -18,7 +18,7 @@ return new class extends Migration
             $table->date('data_inizio');
             $table->date('data_fine');
             $table->bigInteger('utente_ref')->unsigned()->index();
-            $table->foreign('utente_ref')->references('codice_utente')->on('users');
+            $table->foreign('utente_ref')->references('id')->on('users');
             $table->bigInteger('auto_ref')->unsigned()->index();
             $table->foreign('auto_ref')->references('codice_auto')->on('auto');
             $table->timestamps();

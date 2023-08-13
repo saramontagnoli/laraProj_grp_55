@@ -14,7 +14,7 @@ return new class extends Migration
     public function up()
     {
         Schema::create('users', function (Blueprint $table) {
-            $table->bigIncrements('codice_utente')->unsigned()->index();
+            $table->bigIncrements('id')->unsigned()->index();
             $table->string('nome', 50);
             $table->string('cognome', 70);
             $table->date('data_nascita');
