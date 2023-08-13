@@ -12,7 +12,23 @@
         <a href="{{ url('/comenoleggiare') }}" class="element_navbar ">Come noleggiare</a>
         <a href="{{ url('/chisiamo') }}" class="element_navbar ">Chi siamo</a>
         <a href="{{ url('/faq') }}" class="element_navbar ">F.A.Q.</a>
-        <a href="" class="element_navbar ">Registrazione</a>
-        <a href="{{ url('/login') }}" class="element_navbar ">Login</a>
+
+
+        @if (! auth()->check())
+            <a href="" class="element_navbar ">Registrazione</a>
+            <a href="{{url('/login')}}" class="element_navbar">Login</a>
+        @endif
+
+        @can('isUser')
+            <a href="{{url('/user/profilo')}}" class="element_navbar">Profilo</a>
+        @endcan
+
+        @auth
+            <a href="" class="element_navbar" title="Esci dal sito" onclick="event.preventDefault(); document.getElementById('logout-form').submit();">Logout</a>
+            <form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;">
+                {{ csrf_field() }}
+            </form>
+        @endauth
     </div>
+
 </nav>
