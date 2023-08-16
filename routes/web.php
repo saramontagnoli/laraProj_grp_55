@@ -42,7 +42,7 @@ Route::get('/comenoleggiare', function () {
     return view('comenoleggiare');
 });
 
-Route::get('/user', [UserController::class, 'index'])
+Route::get('/home', [UserController::class, 'index'])
     ->name('user')->middleware('can:isUser');
 
 Route::get('/user/profilo', [UserController::class, 'profilo'])
