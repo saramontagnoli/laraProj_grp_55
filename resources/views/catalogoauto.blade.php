@@ -40,6 +40,9 @@
         <button type="submit">Cerca</button>
     </form>
 
+    <script>
+
+    </script>
 
 
     <!-- Definizione della riga del catalogo -->
