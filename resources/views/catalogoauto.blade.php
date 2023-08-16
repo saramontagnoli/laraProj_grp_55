@@ -21,9 +21,25 @@
             <input type="number" step="0.01" name="max" placeholder="Prezzo max" min="0">
         </label>
 
+        <br><br>
+
+        @can('isUser')
+            <label>
+                Data inizio noleggio:
+                <input type="date" name="inizio">
+            </label>
+
+            <label>
+                &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; Data fine noleggio:
+                <input type="date" name="fine">
+            </label>
+        @endcan
+
         <!-- Pulsante di invio del form -->
+        &nbsp; &nbsp; &nbsp; &nbsp;
         <button type="submit">Cerca</button>
     </form>
+
 
 
     <!-- Definizione della riga del catalogo -->
