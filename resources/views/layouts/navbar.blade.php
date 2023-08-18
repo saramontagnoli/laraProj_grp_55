@@ -20,7 +20,7 @@
         @endif
 
         @can('isUser')
-            <a href="{{url('/user/profilo')}}" class="element_navbar">Profilo</a>
+            <a href="{{url('/home/profilo')}}" class="element_navbar">Profilo</a>
         @endcan
 
         @auth

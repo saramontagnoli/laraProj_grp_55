@@ -42,10 +42,11 @@ Route::get('/comenoleggiare', function () {
     return view('comenoleggiare');
 });
 
+//Rotte di definizione dell'utente di livello 2 (utente registrato che può noleggiare le auto)
 Route::get('/home', [UserController::class, 'index'])
     ->name('user')->middleware('can:isUser');
 
-Route::get('/user/profilo', [UserController::class, 'profilo'])
+Route::get('/home/profilo', [UserController::class, 'profilo'])
     ->name('user/profilo')->middleware('can:isUser');
 
 
