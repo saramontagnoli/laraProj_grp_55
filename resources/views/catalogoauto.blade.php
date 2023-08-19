@@ -33,6 +33,11 @@
                 &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; Data fine noleggio:
                 <input type="date" name="fine">
             </label>
+            @if(session('popupMessage'))
+                <script>
+                    alert("{{ session('popupMessage') }}");
+                </script>
+            @endif
         @endcan
 
         <!-- Pulsante di invio del form -->
