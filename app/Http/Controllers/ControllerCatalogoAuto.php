@@ -43,8 +43,7 @@ class ControllerCatalogoAuto extends Controller
 
         // Query di base per ottenere la lista di offerte e le aziende che le pubblicano
         $dbQuery = Auto::join("modello", "auto.modello_ref", "=", "modello.codice_modello")
-            ->join("marca", "modello.marca_ref", "=", "marca.codice_marca")
-            ->join("noleggio", "noleggio.auto_ref", "=", "auto.codice_auto");
+            ->join("marca", "modello.marca_ref", "=", "marca.codice_marca");
 
         //query in base al prezzo
         if ($filtro_min < $filtro_max)
@@ -68,21 +67,27 @@ class ControllerCatalogoAuto extends Controller
         }
 
 
-
         //query in base al periodo
-        if($filtro_inizio<$filtro_fine && ($filtro_inizio!=null || $filtro_fine!=null))
-        {
-            $periodo=$dbQuery->where('noleggio.data_inizio', '<=' , $filtro_inizio)
-                ->where('noleggio.data_fine', '>=' , $filtro_fine);
-            $cardAuto['periodo']=$periodo;
-        }
-        if ($filtro_inizio==null || $filtro_fine==null)
-        {
-            $request->session()->flash('popupMessage', "Impostare data inizio e data fine noleggio");
-        }
-        if ($filtro_inizio>$filtro_fine)
-        {
-            $request->session()->flash('popupMessage', "La data di inizio noleggio deve essere inferiore della data di fine noleggio!");
+        if($filtro_inizio!=null && $filtro_fine!=null){
+            if($filtro_inizio<=$filtro_fine)
+            {
+                $periodo = $dbQuery->join("noleggio", "noleggio.auto_ref", "=", "auto.codice_auto")
+                    ->where(function ($query) use ($filtro_inizio, $filtro_fine) {
+                        $query->where('noleggio.data_inizio', '>', $filtro_inizio)
+                            ->Where('noleggio.data_fine', '>', $filtro_fine);
+                    })
+                    ->orWhere(function ($query) use ($filtro_inizio, $filtro_fine) {
+                        $query->where('noleggio.data_inizio', '<', $filtro_inizio)
+                            ->where('noleggio.data_fine', '<', $filtro_fine);
+                    })
+                    ->get();
+
+
+                $cardAuto['periodo']=$periodo;
+            }else if($filtro_inizio> $filtro_fine) {
+                $popupMessage = "Errore, date non valide!";
+                echo "<script>alert('$popupMessage');</script>";
+            }
         }
 
         $dbQuery = $dbQuery->get();

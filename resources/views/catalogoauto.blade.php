@@ -7,10 +7,7 @@
     <!-- Sezione dedicata al catalogo delle auto noleggiabili -->
     <h1 class="titolo_info">CATALOGO AUTO NOLEGGIABILI</h1>
 
-
-    <button onclick="mostra()">Ricerca</button>
-
-    <form method="POST" id="mostra_nascondi" style="display: none" action="{{ route('catalogoauto') }}">
+    <form method="POST" action="{{ route('catalogoauto') }}">
         @csrf
         <h2>Filtri di ricerca:</h2>
         <!-- Input per il filtro di ricerca -->
@@ -43,22 +40,15 @@
             @endif
         @endcan
 
-        <!-- Pulsante di invio della form -->
+        <!-- Pulsante di invio del form -->
         &nbsp; &nbsp; &nbsp; &nbsp;
         <button type="submit">Cerca</button>
     </form>
 
-    <!-- Scrcipt per mostrare o nascondere la form di ricerca delle auto noleggiabili -->
     <script>
-        function mostra() {
-            var x = document.getElementById("mostra_nascondi");
-            if (x.style.display === "none") {
-                x.style.display = "block";
-            } else {
-                x.style.display = "none";
-            }
-        }
+
     </script>
+
 
     <!-- Definizione della riga del catalogo -->
     <div class="rigacatalogo">
