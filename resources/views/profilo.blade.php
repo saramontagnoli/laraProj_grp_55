@@ -1,9 +1,11 @@
 @extends('layouts.struttura')
 
 @section('content')
-    <div class="static">
-        <p>Nome {{ Auth::user()->nome }}</p>
-        <p>Cognome {{ Auth::user()->cognome }}</p>
-        <p>Seleziona la funzione da attivare</p>
+    <div class="static posizione_cx">
+        <img src="{{asset('assets/img/icona_chisiamo.png')}}">
+        <h2 style="text-align: center; font-size: x-large">Nome: {{ Auth::user()->nome }}</h2>
+        <h2 style="text-align: center; font-size: x-large">Cognome: {{ Auth::user()->cognome }}</h2>
+        <h2 style="text-align: center; font-size: x-large">Data nascita: {{ Auth::user()->data_nascita }}</h2>
+        <h2 style="text-align: center; font-size: x-large">E-mail: {{ Auth::user()->email }}</h2>
     </div>
 @endsection
