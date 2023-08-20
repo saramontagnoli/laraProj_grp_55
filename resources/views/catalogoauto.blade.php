@@ -9,6 +9,8 @@
 
     <button onclick="mostra()">Ricerca</button>
 
+    <button onclick="mostra2()">Noleggia</button>
+
     <form method="POST" id="mostra_nascondi" style="display: none" action="{{ route('catalogoauto') }}">
         @csrf
         <h2>Filtri di ricerca:</h2>
@@ -57,6 +59,40 @@
             }
         }
     </script>
+
+
+    <form method="POST" id="compari_scompari" style="display: none" action="{{ route('catalogoauto') }}">
+        @csrf
+        <h2>Noleggio:</h2>
+        <!-- Input per il filtro di ricerca -->
+        <label>
+            Inserire prezzo min:
+            <input type="number" step="0.01" name="min" placeholder="Prezzo min" min="0">
+        </label>
+
+        <label>
+            Inserire prezzo max:
+            <input type="number" step="0.01" name="max" placeholder="Prezzo max" min="0">
+        </label>
+
+        <br><br>
+
+        <!-- Pulsante di invio del form -->
+        &nbsp; &nbsp; &nbsp; &nbsp;
+        <button type="submit">Noleggia</button>
+    </form>
+
+    <script>
+        function mostra2() {
+            var x = document.getElementById("compari_scompari");
+            if (x.style.display === "none") {
+                x.style.display = "block";
+            } else {
+                x.style.display = "none";
+            }
+        }
+    </script>
+
 
 
     <!-- Definizione della riga del catalogo -->
