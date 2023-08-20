@@ -11,6 +11,7 @@
 
     <button onclick="mostra2()">Noleggia</button>
 
+    <!-- Form da completare per la ricerca delle auto -->
     <form method="POST" id="mostra_nascondi" style="display: none" action="{{ route('catalogoauto') }}">
         @csrf
         <h2>Filtri di ricerca:</h2>
@@ -61,6 +62,7 @@
     </script>
 
 
+    <!-- Form da completare per il noleggio delle auto -->
     <form method="POST" id="compari_scompari" style="display: none" action="{{ route('catalogoauto') }}">
         @csrf
         <h2>Noleggio:</h2>
