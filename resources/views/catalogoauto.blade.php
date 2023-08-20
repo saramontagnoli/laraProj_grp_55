@@ -7,7 +7,9 @@
     <!-- Sezione dedicata al catalogo delle auto noleggiabili -->
     <h1 class="titolo_info">CATALOGO AUTO NOLEGGIABILI</h1>
 
-    <form method="POST" action="{{ route('catalogoauto') }}">
+    <button onclick="mostra()">Ricerca</button>
+
+    <form method="POST" id="mostra_nascondi" style="display: none" action="{{ route('catalogoauto') }}">
         @csrf
         <h2>Filtri di ricerca:</h2>
         <!-- Input per il filtro di ricerca -->
@@ -46,7 +48,14 @@
     </form>
 
     <script>
-
+        function mostra() {
+            var x = document.getElementById("mostra_nascondi");
+            if (x.style.display === "none") {
+                x.style.display = "block";
+            } else {
+                x.style.display = "none";
+            }
+        }
     </script>
 
 

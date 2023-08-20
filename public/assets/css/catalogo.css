@@ -97,6 +97,9 @@
     background-color:#EFEFEF; /* colore di sfondo grigio chiaro */
 }
 
+/*
+    Classe di formattazione per la form a scomparsa
+*/
 #mostra_nascondi {
     width: 100%;
     padding: 50px 0;
