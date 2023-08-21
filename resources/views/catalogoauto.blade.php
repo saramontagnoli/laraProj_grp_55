@@ -7,9 +7,7 @@
     <!-- Sezione dedicata al catalogo delle auto noleggiabili -->
     <h1 class="titolo_info">CATALOGO AUTO NOLEGGIABILI</h1>
 
-    <button onclick="mostra()">Ricerca</button>
-
-    <button onclick="mostra2()">Noleggia</button>
+    <button onclick="mostra()">Ricerca o Noleggia</button>
 
     <!-- Form da completare per la ricerca delle auto -->
     <form method="POST" id="mostra_nascondi" style="display: none" action="{{ route('catalogoauto') }}">
@@ -35,7 +33,7 @@
             </label>
 
             <label>
-                &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; Data fine noleggio:
+                Data fine noleggio:
                 <input type="date" name="fine">
             </label>
             @if(session('popupMessage'))
@@ -46,64 +44,43 @@
         @endcan
 
         <!-- Pulsante di invio del form -->
-        &nbsp; &nbsp; &nbsp; &nbsp;
-        <button type="submit">Cerca</button>
+        <button type="submit"  onclick="diattivaCampiNoleggio()" data="true">Cerca</button>
+        <button type="submit" onclick="attivaCampiNoleggio()" data="true">Noleggia</button>
     </form>
-
     <script>
-        function mostra() {
-            var x = document.getElementById("mostra_nascondi");
-            if (x.style.display === "none") {
-                x.style.display = "block";
-            } else {
-                x.style.display = "none";
+        function attivaCampiNoleggio() {
+            var campiPrezzoMin = document.getElementsByName('min')[0];
+            var campiPrezzoMax = document.getElementsByName('max')[0];
+            var campiPeriodoInizio = document.getElementsByName('inizio')[0];
+            var campiPeriodoFine = document.getElementsByName('fine')[0];
+
+            var noleggiaButton = document.querySelector('button[onclick="attivaCampiNoleggio()"]');
+            if (noleggiaButton.getAttribute('data') == 'true') {
+                campiPrezzoMax.setAttribute('required', 'required');
+                campiPrezzoMin.setAttribute('required', 'required');
+                campiPeriodoInizio.setAttribute('required', 'required');
+                campiPeriodoFine.setAttribute('required', 'required');
+            }
+        }
+
+        function diattivaCampiNoleggio(){
+            var campiPrezzoMin = document.getElementsByName('min')[0];
+            var campiPrezzoMax = document.getElementsByName('max')[0];
+            var campiPeriodoInizio = document.getElementsByName('inizio')[0];
+            var campiPeriodoFine = document.getElementsByName('fine')[0];
+
+            var noleggiaButton = document.querySelector('button[onclick="attivaCampiNoleggio()"]');
+            if (noleggiaButton.getAttribute('data') == 'true') {
+                campiPrezzoMin.removeAttribute('required');
+                campiPrezzoMax.removeAttribute('required');
+                campiPeriodoInizio.removeAttribute('required');
+                campiPeriodoFine.removeAttribute('required');
             }
         }
     </script>
-
-
-    <!-- Form da completare per il noleggio delle auto -->
-    <form method="POST" id="compari_scompari" style="display: none" action="{{ route('catalogoauto') }}">
-        @csrf
-        <h2>Noleggio:</h2>
-        <!-- Input per il filtro di ricerca -->
-        <label>
-            Inserire prezzo min:
-            <input type="number" step="0.01" name="min" placeholder="Prezzo min" min="0">
-        </label>
-
-        <label>
-            Inserire prezzo max:
-            <input type="number" step="0.01" name="max" placeholder="Prezzo max" min="0">
-        </label>
-
-        <br><br>
-
-        @can('isUser')
-            <label>
-                Data inizio noleggio:
-                <input type="date" name="inizio">
-            </label>
-
-            <label>
-                &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; Data fine noleggio:
-                <input type="date" name="fine">
-            </label>
-            @if(session('popupMessage'))
-                <script>
-                    alert("{{ session('popupMessage') }}");
-                </script>
-            @endif
-        @endcan
-
-        <!-- Pulsante di invio del form -->
-        &nbsp; &nbsp; &nbsp; &nbsp;
-        <button type="submit">Noleggia</button>
-    </form>
-
     <script>
-        function mostra2() {
-            var x = document.getElementById("compari_scompari");
+        function mostra() {
+            var x = document.getElementById("mostra_nascondi");
             if (x.style.display === "none") {
                 x.style.display = "block";
             } else {
