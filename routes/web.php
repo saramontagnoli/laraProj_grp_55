@@ -46,8 +46,16 @@ Route::get('/comenoleggiare', function () {
 Route::get('/home', [UserController::class, 'index'])
     ->name('user')->middleware('can:isUser');
 
+//Rotta di definizione per la visualizzazione delle informazioni del profilo
 Route::get('/home/profilo', [UserController::class, 'profilo'])
     ->name('user/profilo')->middleware('can:isUser');
 
+
+
+// Rotta per accedere alla modifica dei dati personali (livello 1).
+Route::get('/home/profilo/dati', [UserController::class, 'getDatiPersonali1'])
+    ->name('modificaDatiL1');
+// Rotta che aggiorna i dati.
+Route::put('/modificaDatiL1', [UserController::class, 'updateDatiPersonali1']);
 
 require __DIR__.'/auth.php';
