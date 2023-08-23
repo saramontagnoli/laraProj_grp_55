@@ -61,7 +61,7 @@
     Classe di formattazione per il bottone indietro nella pagina singola dell'auto
     Definizione dimensioni, colori e decorazioni
 */
-.buttonindietro {
+.bottone {
     background-color: #f1f1f1; /* colore di sfondo grigio chiaro */
     color: black; /* colore del font nero */
     text-decoration: none; /* nessuna decorazione del testo */

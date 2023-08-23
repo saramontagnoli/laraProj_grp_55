@@ -7,7 +7,7 @@
     <br>
 
     <!-- Button indietro che permette di tornare al catalogo generale delle auto -->
-    <a href="{{ route('catalogoauto') }}" class="buttonindietro">&laquo; INDIETRO </a>
+    <a href="{{ route('catalogoauto') }}" class="bottone">&laquo; INDIETRO </a>
 
     <!-- Se non sono stati trovati i dati dell'auto -->
     @if(count($cardAuto) < 1)
@@ -30,7 +30,7 @@
                     <!-- Immagine dell'auto selezionata -->
                     <img class="immagine_chisiamo" style="padding-left: 70px" src="{{ asset($auto['foto_auto']) }}" alt="ImmagineAuto" height="200px">
                     <br><br>
-                    <a href="{{url('/catalogoauto/'.$auto['codice_auto'].'/noleggio/') }}" class="buttonindietro">Noleggia </a>
+                    <a href="{{ url('/catalogoauto/'.$auto['codice_auto'].'/noleggio') }}" class="bottone">Noleggia </a>
                 </div>
 
                 <!-- Definizione della colonna a destra -->

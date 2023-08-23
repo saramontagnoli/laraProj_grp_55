@@ -7,6 +7,7 @@ use App\Models\User;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Hash;
+use PhpParser\Node\Expr\Array_;
 
 class UserController extends Controller {
 
@@ -71,16 +72,17 @@ class UserController extends Controller {
 
     function noleggioAuto($codice_auto){
         $username=Auth::user()->username;
-        Auto::join("modello", "auto.modello_ref", "=", "modello.codice_modello")
+        $query = Auto::join("modello", "auto.modello_ref", "=", "modello.codice_modello")
             ->join("marca", "modello.marca_ref", "=", "marca.codice_marca")
             ->where ('codice_auto', $codice_auto)
             ->get();
 
-        $auto=new Auto();
-        $auto['codice_auto']=$codice_auto;
-        $auto['user']=$username;
+        $auto = Array();
+        $auto["auto"] = $query;
 
-        return view('noleggio');
+
+        return view('noleggio', $auto);
+
     }
 
 }

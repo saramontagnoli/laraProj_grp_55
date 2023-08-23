@@ -59,6 +59,7 @@ Route::get('/home/profilo/dati', [UserController::class, 'getDatiPersonali1'])
 Route::put('/modificaDatiL1', [UserController::class, 'updateDatiPersonali1']);
 
 //Rotta per noleggiare un auto
-Route::get('/catalogoauto/{codice_auto}/noleggio', [UserController::class, 'noleggioAuto']);
+Route::get('/catalogoauto/{codice_auto}/noleggio', [UserController::class, 'noleggioAuto'])
+    ->name('/noleggio');
 
 require __DIR__.'/auth.php';
