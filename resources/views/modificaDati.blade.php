@@ -7,12 +7,6 @@
         <div class="form-box form-box-inputdialog">
             <h2>Modifica dati personali di: {{$dati['username']}}</h2>
 
-            @if (session('success'))
-                <div class="form-insertFAQ">
-                    {{ session('success') }}
-                </div>
-            @endif
-
             <br>
             @csrf
             {{ Form::open(array('url' => '/modificaDatiL1', 'enctype' => 'multipart/form-data', 'method' => 'PUT')) }}
@@ -72,8 +66,19 @@
                     @endif
                 </div>
             </div>
-
-            <button type="submit" class="btn">Modifica dati</button>
+            <button onclick="myFunction()" type="submit" class="btn">Modifica dati</button>
             <br>
         </div>
+
+        <script>
+            function myFunction() {
+                let text;
+                if (confirm("sei sicuro di modificare i tuoi dati?") == true) {
+                    text = "You pressed OK!";
+                } else {
+                    text = "You canceled!";
+                }
+                document.getElementById("demo").innerHTML = text;
+            }
+        </script>
 @endsection

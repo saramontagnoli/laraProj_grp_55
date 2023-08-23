@@ -36,7 +36,8 @@ class UserController extends Controller {
             'nome' => ['required','string','max:20'],
             'cognome' => ['required','string','max:20'],
             'data_nascita' => ['required', 'date_format:Y-m-d'],
-            'email' => ['string','email','max:30']
+            'email' => ['string','email','max:30'],
+            'password' => ['required','string','min:8']
         ]);
 
         if (!($request->input('password')))
