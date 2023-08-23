@@ -6,9 +6,12 @@
 
     <!-- Sezione dedicata al catalogo delle auto noleggiabili -->
     <h1 class="titolo_info">CATALOGO AUTO NOLEGGIABILI</h1>
-
-    <button onclick="mostra()">Ricerca o Noleggia</button>
-
+    @if(!auth()->check())
+        <button onclick="mostra()">Ricerca</button>
+    @endif
+    @can('isUser')
+     <button onclick="mostra()">Ricerca o Noleggia</button>
+    @endcan
     <!-- Form da completare per la ricerca delle auto -->
     <form method="POST" id="mostra_nascondi" style="display: none" action="{{ route('catalogoauto') }}">
         @csrf
@@ -45,7 +48,9 @@
 
         <!-- Pulsante di invio del form -->
         <button type="submit"  onclick="diattivaCampiNoleggio()" data="true">Cerca</button>
-        <button type="submit" onclick="attivaCampiNoleggio()" data="true">Noleggia</button>
+       @can('isUser')
+            <button type="submit" onclick="attivaCampiNoleggio()" data="true">Noleggia</button>
+        @endcan
     </form>
     <script>
         function attivaCampiNoleggio() {

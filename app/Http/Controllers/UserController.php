@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Auto;
 use App\Models\User;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
@@ -67,4 +68,19 @@ class UserController extends Controller {
 
         return redirect()->route('user/profilo');
     }
+
+    function noleggioAuto($codice_auto){
+        $username=Auth::user()->username;
+        Auto::join("modello", "auto.modello_ref", "=", "modello.codice_modello")
+            ->join("marca", "modello.marca_ref", "=", "marca.codice_marca")
+            ->where ('codice_auto', $codice_auto)
+            ->get();
+
+        $auto=new Auto();
+        $auto['codice_auto']=$codice_auto;
+        $auto['user']=$username;
+
+        return view('noleggio');
+    }
+
 }

@@ -29,6 +29,8 @@
                     <br>
                     <!-- Immagine dell'auto selezionata -->
                     <img class="immagine_chisiamo" style="padding-left: 70px" src="{{ asset($auto['foto_auto']) }}" alt="ImmagineAuto" height="200px">
+                    <br><br>
+                    <a href="{{url('/catalogoauto/'.$auto['codice_auto'].'/noleggio/') }}" class="buttonindietro">Noleggia </a>
                 </div>
 
                 <!-- Definizione della colonna a destra -->
