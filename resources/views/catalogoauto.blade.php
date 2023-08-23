@@ -47,11 +47,14 @@
         @endcan
 
         <!-- Pulsante di invio del form -->
-        <button type="submit"  onclick="diattivaCampiNoleggio()" data="true">Cerca</button>
+        <!-- <button type="submit" name="cerca" onclick="diattivaCampiNoleggio()" data="true">Cerca</button> -->
+        <button type="submit" name="action" value="submit1">Cerca</button>
        @can('isUser')
-            <button type="submit" onclick="attivaCampiNoleggio()" data="true">Noleggia</button>
+           <!-- <button type="submit" name="noleggia" onclick="attivaCampiNoleggio()" data="true">Noleggia</button> -->
+            <button type="submit" name="action" value="submit2">Noleggia</button>
         @endcan
     </form>
+
     <script>
         function attivaCampiNoleggio() {
             var campiPrezzoMin = document.getElementsByName('min')[0];
@@ -83,6 +86,7 @@
             }
         }
     </script>
+
     <script>
         function mostra() {
             var x = document.getElementById("mostra_nascondi");
