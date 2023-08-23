@@ -48,42 +48,38 @@
 
         <!-- Pulsante di invio del form -->
         <!-- <button type="submit" name="cerca" onclick="diattivaCampiNoleggio()" data="true">Cerca</button> -->
-        <button type="submit" name="action" value="submit1">Cerca</button>
+        <button type="submit" name="action" value="submit1" onclick="attivaCapiCerca()">Cerca</button>
        @can('isUser')
            <!-- <button type="submit" name="noleggia" onclick="attivaCampiNoleggio()" data="true">Noleggia</button> -->
-            <button type="submit" name="action" value="submit2">Noleggia</button>
+            <button type="submit" name="action" value="submit2" onclick="attivaCampiNoleggio()">Noleggia</button>
         @endcan
     </form>
 
     <script>
         function attivaCampiNoleggio() {
-            var campiPrezzoMin = document.getElementsByName('min')[0];
-            var campiPrezzoMax = document.getElementsByName('max')[0];
             var campiPeriodoInizio = document.getElementsByName('inizio')[0];
             var campiPeriodoFine = document.getElementsByName('fine')[0];
-
+            var campiPrezzoMin = document.getElementsByName('min')[0];
+            var campiPrezzoMax = document.getElementsByName('max')[0];
             var noleggiaButton = document.querySelector('button[onclick="attivaCampiNoleggio()"]');
-            if (noleggiaButton.getAttribute('data') == 'true') {
-                campiPrezzoMax.setAttribute('required', 'required');
-                campiPrezzoMin.setAttribute('required', 'required');
+
+                campiPrezzoMin.removeAttribute('required');
+                campiPeriodoFine.removeAttribute('required');
                 campiPeriodoInizio.setAttribute('required', 'required');
                 campiPeriodoFine.setAttribute('required', 'required');
-            }
         }
 
-        function diattivaCampiNoleggio(){
+        function attivaCapiCerca(){
             var campiPrezzoMin = document.getElementsByName('min')[0];
             var campiPrezzoMax = document.getElementsByName('max')[0];
             var campiPeriodoInizio = document.getElementsByName('inizio')[0];
             var campiPeriodoFine = document.getElementsByName('fine')[0];
-
             var noleggiaButton = document.querySelector('button[onclick="attivaCampiNoleggio()"]');
-            if (noleggiaButton.getAttribute('data') == 'true') {
-                campiPrezzoMin.removeAttribute('required');
-                campiPrezzoMax.removeAttribute('required');
+
+                campiPrezzoMin.setAttribute('required', 'required');
+                campiPrezzoMax.setAttribute('required', 'required');
                 campiPeriodoInizio.removeAttribute('required');
                 campiPeriodoFine.removeAttribute('required');
-            }
         }
     </script>
 

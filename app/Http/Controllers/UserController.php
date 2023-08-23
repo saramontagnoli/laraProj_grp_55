@@ -70,17 +70,15 @@ class UserController extends Controller {
         return redirect()->route('user/profilo');
     }
 
+    //funzione per noleggiare un'auto
     function noleggioAuto($codice_auto){
-        $username=Auth::user()->username;
+
         $query = Auto::join("modello", "auto.modello_ref", "=", "modello.codice_modello")
             ->join("marca", "modello.marca_ref", "=", "marca.codice_marca")
             ->where ('codice_auto', $codice_auto)
             ->get();
-
         $auto = Array();
         $auto["auto"] = $query;
-
-
         return view('noleggio', $auto);
 
     }
