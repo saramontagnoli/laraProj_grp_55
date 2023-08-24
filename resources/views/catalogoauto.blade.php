@@ -61,12 +61,11 @@
             var campiPeriodoFine = document.getElementsByName('fine')[0];
             var campiPrezzoMin = document.getElementsByName('min')[0];
             var campiPrezzoMax = document.getElementsByName('max')[0];
-            var noleggiaButton = document.querySelector('button[onclick="attivaCampiNoleggio()"]');
 
-                campiPrezzoMin.removeAttribute('required');
-                campiPeriodoFine.removeAttribute('required');
-                campiPeriodoInizio.setAttribute('required', 'required');
-                campiPeriodoFine.setAttribute('required', 'required');
+            campiPrezzoMin.removeAttribute('required');
+            campiPrezzoMax.removeAttribute('required');
+            campiPeriodoInizio.setAttribute('required', 'required');
+            campiPeriodoFine.setAttribute('required', 'required');
         }
 
         function attivaCapiCerca(){
@@ -74,12 +73,11 @@
             var campiPrezzoMax = document.getElementsByName('max')[0];
             var campiPeriodoInizio = document.getElementsByName('inizio')[0];
             var campiPeriodoFine = document.getElementsByName('fine')[0];
-            var noleggiaButton = document.querySelector('button[onclick="attivaCampiNoleggio()"]');
 
-                campiPrezzoMin.setAttribute('required', 'required');
-                campiPrezzoMax.setAttribute('required', 'required');
-                campiPeriodoInizio.removeAttribute('required');
-                campiPeriodoFine.removeAttribute('required');
+            campiPrezzoMin.setAttribute('required', 'required');
+            campiPrezzoMax.setAttribute('required', 'required');
+            campiPeriodoInizio.removeAttribute('required');
+            campiPeriodoFine.removeAttribute('required');
         }
     </script>
 

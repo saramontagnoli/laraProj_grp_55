@@ -7,7 +7,6 @@ use App\Models\User;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Hash;
-use PhpParser\Node\Expr\Array_;
 
 class UserController extends Controller {
 
@@ -80,7 +79,8 @@ class UserController extends Controller {
         $auto = Array();
         $auto["auto"] = $query;
         return view('noleggio', $auto);
-
     }
+
+
 
 }
