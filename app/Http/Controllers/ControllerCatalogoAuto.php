@@ -33,8 +33,6 @@ class ControllerCatalogoAuto extends Controller
 
     function showCatalogoAutoFiltri(Request $request)
     {
-
-
         //ricerca per prezzo
         $filtro_min = $request->input("min");
         $filtro_max = $request->input("max");
@@ -74,16 +72,20 @@ class ControllerCatalogoAuto extends Controller
         if($filtro_inizio!=null && $filtro_fine!=null){
             if($filtro_inizio<=$filtro_fine)
             {
-                $periodo = $dbQuery->join("noleggio", "noleggio.auto_ref", "=", "auto.codice_auto")
+                $periodo = $dbQuery->select('auto.*', 'marca.nome_marca', 'modello.nome_modello')
+                    ->from('auto')
+                    ->leftJoin('noleggio', 'auto.codice_auto', '=', 'noleggio.auto_ref')
                     ->where(function ($query) use ($filtro_inizio, $filtro_fine) {
-                        $query->where('noleggio.data_inizio', '>', $filtro_inizio)
-                            ->Where('noleggio.data_fine', '>', $filtro_fine);
-                    })
-                    ->orWhere(function ($query) use ($filtro_inizio, $filtro_fine) {
-                        $query->where('noleggio.data_inizio', '<', $filtro_inizio)
-                            ->where('noleggio.data_fine', '<', $filtro_fine);
+                        $query->whereNull('noleggio.auto_ref')
+                            ->orWhere(function ($query) use ($filtro_inizio, $filtro_fine) {
+                                $query->where('noleggio.data_inizio', '>', $filtro_fine)
+                                    ->orWhere('noleggio.data_fine', '<', $filtro_inizio);
+                            });
                     })
                     ->get();
+
+
+
 
                 $cardAuto['periodo']=$periodo;
             }else if($filtro_inizio> $filtro_fine) {
