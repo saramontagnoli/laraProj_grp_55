@@ -6,16 +6,11 @@
 
     <!-- Sezione dedicata al catalogo delle auto noleggiabili -->
     <h1 class="titolo_info">CATALOGO AUTO NOLEGGIABILI</h1>
-    @if(!auth()->check())
-        <button onclick="mostra()">Ricerca</button>
-    @endif
-    @can('isUser')
-     <button onclick="mostra()">Ricerca o Noleggia</button>
-    @endcan
+
     <!-- Form da completare per la ricerca delle auto -->
-    <form method="POST" id="mostra_nascondi" style="display: none" action="{{ route('catalogoauto') }}">
+    <form method="POST" action="{{ route('catalogoauto') }}">
         @csrf
-        <h2>Filtri di ricerca:</h2>
+        <h3>Filtri di ricerca:</h3>
         <!-- Input per il filtro di ricerca -->
         <label>
             Inserire prezzo min:
@@ -47,52 +42,9 @@
         @endcan
 
         <!-- Pulsante di invio del form -->
-        <!-- <button type="submit" name="cerca" onclick="diattivaCampiNoleggio()" data="true">Cerca</button> -->
-        <button type="submit" name="action" value="submit1" onclick="attivaCapiCerca()">Cerca</button>
-       @can('isUser')
-           <!-- <button type="submit" name="noleggia" onclick="attivaCampiNoleggio()" data="true">Noleggia</button> -->
-            <button type="submit" name="action" value="submit2" onclick="attivaCampiNoleggio()">Noleggia</button>
-        @endcan
+
+        <button type="submit" name="action" value="submit1">Cerca</button>
     </form>
-
-    <script>
-        function attivaCampiNoleggio() {
-            var campiPeriodoInizio = document.getElementsByName('inizio')[0];
-            var campiPeriodoFine = document.getElementsByName('fine')[0];
-            var campiPrezzoMin = document.getElementsByName('min')[0];
-            var campiPrezzoMax = document.getElementsByName('max')[0];
-
-            campiPrezzoMin.removeAttribute('required');
-            campiPrezzoMax.removeAttribute('required');
-            campiPeriodoInizio.setAttribute('required', 'required');
-            campiPeriodoFine.setAttribute('required', 'required');
-        }
-
-        function attivaCapiCerca(){
-            var campiPrezzoMin = document.getElementsByName('min')[0];
-            var campiPrezzoMax = document.getElementsByName('max')[0];
-            var campiPeriodoInizio = document.getElementsByName('inizio')[0];
-            var campiPeriodoFine = document.getElementsByName('fine')[0];
-
-            campiPrezzoMin.setAttribute('required', 'required');
-            campiPrezzoMax.setAttribute('required', 'required');
-            campiPeriodoInizio.removeAttribute('required');
-            campiPeriodoFine.removeAttribute('required');
-        }
-    </script>
-
-    <script>
-        function mostra() {
-            var x = document.getElementById("mostra_nascondi");
-            if (x.style.display === "none") {
-                x.style.display = "block";
-            } else {
-                x.style.display = "none";
-            }
-        }
-    </script>
-
-
 
     <!-- Definizione della riga del catalogo -->
     <div class="rigacatalogo">

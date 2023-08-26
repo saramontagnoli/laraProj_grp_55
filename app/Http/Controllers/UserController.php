@@ -70,17 +70,23 @@ class UserController extends Controller {
     }
 
     //funzione per noleggiare un'auto
-    function noleggioAuto($codice_auto){
-
+    function noleggioAuto($codice_auto, Request $request)
+    {
         $query = Auto::join("modello", "auto.modello_ref", "=", "modello.codice_modello")
             ->join("marca", "modello.marca_ref", "=", "marca.codice_marca")
             ->where ('codice_auto', $codice_auto)
             ->get();
-        $auto = Array();
-        $auto["auto"] = $query;
-        return view('noleggio', $auto);
+        $cardAuto = Array();
+        $cardAuto['auto'] = $query;
+        $noleggio_inizio = $request->input("inizioNoleggio");
+        $noleggio_fine = $request->input("fineNoleggio");
+        if($noleggio_fine<$noleggio_inizio) {
+            $popupMessage = "Errore, date non valide!";
+            echo "<script>alert('$popupMessage');</script>";
+
+        }
+        return view('autosingola', $cardAuto);
+           // return view('noleggio', $auto);
     }
-
-
 
 }

@@ -30,7 +30,23 @@
                     <!-- Immagine dell'auto selezionata -->
                     <img class="immagine_chisiamo" style="padding-left: 70px" src="{{ asset($auto['foto_auto']) }}" alt="ImmagineAuto" height="200px">
                     <br><br>
-                    <a href="{{ url('/catalogoauto/'.$auto['codice_auto'].'/noleggio') }}" class="bottone">Noleggia </a>
+                    @can('isUser')
+                        <h3>Per noleggiare l'auto conferma il periodo</h3>
+                        <form method="POST" action="{{ route('/catalogoauto/' .$auto['codice_auto']) }}">
+                            @csrf
+                            <label>
+                                Da:
+                                <input type="date" name="inizioNoleggio" required>
+                            </label>
+                            <label>
+                                A:
+                                <input type="date" name="fineNoleggio" required>
+                            </label>
+                            <button type="submit" name="action" value="submit1">Noleggia</button>
+
+                        </form>
+
+                    @endcan
                 </div>
 
                 <!-- Definizione della colonna a destra -->

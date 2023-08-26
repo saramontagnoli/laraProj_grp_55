@@ -84,9 +84,6 @@ class ControllerCatalogoAuto extends Controller
                     })
                     ->get();
 
-
-
-
                 $cardAuto['periodo']=$periodo;
             }else if($filtro_inizio> $filtro_fine) {
                 $popupMessage = "Errore, date non valide!";
