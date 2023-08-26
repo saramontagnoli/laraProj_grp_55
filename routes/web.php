@@ -51,7 +51,6 @@ Route::get('/home/profilo', [UserController::class, 'profilo'])
     ->name('user/profilo')->middleware('can:isUser');
 
 
-
 // Rotta per accedere alla modifica dei dati personali (livello 1).
 Route::get('/home/profilo/dati', [UserController::class, 'getDatiPersonali1'])
     ->name('modificaDatiL1');
@@ -60,9 +59,6 @@ Route::put('/modificaDatiL1', [UserController::class, 'updateDatiPersonali1']);
 
 // Rotta per accedere alle auto noleggiate.
 
-Route::post('/catalogoauto/{codice_auto}', [UserController::class, 'noleggioAuto']);
-
-//rotta per aggiungere auto noleggiate
-
+Route::post('/catalogoauto/{codice_auto}/noleggio', [UserController::class, 'noleggioAuto']);
 
 require __DIR__.'/auth.php';

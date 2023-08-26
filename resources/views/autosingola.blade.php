@@ -32,7 +32,7 @@
                     <br><br>
                     @can('isUser')
                         <h3>Per noleggiare l'auto conferma il periodo</h3>
-                        <form method="POST" action="{{ route('/catalogoauto/' .$auto['codice_auto']) }}">
+                        <form method="POST" action="{{url('/catalogoauto/'.$auto['codice_auto'].'/noleggio')}}">
                             @csrf
                             <label>
                                 Da:
