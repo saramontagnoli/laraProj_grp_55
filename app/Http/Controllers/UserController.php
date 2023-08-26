@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\Auto;
+use App\Models\Noleggio;
 use App\Models\User;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
@@ -90,13 +91,21 @@ class UserController extends Controller {
             $popupMessage = "Errore, date non valide!";
             echo "<script>alert('$popupMessage');</script>";
             return view("autosingola", $cardAuto);
-        }else
-        {
+        }else {
+            //variabile noleggio da inserire nel DB
+            $noleggio = new Noleggio();
+
+            // questo è lo username del cliente
+            $user = Auth::user()->id;
+
+            $noleggio->data_inizio = $noleggio_inizio;
+            $noleggio->data_fine = $noleggio_fine;
+            $noleggio->auto_ref = $codice_auto;
+            $noleggio->utente_ref = $user;
+            $noleggio->save();
 
             return view("noleggio", $cardAuto);
         }
-
-
     }
 
 }

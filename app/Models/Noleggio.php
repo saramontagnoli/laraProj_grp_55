@@ -3,8 +3,9 @@
 namespace App\Models;
 
 use Illuminate\Database\Eloquent\Factories\HasFactory;
+use Illuminate\Database\Eloquent\Model;
 
-class Noleggio
+class Noleggio extends Model
 {
     use HasFactory;
 
@@ -14,4 +15,12 @@ class Noleggio
     //definizione della primary key = codice_marca
     protected $primaryKey = 'codice_noleggio';
     public $timestamps = false;
+
+    protected $fillable =
+        [
+            'data_inizio',
+            'data_fine',
+            'auto_ref',
+            'utente_ref',
+        ];
 }
