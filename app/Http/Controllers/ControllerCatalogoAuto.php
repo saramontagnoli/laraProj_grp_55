@@ -17,8 +17,8 @@ class ControllerCatalogoAuto extends Controller
         $auto = Auto::join("modello", "auto.modello_ref", "=", "modello.codice_modello")
             ->join("marca", "modello.marca_ref", "=", "marca.codice_marca")
             ->get();
-
-        return view('catalogoauto', ['cardAuto'=>$auto]);
+        $cardAuto["cardAuto"]=$auto;
+        return view('catalogoauto', $cardAuto);
     }
 
     function showAutoSpec($ccodice_auto)
@@ -27,8 +27,8 @@ class ControllerCatalogoAuto extends Controller
             ->join("marca", "modello.marca_ref", "=", "marca.codice_marca")
             ->where('codice_auto', $ccodice_auto)
             ->get();
-
-        return view('autosingola', ['cardAuto'=>$auto]);
+        $cardAuto["cardAuto"]=$auto;
+        return view('autosingola', $cardAuto);
     }
 
     function showCatalogoAutoFiltri(Request $request)
@@ -46,19 +46,25 @@ class ControllerCatalogoAuto extends Controller
         $dbQuery = Auto::join("modello", "auto.modello_ref", "=", "modello.codice_modello")
             ->join("marca", "modello.marca_ref", "=", "marca.codice_marca");
 
+        // Questo è l'array che contiene i dati che vengono inviati alla View
+        $cardAuto = Array();
+        $cardAuto["cardAuto"]=$dbQuery;
+
         //query in base al prezzo
         if ($filtro_min < $filtro_max)
         {
             if($filtro_max != null)
             {
                 $massimo = $dbQuery->where("auto.costo_giorno", "<=", $filtro_max);
-                $cardAuto['massimo'] = $massimo;
+                $massimo = $massimo->get();
+                $cardAuto['cardAuto'] = $massimo;
             }
 
             if($filtro_min != null)
             {
                 $minimo = $dbQuery->where("auto.costo_giorno", ">=", $filtro_min);
-                $cardAuto['minimo'] = $minimo;
+                $minimo = $minimo->get();
+                $cardAuto['cardAuto'] = $minimo;
             }
         }
         if($filtro_min > $filtro_max)
@@ -72,33 +78,28 @@ class ControllerCatalogoAuto extends Controller
         if($filtro_inizio!=null && $filtro_fine!=null){
             if($filtro_inizio<=$filtro_fine)
             {
-                $periodo = $dbQuery->select('auto.*', 'marca.nome_marca', 'modello.nome_modello')
-                    ->from('auto')
-                    ->join('noleggio', 'auto.codice_auto', '=', 'noleggio.auto_ref')
-                    ->where(function ($query) use ($filtro_inizio, $filtro_fine) {
-                        $query->whereNull('noleggio.auto_ref')
-                            ->orWhere(function ($query) use ($filtro_inizio, $filtro_fine) {
-                                $query->where('noleggio.data_inizio', '>', $filtro_fine)
-                                    ->orWhere('noleggio.data_fine', '<', $filtro_inizio);
-                            });
+                $periodo = Auto::select('auto.costo_giorno', 'auto.foto_auto', 'marca.nome_marca', 'modello.nome_modello')
+                    ->join('modello', 'auto.modello_ref', '=', 'modello.codice_modello')
+                    ->join('marca', 'modello.marca_ref', '=', 'marca.codice_marca')
+                    ->whereNotIn('auto.codice_auto', function ($query) use ($filtro_inizio, $filtro_fine) {
+                        $query->select('auto_ref')
+                            ->from('noleggio')
+                            ->whereBetween('data_inizio', [$filtro_inizio, $filtro_fine])
+                            ->orWhereBetween('data_fine', [$filtro_inizio, $filtro_fine]);
                     })
+                    ->orWhereNotIn('auto.codice_auto', function ($query) {
+                        $query->select('noleggio.auto_ref')
+                            ->from('noleggio');
+                    })
+                    ->groupBy('marca.nome_marca', 'modello.nome_modello', 'auto.costo_giorno', 'auto.foto_auto')
                     ->get();
 
-                $cardAuto['periodo']=$periodo;
+                $cardAuto["cardAuto"]=$periodo;
             }else if($filtro_inizio> $filtro_fine) {
                 $popupMessage = "Errore, date non valide!";
                 echo "<script>alert('$popupMessage');</script>";
             }
         }
-
-        $dbQuery = $dbQuery->get();
-
-        // Questo è l'array che contiene i dati che vengono inviati alla View
-        $cardAuto = Array();
-
-        $cardAuto["cardAuto"] = $dbQuery;
-
-
         // Ritorno la View con i dati inseriti nell'array, che verranno visualizzati sulla View stessa.
         return view("catalogoauto", $cardAuto);
 
