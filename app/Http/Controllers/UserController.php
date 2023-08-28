@@ -114,6 +114,15 @@ class UserController extends Controller {
                 $noleggio->auto_ref = $codice_auto;
                 $noleggio->utente_ref = $user;
                 $noleggio->save();
+
+                $dbQuery = DB:: table('noleggio')
+                    ->where ('auto_ref', $codice_auto)
+                    ->where('data_inizio', '=', $noleggio_inizio)
+                    ->where('data_fine', '=', $noleggio_fine)
+                    ->get();
+
+                $cardAuto["cardAuto"] = $dbQuery;
+
                 return view("noleggio", $cardAuto);
 
             } else {
