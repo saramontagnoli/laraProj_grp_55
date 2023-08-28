@@ -93,26 +93,17 @@ class UserController extends Controller {
             echo "<script>alert('$popupMessage');</script>";
             return view("autosingola", $cardAuto);
         }else {
-            $noleggio_disponibile = DB::table('auto')
-                ->select('auto.*', 'marca.nome_marca', 'modello.nome_modello')
-                ->join("modello", "auto.modello_ref", "=", "modello.codice_modello")
-                ->join("marca", "modello.marca_ref", "=", "marca.codice_marca")
-                ->leftJoin('noleggio', 'auto.codice_auto', '=', 'noleggio.auto_ref')
-                ->where(function ($query) use ($noleggio_inizio, $noleggio_fine) {
-                    $query->whereNull('noleggio.auto_ref')
-                        ->orWhere(function ($query) use ($noleggio_inizio, $noleggio_fine) {
-                            $query->where('noleggio.data_inizio', '>', $noleggio_fine)
-                                ->orWhere('noleggio.data_fine', '<', $noleggio_inizio);
-                        });
-                })
-                ->get();
+
+            $noleggio_disponibile = Noleggio::whereBetween('data_inizio', [$noleggio_inizio, $noleggio_fine])
+                ->orWhereBetween('data_fine', [$noleggio_inizio, $noleggio_fine])
+                ->exists();
 
             if ($dbQuery->isEmpty()) {
                 // L'auto selezionata non esiste
                 $popupMessage = "Auto non trovata!";
                 echo "<script>alert('$popupMessage');</script>";
                 return view("autosingola", $cardAuto);
-            } else if ($noleggio_disponibile->isEmpty()) {
+            } else if (! $noleggio_disponibile) {
                 //variabile noleggio da inserire nel DB
                 $noleggio = new Noleggio();
                 // questo è lo username del cliente
