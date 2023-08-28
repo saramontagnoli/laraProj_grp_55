@@ -74,7 +74,7 @@ class ControllerCatalogoAuto extends Controller
             {
                 $periodo = $dbQuery->select('auto.*', 'marca.nome_marca', 'modello.nome_modello')
                     ->from('auto')
-                    ->leftJoin('noleggio', 'auto.codice_auto', '=', 'noleggio.auto_ref')
+                    ->join('noleggio', 'auto.codice_auto', '=', 'noleggio.auto_ref')
                     ->where(function ($query) use ($filtro_inizio, $filtro_fine) {
                         $query->whereNull('noleggio.auto_ref')
                             ->orWhere(function ($query) use ($filtro_inizio, $filtro_fine) {

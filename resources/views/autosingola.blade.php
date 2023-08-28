@@ -25,14 +25,14 @@
                 <!-- Definizione della colonna a sinistra -->
                 <div class="colonna colonna1 separatorepiccolo">
                     <!-- Targa dell'auto selezionata -->
-                    <h1 class="titolo_info"><b>{{$auto['nome_marca']}} {{$auto['nome_modello']}}</b></h1>
+                    <h1 class="titolo_info"><b>{{$auto->nome_marca}} {{$auto->nome_modello}}</b></h1>
                     <br>
                     <!-- Immagine dell'auto selezionata -->
-                    <img class="immagine_chisiamo" style="padding-left: 70px" src="{{ asset($auto['foto_auto']) }}" alt="ImmagineAuto" height="200px">
+                    <img class="immagine_chisiamo" style="padding-left: 70px" src="{{ asset($auto->foto_auto )}}" alt="ImmagineAuto" height="200px">
                     <br><br>
                     @can('isUser')
                         <h3>Per noleggiare l'auto conferma il periodo</h3>
-                        <form method="POST" action="{{url('/catalogoauto/'.$auto['codice_auto'].'/noleggio')}}">
+                        <form method="POST" action="{{url('/catalogoauto/'.$auto->codice_auto.'/noleggio')}}">
                             @csrf
                             <label>
                                 Da:
@@ -64,7 +64,7 @@
                     <div class="sfondoauto">
                         <br>
                         <p style="font-weight: bold">Targa Auto:</p>
-                        <p style="font-size: 14pt">{{$auto['targa']}}</p>
+                        <p style="font-size: 14pt">{{$auto->targa}}</p>
                         <br>
                     </div>
                     <hr>
@@ -73,7 +73,7 @@
                     <div class="sfondoauto">
                         <br>
                         <p style="font-weight: bold">Allestimento Auto:</p>
-                        <p style="font-size: 14pt">{{$auto['allestimento']}}</p>
+                        <p style="font-size: 14pt">{{$auto ->allestimento}}</p>
                         <br>
                     </div>
                     <hr>
@@ -81,14 +81,14 @@
                     <!-- Costo dell'auto al giorno -->
                     <div class="sfondoauto">
                         <p style="font-weight: bold">Costo/giorno:</p>
-                        <p style="font-size: 14pt">{{$auto['costo_giorno']}} €</p>
+                        <p style="font-size: 14pt">{{$auto ->costo_giorno}} €</p>
                     </div>
                     <hr>
 
                     <!-- Numero di posti dell'auto -->
                     <div class="sfondoauto">
                         <p style="font-weight: bold">Numero di posti:</p>
-                        <p style="font-size: 14pt">{{$auto['num_posti']}}</p>
+                        <p style="font-size: 14pt">{{$auto->num_posti}}</p>
                     </div>
                 </div>
             </div>

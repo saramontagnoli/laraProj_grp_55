@@ -8,7 +8,7 @@ use App\Models\User;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Hash;
-
+use Illuminate\Support\Facades\DB;
 class UserController extends Controller {
 
     public function index() {
@@ -73,7 +73,8 @@ class UserController extends Controller {
     //funzione per noleggiare un'auto
     function noleggioAuto($codice_auto, Request $request)
     {
-        $dbQuery = Auto::join("modello", "auto.modello_ref", "=", "modello.codice_modello")
+        $dbQuery = DB:: table('Auto')
+            ->join("modello", "auto.modello_ref", "=", "modello.codice_modello")
             ->join("marca", "modello.marca_ref", "=", "marca.codice_marca")
             ->where ('codice_auto', $codice_auto)
             ->get();
@@ -92,19 +93,44 @@ class UserController extends Controller {
             echo "<script>alert('$popupMessage');</script>";
             return view("autosingola", $cardAuto);
         }else {
-            //variabile noleggio da inserire nel DB
-            $noleggio = new Noleggio();
+            $noleggio_disponibile = DB::table('auto')
+                ->select('auto.*', 'marca.nome_marca', 'modello.nome_modello')
+                ->join("modello", "auto.modello_ref", "=", "modello.codice_modello")
+                ->join("marca", "modello.marca_ref", "=", "marca.codice_marca")
+                ->leftJoin('noleggio', 'auto.codice_auto', '=', 'noleggio.auto_ref')
+                ->where(function ($query) use ($noleggio_inizio, $noleggio_fine) {
+                    $query->whereNull('noleggio.auto_ref')
+                        ->orWhere(function ($query) use ($noleggio_inizio, $noleggio_fine) {
+                            $query->where('noleggio.data_inizio', '>', $noleggio_fine)
+                                ->orWhere('noleggio.data_fine', '<', $noleggio_inizio);
+                        });
+                })
+                ->get();
 
-            // questo è lo username del cliente
-            $user = Auth::user()->id;
+            if ($dbQuery->isEmpty()) {
+                // L'auto selezionata non esiste
+                $popupMessage = "Auto non trovata!";
+                echo "<script>alert('$popupMessage');</script>";
+                return view("autosingola", $cardAuto);
+            } else if ($noleggio_disponibile->isEmpty()) {
+                //variabile noleggio da inserire nel DB
+                $noleggio = new Noleggio();
+                // questo è lo username del cliente
+                $user = Auth::user()->id;
 
-            $noleggio->data_inizio = $noleggio_inizio;
-            $noleggio->data_fine = $noleggio_fine;
-            $noleggio->auto_ref = $codice_auto;
-            $noleggio->utente_ref = $user;
-            $noleggio->save();
+                $noleggio->data_inizio = $noleggio_inizio;
+                $noleggio->data_fine = $noleggio_fine;
+                $noleggio->auto_ref = $codice_auto;
+                $noleggio->utente_ref = $user;
+                $noleggio->save();
+                return view("noleggio", $cardAuto);
 
-            return view("noleggio", $cardAuto);
+            } else {
+                // L'auto è già prenotata nel periodo selezionato
+                $popupMessage = "Auto non disponibile!";
+                echo "<script>alert('$popupMessage');</script>";
+                return view("autosingola", $cardAuto);
+            }
         }
     }
 
