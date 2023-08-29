@@ -10,10 +10,13 @@ use Illuminate\Support\Facades\Log;
  */
 class ControllerFaq extends Controller
 {
-    // Ottiene l'intera lista di FAQ, utilizzata per la pagina di Gestione FAQ
+    //Il metodo showFaq permette di estrarre tutte le FAQ dalla tabella relativa nel database
     function showFaq()
     {
+        //query di estrazione del database
         $data = faq::all();
+
+        //ritorno della vista contenente tutte le FAQ
         return view('faq', ['faq'=>$data]);
     }
 }
