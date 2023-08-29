@@ -22,7 +22,10 @@
         @can('isUser')
             <a href="{{url('/home/profilo')}}" class="element_navbar">Profilo</a>
         @endcan
-
+        @can('isStaff')
+            <a href="{{url('/home/gestioneauto')}}" class="element_navbar">Gestione auto</a>
+            <a href="{{url('/home/visualizzanoleggi')}}" class="element_navbar">Visualizza noleggi</a>
+        @endcan
         @auth
             <a href="" class="element_navbar" title="Esci dal sito" onclick="event.preventDefault(); document.getElementById('logout-form').submit();">Logout</a>
             <form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;">
