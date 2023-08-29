@@ -61,12 +61,14 @@ class ControllerCatalogoAuto extends Controller
         $filtro_min = $request->input("min");
         $filtro_max = $request->input("max");
 
+        //vengono controllati i filtri dei prezzi specificati
         if(($filtro_min > $filtro_max) && $filtro_max!=null)
         {
-            //si stampa un messaggio di errore mediante popup
+            //si stampa un messaggio di errore mediante popup perché i filtri sono errati
             $popupMessage = "Errore. Il prezzo minimo deve essere minore del prezzo massimo!";
             echo "<script>alert('$popupMessage');</script>";
 
+            //essendo i filtri di prezzo errati viene ritornata la vista del catalogo VUOTA
             return view("catalogoauto");
         }
 
@@ -74,27 +76,33 @@ class ControllerCatalogoAuto extends Controller
         $filtro_inizio =$request->input("inizio");
         $filtro_fine =$request->input("fine");
 
+        //vengono controllati i filtri delle date specificate
         if($filtro_inizio> $filtro_fine)
         {
-            //si stampa un messaggio di errore mediante popup
+            //si stampa un messaggio di errore mediante popup perché i filtri sono errati
             $popupMessage = "Errore. Date inserite non valide";
             echo "<script>alert('$popupMessage');</script>";
 
+            //essendo i filtri di data errati viene ritornata la vista del catalogo VUOTA
             return view("catalogoauto");
         }
 
+        //si controlla se tutti e 4 i filtri non sono stati settati contemporaneamente
         if($request->isNotFilled('min') && $request->isNotFilled('max') && $request->isNotFilled('inizio') && $request->isNotFilled('fine'))
         {
-            //si stampa un messaggio di errore mediante popup
+            //se tutti i filtri sono notFilled allora viene stampato un popup di errore
             $popupMessage = "Errore. Nessun filtro selezionato";
             echo "<script>alert('$popupMessage');</script>";
 
+            //essendo i filtri non settati viene ritornata la vista del catalogo VUOTA
             return view("catalogoauto");
         }else
         {
+            //Altrimenti se almeno uno dei filtri è stato settato si procede con il ritrno della vista in base ai filtri specificati
 
             //query di base di estrazione di tutte le auto comprese di marce e modello (grazie ai due join)
-            $dbQuery = Auto::join("modello", "auto.modello_ref", "=", "modello.codice_modello")
+            $dbQuery = Auto::select('auto.costo_giorno', 'auto.foto_auto', 'auto.codice_auto', 'marca.nome_marca', 'modello.nome_modello')
+                ->join("modello", "auto.modello_ref", "=", "modello.codice_modello")
                 ->join("marca", "modello.marca_ref", "=", "marca.codice_marca");
 
             //definizione dell'array per l'invio dei dati estratti alla View
@@ -102,6 +110,7 @@ class ControllerCatalogoAuto extends Controller
 
             //si inserisce il risultato della query di base
             $cardAuto["cardAuto"] = $dbQuery;
+
 
             if($filtro_min < $filtro_max)
             {
@@ -132,36 +141,27 @@ class ControllerCatalogoAuto extends Controller
                 }
             }
 
-            //query in base al periodo
+            //se sono state settate entrambe le date di inizio e fine
             if($filtro_inizio!=null && $filtro_fine!=null){
-                if($filtro_inizio<=$filtro_fine)
-                {
-                    $periodo = Auto::select('auto.costo_giorno', 'auto.foto_auto', 'auto.codice_auto', 'marca.nome_marca', 'modello.nome_modello')
-                        ->join('modello', 'auto.modello_ref', '=', 'modello.codice_modello')
-                        ->join('marca', 'modello.marca_ref', '=', 'marca.codice_marca')
-                        ->whereNotIn('auto.codice_auto', function ($query) use ($filtro_inizio, $filtro_fine) {
-                            $query->select('auto_ref')
-                                ->from('noleggio')
-                                ->whereBetween('data_inizio', [$filtro_inizio, $filtro_fine])
-                                ->orWhereBetween('data_fine', [$filtro_inizio, $filtro_fine]);
-                        })
-                        ->orWhereNotIn('auto.codice_auto', function ($query) {
-                            $query->select('noleggio.auto_ref')
-                                ->from('noleggio');
-                        })
-                        ->groupBy( 'marca.nome_marca', 'modello.nome_modello', 'auto.codice_auto', 'auto.costo_giorno', 'auto.foto_auto')
+
+                if($filtro_inizio<=$filtro_fine) {
+                    //si estrae dal DB l'insieme delle auto che in quel periodo sono libere e non già noleggiate
+                    $periodo = $dbQuery->whereNotIn('auto.codice_auto', function ($query) use ($filtro_inizio, $filtro_fine) {
+                        $query->select('auto_ref')
+                            ->from('noleggio')
+                            ->whereBetween('data_inizio', [$filtro_inizio, $filtro_fine])
+                            ->orWhereBetween('data_fine', [$filtro_inizio, $filtro_fine]);
+                    })
+                        ->groupBy('marca.nome_marca', 'modello.nome_modello', 'auto.codice_auto', 'auto.costo_giorno', 'auto.foto_auto')
                         ->get();
 
-                    $cardAuto["cardAuto"]=$periodo;
-                }else if($filtro_inizio> $filtro_fine) {
-                    $popupMessage = "Errore, date non valide!";
-                    echo "<script>alert('$popupMessage');</script>";
+                    //viene inserito il risultato della query nell'array per ritornare i dati alla view
+                    $cardAuto["cardAuto"] = $periodo;
                 }
             }
         }
 
         // Ritorno la View con i dati inseriti nell'array, che verranno visualizzati sulla View stessa.
         return view("catalogoauto", $cardAuto);
-
     }
 }
