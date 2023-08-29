@@ -25,6 +25,22 @@
         <br><br>
 
         @can('isUser')
+                <label>
+                    Data inizio noleggio:
+                    <input type="date" name="inizio">
+                </label>
+
+                <label>
+                    Data fine noleggio:
+                    <input type="date" name="fine">
+                </label>
+                @if(session('popupMessage'))
+                    <script>
+                        alert("{{ session('popupMessage') }}");
+                    </script>
+                @endif
+        @endcan
+        @can('isStaff')
             <label>
                 Data inizio noleggio:
                 <input type="date" name="inizio">
@@ -40,6 +56,7 @@
                 </script>
             @endif
         @endcan
+
 
         <!-- Pulsante di invio del form -->
 
