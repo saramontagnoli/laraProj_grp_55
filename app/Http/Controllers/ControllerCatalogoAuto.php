@@ -78,7 +78,7 @@ class ControllerCatalogoAuto extends Controller
         if($filtro_inizio!=null && $filtro_fine!=null){
             if($filtro_inizio<=$filtro_fine)
             {
-                $periodo = Auto::select('auto.costo_giorno', 'auto.foto_auto', 'marca.nome_marca', 'modello.nome_modello')
+                $periodo = Auto::select('auto.costo_giorno', 'auto.foto_auto', 'auto.codice_auto', 'marca.nome_marca', 'modello.nome_modello')
                     ->join('modello', 'auto.modello_ref', '=', 'modello.codice_modello')
                     ->join('marca', 'modello.marca_ref', '=', 'marca.codice_marca')
                     ->whereNotIn('auto.codice_auto', function ($query) use ($filtro_inizio, $filtro_fine) {
@@ -91,7 +91,7 @@ class ControllerCatalogoAuto extends Controller
                         $query->select('noleggio.auto_ref')
                             ->from('noleggio');
                     })
-                    ->groupBy('marca.nome_marca', 'modello.nome_modello', 'auto.costo_giorno', 'auto.foto_auto')
+                    ->groupBy( 'marca.nome_marca', 'modello.nome_modello', 'auto.codice_auto', 'auto.costo_giorno', 'auto.foto_auto')
                     ->get();
 
                 $cardAuto["cardAuto"]=$periodo;
