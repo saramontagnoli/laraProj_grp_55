@@ -135,38 +135,49 @@ class UserController extends Controller {
                 ->orWhereBetween('data_fine', [$noleggio_inizio, $noleggio_fine])
                 ->exists();
 
-
+            //se il risultato della query è vuoto l'auto non esiste e viene stampato un messaggio di errore
             if ($dbQuery->isEmpty()) {
-                // L'auto selezionata non esiste
+                //stampa del popup di errore
                 $popupMessage = "Auto non trovata!";
                 echo "<script>alert('$popupMessage');</script>";
+
+                //ritorno della vista dell'auto singola che si intendeva noleggiare
                 return view("autosingola", $cardAuto);
             } else if (! $noleggio_disponibile) {
-                //variabile noleggio da inserire nel DB
+                //se l'auto è libera in quelle date specificate
+
+                //si crea un oggetto noleggio che verrà poi inserito nel database
                 $noleggio = new Noleggio();
-                // questo è lo username del cliente
+
+                //viene estratto l'id del cliente che è loggato
                 $user = Auth::user()->id;
 
+                //vengono settati tutti i campi dell'oggetto che devono essere inseriti nel database
                 $noleggio->data_inizio = $noleggio_inizio;
                 $noleggio->data_fine = $noleggio_fine;
                 $noleggio->auto_ref = $codice_auto;
                 $noleggio->utente_ref = $user;
                 $noleggio->save();
 
+                //query di estrazione dell'oggetto appena inserito all'interno della tabella noleggio
                 $dbQuery = DB:: table('noleggio')
                     ->where ('auto_ref', $codice_auto)
                     ->where('data_inizio', '=', $noleggio_inizio)
                     ->where('data_fine', '=', $noleggio_fine)
                     ->get();
 
+                //inserimento del risultato della query in un array
                 $cardAuto["cardAuto"] = $dbQuery;
 
+                //ritorno della vista di conferma di noleggio con i dati del noleggio
                 return view("noleggio", $cardAuto);
 
             } else {
-                // L'auto è già prenotata nel periodo selezionato
+                //se quell'auto è occupata nel periodo specificato appare un popup di errore
                 $popupMessage = "Auto non disponibile!";
                 echo "<script>alert('$popupMessage');</script>";
+
+                //ritorno alla vista dell'auto che si voleva noleggiare
                 return view("autosingola", $cardAuto);
             }
         }
