@@ -30,26 +30,34 @@
                     <!-- Immagine dell'auto selezionata -->
                     <img class="immagine_chisiamo" style="padding-left: 70px" src="{{ asset($auto->foto_auto )}}" alt="ImmagineAuto" height="200px">
                     <br><br>
+
+                    <!-- Se l'utente autenticato è uno 'user' allora appare il button e i campi per noleggiare l'auto -->
                     @can('isUser')
                         <h3>Per noleggiare l'auto conferma il periodo</h3>
+
+                        <!-- Definizione di una form per inviare il periodo DA - A per il noleggio -->
                         <form method="POST" action="{{url('/catalogoauto/'.$auto->codice_auto.'/noleggio')}}">
                             @csrf
+
+                            <!-- Campo input type=date per l'inserimento dell'inizio del noleggio -->
                             <label>
                                 Da:
                                 <input type="date" name="inizioNoleggio" required>
                             </label>
+
+                            <!-- Campo input type=date per l'inserimento della fine del noleggio -->
                             <label>
                                 A:
                                 <input type="date" name="fineNoleggio" required>
                             </label>
+
+                            <!-- Button di submit per l'invio dei dati inseriti all'interno della form -->
                             <button type="submit" name="action" value="submit1">Noleggia</button>
-
                         </form>
-
                     @endcan
                 </div>
 
-                <!-- Definizione della colonna a destra -->
+                <!-- Definizione della colonna a destra dell'auto, contenente le informazioni dell'auto -->
                 <div class="colonna colonna2">
                     <br><br>
                     <br><br>
@@ -60,7 +68,7 @@
                     <div style="font-weight: bolder; font-size: xx-large">SCHEDA AUTO</div>
                     <br><br><br>
 
-                    <!-- Descrizione della targa dell'auto -->
+                    <!-- Targa dell'auto -->
                     <div class="sfondoauto">
                         <br>
                         <p style="font-weight: bold">Targa Auto:</p>
@@ -69,7 +77,7 @@
                     </div>
                     <hr>
 
-                    <!-- Descrizione dell'allestimento dell'auto -->
+                    <!-- Allestimento dell'auto -->
                     <div class="sfondoauto">
                         <br>
                         <p style="font-weight: bold">Allestimento Auto:</p>

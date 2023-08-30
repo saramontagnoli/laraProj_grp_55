@@ -7,16 +7,18 @@
     <!-- Sezione dedicata al catalogo delle auto noleggiabili -->
     <h1 class="titolo_info">CATALOGO AUTO NOLEGGIABILI</h1>
 
-    <!-- Form da completare per la ricerca delle auto -->
+    <!-- Form predisposta per la ricerca delle auto all'interno del catalogo -->
     <form method="POST" action="{{ route('catalogoauto') }}">
         @csrf
         <h3>Filtri di ricerca:</h3>
-        <!-- Input per il filtro di ricerca -->
+
+        <!-- Input per il filtro di ricerca prezzo minimo -->
         <label>
             Inserire prezzo min:
             <input type="number" step="0.01" name="min" placeholder="Prezzo min" min="0">
         </label>
 
+        <!-- Input per il filtro di ricerca prezzo massimo -->
         <label>
             Inserire prezzo max:
             <input type="number" step="0.01" name="max" placeholder="Prezzo max" min="0">
@@ -24,48 +26,34 @@
 
         <br><br>
 
-        @can('isUser')
-                <label>
-                    Data inizio noleggio:
-                    <input type="date" name="inizio">
-                </label>
-
-                <label>
-                    Data fine noleggio:
-                    <input type="date" name="fine">
-                </label>
-                @if(session('popupMessage'))
-                    <script>
-                        alert("{{ session('popupMessage') }}");
-                    </script>
-                @endif
-        @endcan
-        @can('isStaff')
+        <!-- Se l'utente autenticato è di tipo 'user' si aggiungono i filtri per data -->
+        @can('isUser') && @can('isStaff')
+            <!-- Input per il filtro di ricerca data inizio -->
             <label>
                 Data inizio noleggio:
                 <input type="date" name="inizio">
             </label>
 
+            <!-- Input per il filtro di ricerca prezzo massimo -->
             <label>
                 Data fine noleggio:
                 <input type="date" name="fine">
             </label>
+
+
             @if(session('popupMessage'))
                 <script>
                     alert("{{ session('popupMessage') }}");
                 </script>
             @endif
-        @endcan
+        @endcan @endcan
 
-
-        <!-- Pulsante di invio del form -->
-
+        <!-- Button di submit per l'invio dei dati inseriti nella form -->
         <button type="submit" name="action" value="submit1">Cerca</button>
     </form>
 
     <!-- Definizione della riga del catalogo -->
     <div class="rigacatalogo">
-
         <!-- Per ogni auto estratta dalla tabella del database viene stampata la relativa card -->
         @if(!empty($cardAuto))
             @foreach ($cardAuto as $auto)
