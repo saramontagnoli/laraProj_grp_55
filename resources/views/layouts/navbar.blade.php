@@ -8,24 +8,29 @@
 
     <!-- Opzioni di navigazione del sito sempre disponibili nella barra di navigazione in alto -->
     <div class="posizione_dx">
-        <a href="{{ url('/catalogoauto') }}" class="element_navbar ">Auto</a>
-        <a href="{{ url('/comenoleggiare') }}" class="element_navbar ">Come noleggiare</a>
-        <a href="{{ url('/chisiamo') }}" class="element_navbar ">Chi siamo</a>
-        <a href="{{ url('/faq') }}" class="element_navbar ">F.A.Q.</a>
+        <a href="{{ url('/catalogoauto') }}" class="element_navbar ">Auto</a> <!-- Visualizzazione catalogo completo -->
+        <a href="{{ url('/comenoleggiare') }}" class="element_navbar ">Come noleggiare</a>  <!-- Visualizzazione metodo di noleggio del sito -->
+        <a href="{{ url('/chisiamo') }}" class="element_navbar ">Chi siamo</a> <!-- Visualizzazione informazioni azienda -->
+        <a href="{{ url('/faq') }}" class="element_navbar ">F.A.Q.</a> <!-- Visualizzazione di tutte le F.A.Q. -->
 
-
+        <!-- Se non c'è nessun utente autenticato allora si stampato i due bottoni di login e registrazione -->
         @if (! auth()->check())
-            <a href="" class="element_navbar ">Registrazione</a>
-            <a href="{{url('/login')}}" class="element_navbar">Login</a>
+            <a href="" class="element_navbar ">Registrazione</a> <!-- Visualizzazione pagina registrazione -->
+            <a href="{{url('/login')}}" class="element_navbar">Login</a> <!-- Visualizzazione pagina login -->
         @endif
 
+        <!-- Se l'utente autenticato è uno 'user' allora si stampa un bottone per visualizzare il profilo -->
         @can('isUser')
-            <a href="{{url('/home/profilo')}}" class="element_navbar">Profilo</a>
+            <a href="{{url('/home/profilo')}}" class="element_navbar">Profilo</a> <!-- Visualizzazione profilo utente -->
         @endcan
+
+        <!-- Se l'utente autenticato è uno 'staff' allora si stampano i bottoni per la gestione e visualizzazione di auto e noleggi -->
         @can('isStaff')
-            <a href="{{url('/home/gestioneauto')}}" class="element_navbar">Gestione auto</a>
-            <a href="{{url('/home/visualizzanoleggi')}}" class="element_navbar">Visualizza noleggi</a>
+            <a href="{{url('/home/gestioneauto')}}" class="element_navbar">Gestione auto</a> <!-- Visualizzazione pagina di inserimento, modifica ed eliminazione delle auto -->
+            <a href="{{url('/home/visualizzanoleggi')}}" class="element_navbar">Visualizza noleggi</a> <!-- Visualizzazione noleggi per mese dell'anno corrente -->
         @endcan
+
+        <!-- Se una delle tre tipologie di utenti è autenticata si mostra il button per il logout che riporta alla rotta di logout -->
         @auth
             <a href="" class="element_navbar" title="Esci dal sito" onclick="event.preventDefault(); document.getElementById('logout-form').submit();">Logout</a>
             <form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;">

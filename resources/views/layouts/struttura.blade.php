@@ -6,10 +6,10 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
 
     <!-- Inclusione di tutti i file CSS esterni -->
-    <link rel="stylesheet" href="{{asset('assets/css/style_home.css')}}">
-    <link rel="stylesheet" href="{{ asset('assets/css/style.css') }}">
-    <link rel="stylesheet" href="{{asset('assets/css/catalogo.css')}}">
-    <link rel="stylesheet" href="{{asset('assets/css/style_login.css')}}">
+    <link rel="stylesheet" href="{{asset('assets/css/style_home.css')}}"> <!-- CSS per lo style della home -->
+    <link rel="stylesheet" href="{{ asset('assets/css/style.css') }}"> <!-- CSS per lo style generico del sito -->
+    <link rel="stylesheet" href="{{asset('assets/css/catalogo.css')}}"> <!-- CSS per lo style del catalogo -->
+    <link rel="stylesheet" href="{{asset('assets/css/style_login.css')}}"> <!-- CSS per lo style del login -->
 
     <!-- Utilizzo di una libreria esterna per icone inserite nel sito web -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
