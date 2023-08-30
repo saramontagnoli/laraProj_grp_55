@@ -59,12 +59,17 @@ Route::get('/home/profilo', [UserController::class, 'profilo'])
 
 //Rotta di definizione per la gestione delle auto (staff)
 Route::get('/home/gestioneauto', [GestioneAutoController::class, 'gestioneAuto'])
-    ->name('/gestioneauto')->middleware('can:isStaff');
+    ->name('/gestioneauto');
 
 //Rotta per la modifica delle auto (staff)
 Route::post('/home/gestioneauto/modificadatiauto', [GestioneAutoController::class, 'modificaAuto'])
     ->name('modificaDatiAuto');
 
+//Rotta per la modifica dei dati delle auto per la modifica (staff)
+Route::get('/home/gestioneauto/modificadatiauto', [GestioneAutoController::class, 'getDatiAuto'])
+    ->name('getdatiauto');
+
+//Rotta per la modifica dei dati delle auto per la modifica (staff)
 Route::get('/home/gestioneauto/modificadatiauto', [GestioneAutoController::class, 'modificaAuto'])
     ->name('modificaDatiAuto');
 
@@ -72,20 +77,15 @@ Route::get('/home/gestioneauto/modificadatiauto', [GestioneAutoController::class
 Route::get('/home/gestioneauto/{codice_auto}', [GestioneAutoController::class, 'eliminaAuto'])
     ->name('eliminaauto');
 
-Route::get('/gestioneauto', [GestioneAutoController::class, 'gestioneAuto'])->name('gestioneauto');
-
-
-
-Route::post('/home/gestioneauto/{codice_auto}', [GestioneAutoController::class, 'eliminaAuto'])
+//Rotta per eliminare un auto (staff)
+Route::put('/home/gestioneauto/{codice_auto}', [GestioneAutoController::class, 'eliminaAuto'])
     ->name('eliminaauto');
+
 
 //Rotta di definizione per la visualizzazione delle auto noleggiate (staff)
 Route::get('/home/visualizzanoleggi', [GestioneAutoController::class, 'visualizzanoleggi'])
-    ->name('visualizzanoleggi')->middleware('can:isStaff');
+    ->name('visualizzanoleggi');
 
-//Rotta di definizione per la visualizzazione delle auto noleggiate (staff)
-Route::post('/home/visualizzanoleggi', [GestioneAutoController::class, 'visualizzanoleggi'])
-    ->name('visualizzanoleggi')->middleware('can:isStaff');
 
 // Rotta per accedere alla modifica dei dati personali (livello 1).
 Route::get('/home/profilo/dati', [UserController::class, 'getDatiPersonali1'])
