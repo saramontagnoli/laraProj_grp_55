@@ -11,6 +11,9 @@ return new class extends Migration
      *
      * @return void
      */
+    /*
+     * Metodo per la creazione della tabella marca con relativi campi
+     */
     public function up()
     {
         Schema::create('marca', function (Blueprint $table) {

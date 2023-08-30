@@ -11,6 +11,9 @@ return new class extends Migration
      *
      * @return void
      */
+    /*
+     * Metodo per la creazione della tabella stato e relativi campi
+     */
     public function up()
     {
         Schema::create('stato', function (Blueprint $table) {

@@ -11,6 +11,9 @@ return new class extends Migration
      *
      * @return void
      */
+    /*
+     * Metodo per la creazione della tabella noleggio compresa di tutti i campi e chiavi esterne
+     */
     public function up()
     {
         Schema::create('noleggio', function (Blueprint $table) {
