@@ -59,7 +59,25 @@ Route::get('/home/profilo', [UserController::class, 'profilo'])
 
 //Rotta di definizione per la gestione delle auto (staff)
 Route::get('/home/gestioneauto', [GestioneAutoController::class, 'gestioneAuto'])
-    ->name('user/gestioneauto')->middleware('can:isStaff');
+    ->name('/gestioneauto')->middleware('can:isStaff');
+
+//Rotta per la modifica delle auto (staff)
+Route::post('/home/gestioneauto/modificadatiauto', [GestioneAutoController::class, 'modificaAuto'])
+    ->name('modificaDatiAuto');
+
+Route::get('/home/gestioneauto/modificadatiauto', [GestioneAutoController::class, 'modificaAuto'])
+    ->name('modificaDatiAuto');
+
+//Rotta per l'eliminazione delle auto (staff)
+Route::get('/home/gestioneauto/{codice_auto}', [GestioneAutoController::class, 'eliminaAuto'])
+    ->name('eliminaauto');
+
+Route::get('/gestioneauto', [GestioneAutoController::class, 'gestioneAuto'])->name('gestioneauto');
+
+
+
+Route::post('/home/gestioneauto/{codice_auto}', [GestioneAutoController::class, 'eliminaAuto'])
+    ->name('eliminaauto');
 
 //Rotta di definizione per la visualizzazione delle auto noleggiate (staff)
 Route::get('/home/visualizzanoleggi', [GestioneAutoController::class, 'visualizzanoleggi'])

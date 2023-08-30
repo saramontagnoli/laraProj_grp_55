@@ -18,4 +18,8 @@ class Auto extends Model {
     //definizione della primary key = codice_auto
     protected $primaryKey = 'codice_auto';
     public $timestamps = false;
+    public function noleggio()
+    {
+        return $this->hasMany(Noleggio::class, 'auto_ref', 'codice_auto');
+    }
 }
