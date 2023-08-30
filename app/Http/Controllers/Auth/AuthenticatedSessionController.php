@@ -26,8 +26,11 @@ class AuthenticatedSessionController extends Controller {
      * @return \Illuminate\Http\RedirectResponse
      */
     public function store(LoginRequest $request) {
+
+        //si esegue l'autenticazione
         $request->authenticate();
 
+        //si genera la sessione relativa all'utente che si sta autenticando
         $request->session()->regenerate();
 
         /**
@@ -54,12 +57,17 @@ class AuthenticatedSessionController extends Controller {
      * @return \Illuminate\Http\RedirectResponse
      */
     public function destroy(Request $request) {
+
+        //si esegue il logout
         Auth::guard('web')->logout();
 
+        //la sessione attiva viene distrutta, viene resa invalida
         $request->session()->invalidate();
 
+        //si rigenera il token CSRF così che ce ne sia uno nuovo per la prossima sessione
         $request->session()->regenerateToken();
 
+        //redirect alla home del sito
         return redirect('/');
     }
 
