@@ -1,58 +1,52 @@
-/* Imposta la dimensione della casella su "border-box", in modo che il padding e il bordo
-siano inclusi nelle dimensioni totali dell'elemento. */
-* {box-sizing: border-box;}
+/* Classe di formattazione per ogni elemento */
+* {
+    box-sizing: border-box; /* padding e il bordo inclusi nelle dimensioni totali dell'elemento. */
+}
 
-/* Imposta il tipo di carattere del testo all'interno del corpo. */
-body {font-family: Verdana, sans-serif;}
+/* Formattazione del tag <body> */
+body {
+    font-family: Verdana, sans-serif; /* vengono definite le tipologie di font da utilizzare */
+}
 
 
+/* Classe di formattazione per le slide del carosello */
 .mySlides {
-    display: none; /* Nasconde gli elementi impostando la loro visualizzazione su "none". */
-    vertical-align: middle; /* Allinea gli elementi verticalmente */
+    display: none; /* nasconde l'elemento */
+    vertical-align: middle; /* allinea l'elemento verticalmente */
 }
 
-/* Slideshow container */
+/* Classe di formattazione per il container dello slideshow */
 .slideshow-container {
-    position: relative; /* Posiziona il contenitore in modo relativo rispetto al suo contesto. */
-    align-content: center!important;
-    box-shadow: 10px 10px 5px #dedede;
+    position: relative; /* contenitore in posizione relativa rispetto al suo contesto */
+    align-content: center!important; /* allinea il contenuto al centro, !important da precedenza a questo comando rispetto agli altri */
+    box-shadow: 10px 10px 5px #dedede; /* crea un'ombre sul bordo, 10px offset orizzontale, 10px offset verticale, 5px diffusione ombra, colore dell'ombra */
 }
 
+
+/* Classe di formattazione per le immagini contenute nel carosello */
 .immaginecarosello
 {
-    width: 100%;
-    height: 800px;
+    width: 100%; /* l'immagine occupa il 100% del suo contenitore */
+    height: 800px; /* l'altezza dell'immagine è pari a 800px */
 }
 
 
-/* Number text (1/3 etc) */
-.numbertext {
-    color: #f2f2f2; /* Imposta il colore del testo su un tono grigio chiaro (#f2f2f2). */
-    font-size: 12px;    /* Imposta la dimensione del carattere a 12px. */
-    padding: 8px 12px;  /* Aggiunge spaziatura interna di 8px nella parte superiore e inferiore e di 12px ai lati. */
-    position: absolute; /* Posiziona l'elemento in modo assoluto all'interno del suo contenitore. */
-    top: 0; /* Allinea l'elemento nella parte superiore del contenitore. */
-}
-
-/* The dots/bullets/indicators */
+/* Classe di formattazione per i pallini di scorrimento del carosello automatico */
 .dot {
-    height: 15px; /* Imposta altezza e larghezza a 15px, creando un cerchio. */
-    width: 15px;
-    margin: 0 2px; /* Aggiunge margini di 2px ai lati per separare gli indicatori. */
-    background-color: #bbb; /* Imposta il colore di sfondo su un grigio chiaro (#bbb). */
-    border-radius: 50%;  /* Applica un bordo arrotondato al 50% per ottenere la forma circolare. */
-    display: inline-block; /* Mostra l'elemento come un blocco all'interno del flusso del contenuto. */
-    transition: background-color 0.6s ease; /* Applica una transizione per animare il cambio di colore di sfondo con una durata di 0.6 secondi e un effetto di transizione graduale (ease). */
+    height: 15px; /* altezza di 15 px */
+    width: 15px; /* larghezza di 15 px */
+    margin: 0 2px; /* margini di 2px ai lati per separare gli indicatori. */
+    background-color: #bbb; /* colore di sfondo su un grigio chiaro (#bbb). */
+    border-radius: 50%;  /* bordo arrotondato al 50% per ottenere la forma circolare. */
+    display: inline-block; /* elemento come un blocco all'interno del flusso del contenuto. */
+    transition: background-color 0.6s ease; /* transizione per animare il cambio di colore di sfondo con una durata di 0.6 secondi e un effetto di transizione graduale (ease). */
 }
 
-.active {
-    background-color: #717171;
-}
 
-/* animazione di dissolvenza. */
+/* CLassi di ormattazione per animazione di dissolvenza */
 .fade {
-    animation-name: fade;
-    animation-duration: 1.5s; /* imposta la durata dell'animazione a 1.5s. */
+    animation-name: fade; /* viene deifnita l'animazione "dissolvenza" */
+    animation-duration: 1.5s; /* durata dell'animazione a 1.5s. */
 }
 
 /* Definizione di un'animazione keyframes chiamata "fade":
@@ -105,17 +99,19 @@ body {font-family: Verdana, sans-serif;}
     opacity:0.75; /* applica un'opacità al 70% */
 }
 
-/* stile per la tabella che contiene tutti i noleggi (visualizzanoleggi) */
+/* Classe di formattazione per la tabella che contiene tutti i noleggi (visualizzanoleggi) */
 .tabella_noleggi {
     border-collapse: collapse; /* Combinare i bordi delle celle adiacenti */
-    width: 100%;
+    width: 100%; /* l'elemento occupa il 100% del suo contenitore */
 }
 
+/* Classe di formattazione per colonne e righe della tabella di tutti i noleggi */
 .tabella_noleggi th, .tabella_noleggi td {
     border: 2px solid black; /* Aggiungere il bordo a tutte le celle */
     padding: 8px; /* Aggiungere spazio interno per una migliore leggibilità */
 }
 
+/* Classe di formattazione per l'intestazione della tabella di tutti i noleggi */
 .tabella_noleggi thead{
     background-color: black;
     color: white;

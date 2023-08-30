@@ -96,15 +96,3 @@
 {
     background-color:#EFEFEF; /* colore di sfondo grigio chiaro */
 }
-
-/*
-    Classe di formattazione per la form a scomparsa
-*/
-#mostra_nascondi {
-    width: 100%; /* l'oggetto occupa il 100% del contenitore */
-    padding: 50px 0; /* definizione di un padding 50 px sopra e sotto, 0 pixel destra e sinistra */
-    text-align: center; /* testo allineato al centro */
-    background-color: grey; /* definizione colore di sfondo come grigio */
-    margin-top: 20px;
-}
-

@@ -9,6 +9,7 @@
     <link rel="stylesheet" href="{{asset('assets/css/style_home.css')}}">
     <link rel="stylesheet" href="{{ asset('assets/css/style.css') }}">
     <link rel="stylesheet" href="{{asset('assets/css/catalogo.css')}}">
+    <link rel="stylesheet" href="{{asset('assets/css/style_login.css')}}">
 
     <!-- Utilizzo di una libreria esterna per icone inserite nel sito web -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
