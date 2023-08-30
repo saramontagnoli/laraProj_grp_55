@@ -17,7 +17,7 @@ class GestioneAutoController extends Controller
             ->join("modello", "auto.modello_ref", "=", "modello.codice_modello")
             ->join("marca", "modello.marca_ref", "=", "marca.codice_marca")
             ->get();
-        return view('gestioneauto', ['listaNoleggi' => $dbQuery]);
+        return view('/gestioneauto', ['listaNoleggi' => $dbQuery]);
     }
 
     function visualizzanoleggi(Request $request)
@@ -37,11 +37,18 @@ class GestioneAutoController extends Controller
         return view('visualizzanoleggi', ['listaNoleggi' => $dbQuery]);
     }
 
-    //funzione per la modifica delle auto (livello 3)
-    function modificaAuto()
+    //fIl metodo getDatiAuto consente di estrarre i dati delle auto che lo staff ha intenzione di modificare
+    //     * Questo serve per riempire i campi di modifica con i campi precedentemente impostati
+    function getDatiAuto()
     {
 
     }
+    //metodo per la modifica delle auto (livello 3)
+    function modificaAuto($codice_auto)
+    {
+        return view ('modificadatiauto');
+    }
+
 
     function eliminaAuto($codice_auto)
     {
@@ -52,7 +59,7 @@ class GestioneAutoController extends Controller
 
         // Elimina l'auto stessa
         $auto->delete();
-        return redirect()->route('gestioneauto')->with('message', 'Auto eliminata con successo.');
+        return redirect()->route('/gestioneauto')->with('message', 'Auto eliminata con successo.');
     }
 }
 

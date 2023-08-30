@@ -26,7 +26,7 @@
             <td>{{$auto['num_posti']}}</td>
             <td>{{$auto['allestimento']}}</td>
             <td>{{$auto['costo_giorno']}}€</td>
-            <td><a href="{{ route('modificaDatiAuto', ['id' => $auto['codice_auto']]) }}">Modifica</a></td>
+            <td><a href="{{ route('modificadatiauto', ['codice_auto' => $auto['codice_auto']]) }}">Modifica</a></td>
             <td><a href="{{ route('eliminaauto', ['codice_auto' => $auto['codice_auto']]) }}" onclick="return confirmDelete()">Elimina</a></td>
         </tr>
     @endforeach

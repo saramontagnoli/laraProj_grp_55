@@ -62,16 +62,16 @@ Route::get('/home/gestioneauto', [GestioneAutoController::class, 'gestioneAuto']
     ->name('/gestioneauto');
 
 //Rotta per la modifica delle auto (staff)
-Route::post('/home/gestioneauto/modificadatiauto', [GestioneAutoController::class, 'modificaAuto'])
-    ->name('modificaDatiAuto');
+Route::put('/home/gestioneauto/modificadatiauto', [GestioneAutoController::class, 'modificaAuto'])
+    ->name('modificadatiauto');
 
 //Rotta per la modifica dei dati delle auto per la modifica (staff)
-Route::get('/home/gestioneauto/modificadatiauto', [GestioneAutoController::class, 'getDatiAuto'])
+Route::get('/home/gestioneauto/modificadatiauto/{codice_auto}', [GestioneAutoController::class, 'getDatiAuto'])
     ->name('getdatiauto');
 
 //Rotta per la modifica dei dati delle auto per la modifica (staff)
-Route::get('/home/gestioneauto/modificadatiauto', [GestioneAutoController::class, 'modificaAuto'])
-    ->name('modificaDatiAuto');
+Route::get('/home/gestioneauto/modificadatiauto/{codice_auto}', [GestioneAutoController::class, 'modificaAuto'])
+    ->name('modificadatiauto');
 
 //Rotta per l'eliminazione delle auto (staff)
 Route::get('/home/gestioneauto/{codice_auto}', [GestioneAutoController::class, 'eliminaAuto'])
@@ -86,6 +86,9 @@ Route::put('/home/gestioneauto/{codice_auto}', [GestioneAutoController::class, '
 Route::get('/home/visualizzanoleggi', [GestioneAutoController::class, 'visualizzanoleggi'])
     ->name('visualizzanoleggi');
 
+//Rotta di definizione per la visualizzazione delle auto noleggiate (staff)
+Route::post('/home/visualizzanoleggi', [GestioneAutoController::class, 'visualizzanoleggi'])
+    ->name('visualizzanoleggi');
 
 // Rotta per accedere alla modifica dei dati personali (livello 1).
 Route::get('/home/profilo/dati', [UserController::class, 'getDatiPersonali1'])
