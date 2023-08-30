@@ -11,6 +11,9 @@ return new class extends Migration
      *
      * @return void
      */
+    /*
+     * Metodo per la creazione della tabella delle F.A.Q. e rerlativi campi
+     */
     public function up()
     {
         Schema::create('faq', function (Blueprint $table) {

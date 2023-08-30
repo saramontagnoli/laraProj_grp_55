@@ -11,6 +11,9 @@ return new class extends Migration
      *
      * @return void
      */
+    /*
+     * Metodo per la creazione della tabella comune e relativi campi di interesse
+     */
     public function up()
     {
         Schema::create('comune', function (Blueprint $table) {

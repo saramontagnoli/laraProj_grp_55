@@ -11,6 +11,9 @@ return new class extends Migration
      *
      * @return void
      */
+    /*
+     * Metodo per la creazione della tabella occupazione con relativi campi
+     */
     public function up()
     {
         Schema::create('occupazione', function (Blueprint $table) {

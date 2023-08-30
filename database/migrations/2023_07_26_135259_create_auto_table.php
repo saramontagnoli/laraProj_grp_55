@@ -11,6 +11,9 @@ return new class extends Migration
      *
      * @return void
      */
+    /*
+     * Metodo per la creazione della tabella auto con relativi campi e chiavi esterne
+     */
     public function up()
     {
         Schema::create('auto', function (Blueprint $table) {

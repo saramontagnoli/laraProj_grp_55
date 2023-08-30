@@ -11,6 +11,9 @@ return new class extends Migration
      *
      * @return void
      */
+    /*
+     * Metodo per la creazione della tabella users con campi e chiavi esterne relative
+     */
     public function up()
     {
         Schema::create('users', function (Blueprint $table) {

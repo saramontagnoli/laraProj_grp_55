@@ -6,6 +6,9 @@ use Illuminate\Contracts\Auth\MustVerifyEmail;
 use Illuminate\Foundation\Auth\User as Authenticatable;
 use Illuminate\Notifications\Notifiable;
 
+/*
+ * Model per la deifnizione degli UTENTI (livello 2, 3, 4)
+ */
 class User extends Authenticatable
 {
     use Notifiable;

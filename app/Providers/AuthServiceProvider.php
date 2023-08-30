@@ -25,20 +25,20 @@ class AuthServiceProvider extends ServiceProvider
     {
         $this->registerPolicies();
 
+        //Gate di definizione per i permessi dell'admin
         Gate::define('isAdmin', function ($user) {
             return $user->hasRole('admin');
         });
 
+        //Gate di definizione per i permessi dello user (cliente)
         Gate::define('isUser', function ($user) {
             return $user->hasRole('user');
         });
 
+        //Gate di definizione per i permessi dello staff
         Gate::define('isStaff', function ($user) {
             return $user->hasRole('staff');
         });
 
-        Gate::define('show-discount', function ($user) {
-            return $user->hasRole(['user', 'admin']);
-        });
     }
 }

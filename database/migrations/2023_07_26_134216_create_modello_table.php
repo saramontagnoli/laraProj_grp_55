@@ -11,6 +11,9 @@ return new class extends Migration
      *
      * @return void
      */
+    /*
+     * Metodo per la creazione della tabella modello con campi e chiavi esterne
+     */
     public function up()
     {
         Schema::create('modello', function (Blueprint $table) {
