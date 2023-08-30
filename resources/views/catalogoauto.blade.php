@@ -58,7 +58,7 @@
         @if(!empty($cardAuto))
             @foreach ($cardAuto as $auto)
 
-                <!--  -->
+                <!-- Definizione della colonna del catalogo -->
                 <div class="colonnacatalogo">
                     <!-- Definizione del link cliccabile per ogni auto -->
                     <a href="{{ url('/catalogoauto/'.$auto->codice_auto)}}" style="text-decoration: none; color:black">
@@ -69,11 +69,10 @@
                             <!-- Inserimento dell'immagine dal path definito all'interno del database -->
                             <img class="imgauto_catalogo" src="{{$auto ->foto_auto}}" alt="IMMAGINE NON DISPONIBILE AL MOMENTO">
 
-                            <!-- Inserimento della targa dell'auto -->
+                            <!-- Inserimento della marca, modello e costo dell'auto -->
                             <div class="nomeauto">
                                 <p class="titolo">{{$auto -> nome_marca}} {{$auto ->nome_modello}} - {{$auto -> costo_giorno}}€ </p>
                             </div>
-
                         </div>
                     </a>
                 </div>
