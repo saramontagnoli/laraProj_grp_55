@@ -1,7 +1,9 @@
+<!-- Si estende la struttura definita per le pagine del sito web -->
 @extends('layouts.struttura')
 
 @section('title', 'Login')
 
+<!-- Definizione della sezione del contenuto della pagina del login -->
 @section('content')
     <div style="text-align: center">
         <!-- Intestazione della form di login -->
@@ -18,7 +20,7 @@
                     {{ Form::label('username', 'Nome Utente') }}
                     <br>
                     <!-- Campo di inserimento dello username, avente come id "username" -->
-                    {{ Form::text('username', '', ['id' => 'username']) }}
+                    {{ Form::text('username', '', ['id' => 'username', 'class' => 'username_login']) }}
 
                     <!-- Se vengono rilevati degli errori allora vengono stampati -->
                     @if ($errors->first('username'))
@@ -37,7 +39,7 @@
                     {{ Form::label('password', 'Password') }}
                     <br>
                     <!-- Campo di inserimento della password, avente come id "password" -->
-                    {{ Form::password('password', ['id' => 'password']) }}
+                    {{ Form::password('password', ['id' => 'password' , 'class' => 'password_login']) }}
 
                     <!-- Se vengono rilevati degli errori allora vengono stampati -->
                     @if ($errors->first('password'))
@@ -58,10 +60,12 @@
 
                 <br><br>
 
+                <!-- Se non si è registrati c'è l'ancora che rimanda alla rotta di registrazione -->
                 <div>
                     <p> Se non hai già un account <a  href="{{ route('register') }}">registrati</a></p>
                 </div>
 
+                <!-- Chiusura della form -->
                 {{ Form::close() }}
             </div>
         </div>
