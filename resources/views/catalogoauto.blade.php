@@ -79,6 +79,7 @@
                 </div>
             @endforeach
         @else
+            <!-- Se non viene trovata nessuna auto allora si stampa un messaggio di errore -->
             <div style="padding-top: 30px"> SORRY! CARS NOT FOUND</div>
         @endif
     </div>
