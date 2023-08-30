@@ -115,3 +115,8 @@ body {font-family: Verdana, sans-serif;}
     border: 2px solid black; /* Aggiungere il bordo a tutte le celle */
     padding: 8px; /* Aggiungere spazio interno per una migliore leggibilità */
 }
+
+.tabella_noleggi thead{
+    background-color: black;
+    color: white;
+}

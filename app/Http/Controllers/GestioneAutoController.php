@@ -6,6 +6,7 @@ namespace App\Http\Controllers;
 use App\Models\Auto;
 use App\Models\Noleggio;
 use Illuminate\Http\Request;
+use Illuminate\Support\Carbon;
 
 
 class GestioneAutoController extends Controller
@@ -15,21 +16,21 @@ class GestioneAutoController extends Controller
         return view('gestioneauto');
     }
 
-    //funzione che gestisce la visualizzazione dei noleggi in base al mese e in base all'utente
-    function visualizzanoleggi(Request $request){
+    function visualizzanoleggi(Request $request)
+    {
         $mese = $request->input("mese");
-
-        if ($mese!=null){
-            $dbQuery = Noleggio::
-                join("auto", "auto.codice_auto", "=", "noleggio.auto_ref")
+        $annoCorrente = Carbon::now()->year;
+            $dbQuery = Noleggio::select("auto.targa", "marca.nome_marca", "modello.nome_modello", "noleggio.data_inizio", "noleggio.data_fine", "users.username")
+                ->join("auto", "auto.codice_auto", "=", "noleggio.auto_ref")
                 ->join("modello", "auto.modello_ref", "=", "modello.codice_modello")
-                ->join("marca", "modello.marca_ref", "=", "marca.codice_marca");
-            $listaNoleggi = Array();
-
-            //si inserisce il risultato della query di base
-            $listaNoleggi["listaNoleggi"] = $dbQuery;
-        }
-        return view('visualizzanoleggi', $listaNoleggi);
+                ->join("marca", "modello.marca_ref", "=", "marca.codice_marca")
+                ->join("users", "users.id", "=", "noleggio.utente_ref")
+                ->where(function ($query) use ($mese, $annoCorrente) {
+                    $query->whereMonth('noleggio.data_inizio', $mese)
+                        ->whereYear('noleggio.data_fine', $annoCorrente);
+                })
+                ->get();
+        return view('visualizzanoleggi', ['listaNoleggi' => $dbQuery]);
     }
 }
 

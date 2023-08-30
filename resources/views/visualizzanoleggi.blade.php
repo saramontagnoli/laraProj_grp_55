@@ -9,18 +9,19 @@
         <label>
             Inserisci il mese:
             <select name="mese">
-                <option value="1">1</option>
-                <option value="2">2</option>
-                <option value="3">3</option>
-                <option value="4">4</option>
-                <option value="5">5</option>
-                <option value="6">6</option>
-                <option value="7">7</option>
-                <option value="8">8</option>
-                <option value="9">9</option>
-                <option value="10">10</option>
-                <option value="11">11</option>
-                <option value="12">12</option>
+                <option value="0"></option>
+                <option value="1">Gennaio</option>
+                <option value="2">Febbraio</option>
+                <option value="3">Marzo</option>
+                <option value="4">Aprile</option>
+                <option value="5">Maggio</option>
+                <option value="6">Giugno</option>
+                <option value="7">Luglio</option>
+                <option value="8">Agosto</option>
+                <option value="9">Settembre</option>
+                <option value="10">Ottobre</option>
+                <option value="11">Novembre</option>
+                <option value="12">Dicembre</option>
             </select>
         </label>
         <button type="submit" name="action" value="submit">Cerca</button>
@@ -39,14 +40,16 @@
         </thead>
         <tbody>
         <!-- Righe della tabella -->
-        <tr>
-            <td>Dati...</td>
-            <td>Dati...</td>
-            <td>Dati...</td>
-            <td>Dati...</td>
-            <td>Dati...</td>
-            <td>Dati...</td>
-        </tr>
+        @foreach($listaNoleggi as $noleggio)
+            <tr>
+                <td>{{$noleggio['targa']}}</td>
+                <td>{{$noleggio['nome_marca']}}</td>
+                <td>{{$noleggio['nome_modello']}}</td>
+                <td>{{$noleggio['data_inizio']}}</td>
+                <td>{{$noleggio['data_fine']}}</td>
+                <td>{{$noleggio['username']}}</td>
+            </tr>
+        @endforeach
         <!-- Altre righe... -->
         </tbody>
     </table>
