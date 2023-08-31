@@ -9,7 +9,7 @@
                 <p><b>Marca auto:</b>{{$data->nome_marca}}</p>
                 <p><b>Modello auto:</b> {{$data->nome_modello}}</p>
                 <p><b>Targa auto:</b> {{$data->targa}}</p>
-                <p><b>Periodo di noleggio: DA</b> {{$data->data_inizio}} <b>A</b> {{$data->data_fine}}</p>
+                <p><b>Periodo di noleggio: da</b> {{$data->data_inizio}} <b>a</b> {{$data->data_fine}}</p>
                 <p></p>
             </div>
 
