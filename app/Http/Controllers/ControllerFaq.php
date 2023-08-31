@@ -84,5 +84,9 @@ class ControllerFaq extends Controller
         return view('modificaFaq', ['faq'=>$faq]);
     }
 
+    function aggiuntaFaq()
+    {
+        return view('aggiungiFaq');
+    }
 
 }
