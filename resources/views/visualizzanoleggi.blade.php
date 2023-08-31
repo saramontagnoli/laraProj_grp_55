@@ -3,6 +3,8 @@
 <!-- Definizione della sezione del contenuto della pagina del catalogo generale delle auto -->
 @section('content')
     <br><br>
+
+    <!-- Definizione della form per la visualizzazione dei noleggi in anno corrente per mese -->
     <form method="POST" action="{{ route('visualizzanoleggi') }}">
         @csrf
         <!-- Input per indicare il mese di cui visualizzare i noleggi -->
@@ -24,6 +26,7 @@
                 <option value="12">Dicembre</option>
             </select>
         </label>
+        <!-- Button di submit per estrazione dei dati dei noleggi del mese indicato e anno corrente -->
         <button type="submit" name="action" value="submit">Cerca</button>
     </form>
     <br>
