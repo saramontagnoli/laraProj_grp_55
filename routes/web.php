@@ -69,7 +69,7 @@ Route::put('/home/gestioneauto/modificadatiauto', [GestioneAutoController::class
 Route::get('/home/gestioneauto/modificadatiauto/{codice_auto}', [GestioneAutoController::class, 'getDatiAuto'])
     ->name('getdatiauto');
 
-//Rotta per la modifica dei dati delle auto per la modifica (staff)
+//Rotta per la modifica dei dati delle auto(staff)
 Route::get('/home/gestioneauto/modificadatiauto/{codice_auto}', [GestioneAutoController::class, 'modificaAuto'])
     ->name('modificadatiauto');
 

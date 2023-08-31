@@ -69,16 +69,4 @@
             <button onclick="myFunction()" type="submit" class="btn">Modifica dati</button>
             <br>
         </div>
-
-        <script>
-            function myFunction() {
-                let text;
-                if (confirm("sei sicuro di modificare i tuoi dati?") == true) {
-                    text = "You pressed OK!";
-                } else {
-                    text = "You canceled!";
-                }
-                document.getElementById("demo").innerHTML = text;
-            }
-        </script>
 @endsection

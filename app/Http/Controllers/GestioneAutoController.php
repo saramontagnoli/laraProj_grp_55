@@ -39,8 +39,15 @@ class GestioneAutoController extends Controller
 
     //fIl metodo getDatiAuto consente di estrarre i dati delle auto che lo staff ha intenzione di modificare
     //     * Questo serve per riempire i campi di modifica con i campi precedentemente impostati
-    function getDatiAuto()
+    function getDatiAuto($codice_auto)
     {
+        $auto = Auto::findOrFail($codice_auto);
+        $dati = Auto::select("auto.*", "marca.nome_marca", "modello.nome_modello")
+            ->join("modello", "auto.modello_ref", "=", "modello.codice_modello")
+            ->join("marca", "modello.marca_ref", "=", "marca.codice_marca")
+            ->where('auto.codice_auto', $auto)
+            ->get();
+        return view('modificadatiauto', ['dati' => $dati, 'codice_auto' => $codice_auto]);
 
     }
     //metodo per la modifica delle auto (livello 3)
