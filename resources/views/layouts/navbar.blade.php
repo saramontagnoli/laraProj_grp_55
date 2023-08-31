@@ -26,8 +26,8 @@
 
         <!-- Se l'utente autenticato è uno 'staff' allora si stampano i bottoni per la gestione e visualizzazione di auto e noleggi -->
         @can('isStaff')
-            <a href="{{url('/home/gestioneauto')}}" class="element_navbar">Gestione auto</a> <!-- Visualizzazione pagina di inserimento, modifica ed eliminazione delle auto -->
-            <a href="{{url('/home/visualizzanoleggi')}}" class="element_navbar">Visualizza noleggi</a> <!-- Visualizzazione noleggi per mese dell'anno corrente -->
+            <a href="{{url('/homestaff/gestioneauto')}}" class="element_navbar">Gestione auto</a> <!-- Visualizzazione pagina di inserimento, modifica ed eliminazione delle auto -->
+            <a href="{{url('/homestaff/visualizzanoleggi')}}" class="element_navbar">Visualizza noleggi</a> <!-- Visualizzazione noleggi per mese dell'anno corrente -->
         @endcan
 
         @can('isAdmin')

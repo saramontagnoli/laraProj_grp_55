@@ -68,6 +68,9 @@ Route::get('/homeadmin/gestioneFaq/modificatadatiFaq/{codice_faq}', [ControllerF
 //Rotta per la modifica delle F.A.Q. (admin)
 Route::put('/modificadatiFaq', [ControllerFaq::class, 'modificaFaq'])->middleware('can:isAdmin');
 
+//Rotta per l'eliminazione di una F.A.Q. (admin)
+Route::get('/homeadmin/gestioneFaq/aggiuntaFaq', [ControllerFaq::class, 'aggiuntaFaq'])
+    ->middleware('can:isAdmin');
 
 
 /*

@@ -4,7 +4,7 @@
 
     <h1 class="titolo_info">GESTIONE F.A.Q.</h1>
     <br>
-    <button class="bottone">Aggiungi F.A.Q.</button>
+    <a href="{{ url('/aggiungtaFaq') }}" class="bottone">Aggiungi F.A.Q.</a>
     <br><br>
     <table class="tabella_noleggi">
     <thead>
