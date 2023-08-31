@@ -44,12 +44,15 @@ Route::get('/comenoleggiare', function () {
     return view('comenoleggiare');
 });
 
+//Rotte di definizione dell'utente di livello 4 (admin)
+Route::get('/homeadmin', [UserController::class, 'index'])
+    ->name('admin')->middleware('can:isAdmin');
 
 //Rotte di definizione dell'utente di livello 3 (staff)
 Route::get('/homestaff', [UserController::class, 'index'])
     ->name('staff')->middleware('can:isStaff');
 
-//Rotte di definizione dell'utente di livello 2 (utente registrato che può noleggiare le auto)
+//Rotte di definizione dell'utente di livello 2 (cliente)
 Route::get('/home', [UserController::class, 'index'])
     ->name('user')->middleware('can:isUser');
 
