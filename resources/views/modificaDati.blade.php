@@ -108,8 +108,11 @@
 
                 <div class="posizione_cx">
                     <!-- Bottone di submit per l'invio dei dati inseriti nella form e conseguente modifica -->
-                    {{ Form::submit('Modifica dati', ['class' => 'bottone']) }}
+                    {{ Form::submit('Modifica dati', ['class' => 'bottone', 'onclick' => 'myFunction()']) }}
                 </div>
+
+                <script src="{{ asset('assets/js/app.js') }}"></script>
+
                 <br>
 
                 <!-- Chiusura della form -->
