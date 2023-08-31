@@ -4,7 +4,7 @@
 
     <h1 class="titolo_info">GESTIONE F.A.Q.</h1>
     <br>
-    <button>Aggiungi F.A.Q.</button>
+    <button class="bottone">Aggiungi F.A.Q.</button>
     <br><br>
     <table class="tabella_noleggi">
     <thead>
