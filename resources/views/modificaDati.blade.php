@@ -124,8 +124,6 @@
                 <!-- Chiusura della form -->
                 {{ Form::close() }}
             </div>
-
         <br>
-
-        </div>
+    </div>
 @endsection

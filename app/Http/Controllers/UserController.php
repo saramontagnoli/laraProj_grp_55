@@ -161,6 +161,9 @@ class UserController extends Controller {
 
                 //query di estrazione dell'oggetto appena inserito all'interno della tabella noleggio
                 $dbQuery = DB:: table('noleggio')
+                    ->join("auto", "noleggio.auto_ref", "=", "auto.codice_auto")
+                    ->join("modello", "auto.modello_ref", "=", "modello.codice_modello")
+                    ->join("marca", "modello.marca_ref", "=", "marca.codice_marca")
                     ->where ('auto_ref', $codice_auto)
                     ->where('data_inizio', '=', $noleggio_inizio)
                     ->where('data_fine', '=', $noleggio_fine)
