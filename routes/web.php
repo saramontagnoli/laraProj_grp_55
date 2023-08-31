@@ -46,20 +46,17 @@ Route::get('/comenoleggiare', function () {
 });
 
 //Rotte di definizione dell'utente di livello 4 (admin)
+Route::get('/homeadmin/gestioneFaq', [ControllerFaq::class, 'gestioneFaq'])
+    ->name('/gestioneFaq')->middleware('can:isAdmin');
+
+//Rotte di definizione dell'utente di livello 4 (admin)
 Route::get('/homeadmin', [UserController::class, 'index'])
     ->name('admin')->middleware('can:isAdmin');
+
 
 //Rotte di definizione dell'utente di livello 3 (staff)
 Route::get('/homestaff', [UserController::class, 'index'])
     ->name('staff')->middleware('can:isStaff');
-
-//Rotte di definizione dell'utente di livello 2 (cliente)
-Route::get('/home', [UserController::class, 'index'])
-    ->name('user')->middleware('can:isUser');
-
-//Rotta di definizione per la visualizzazione delle informazioni del profilo
-Route::get('/home/profilo', [UserController::class, 'profilo'])
-    ->name('user/profilo')->middleware('can:isUser');
 
 //Rotta di definizione per la gestione delle auto (staff)
 Route::get('/home/gestioneauto', [GestioneAutoController::class, 'gestioneAuto'])
@@ -93,6 +90,14 @@ Route::get('/home/visualizzanoleggi', [GestioneAutoController::class, 'visualizz
 //Rotta di definizione per la visualizzazione delle auto noleggiate (staff)
 Route::post('/home/visualizzanoleggi', [GestioneAutoController::class, 'visualizzanoleggi'])
     ->name('visualizzanoleggi')->middleware('can:isStaff');
+
+//Rotte di definizione dell'utente di livello 2 (cliente)
+Route::get('/home', [UserController::class, 'index'])
+    ->name('user')->middleware('can:isUser');
+
+//Rotta di definizione per la visualizzazione delle informazioni del profilo
+Route::get('/home/profilo', [UserController::class, 'profilo'])
+    ->name('user/profilo')->middleware('can:isUser');
 
 // Rotta per accedere alla modifica dei dati personali (livello 1).
 Route::get('/home/profilo/dati', [UserController::class, 'getDatiPersonali1'])

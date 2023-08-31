@@ -19,4 +19,9 @@ class ControllerFaq extends Controller
         //ritorno della vista contenente tutte le FAQ
         return view('faq', ['faq'=>$data]);
     }
+
+    function gestioneFaq()
+    {
+
+    }
 }
