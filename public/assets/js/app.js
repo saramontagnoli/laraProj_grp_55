@@ -10,3 +10,11 @@ function myFunction() {
     return confirm("Sei sicuro di voler modificare i dati personali?");
 
 }
+
+
+function myFunction2() {
+
+    //si ritorna indietro la conferma per vedere se modificare o no i dati
+    return confirm("Sei sicuro di voler modificare questa F.A.Q.?");
+
+}

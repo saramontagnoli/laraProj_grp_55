@@ -3,6 +3,8 @@
 namespace App\Http\Controllers;
 
 use App\Models\Faq;
+use Illuminate\Support\Facades\Auth;
+use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Log;
 
 /*
@@ -41,4 +43,46 @@ class ControllerFaq extends Controller
 
         return redirect()->route('/gestioneFaq')->with('message', 'Faq eliminata con successo.');
     }
+
+
+    /*
+ * Il metodo updateDatiPersonali permette di andare ad aggiornare effettivamente i dati del cliente, secondo i nuovi input
+ */
+    function modificaFaq(Request $request)
+    {
+
+        $codice_faq = $request->input('codice_faq');
+
+        //validazione dei dati della form di modifica
+        $request->validate([
+            'domanda' => ['required','string','max:600'],
+            'risposta' => ['required','string','max:600']
+        ]);
+
+        //query di update delle informazioni dell'utente senza password
+        Faq::where('codice_faq', $codice_faq)->update(
+            [
+                'domanda'=>$request->input('domanda'),
+                'risposta'=>$request->input('risposta'),
+                'admin_ref' => Auth::user()->id
+            ]);
+
+        //redirezione alla rotta del profilo dell'utente
+        return redirect()->route('/gestioneFaq');
+    }
+
+    /*
+ * Il metodo getDatiPersonali consente di estrarre i dati del cliente che ha intenzione di modificare i dati
+ * Questo serve per riempire i campi di modifica con i campi precedentemente impostati
+ */
+    function getDatiFaq($codice_faq){
+
+        //query di estrazione dell'utente dal database
+        $faq = Faq::where('codice_faq', $codice_faq)->first();
+
+        //return della vista di modifica dei dati, compilando i campi di modifica con i dati vecchi estratti dal DB
+        return view('modificaFaq', ['faq'=>$faq]);
+    }
+
+
 }

@@ -57,9 +57,16 @@ Route::get('/homeadmin', [UserController::class, 'index'])
 Route::get('/homeadmin/gestioneFaq', [ControllerFaq::class, 'gestioneFaq'])
     ->name('/gestioneFaq')->middleware('can:isAdmin');
 
-//Rotta per l'eliminazione delle auto (staff)
-Route::get('/home/gestioneFaq/{codice_faq}', [ControllerFaq::class, 'eliminaFaq'])
+//Rotta per l'eliminazione di una F.A.Q. (admin)
+Route::get('/homeadmin/gestioneFaq/{codice_faq}', [ControllerFaq::class, 'eliminaFaq'])
     ->name('eliminaFaq')->middleware('can:isAdmin');
+
+//Rotta per la modifica dei dati delle F.A.Q. (admin)
+Route::get('/homeadmin/gestioneFaq/modificatadatiFaq/{codice_faq}', [ControllerFaq::class, 'getDatiFaq'])
+    ->name('modificadatiFaq')->middleware('can:isAdmin');
+
+//Rotta per la modifica delle F.A.Q. (admin)
+Route::put('/modificadatiFaq', [ControllerFaq::class, 'modificaFaq'])->middleware('can:isAdmin');
 
 
 
@@ -120,7 +127,7 @@ Route::get('/home/profilo/dati', [UserController::class, 'getDatiPersonali1'])
     ->name('modificaDatiL1')->middleware('can:isUser');
 
 // Rotta che aggiorna i dati.
-Route::put('/modificaDatiL1', [UserController::class, 'updateDatiPersonali1'])->middleware('can:isUser');;
+Route::put('/modificaDatiL1', [UserController::class, 'updateDatiPersonali1'])->middleware('can:isUser');
 
 // Rotta per accedere alla pagina di conferma del noleggio dell'auto scelta.
 Route::post('/catalogoauto/{codice_auto}/noleggio', [UserController::class, 'noleggioAuto'])->middleware('can:isUser');;

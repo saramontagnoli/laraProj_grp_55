@@ -21,7 +21,7 @@
         <tr>
             <td>{{$faq['domanda']}}</td>
             <td>{{$faq['risposta']}}</td>
-            <td><a href="" class="tabella_link">Modifica</a></td>
+            <td><a href="{{ route('modificadatiFaq', ['codice_faq' => $faq['codice_faq']]) }}" class="tabella_link">Modifica</a></td>
             <td><a href="{{ route('eliminaFaq', ['codice_faq' => $faq['codice_faq']]) }}" class="tabella_link" onclick="return confirmDelete()">Elimina</a></td>
         </tr>
     @endforeach
