@@ -8,6 +8,11 @@
             <!-- Intestazione della pagina di modifica dell'utente, specificando lo username -->
             <h2 class="titolo_info">Modifica dati personali di: {{$dati['username']}}</h2>
 
+            <div>
+                <!-- Button indietro che permette di tornare al profilo dell'utente -->
+                <a href="{{ route('user/profilo') }}" class="bottone">&laquo; INDIETRO </a>
+            </div>
+
             <br>
             @csrf
             <!-- Apertura del tag FORM per la modifica dei dati dell'utente, metodo PUT per inserimento dati -->
@@ -111,6 +116,7 @@
                     {{ Form::submit('Modifica dati', ['class' => 'bottone', 'onclick' => 'return myFunction()']) }}
                 </div>
 
+                <!-- Inclusione dello script per la conferma di modifica -->
                 <script src="{{ asset('assets/js/app.js') }}"></script>
 
                 <br>
