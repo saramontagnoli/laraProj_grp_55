@@ -4,6 +4,7 @@ use App\Http\Controllers\ControllerCatalogoAuto;
 use App\Http\Controllers\ControllerFaq;
 use App\Http\Controllers\GestioneAutoController;
 use App\Http\Controllers\StaffController;
+
 use App\Http\Controllers\UserController;
 use Illuminate\Support\Facades\Route;
 /*
@@ -62,46 +63,46 @@ Route::get('/home/profilo', [UserController::class, 'profilo'])
 
 //Rotta di definizione per la gestione delle auto (staff)
 Route::get('/home/gestioneauto', [GestioneAutoController::class, 'gestioneAuto'])
-    ->name('/gestioneauto');
+    ->name('/gestioneauto')->middleware('can:isStaff');
 
 //Rotta per la modifica delle auto (staff)
 Route::put('/home/gestioneauto/modificadatiauto', [GestioneAutoController::class, 'modificaAuto'])
-    ->name('modificadatiauto');
+    ->name('modificadatiauto')->middleware('can:isStaff');
 
 //Rotta per la modifica dei dati delle auto per la modifica (staff)
 Route::get('/home/gestioneauto/modificadatiauto/{codice_auto}', [GestioneAutoController::class, 'getDatiAuto'])
-    ->name('getdatiauto');
+    ->name('getdatiauto')->middleware('can:isStaff');
 
 //Rotta per la modifica dei dati delle auto(staff)
 Route::get('/home/gestioneauto/modificadatiauto/{codice_auto}', [GestioneAutoController::class, 'modificaAuto'])
-    ->name('modificadatiauto');
+    ->name('modificadatiauto')->middleware('can:isStaff');
 
 //Rotta per l'eliminazione delle auto (staff)
 Route::get('/home/gestioneauto/{codice_auto}', [GestioneAutoController::class, 'eliminaAuto'])
-    ->name('eliminaauto');
+    ->name('eliminaauto')->middleware('can:isStaff');
 
 //Rotta per eliminare un auto (staff)
 Route::put('/home/gestioneauto/{codice_auto}', [GestioneAutoController::class, 'eliminaAuto'])
-    ->name('eliminaauto');
+    ->name('eliminaauto')->middleware('can:isStaff');
 
 
 //Rotta di definizione per la visualizzazione delle auto noleggiate (staff)
 Route::get('/home/visualizzanoleggi', [GestioneAutoController::class, 'visualizzanoleggi'])
-    ->name('visualizzanoleggi');
+    ->name('visualizzanoleggi')->middleware('can:isStaff');
 
 //Rotta di definizione per la visualizzazione delle auto noleggiate (staff)
 Route::post('/home/visualizzanoleggi', [GestioneAutoController::class, 'visualizzanoleggi'])
-    ->name('visualizzanoleggi');
+    ->name('visualizzanoleggi')->middleware('can:isStaff');
 
 // Rotta per accedere alla modifica dei dati personali (livello 1).
 Route::get('/home/profilo/dati', [UserController::class, 'getDatiPersonali1'])
-    ->name('modificaDatiL1');
+    ->name('modificaDatiL1')->middleware('can:isUser');
 
 // Rotta che aggiorna i dati.
-Route::put('/modificaDatiL1', [UserController::class, 'updateDatiPersonali1']);
+Route::put('/modificaDatiL1', [UserController::class, 'updateDatiPersonali1'])->middleware('can:isUser');;
 
-// Rotta per accedere alle auto noleggiate.
-Route::post('/catalogoauto/{codice_auto}/noleggio', [UserController::class, 'noleggioAuto']);
+// Rotta per accedere alla pagina di conferma del noleggio dell'auto scelta.
+Route::post('/catalogoauto/{codice_auto}/noleggio', [UserController::class, 'noleggioAuto'])->middleware('can:isUser');;
 
 require __DIR__.'/auth.php';
 

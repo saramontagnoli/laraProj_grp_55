@@ -30,6 +30,13 @@
             <a href="{{url('/home/visualizzanoleggi')}}" class="element_navbar">Visualizza noleggi</a> <!-- Visualizzazione noleggi per mese dell'anno corrente -->
         @endcan
 
+        @can('isAdmin')
+            <a href="{{url('')}}" class="element_navbar">Gestione clienti</a> <!-- Visualizzazione clienti ed eventuale eliminazione -->
+            <a href="{{url('')}}" class="element_navbar">Gestione staff</a> <!-- Visualizzazione pagina di inserimento, modifica ed eliminazione dello staff -->
+            <a href="{{url('')}}" class="element_navbar">Riepilogo annuo</a> <!-- Visualizzazione totale noleggi per ogni mese dell'anno corrente -->
+            <a href="{{url('')}}" class="element_navbar">Gestione F.A.Q.</a> <!-- Visualizzazione pagina inserimento, modifica ed elimianzione delle F.A.Q. -->
+        @endcan
+
         <!-- Se una delle tre tipologie di utenti è autenticata si mostra il button per il logout che riporta alla rotta di logout -->
         @auth
             <a href="" class="element_navbar" title="Esci dal sito" onclick="event.preventDefault(); document.getElementById('logout-form').submit();">Logout</a>
