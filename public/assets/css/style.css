@@ -117,15 +117,21 @@ body {
     color: white;
 }
 
+/*
+Classi di formattazione per i link di modifica ed elimina della tabella della F.A.Q.
+ */
 .tabella_link
 {
-    text-decoration: none;
-    color: black;
+    text-decoration: none; /* nessuna decorazione applicata al testo */
+    color: black; /* colore del testo nero */
 }
 
+/*
+Classe di formattazione dei link, quando viene passato sopra il cursore
+ */
 .tabella_link:hover
 {
-    color:red;
-    text-decoration: underline;
+    color:red; /* il colore del testo diventa rosso */
+    text-decoration: underline; /* si aggiunge la sottolineatura */
 }
 

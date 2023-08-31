@@ -45,15 +45,27 @@ Route::get('/comenoleggiare', function () {
     return view('comenoleggiare');
 });
 
-//Rotte di definizione dell'utente di livello 4 (admin)
-Route::get('/homeadmin/gestioneFaq', [ControllerFaq::class, 'gestioneFaq'])
-    ->name('/gestioneFaq')->middleware('can:isAdmin');
 
+/*
+ * ROTTE ADMIN
+ */
 //Rotte di definizione dell'utente di livello 4 (admin)
 Route::get('/homeadmin', [UserController::class, 'index'])
     ->name('admin')->middleware('can:isAdmin');
 
+//Rotte di definizione dell'utente di livello 4 (admin)
+Route::get('/homeadmin/gestioneFaq', [ControllerFaq::class, 'gestioneFaq'])
+    ->name('/gestioneFaq')->middleware('can:isAdmin');
 
+//Rotta per l'eliminazione delle auto (staff)
+Route::get('/home/gestioneFaq/{codice_faq}', [ControllerFaq::class, 'eliminaFaq'])
+    ->name('eliminaFaq')->middleware('can:isAdmin');
+
+
+
+/*
+ * ROTTE STAFF
+ */
 //Rotte di definizione dell'utente di livello 3 (staff)
 Route::get('/homestaff', [UserController::class, 'index'])
     ->name('staff')->middleware('can:isStaff');
@@ -91,6 +103,10 @@ Route::get('/home/visualizzanoleggi', [GestioneAutoController::class, 'visualizz
 Route::post('/home/visualizzanoleggi', [GestioneAutoController::class, 'visualizzanoleggi'])
     ->name('visualizzanoleggi')->middleware('can:isStaff');
 
+
+/*
+ * ROTTE CLIENTE
+ */
 //Rotte di definizione dell'utente di livello 2 (cliente)
 Route::get('/home', [UserController::class, 'index'])
     ->name('user')->middleware('can:isUser');

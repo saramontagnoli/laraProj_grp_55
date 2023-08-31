@@ -31,4 +31,14 @@ class ControllerFaq extends Controller
         //return della vista contenente il catalogo completo
         return view('gestionefaq', $cardFaq);
     }
+
+    function eliminaFaq($codice_faq)
+    {
+        $faq = Faq::where('faq.codice_faq', '=', $codice_faq);
+
+        // Elimina i noleggi correlati utilizzando la relazione
+        $faq->delete();
+
+        return redirect()->route('/gestioneFaq')->with('message', 'Faq eliminata con successo.');
+    }
 }
