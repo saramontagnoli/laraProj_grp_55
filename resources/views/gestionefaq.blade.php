@@ -21,8 +21,8 @@
         <tr>
             <td>{{$faq['domanda']}}</td>
             <td>{{$faq['risposta']}}</td>
-            <td><a href="">Modifica</a></td>
-            <td><a href="" onclick="return confirmDelete()">Elimina</a></td>
+            <td><a href="" class="tabella_link">Modifica</a></td>
+            <td><a href="" class="tabella_link" onclick="return confirmDelete()">Elimina</a></td>
         </tr>
     @endforeach
     </tbody>

@@ -117,3 +117,15 @@ body {
     color: white;
 }
 
+.tabella_link
+{
+    text-decoration: none;
+    color: black;
+}
+
+.tabella_link:hover
+{
+    color:red;
+    text-decoration: underline;
+}
+
