@@ -1,10 +1,13 @@
-
-.username_login, .password_login
+/*
+Classe di fromattazione per i campi di inserimento di dati
+ */
+.campo_form
 {
-    width: 30%;
-    padding: 12px 20px;
-    margin: 8px 0;
+    width: 30%; /* l'elemento occupa il 30% del suo contenitore */
+    padding: 12px 20px; /* viene impostato un padding alto e basso di 12px, a destra e sinistra di 20 px */
+    margin: 8px 0; /* margine di 8px alto e basso */
     display: inline-block;
-    border: 1px solid #ccc;
+    border: 1px solid #ccc; /* inserimento di un bordo visibile continuo intorno al campo di inserimento */
     box-sizing: border-box;
+    text-align: center; /* allineament del testo centrale */
 }

@@ -20,7 +20,7 @@
                     {{ Form::label('username', 'Nome Utente') }}
                     <br>
                     <!-- Campo di inserimento dello username, avente come id "username" -->
-                    {{ Form::text('username', '', ['id' => 'username', 'class' => 'username_login']) }}
+                    {{ Form::text('username', '', ['id' => 'username', 'class' => 'campo_form']) }}
 
                     <!-- Se vengono rilevati degli errori allora vengono stampati -->
                     @if ($errors->first('username'))
@@ -39,7 +39,7 @@
                     {{ Form::label('password', 'Password') }}
                     <br>
                     <!-- Campo di inserimento della password, avente come id "password" -->
-                    {{ Form::password('password', ['id' => 'password' , 'class' => 'password_login']) }}
+                    {{ Form::password('password', ['id' => 'password' , 'class' => 'campo_form']) }}
 
                     <!-- Se vengono rilevati degli errori allora vengono stampati -->
                     @if ($errors->first('password'))
