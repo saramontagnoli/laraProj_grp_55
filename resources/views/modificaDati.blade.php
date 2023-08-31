@@ -92,7 +92,7 @@
                     <br>
 
                     <!-- Campo di inserimento della password dell'utente, avente come id "password" -->
-                    {{ Form::password('password', ['class' => 'campo_form', 'id' => 'password'] )}}
+                    {{ Form::password('password', ['class' => 'campo_form'] )}}
 
                     <!-- Se vengono rilevati degli errori, vengono stampati sotto al campo relativo -->
                     @if ($errors->first('password'))
@@ -108,7 +108,7 @@
 
                 <div class="posizione_cx">
                     <!-- Bottone di submit per l'invio dei dati inseriti nella form e conseguente modifica -->
-                    {{ Form::submit('Modifica dati', ['class' => 'bottone', 'onclick' => 'myFunction()']) }}
+                    {{ Form::submit('Modifica dati', ['class' => 'bottone', 'onclick' => 'return myFunction()']) }}
                 </div>
 
                 <script src="{{ asset('assets/js/app.js') }}"></script>

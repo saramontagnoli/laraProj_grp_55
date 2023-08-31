@@ -5,11 +5,7 @@ function confirmDelete() {
 
 /* Classe per la modifica dei dati di un utente */
 function myFunction() {
-    let text;
-    if (confirm("sei sicuro di modificare i tuoi dati?") == true) {
-        text = "You pressed OK!";
-    } else {
-        text = "You canceled!";
-    }
-    document.getElementById("demo").innerHTML = text;
+
+    return confirm("Sei sicuro di voler modificare i dati personali?");
+
 }
