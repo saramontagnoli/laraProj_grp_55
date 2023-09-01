@@ -85,16 +85,13 @@ Route::get('/homestaff/gestioneauto', [GestioneAutoController::class, 'gestioneA
     ->name('/gestioneauto')->middleware('can:isStaff');
 
 //Rotta per la modifica delle auto (staff)
-Route::put('/homestaff/gestioneauto/modificadatiauto', [GestioneAutoController::class, 'modificaAuto'])
-    ->name('modificadatiauto')->middleware('can:isStaff');
+Route::put('/modificadatiauto', [GestioneAutoController::class, 'modificaAuto'])
+    ->middleware('can:isStaff');
 
 //Rotta per la modifica dei dati delle auto per la modifica (staff)
 Route::get('/homestaff/gestioneauto/modificadatiauto/{codice_auto}', [GestioneAutoController::class, 'getDatiAuto'])
     ->name('getdatiauto')->middleware('can:isStaff');
 
-//Rotta per la modifica dei dati delle auto(staff)
-Route::get('/homestaff/gestioneauto/modificadatiauto/{codice_auto}', [GestioneAutoController::class, 'modificaAuto'])
-    ->name('modificadatiauto')->middleware('can:isStaff');
 
 //Rotta per l'eliminazione delle auto (staff)
 Route::get('/homestaff/gestioneauto/{codice_auto}', [GestioneAutoController::class, 'eliminaAuto'])

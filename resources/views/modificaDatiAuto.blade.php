@@ -4,17 +4,21 @@
 @section('title', 'Modifica dati di un auto')
 <!-- Definizione della sezione del contenuto della pagina della singola auto -->
 @section('content')
-    <div class="wrapper wrapper-register">
-        <div class="form-box form-box-inputdialog">
-            <h2>Modifica dati dell'auto {{$dati['targa']}}</h2>
+    <div>
+        <div>
+            <h2 class="titolo_info">Modifica dati dell'auto {{$dati['nome_marca']}} - {{$dati['nome_modello']}}</h2>
 
             <br>
             @csrf
             {{ Form::open(array('url' => '/modificadatiauto', 'enctype' => 'multipart/form-data', 'method' => 'PUT')) }}
-            <div class="form-row">
-                <div class="form-left">
-                    {{ Form::label('targa', 'Targa', ['class' => 'label-input']) }}
-                    {{ Form::text('targa', $dati['targa'], ['class' => 'input', 'id' => 'targa', 'required' => 'required']) }}
+            <div class="posizione_cx">
+                <div>
+                    {{ Form::hidden('codice_auto', $dati['codice_auto'], ['id' => 'codice_auto', 'class' => 'campo_form']) }}
+                    <br>
+                    {{ Form::label('targa', 'Targa') }}
+                    <br>
+                    {{ Form::text('targa', $dati['targa'], ['class' => 'campo_form', 'id' => 'targa', 'required' => 'required']) }}
+                    <br>
                     @if ($errors->first('nome'))
                         <ul class="errors">
                             @foreach ($errors->get('targa') as $message)
@@ -23,31 +27,37 @@
                         </ul>
                     @endif
 
-                    {{ Form::label('marca_ref', 'Marca', ['class' => 'label-input']) }}
-                    {{ Form::text('marca_ref', $dati['marca_ref'], ['class' => 'input', 'id' => 'marca_ref', 'required' => 'required']) }}
-                    @if ($errors->first('marca_ref'))
+                    {{ Form::label('nome_marca', 'Marca') }}
+                    <br>
+                    {{ Form::text('nome_marca', $dati['nome_marca'], ['class' => 'campo_form', 'readonly' => true, 'id' => 'nome_marca', 'required' => 'required']) }}
+
+                    @if ($errors->first('nome_marca'))
                         <ul class="errors">
-                            @foreach ($errors->get('marca_ref') as $message)
+                            @foreach ($errors->get('nome_marca') as $message)
                                 <li>{{ $message }}</li>
                             @endforeach
                         </ul>
                     @endif
+                    <br>
+                    {{ Form::label('nome_modello', 'Modello') }}
+                    <br>
+                    {{ Form::text('nome_modello', $dati['nome_modello'], ['class' => 'campo_form', 'readonly' => true, 'id' => 'nome_modello','required' => 'required']) }}
 
-                    {{ Form::label('modello_ref', 'Modello', ['class' => 'label-input']) }}
-                    {{ Form::label('modello_ref', $dati['modello_ref'], ['class' => 'input', 'id' => 'modello_ref','required' => 'required']) }}
-                    @if ($errors->first('modello_ref'))
+                    @if ($errors->first('nome_modello'))
                         <ul class="errors">
-                            @foreach ($errors->get('modello_ref') as $message)
+                            @foreach ($errors->get('nome_modello') as $message)
                                 <li>{{ $message }}</li>
                             @endforeach
                         </ul>
                     @endif
-
+                    <br>
                 </div>
 
-                <div class="form-right">
-                    {{ Form::label('num_posti', 'Numero Posti', ['class' => 'label-input']) }}
-                    {{ Form::label('num_posti', $dati['num_posti'], ['class' => 'input', 'id' => 'num_posti', 'rules' => 'num_posti', 'required' => 'required']) }}
+                <div>
+                    {{ Form::label('num_posti', 'Numero Posti') }}
+                    <br>
+                    {{ Form::text('num_posti', $dati['num_posti'], ['class' => 'campo_form', 'id' => 'num_posti', 'rules' => 'num_posti', 'required' => 'required']) }}
+
                     @if ($errors->first('num_posti'))
                         <ul class="errors">
                             @foreach ($errors->get('num_posti') as $message)
@@ -55,9 +65,11 @@
                             @endforeach
                         </ul>
                     @endif
+                    <br>
 
-                    {{ Form::label('allestimento', 'Allestimento', ['class' => 'label-input']) }}
-                    {{ Form::label('allestimento', $dati['allestimento'], ['class' => 'input', 'id' => 'allestimento', 'rules' => 'allestimento', 'required' => 'required']) }}
+                    {{ Form::label('allestimento', 'Allestimento')}}
+                    <br>
+                    {{ Form::text('allestimento', $dati['allestimento'], ['class' => 'campo_form', 'id' => 'allestimento', 'rules' => 'allestimento', 'required' => 'required']) }}
                     @if ($errors->first('allestimento'))
                         <ul class="errors">
                             @foreach ($errors->get('allestimento') as $message)
@@ -65,9 +77,12 @@
                             @endforeach
                         </ul>
                     @endif
+                    <br>
 
-                    {{ Form::label('costo_giorno', 'Costo Giornaliero', ['class' => 'label-input']) }}
-                    {{ Form::label('costo_giorno', $dati['costo_giorno'], ['class' => 'input', 'id' => 'costo_giorno', 'rules' => 'costo_giorno', 'required' => 'required']) }}
+                    {{ Form::label('costo_giorno', 'Costo Giornaliero') }}
+                    <br>
+                    {{ Form::text('costo_giorno', $dati['costo_giorno'], ['class' => 'campo_form', 'id' => 'costo_giorno', 'rules' => 'costo_giorno', 'required' => 'required']) }}
+
                     @if ($errors->first('costo_giorno'))
                         <ul class="errors">
                             @foreach ($errors->get('costo_giorno') as $message)
@@ -75,10 +90,13 @@
                             @endforeach
                         </ul>
                     @endif
-
+                    <br>
                 </div>
             </div>
-            <button onclick="myFunction()" type="submit" class="btn">Modifica dati</button>
+            <div class="posizione_cx">
+                {{ Form::submit('Modifica Auto', ['class' => 'bottone', 'onclick' => 'return confirmModifica()']) }}
+                {{ Form::close() }}
+            </div>
             <br>
         </div>
 

@@ -4,10 +4,13 @@ namespace App\Http\Controllers;
 
 
 use App\Models\Auto;
+use App\Models\Marca;
+use App\Models\Modello;
 use App\Models\Noleggio;
 use App\Models\Offer;
 use Illuminate\Http\Request;
 use Illuminate\Support\Carbon;
+use Illuminate\Validation\Rule;
 
 class GestioneAutoController extends Controller
 {
@@ -41,20 +44,40 @@ class GestioneAutoController extends Controller
     //     * Questo serve per riempire i campi di modifica con i campi precedentemente impostati
     function getDatiAuto($codice_auto)
     {
-        $auto = Auto::findOrFail($codice_auto);
-        $dati = Auto::select("auto.*", "marca.nome_marca", "modello.nome_modello")
-            ->join("modello", "auto.modello_ref", "=", "modello.codice_modello")
+       // $auto = Auto::findOrFail($codice_auto);
+        $dati = Auto::join("modello", "auto.modello_ref", "=", "modello.codice_modello")
             ->join("marca", "modello.marca_ref", "=", "marca.codice_marca")
-            ->where('auto.codice_auto', $auto)
-            ->get();
-        return view('modificadatiauto', ['dati' => $dati, 'codice_auto' => $codice_auto]);
+            ->where('auto.codice_auto', $codice_auto)
+            ->first();
+        return view('modificaDatiAuto', ['dati' => $dati]);
 
     }
-    //metodo per la modifica delle auto (livello 3)
-    function modificaAuto($codice_auto)
+
+    public function modificaAuto(Request $request)
     {
-        return view ('modificadatiauto');
+        // Recupera l'auto in base al codice_auto
+        $codice_auto = $request->input('codice_auto');
+        // Valida i dati della form di modifica
+        $request->validate([
+            'targa' => ['string', 'max:20', 'required', 'unique:auto,targa,' . $codice_auto],
+            'costo_giorno' => ['numeric', 'min:0'],
+            'num_posti' => ['integer', 'min:2', 'max:9'],
+            'allestimento' => ['string', 'max:255'],
+        ]);
+
+        Auto::join("modello", "auto.modello_ref", "=", "modello.codice_modello")
+            ->join("marca", "modello.marca_ref", "=", "marca.codice_marca")
+            ->where('codice_auto', $codice_auto)->update(
+            [
+                'targa'=>$request->input('targa'),
+                'costo_giorno'=>$request->input('costo_giorno'),
+                'num_posti'=>$request->input('num_posti'),
+                'allestimento'=>$request->input('allestimento'),
+            ]);
+        // Redirezione alla rotta desiderata dopo la modifica
+        return redirect()->route('/gestioneauto');
     }
+
 
 
     function eliminaAuto($codice_auto)

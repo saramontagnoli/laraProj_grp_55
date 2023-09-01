@@ -10,13 +10,14 @@ use Illuminate\Database\Eloquent\Model;
  */
 class Auto extends Model {
 
-    use HasFactory; //che cazzo è?
-
-    //associazione alla tabella auto del database
+    use HasFactory;
+    protected $primaryKey = 'codice_auto';
     protected $table = 'auto';
 
+    //associazione alla tabella auto del database
+
+
     //definizione della primary key = codice_auto
-    protected $primaryKey = 'codice_auto';
     public $timestamps = false;
     public function noleggio()
     {
