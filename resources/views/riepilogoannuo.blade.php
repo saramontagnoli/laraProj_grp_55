@@ -6,7 +6,7 @@
 
     <h1 class="titolo_info">RIEPILOGO NOLEGGI ANNO CORRENTE</h1>
 
-    <p class="titolo">Anno corrente di riepilogo: {{$annoCorrente}}</p>
+    <p style="font-size: 14pt; font-weight: bolder;">Anno corrente di riepilogo: {{$annoCorrente}}</p>
     <br>
     <div class="posizione_cx">
         <table class="tabella_noleggi">
