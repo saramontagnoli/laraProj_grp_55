@@ -197,9 +197,16 @@ class UserController extends Controller {
     {
         $cliente = User::findOrFail($id);
 
-        // Elimina i noleggi correlati utilizzando la relazione
-        $cliente->delete();
+        if($cliente)
+        {
+            $noleggi = Noleggio::where('utente_ref', '=', $cliente->id);
 
-        return redirect()->route('/gestioneClienti')->with('message', 'Cliente eliminato con successo.');
+            $noleggi->update(['utente_ref' => null]);
+
+            // Elimina i noleggi correlati utilizzando la relazione
+            $cliente->delete();
+
+            return redirect()->route('gestioneClienti')->with('message', 'Cliente eliminato con successo.');
+        }
     }
 }
