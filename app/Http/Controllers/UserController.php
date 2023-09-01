@@ -188,11 +188,18 @@ class UserController extends Controller {
 
     function gestioneClienti()
     {
-
+        $dbQuery = User::where('users.role', '=', 'user')
+            ->get();
+        return view('gestioneclienti', ['clienti' => $dbQuery]);
     }
 
-    function eliminaCliente()
+    function eliminaCliente($id)
     {
+        $cliente = User::findOrFail($id);
 
+        // Elimina i noleggi correlati utilizzando la relazione
+        $cliente->delete();
+
+        return redirect()->route('/gestioneClienti')->with('message', 'Cliente eliminato con successo.');
     }
 }
