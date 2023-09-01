@@ -68,7 +68,7 @@ class ControllerFaq extends Controller
         ]);
 
         //redirezione alla rotta del profilo dell'utente
-        return redirect()->route('/gestioneFaq');
+        return redirect()->route('/gestioneFaq')->with('message', 'Faq modificata con successo.');
     }
 
     /*
