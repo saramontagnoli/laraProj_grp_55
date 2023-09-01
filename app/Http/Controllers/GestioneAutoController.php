@@ -40,6 +40,12 @@ class GestioneAutoController extends Controller
         return view('visualizzanoleggi', ['listaNoleggi' => $dbQuery]);
     }
 
+    function riepilogoannuo()
+    {
+        return view('riepilogoannuo');
+    }
+
+
     //fIl metodo getDatiAuto consente di estrarre i dati delle auto che lo staff ha intenzione di modificare
     //     * Questo serve per riempire i campi di modifica con i campi precedentemente impostati
     function getDatiAuto($codice_auto)

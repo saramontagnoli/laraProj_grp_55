@@ -72,6 +72,9 @@ Route::put('/modificadatiFaq', [ControllerFaq::class, 'modificaFaq'])->middlewar
 Route::get('/aggiuntaFaq', [ControllerFaq::class, 'aggiuntaFaq'])
     ->name('aggiuntaFaq')->middleware('can:isAdmin');
 
+//Rotte di definizione del riepilogo annuo dell'admin (admin)
+Route::get('/homeadmin/riepilogoannuo', [GestioneAutoController::class, 'riepilogoannuo'])
+    ->name('riepilogoannuo')->middleware('can:isAdmin');
 
 /*
  * ROTTE STAFF
