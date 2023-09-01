@@ -27,7 +27,8 @@
         <br><br>
 
         <!-- Se l'utente autenticato è di tipo 'user' si aggiungono i filtri per data -->
-        @can('isUser') && @can('isStaff')
+
+        @if(auth()->check() && (Auth::user()->role=='staff' || Auth::user()->role=='admin' || Auth::user()->role=='user') )
             <!-- Input per il filtro di ricerca data inizio -->
             <label>
                 Data inizio noleggio:
@@ -46,7 +47,8 @@
                     alert("{{ session('popupMessage') }}");
                 </script>
             @endif
-        @endcan @endcan
+        @endif
+
 
         <!-- Button di submit per l'invio dei dati inseriti nella form -->
         <button type="submit" name="action" value="submit1">Cerca</button>
