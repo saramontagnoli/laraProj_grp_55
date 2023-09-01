@@ -33,7 +33,7 @@
         @can('isAdmin')
             <a href="{{url('')}}" class="element_navbar">Gestione clienti</a> <!-- Visualizzazione clienti ed eventuale eliminazione -->
             <a href="{{url('')}}" class="element_navbar">Gestione staff</a> <!-- Visualizzazione pagina di inserimento, modifica ed eliminazione dello staff -->
-            <a href="{{url('')}}" class="element_navbar">Riepilogo annuo</a> <!-- Visualizzazione totale noleggi per ogni mese dell'anno corrente -->
+            <a href="{{url('/homeadmin/riepilogoannuo')}}" class="element_navbar">Riepilogo annuo</a> <!-- Visualizzazione totale noleggi per ogni mese dell'anno corrente -->
             <a href="{{url('/homeadmin/gestioneFaq')}}" class="element_navbar">Gestione F.A.Q.</a> <!-- Visualizzazione pagina inserimento, modifica ed elimianzione delle F.A.Q. -->
         @endcan
 
