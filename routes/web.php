@@ -76,6 +76,14 @@ Route::get('/aggiuntaFaq', [ControllerFaq::class, 'aggiuntaFaq'])
 Route::get('/homeadmin/riepilogoannuo', [GestioneAutoController::class, 'riepilogoannuo'])
     ->name('riepilogoannuo')->middleware('can:isAdmin');
 
+//Rotte di definizione dell'utente di livello 4 (admin)
+Route::get('/homeadmin/gestioneClienti', [UserController::class, 'gestioneClienti'])
+    ->name('gestioneClienti')->middleware('can:isAdmin');
+
+//Rotta per l'eliminazione di una F.A.Q. (admin)
+Route::get('/homeadmin/gestioneClienti/{id}', [UserController::class, 'eliminaCliente'])
+    ->name('eliminaCliente')->middleware('can:isAdmin');
+
 /*
  * ROTTE STAFF
  */
