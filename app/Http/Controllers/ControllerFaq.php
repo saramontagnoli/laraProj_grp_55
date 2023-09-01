@@ -65,10 +65,10 @@ class ControllerFaq extends Controller
                 'domanda'=>$request->input('domanda'),
                 'risposta'=>$request->input('risposta'),
                 'admin_ref' => Auth::user()->id
-            ]);
+        ]);
 
         //redirezione alla rotta del profilo dell'utente
-        return redirect()->route('/gestioneFaq');
+        return redirect()->route('/gestioneFaq')->with('message', 'Faq modificata con successo.');
     }
 
     /*
