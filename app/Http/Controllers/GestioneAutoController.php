@@ -59,7 +59,12 @@ class GestioneAutoController extends Controller
         $codice_auto = $request->input('codice_auto');
         // Valida i dati della form di modifica
         $request->validate([
-            'targa' => ['string', 'max:20', 'required', 'unique:auto,targa,' . $codice_auto],
+            'targa' => [
+                'string',
+                'max:20',
+                'required',
+                Rule::unique('auto', 'targa')->ignore($codice_auto, 'codice_auto')
+            ],
             'costo_giorno' => ['numeric', 'min:0'],
             'num_posti' => ['integer', 'min:2', 'max:9'],
             'allestimento' => ['string', 'max:255'],
