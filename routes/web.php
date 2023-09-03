@@ -3,7 +3,6 @@
 use App\Http\Controllers\ControllerCatalogoAuto;
 use App\Http\Controllers\ControllerFaq;
 use App\Http\Controllers\GestioneAutoController;
-use App\Http\Controllers\StaffController;
 
 use App\Http\Controllers\UserController;
 use Illuminate\Support\Facades\Route;
