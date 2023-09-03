@@ -249,7 +249,7 @@ class UserController extends Controller {
         //se l'ho trovato
         if($staff)
         {
-            //si elimina lo staff trovato
+            //si elimina lo staff trovato nel db
             $staff->delete();
 
             //redirezione alla rotta di gestionestaff con il messaggio di avvenuta eliminazione
