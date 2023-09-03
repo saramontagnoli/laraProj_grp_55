@@ -2,33 +2,35 @@
 
 @section('title', 'Modifica dati personali del cliente')
 
+<!-- Definizione della sezione del contenuto della pagina dela modifica delle F.A.Q. -->
 @section('content')
     <div>
         <div>
-            <!-- Intestazione della pagina di modifica dell'utente, specificando lo username -->
+            <!-- Titolo della pagina di modifica dei dati delle F.A.Q. -->
             <h2 class="titolo_info">Modifica dati F.A.Q.</h2>
 
             <div>
-                <!-- Button indietro che permette di tornare al profilo dell'utente -->
+                <!-- Button indietro che permette di tornare alla pagina di gestione delle F.A.Q. -->
                 <a href="{{ route('/gestioneFaq') }}" class="bottone">&laquo; INDIETRO </a>
             </div>
 
             <br>
-            @csrf
-            <!-- Apertura del tag FORM per la modifica dei dati dell'utente, metodo PUT per inserimento dati -->
+
+            <!-- Apertura del tag FORM per la modifica dei dati delle F.A.Q., metodo PUT per inserimento dati modificati -->
             {{ Form::open(array('url' => 'modificadatiFaq', 'enctype' => 'multipart/form-data', 'method' => 'PUT')) }}
             <div>
+                <!-- Sezione della pagina con i campi riempiti dai vecchi dati, pronti per la modifica -->
                 <div class="posizione_cx">
                     <br>
-                    <!-- Campo di inserimento del nome dell'utente, avente come id "nome" -->
+                    <!-- Campo nascosto che contiene il codice della F.A.Q. -->
                     {{ Form::hidden('codice_faq', $faq['codice_faq'], ['id' => 'codice_faq', 'class' => 'campo_form']) }}
 
                     <br>
 
-                    <!-- Definizione della label per la modifica del nome dell'utente -->
+                    <!-- Definizione della label per la modifica della domanda della F.A.Q. -->
                     {{ Form::label('domanda', 'Domanda') }}
                     <br>
-                    <!-- Campo di inserimento del nome dell'utente, avente come id "nome" -->
+                    <!-- Campo di inserimento della domanda della F.A.Q., avente come id "domanda" -->
                     {{ Form::text('domanda', $faq['domanda'], ['id' => 'domanda', 'required' => 'required', 'class' => 'campo_form']) }}
 
                     <!-- Se vengono rilevati degli errori, vengono stampati sotto al campo relativo -->
@@ -41,11 +43,11 @@
                     @endif
                     <br>
 
-                    <!-- Definizione della label per la modifica del cognome dell'utente -->
+                    <!-- Definizione della label per la modifica della risposta della F.A.Q. -->
                     {{ Form::label('risposta', 'Risposta') }}
                     <br>
 
-                    <!-- Campo di inserimento del cognome dell'utente, avente come id "cognome" -->
+                    <!-- Campo di inserimento della risposta della F.A.Q., avente come id "risposta" -->
                     {{ Form::text('risposta', $faq['risposta'], ['class' => 'campo_form', 'id' => 'risposta', 'required' => 'required']) }}
 
                     <!-- Se vengono rilevati degli errori, vengono stampati sotto al campo relativo -->
@@ -60,18 +62,15 @@
                     <br>
                 </div>
 
+                @csrf
                 <br>
 
                 <div class="posizione_cx">
-                    <!-- Bottone di submit per l'invio dei dati inseriti nella form e conseguente modifica -->
+                    <!-- Bottone di submit per l'invio dei dati inseriti nella form e conseguente modifica della F.A.Q. -->
+                    <!-- Definizione dell'onclick per il popup di conferma di modifica delle informaizoni della F.A.Q. -->
                     {{ Form::submit('Modifica F.A.Q.', ['class' => 'bottone', 'onclick' => 'return myFunction2()']) }}
                 </div>
-
-                <!-- Inclusione dello script per la conferma di modifica -->
-                <script src="{{ asset('assets/js/app.js') }}"></script>
-
                 <br>
-
                 <!-- Chiusura della form -->
                 {{ Form::close() }}
             </div>
