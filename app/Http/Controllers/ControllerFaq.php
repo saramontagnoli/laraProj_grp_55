@@ -12,35 +12,47 @@ use Illuminate\Support\Facades\Log;
  */
 class ControllerFaq extends Controller
 {
-    //Il metodo showFaq permette di estrarre tutte le FAQ dalla tabella relativa nel database
+    /*
+     * Il metodo showFaq permette di visualizzare tutte le F.A.Q. nella sezione F.A.Q. del sito
+     */
     function showFaq()
     {
-        //query di estrazione del database
+        //query di estrazione di tutte le F.A.Q. dal database
         $data = faq::all();
 
-        //ritorno della vista contenente tutte le FAQ
+        //ritorno della vista faq contenente le informazioni di tutte le F.A.Q.
         return view('faq', ['faq'=>$data]);
     }
 
+
+    /*
+     * Il metodo gestioneFaq consente di andare a visualizzare tutte le F.A.Q. di una pagina di gestione delle F.A.Q.
+     */
     function gestioneFaq()
     {
-        //query di estrazione di tutte le auto, query con due join per estrazione di informazioni riguardanti marca e modello dell'auto
+        //query di estrazione di tutte le F.A.Q.
         $faq = Faq::get();
 
-        //inserimento del risultato della query all'interno di un oggetto $cardAuto
+        //inserimento del risultato della query all'interno di un oggetto $cardFaq
         $cardFaq["cardFaq"] = $faq;
 
-        //return della vista contenente il catalogo completo
+        //return ddella vista gestioneFaq con le informazioni di tutte le F.A.Q. contenute nel sito
         return view('gestionefaq', $cardFaq);
     }
 
+
+    /*
+     * Il metodo eliminaFaq consente di andare ad eliminare la F.A.Q. scelta dalla tabella di visualizzazione, la F.A.Q. ha codice $codice_faq
+     */
     function eliminaFaq($codice_faq)
     {
+        //query di estrazione della query scelta da eliminare
         $faq = Faq::where('faq.codice_faq', '=', $codice_faq);
 
-        // Elimina i noleggi correlati utilizzando la relazione
+        //eliminazione effettiva della F.A.Q.
         $faq->delete();
 
+        //return della rotta di gestione F.A.Q. con messaggio di avvenuta eliminazione
         return redirect()->route('/gestioneFaq')->with('message', 'Faq eliminata con successo.');
     }
 
@@ -50,7 +62,7 @@ class ControllerFaq extends Controller
  */
     function modificaFaq(Request $request)
     {
-
+        //estrazione del codice della F.A.Q. da modificare
         $codice_faq = $request->input('codice_faq');
 
         //validazione dei dati della form di modifica
@@ -72,9 +84,9 @@ class ControllerFaq extends Controller
     }
 
     /*
- * Il metodo getDatiPersonali consente di estrarre i dati del cliente che ha intenzione di modificare i dati
- * Questo serve per riempire i campi di modifica con i campi precedentemente impostati
- */
+     * Il metodo getDatiPersonali consente di estrarre i dati del cliente che ha intenzione di modificare i dati
+     * Questo serve per riempire i campi di modifica con i campi precedentemente impostati
+     */
     function getDatiFaq($codice_faq){
 
         //query di estrazione dell'utente dal database
