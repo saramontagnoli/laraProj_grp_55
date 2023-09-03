@@ -27,6 +27,7 @@ class GestioneAutoController extends Controller
         return view('gestioneauto', ['listaNoleggi' => $dbQuery]);
     }
 
+
     /*
      * Il metodo visualizzanoleggi permette di selezionare un mese e visionare i noleggi per quel mese durante l'anno corrente
      */
