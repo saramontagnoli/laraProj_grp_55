@@ -224,29 +224,35 @@ class UserController extends Controller {
         }
     }
 
-
+    /*
+     * Il metodo gestioneStaff permette di andare a gestire dal lato dell'admin tutti i membri dello staff
+     */
     function gestioneStaff()
     {
         //si estrae tutto lo staff del sito, ovvero tutti gli users che hanno come ruolo "staff"
         $dbQuery = User::where('users.role', '=', 'staff')
             ->get();
 
-        //si ritorna la vista di gestioneClienti contenente tutti i clienti estratti nell'oggetto clienti
+        //si ritorna la vista di gestionestaff contenente tutti i membri dello staff estratti nell'oggetto staff
         return view('gestionestaff', ['staff' => $dbQuery]);
     }
 
+
+    /*
+     * Il metodo eliminaStaff permette di eliminare il membro dello staff scelto avente come id: $id
+     */
     function eliminaStaff($id)
     {
-        //trovo il cliente di interesse
+        //trovo il membro dello staff selezionato
         $staff = User::findOrFail($id);
 
         //se l'ho trovato
         if($staff)
         {
-            //si elimina il cliente trovato
+            //si elimina lo staff trovato
             $staff->delete();
 
-            //redirezione alla rotta di gestioneClienti con il messaggio di avvenuta eliminazione
+            //redirezione alla rotta di gestionestaff con il messaggio di avvenuta eliminazione
             return redirect()->route('gestionestaff')->with('message', 'Staff eliminato con successo.');
         }
     }
