@@ -110,6 +110,16 @@ Route::get('/homestaff/visualizzanoleggi', [GestioneAutoController::class, 'visu
 Route::post('/homestaff/visualizzanoleggi', [GestioneAutoController::class, 'visualizzanoleggi'])
     ->name('visualizzanoleggi')->middleware('can:isStaff');
 
+//Rotta per l'aggiunta di un'auto (staff)
+Route::put('/aggiuntaAuto', [GestioneAutoController::class, 'aggiuntaAuto'])
+    ->name('aggiuntaAuto')->middleware('can:isStaff');
+
+Route::get('/aggiuntaAuto', [GestioneAutoController::class, 'getAggiuntaAuto'])
+    ->name('aggiuntaAuto')->middleware('can:isStaff');
+
+Route::get('/aggiuntaAuto', [GestioneAutoController::class, 'getModello'])
+    ->name('getModello')->middleware('can:isStaff');
+
 
 /*
  * ROTTE CLIENTE

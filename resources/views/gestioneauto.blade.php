@@ -1,7 +1,8 @@
 @extends('layouts.struttura')
 @section('content')
     <br>
-    <button>Aggiungi Auto</button>
+    <a href="{{ route('aggiuntaAuto') }}">Aggiungi Auto</a>
+
     <br>
     <table class="tabella_noleggi">
     <thead>

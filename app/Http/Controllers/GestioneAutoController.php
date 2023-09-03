@@ -7,10 +7,11 @@ use App\Models\Auto;
 use App\Models\Marca;
 use App\Models\Modello;
 use App\Models\Noleggio;
-use App\Models\Offer;
 use Illuminate\Http\Request;
 use Illuminate\Support\Carbon;
 use Illuminate\Validation\Rule;
+use Illuminate\Support\Facades\Storage;
+
 
 class GestioneAutoController extends Controller
 {
@@ -83,8 +84,6 @@ class GestioneAutoController extends Controller
         return redirect()->route('/gestioneauto');
     }
 
-
-
     function eliminaAuto($codice_auto)
     {
         $auto = Auto::with('noleggio')->findOrFail($codice_auto);
@@ -96,6 +95,68 @@ class GestioneAutoController extends Controller
         $auto->delete();
         return redirect()->route('/gestioneauto')->with('message', 'Auto eliminata con successo.');
     }
+
+    function getAggiuntaAuto()
+    {
+        $data = Auto::join("modello", "auto.modello_ref", "=", "modello.codice_modello")
+                 ->join("marca", "modello.marca_ref", "=", "marca.codice_marca");
+        return view('aggiungiAuto', ['ListaNomi'=>$data]);
+    }
+
+    public function getModello()
+    {
+        $modelli = modello::all(); // Recupera tutti i modelli dal database
+        return view('aggiungiAuto', ['modelli' => $modelli]); // Passa i modelli alla vista
+    }
+    function aggiuntaAuto(Request $request)
+    {
+        // Valida i campi dell'auto
+        $request->validate([
+            'targa' => ['required', 'string', 'max:20', Rule::unique('Auto')],
+            'marca_ref' => [ 'string', 'max:20'],
+            'num_posti' => ['required', 'integer', 'min:2', 'max:9'],
+            'costo_giorno' => ['required', 'numeric', 'min:0'],
+            'allestimento' => ['string', 'max:255'],
+            'foto_auto' => ['image', 'max:2048', Rule::unique('Auto')], // Max 2MB
+        ]);
+
+        // Verifica l'unicità della targa e del nome del file
+        $existingAuto = Auto::where('targa', $request->input('targa'))
+            ->orWhere('foto_auto', $request->file('foto_auto')->getClientOriginalName())
+            ->first();
+
+        if ($existingAuto) {
+            return back()->with('error', 'La targa o il nome del file dell\'immagine esistono già nel database.');
+        }
+
+        $auto = new Auto();
+        $auto->targa = $request->input('targa');
+        $auto->modello_ref = $request->input('modello_ref');
+        $auto->num_posti = $request->input('num_posti');
+        $auto->costo_giorno = $request->input('costo_giorno');
+        $auto->allestimento = $request->input('allestimento');
+
+        // Gestione dell'immagine dell'auto
+        if ($request->hasFile('foto_auto')) {
+            $imageFile = $request->file('foto_auto');
+            $imageName = $imageFile->getClientOriginalName();
+            // Salva il file nella cartella delle auto
+            $imagePathAuto = $imageFile->storeAs('public/assets/img', $imageName);
+            // Ottieni il percorso completo del file (includendo "public/")
+            $fullImagePath = storage_path('app/public/assets/img/' . $imageName);
+            // Muovi il file dalla directory "storage" alla directory pubblica
+            Storage::disk('public')->put('assets/img/' . $imageName, file_get_contents($fullImagePath));
+            // Elimina il file temporaneo nella directory "storage"
+            Storage::delete($imagePathAuto);
+            // Salva solo il nome del file nel campo foto_auto
+            $auto->foto_auto = 'assets/img/' . $imageName;
+        }
+        $auto->save();
+
+        // Reindirizza o effettua altre operazioni necessarie
+        return view('aggiungiAuto');
+    }
+
 }
 
 
