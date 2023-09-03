@@ -93,11 +93,11 @@ Route::put('/modificadatistaff', [UserController::class, 'modificaStaff'])
     ->middleware('can:isAdmin');
 
 //Rotta per la modifica dei dati delle auto per la modifica (staff)
-Route::get('/homeadmin/gestionestaff/modificadadtistaff/{id}', [UserController::class, 'getDatiStaff'])
+Route::get('/homeadmin/gestionestaff/modificadatistaff/{id}', [UserController::class, 'getDatiStaff'])
     ->name('getdatistaff')->middleware('can:isAdmin');
 
 //Rotta per l'eliminazione di una F.A.Q. (admin)
-Route::get('/homeadmin/gestioneClienti/{id}', [UserController::class, 'eliminaStaff'])
+Route::get('/homeadmin/gestionestaff/{id}', [UserController::class, 'eliminaStaff'])
     ->name('eliminaStaff')->middleware('can:isAdmin');
 
 

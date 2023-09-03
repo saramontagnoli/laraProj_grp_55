@@ -256,4 +256,67 @@ class UserController extends Controller {
             return redirect()->route('gestionestaff')->with('message', 'Staff eliminato con successo.');
         }
     }
+
+
+    /*
+     * Il metodo getDatiStaff permette di andare a ritrovare i dati attuali dello staff per riempire i campi di modifica con i vecchi dati
+     */
+    function getDatiStaff($id)
+    {
+
+        //query di estrazione dello staff dal database
+        $data = User::where('id', $id)->first();
+
+        //return della vista di modifica dei dati, compilando i campi di modifica con i dati vecchi estratti dal DB
+        return view('modificaDatiStaff', ['dati'=>$data]);
+    }
+
+
+    function modificaStaff(Request $request)
+    {
+        //estrazione dello username del cliente
+        $username = $request->input("username");
+
+        //validazione dei dati della form di modifica
+        $request->validate([
+            'nome' => ['required','string','max:20'],
+            'cognome' => ['required','string','max:20'],
+            'data_nascita' => ['required', 'date_format:Y-m-d'],
+            'email' => ['string','email','max:30']
+        ]);
+
+
+        //se il campo password è vuoto i dati vengono aggiornati senza cambiare la password vecchia
+        if (!($request->input('password')))
+        {
+            //query di update delle informazioni dell'utente senza password
+            User::where('username', $username)->update(
+                [
+                    'nome'=>$request->input('nome'),
+                    'cognome'=>$request->input('cognome'),
+                    'data_nascita'=>$request->input('data_nascita'),
+                    'email'=>$request->input('email')
+                ]);
+        }
+        else
+        {
+            //se il campo password è pieno, la password viene valida e vengono aggiornati tutti i dati
+            $request->validate([
+                'password' => ['required','string','min:8']
+            ]);
+
+            //query di update delle informazioni dell'utente compresa la password
+            User::where('username', $username)->update(
+                [
+                    'nome'=>$request->input('nome'),
+                    'cognome'=>$request->input('cognome'),
+                    'data_nascita'=>$request->input('data_nascita'),
+                    'password'=>Hash::make($request->input('password')),
+                    'email'=>$request->input('email')
+                ]);
+        }
+
+        //redirezione alla rotta del profilo dell'utente
+        return redirect()->route('gestionestaff');
+    }
 }
