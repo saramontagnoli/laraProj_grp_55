@@ -19,6 +19,14 @@ function confirmModifica() {
 
 }
 
+/* Classe per la conferma di modifica dei dati di un cliente */
+function modificaStaff() {
+
+    //si ritorna indietro la conferma per vedere se modificare o no i dati
+    return confirm("Sei sicuro di voler modificare i dati uesto membro dello staff?");
+
+}
+
 
 function myFunction2() {
 

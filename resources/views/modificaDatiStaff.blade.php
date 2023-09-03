@@ -9,7 +9,7 @@
             <h2 class="titolo_info">Modifica dati staff {{$dati['username']}}</h2>
 
             <br>
-            @csrf
+
             <!-- Apertura del tag FORM per la modifica dei dati dell'utente, metodo PUT per inserimento dati -->
             {{ Form::open(array('url' => '/modificadatistaff', 'enctype' => 'multipart/form-data', 'method' => 'PUT')) }}
             <div>
@@ -105,15 +105,13 @@
                     @endif
                 </div>
 
+                @csrf
                 <br>
 
                 <div class="posizione_cx">
                     <!-- Bottone di submit per l'invio dei dati inseriti nella form e conseguente modifica -->
-                    {{ Form::submit('Modifica dati', ['class' => 'bottone', 'onclick' => 'return myFunction()']) }}
+                    {{ Form::submit('Modifica dati', ['class' => 'bottone', 'onclick' => 'return modificaStaff()']) }}
                 </div>
-
-                <!-- Inclusione dello script per la conferma di modifica -->
-                <script src="{{ asset('assets/js/app.js') }}"></script>
 
                 <br>
 
