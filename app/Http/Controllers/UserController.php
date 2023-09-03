@@ -272,9 +272,12 @@ class UserController extends Controller {
     }
 
 
+    /*
+     * Il metodo modificaStaff permette di andare a modificare i dati dello staff
+     */
     function modificaStaff(Request $request)
     {
-        //estrazione dello username del cliente
+        //estrazione dello username dello staff
         $username = $request->input("username");
 
         //validazione dei dati della form di modifica
@@ -289,7 +292,7 @@ class UserController extends Controller {
         //se il campo password è vuoto i dati vengono aggiornati senza cambiare la password vecchia
         if (!($request->input('password')))
         {
-            //query di update delle informazioni dell'utente senza password
+            //query di update delle informazioni dello staff senza password
             User::where('username', $username)->update(
                 [
                     'nome'=>$request->input('nome'),
@@ -305,7 +308,7 @@ class UserController extends Controller {
                 'password' => ['required','string','min:8']
             ]);
 
-            //query di update delle informazioni dell'utente compresa la password
+            //query di update delle informazioni dello staff compresa la password
             User::where('username', $username)->update(
                 [
                     'nome'=>$request->input('nome'),
@@ -316,7 +319,7 @@ class UserController extends Controller {
                 ]);
         }
 
-        //redirezione alla rotta del profilo dell'utente
+        //redirezione alla rotta di gestione dello staff
         return redirect()->route('gestionestaff');
     }
 }
