@@ -9,6 +9,7 @@ use App\Models\Modello;
 use App\Models\Noleggio;
 use Illuminate\Http\Request;
 use Illuminate\Support\Carbon;
+use Illuminate\Support\Facades\DB;
 use Illuminate\Validation\Rule;
 use Illuminate\Support\Facades\Storage;
 
@@ -28,18 +29,44 @@ class GestioneAutoController extends Controller
     {
         $mese = $request->input("mese");
         $annoCorrente = Carbon::now()->year;
-            $dbQuery = Noleggio::select("auto.targa", "marca.nome_marca", "modello.nome_modello", "noleggio.data_inizio", "noleggio.data_fine", "users.username")
-                ->join("auto", "auto.codice_auto", "=", "noleggio.auto_ref")
-                ->join("modello", "auto.modello_ref", "=", "modello.codice_modello")
-                ->join("marca", "modello.marca_ref", "=", "marca.codice_marca")
-                ->join("users", "users.id", "=", "noleggio.utente_ref")
-                ->where(function ($query) use ($mese, $annoCorrente) {
-                    $query->whereMonth('noleggio.data_inizio', $mese)
-                        ->whereYear('noleggio.data_fine', $annoCorrente);
-                })
-                ->get();
+        $dbQuery = Noleggio::select("auto.targa", "marca.nome_marca", "modello.nome_modello", "noleggio.data_inizio", "noleggio.data_fine", "users.username")
+            ->join("auto", "auto.codice_auto", "=", "noleggio.auto_ref")
+            ->join("modello", "auto.modello_ref", "=", "modello.codice_modello")
+            ->join("marca", "modello.marca_ref", "=", "marca.codice_marca")
+            ->join("users", "users.id", "=", "noleggio.utente_ref")
+            ->where(function ($query) use ($mese, $annoCorrente) {
+                $query->whereMonth('noleggio.data_inizio', $mese)
+                    ->whereYear('noleggio.data_fine', $annoCorrente);
+            })
+            ->get();
         return view('visualizzanoleggi', ['listaNoleggi' => $dbQuery]);
     }
+
+    function riepilogoannuo()
+    {
+        $annoCorrente = Carbon::now()->year;
+
+        $mesiNoleggi = Noleggio::select(DB::raw('MONTH(noleggio.data_inizio) as mese'), DB::raw('COUNT(*) as num_noleggi'))
+            ->leftJoin('auto', 'noleggio.auto_ref', '=', 'auto.codice_auto')
+            ->groupBy('mese')
+            ->get();
+
+        $mesiDesiderati = range(1, 12); // Tutti i mesi da gennaio a dicembre
+        $mesiNoleggi = $mesiNoleggi->keyBy('mese')->toArray();
+
+        $risultatiFinali = [];
+
+        foreach ($mesiDesiderati as $mese) {
+            $numNoleggi = isset($mesiNoleggi[$mese]) ? $mesiNoleggi[$mese]['num_noleggi'] : 0;
+            $risultatiFinali[] = [
+                'mese' => $mese,
+                'num_noleggi' => $numNoleggi
+            ];
+        }
+
+        return view('riepilogoannuo', ['risultatiFinali' => $risultatiFinali, 'annoCorrente' => $annoCorrente]);
+    }
+
 
     //fIl metodo getDatiAuto consente di estrarre i dati delle auto che lo staff ha intenzione di modificare
     //     * Questo serve per riempire i campi di modifica con i campi precedentemente impostati

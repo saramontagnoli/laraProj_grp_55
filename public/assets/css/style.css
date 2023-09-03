@@ -103,6 +103,7 @@ body {
 .tabella_noleggi {
     border-collapse: collapse; /* Combinare i bordi delle celle adiacenti */
     width: 100%; /* l'elemento occupa il 100% del suo contenitore */
+    text-align: center;
 }
 
 /* Classe di formattazione per colonne e righe della tabella di tutti i noleggi */

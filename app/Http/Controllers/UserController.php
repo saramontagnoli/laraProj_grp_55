@@ -185,4 +185,42 @@ class UserController extends Controller {
             }
         }
     }
+
+    /*
+     * Il metodo gestioneClienti permette di visualizzare la vista contenente una tabella con tutti i clienti
+     */
+    function gestioneClienti()
+    {
+        //si estraggono tutti i clienti, ovvero tutti gli users che hanno come ruolo "user"
+        $dbQuery = User::where('users.role', '=', 'user')
+            ->get();
+
+        //si ritorna la vista di gestioneClienti contenente tutti i clienti estratti nell'oggetto clienti
+        return view('gestioneclienti', ['clienti' => $dbQuery]);
+    }
+
+    /*
+     * Il metodo eliminaCliente permette di eliminare il cliente che è stto selezionato dalla tabella
+     */
+    function eliminaCliente($id)
+    {
+        //trovo il cliente di interesse
+        $cliente = User::findOrFail($id);
+
+        //se l'ho trovato
+        if($cliente)
+        {
+            //annullo le chiavi esterne contenute in noleggio se l'utente ha effettivamente noleggiato delle auto
+            $noleggi = Noleggio::where('utente_ref', '=', $cliente->id);
+
+            //si esegue l'update dei valori
+            $noleggi->update(['utente_ref' => null]);
+
+            //si elimina il cliente trovato
+            $cliente->delete();
+
+            //redirezione alla rotta di gestioneClienti con il messaggio di avvenuta eliminazione
+            return redirect()->route('gestioneClienti')->with('message', 'Cliente eliminato con successo.');
+        }
+    }
 }

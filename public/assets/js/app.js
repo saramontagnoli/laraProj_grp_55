@@ -3,6 +3,10 @@ function confirmDelete() {
     return confirm("Sei sicuro di voler eliminare questa auto?");
 }
 
+function deleteCliente() {
+    return confirm("Sei sicuro di voler eliminare questo cliente?");
+}
+
 /* Classe per la conferma di modifica dei dati di un cliente */
 function confirmModifica() {
 

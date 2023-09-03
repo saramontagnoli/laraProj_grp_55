@@ -20,7 +20,7 @@ return new class extends Migration
             $table->bigIncrements('codice_noleggio')->unsigned()->index();
             $table->date('data_inizio');
             $table->date('data_fine');
-            $table->bigInteger('utente_ref')->unsigned()->index();
+            $table->bigInteger('utente_ref')->unsigned()->index()->nullable();
             $table->foreign('utente_ref')->references('id')->on('users');
             $table->bigInteger('auto_ref')->unsigned()->index();
             $table->foreign('auto_ref')->references('codice_auto')->on('auto');
