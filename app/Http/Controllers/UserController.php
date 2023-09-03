@@ -223,4 +223,31 @@ class UserController extends Controller {
             return redirect()->route('gestioneClienti')->with('message', 'Cliente eliminato con successo.');
         }
     }
+
+
+    function gestioneStaff()
+    {
+        //si estrae tutto lo staff del sito, ovvero tutti gli users che hanno come ruolo "staff"
+        $dbQuery = User::where('users.role', '=', 'staff')
+            ->get();
+
+        //si ritorna la vista di gestioneClienti contenente tutti i clienti estratti nell'oggetto clienti
+        return view('gestionestaff', ['staff' => $dbQuery]);
+    }
+
+    function eliminaStaff($id)
+    {
+        //trovo il cliente di interesse
+        $staff = User::findOrFail($id);
+
+        //se l'ho trovato
+        if($staff)
+        {
+            //si elimina il cliente trovato
+            $staff->delete();
+
+            //redirezione alla rotta di gestioneClienti con il messaggio di avvenuta eliminazione
+            return redirect()->route('gestionestaff')->with('message', 'Staff eliminato con successo.');
+        }
+    }
 }

@@ -7,6 +7,10 @@ function deleteCliente() {
     return confirm("Sei sicuro di voler eliminare questo cliente?");
 }
 
+function deleteStaff() {
+    return confirm("Sei sicuro di voler eliminare questo membro dello staff?");
+}
+
 /* Classe per la conferma di modifica dei dati di un cliente */
 function confirmModifica() {
 
