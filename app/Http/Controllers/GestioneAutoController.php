@@ -9,7 +9,6 @@ use App\Models\Modello;
 use App\Models\Noleggio;
 use Illuminate\Http\Request;
 use Illuminate\Support\Carbon;
-use Illuminate\Support\Facades\DB;
 use Illuminate\Validation\Rule;
 use Illuminate\Support\Facades\Storage;
 
@@ -29,44 +28,18 @@ class GestioneAutoController extends Controller
     {
         $mese = $request->input("mese");
         $annoCorrente = Carbon::now()->year;
-        $dbQuery = Noleggio::select("auto.targa", "marca.nome_marca", "modello.nome_modello", "noleggio.data_inizio", "noleggio.data_fine", "users.username")
-            ->join("auto", "auto.codice_auto", "=", "noleggio.auto_ref")
-            ->join("modello", "auto.modello_ref", "=", "modello.codice_modello")
-            ->join("marca", "modello.marca_ref", "=", "marca.codice_marca")
-            ->join("users", "users.id", "=", "noleggio.utente_ref")
-            ->where(function ($query) use ($mese, $annoCorrente) {
-                $query->whereMonth('noleggio.data_inizio', $mese)
-                    ->whereYear('noleggio.data_fine', $annoCorrente);
-            })
-            ->get();
+            $dbQuery = Noleggio::select("auto.targa", "marca.nome_marca", "modello.nome_modello", "noleggio.data_inizio", "noleggio.data_fine", "users.username")
+                ->join("auto", "auto.codice_auto", "=", "noleggio.auto_ref")
+                ->join("modello", "auto.modello_ref", "=", "modello.codice_modello")
+                ->join("marca", "modello.marca_ref", "=", "marca.codice_marca")
+                ->join("users", "users.id", "=", "noleggio.utente_ref")
+                ->where(function ($query) use ($mese, $annoCorrente) {
+                    $query->whereMonth('noleggio.data_inizio', $mese)
+                        ->whereYear('noleggio.data_fine', $annoCorrente);
+                })
+                ->get();
         return view('visualizzanoleggi', ['listaNoleggi' => $dbQuery]);
     }
-
-    function riepilogoannuo()
-    {
-        $annoCorrente = Carbon::now()->year;
-
-        $mesiNoleggi = Noleggio::select(DB::raw('MONTH(noleggio.data_inizio) as mese'), DB::raw('COUNT(*) as num_noleggi'))
-            ->leftJoin('auto', 'noleggio.auto_ref', '=', 'auto.codice_auto')
-            ->groupBy('mese')
-            ->get();
-
-        $mesiDesiderati = range(1, 12); // Tutti i mesi da gennaio a dicembre
-        $mesiNoleggi = $mesiNoleggi->keyBy('mese')->toArray();
-
-        $risultatiFinali = [];
-
-        foreach ($mesiDesiderati as $mese) {
-            $numNoleggi = isset($mesiNoleggi[$mese]) ? $mesiNoleggi[$mese]['num_noleggi'] : 0;
-            $risultatiFinali[] = [
-                'mese' => $mese,
-                'num_noleggi' => $numNoleggi
-            ];
-        }
-
-        return view('riepilogoannuo', ['risultatiFinali' => $risultatiFinali, 'annoCorrente' => $annoCorrente]);
-    }
-
 
     //fIl metodo getDatiAuto consente di estrarre i dati delle auto che lo staff ha intenzione di modificare
     //     * Questo serve per riempire i campi di modifica con i campi precedentemente impostati
@@ -132,57 +105,55 @@ class GestioneAutoController extends Controller
 
     public function getModello()
     {
-        $modelli = modello::all(); // Recupera tutti i modelli dal database
-        return view('aggiungiAuto', ['modelli' => $modelli]); // Passa i modelli alla vista
+        $modelli = modello::all();
+        return view('aggiungiAuto', ['modelli' => $modelli]);
     }
-    function aggiuntaAuto(Request $request)
+
+    public function aggiuntaAuto(Request $request)
     {
         // Valida i campi dell'auto
         $request->validate([
-            'targa' => ['required', 'string', 'max:20', Rule::unique('Auto')],
-            'marca_ref' => [ 'string', 'max:20'],
-            'num_posti' => ['required', 'integer', 'min:2', 'max:9'],
-            'costo_giorno' => ['required', 'numeric', 'min:0'],
+            'targa' => ['string', 'max:20', 'required', Rule::unique('auto')],
+            'costo_giorno' => ['numeric', 'min:0'],
+            'num_posti' => ['integer', 'min:2', 'max:9'],
             'allestimento' => ['string', 'max:255'],
-            'foto_auto' => ['image', 'max:2048', Rule::unique('Auto')], // Max 2MB
+            'modello_ref' => ['required'],
+            'foto_auto' => ['required', 'image', 'max:2048',
+                Rule::unique('auto', 'foto_auto')->where(function ($query) use ($request) {
+                    // Verifica l'unicità del nome del file dell'immagine
+                    return $query->where('foto_auto', $request->file('foto_auto')->getClientOriginalName());
+                }),
+            ],
         ]);
 
-        // Verifica l'unicità della targa e del nome del file
-        $existingAuto = Auto::where('targa', $request->input('targa'))
-            ->orWhere('foto_auto', $request->file('foto_auto')->getClientOriginalName())
-            ->first();
-
-        if ($existingAuto) {
-            return back()->with('error', 'La targa o il nome del file dell\'immagine esistono già nel database.');
-        }
-
+        // Creazione di un nuovo oggetto Auto
         $auto = new Auto();
         $auto->targa = $request->input('targa');
-        $auto->modello_ref = $request->input('modello_ref');
-        $auto->num_posti = $request->input('num_posti');
         $auto->costo_giorno = $request->input('costo_giorno');
+        $auto->num_posti = $request->input('num_posti');
         $auto->allestimento = $request->input('allestimento');
+        $auto->modello_ref = $request->input('modello_ref');
 
         // Gestione dell'immagine dell'auto
         if ($request->hasFile('foto_auto')) {
             $imageFile = $request->file('foto_auto');
             $imageName = $imageFile->getClientOriginalName();
-            // Salva il file nella cartella delle auto
-            $imagePathAuto = $imageFile->storeAs('public/assets/img', $imageName);
-            // Ottieni il percorso completo del file (includendo "public/")
-            $fullImagePath = storage_path('app/public/assets/img/' . $imageName);
-            // Muovi il file dalla directory "storage" alla directory pubblica
-            Storage::disk('public')->put('assets/img/' . $imageName, file_get_contents($fullImagePath));
-            // Elimina il file temporaneo nella directory "storage"
-            Storage::delete($imagePathAuto);
+            // Salva il file nella cartella pubblica
+            $imageFile->move(public_path('assets/img'), $imageName);
+
             // Salva solo il nome del file nel campo foto_auto
             $auto->foto_auto = 'assets/img/' . $imageName;
         }
+
+
+        // Salva l'auto nel database
         $auto->save();
 
         // Reindirizza o effettua altre operazioni necessarie
-        return view('aggiungiAuto');
+        return view('gestioneauto');
     }
+
+
 
 }
 

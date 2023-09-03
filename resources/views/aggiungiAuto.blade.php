@@ -7,7 +7,7 @@
 @section('content')
     <div style="text-align: center">
         <!-- Intestazione della form di login -->
-        <h1 class="titolo_info">Login</h1>
+        <h1 class="titolo_info">Aggiungi Auto</h1>
         <p>Utilizza questa form per aggiungere un'auto:</p>
         <br>
 
@@ -42,8 +42,9 @@
                     <select name="modello_ref" id="modello_ref" class="campo_form">
                         <option value="">Seleziona un modello</option> <!-- Opzione predefinita -->
                         @foreach ($modelli as $modello)
-                            <option value="{{ $modello->id }}">{{ $modello->nome }}</option>
+                            <option value="{{ $modello->codice_modello }}">{{ $modello->nome_modello }}</option>
                         @endforeach
+
                     </select>
 
                     <!-- Se vengono rilevati degli errori, vengono stampati -->
@@ -55,9 +56,7 @@
                         </ul>
                     @endif
                 </div>
-
                 <br>
-
                 <div>
                     <!-- Definizione della label per l'inserimento della password -->
                     {{ Form::label('num_posti', 'Numero di Posti') }}
