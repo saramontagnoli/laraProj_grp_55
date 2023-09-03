@@ -3,6 +3,7 @@
 use App\Http\Controllers\ControllerCatalogoAuto;
 use App\Http\Controllers\ControllerFaq;
 use App\Http\Controllers\GestioneAutoController;
+use App\Http\Controllers\StaffController;
 
 use App\Http\Controllers\UserController;
 use Illuminate\Support\Facades\Route;
@@ -109,7 +110,7 @@ Route::get('/homestaff', [UserController::class, 'index'])
 
 //Rotta di definizione per la gestione delle auto (staff)
 Route::get('/homestaff/gestioneauto', [GestioneAutoController::class, 'gestioneAuto'])
-    ->name('gestioneauto')->middleware('can:isStaff');
+    ->name('/gestioneauto')->middleware('can:isStaff');
 
 //Rotta per la modifica delle auto (staff)
 Route::put('/modificadatiauto', [GestioneAutoController::class, 'modificaAuto'])
@@ -136,6 +137,16 @@ Route::get('/homestaff/visualizzanoleggi', [GestioneAutoController::class, 'visu
 //Rotta di definizione per la visualizzazione delle auto noleggiate (staff)
 Route::post('/homestaff/visualizzanoleggi', [GestioneAutoController::class, 'visualizzanoleggi'])
     ->name('visualizzanoleggi')->middleware('can:isStaff');
+
+//Rotta per l'aggiunta di un'auto (staff)
+Route::put('/aggiuntaAuto', [GestioneAutoController::class, 'aggiuntaAuto'])
+    ->name('aggiuntaAuto')->middleware('can:isStaff');
+
+Route::get('/aggiuntaAuto', [GestioneAutoController::class, 'getAggiuntaAuto'])
+    ->name('aggiuntaAuto')->middleware('can:isStaff');
+
+Route::get('/aggiuntaAuto', [GestioneAutoController::class, 'getModello'])
+    ->name('getModello')->middleware('can:isStaff');
 
 
 /*
