@@ -83,6 +83,23 @@ Route::get('/homeadmin/gestioneClienti', [UserController::class, 'gestioneClient
 Route::get('/homeadmin/gestioneClienti/{id}', [UserController::class, 'eliminaCliente'])
     ->name('eliminaCliente')->middleware('can:isAdmin');
 
+//Rotta di definizione per la gestione dello staff (admin)
+Route::get('/homeadmin/gestionestaff', [UserController::class, 'gestioneStaff'])
+    ->name('gestionestaff')->middleware('can:isAdmin');
+
+//Rotta per la modifica delle auto (staff)
+Route::put('/modificadatistaff', [UserController::class, 'modificaStaff'])
+    ->middleware('can:isAdmin');
+
+//Rotta per la modifica dei dati delle auto per la modifica (staff)
+Route::get('/homeadmin/gestionestaff/modificadadtistaff/{id}', [UserController::class, 'getDatiStaff'])
+    ->name('getdatistaff')->middleware('can:isAdmin');
+
+//Rotta per l'eliminazione di una F.A.Q. (admin)
+Route::get('/homeadmin/gestioneClienti/{id}', [UserController::class, 'eliminaStaff'])
+    ->name('eliminaStaff')->middleware('can:isAdmin');
+
+
 /*
  * ROTTE STAFF
  */
