@@ -93,7 +93,7 @@ Route::get('/homestaff', [UserController::class, 'index'])
 
 //Rotta di definizione per la gestione delle auto (staff)
 Route::get('/homestaff/gestioneauto', [GestioneAutoController::class, 'gestioneAuto'])
-    ->name('/gestioneauto')->middleware('can:isStaff');
+    ->name('gestioneauto')->middleware('can:isStaff');
 
 //Rotta per la modifica delle auto (staff)
 Route::put('/modificadatiauto', [GestioneAutoController::class, 'modificaAuto'])
