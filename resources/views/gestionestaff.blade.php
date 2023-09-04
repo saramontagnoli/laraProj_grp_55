@@ -20,7 +20,6 @@
             <th>Username</th> <!-- Username -->
             <th>Nome</th> <!-- Nome -->
             <th>Cognome</th> <!-- Cognome -->
-            <th>Data_nascita</th> <!-- Data di nascita -->
             <th>Modifica</th> <!-- Link di modifica dello staff -->
             <th>Elimina</th> <!-- Link di eliminazione dello staff -->
         </tr>
@@ -37,7 +36,6 @@
                 <td>{{$st['username']}}</td>
                 <td>{{$st['nome']}}</td>
                 <td>{{$st['cognome']}}</td>
-                <td>{{$st['data_nascita']}}</td>
                 <td><a href="{{ route('getdatistaff', ['id' => $st['id']]) }}" class="tabella_link">Modifica</a></td>
                 <td><a href="{{ route('eliminaStaff', ['id' => $st['id']]) }}" onclick="return deleteStaff()" class="tabella_link">Elimina</a></td>
             </tr>
