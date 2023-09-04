@@ -46,12 +46,13 @@ class ControllerFaq extends Controller
      */
     function eliminaFaq($codice_faq)
     {
-        //
+        //query di estrazione della F.A.Q. selezionata avente come codice $codice_faq
         $faq = Faq::where('faq.codice_faq', '=', $codice_faq);
 
-        // Elimina i noleggi correlati utilizzando la relazione
+        //eliminazione effettiva della F.A.Q. selezionata
         $faq->delete();
 
+        //redirect alla rotta di gestioneFaq con messaggio di avvenuta eliminazione
         return redirect()->route('gestioneFaq')->with('message', 'Faq eliminata con successo.');
     }
 
