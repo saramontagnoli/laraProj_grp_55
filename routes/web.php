@@ -55,7 +55,7 @@ Route::get('/homeadmin', [UserController::class, 'index'])
 
 //Rotte di definizione dell'utente di livello 4 (admin)
 Route::get('/homeadmin/gestioneFaq', [ControllerFaq::class, 'gestioneFaq'])
-    ->name('/gestioneFaq')->middleware('can:isAdmin');
+    ->name('gestioneFaq')->middleware('can:isAdmin');
 
 //Rotta per l'eliminazione di una F.A.Q. (admin)
 Route::get('/homeadmin/gestioneFaq/{codice_faq}', [ControllerFaq::class, 'eliminaFaq'])
@@ -67,10 +67,6 @@ Route::get('/homeadmin/gestioneFaq/modificatadatiFaq/{codice_faq}', [ControllerF
 
 //Rotta per la modifica delle F.A.Q. (admin)
 Route::put('/modificadatiFaq', [ControllerFaq::class, 'modificaFaq'])->middleware('can:isAdmin');
-
-//Rotta per l'aggiunta di una F.A.Q. (admin)
-Route::get('/aggiuntaFaq', [ControllerFaq::class, 'aggiuntaFaq'])
-    ->name('aggiuntaFaq')->middleware('can:isAdmin');
 
 //Rotte di definizione del riepilogo annuo dell'admin (admin)
 Route::get('/homeadmin/riepilogoannuo', [GestioneAutoController::class, 'riepilogoannuo'])
@@ -99,6 +95,16 @@ Route::get('/homeadmin/gestionestaff/modificadatistaff/{id}', [UserController::c
 //Rotta per l'eliminazione di una F.A.Q. (admin)
 Route::get('/homeadmin/gestionestaff/{id}', [UserController::class, 'eliminaStaff'])
     ->name('eliminaStaff')->middleware('can:isAdmin');
+
+//Rotta per l'aggiunta di una F.A.Q. (admin)
+Route::view('/aggiuntaFaq', 'aggiungiFaq')
+    ->name('aggiuntaFaq')->middleware('can:isAdmin');
+
+//Rotta per l'aggiunta di una F.A.Q. (admin)
+Route::put('/aggiuntaFaq', [ControllerFaq::class, 'aggiuntaFaq'])
+    ->name('aggiuntaFaq')->middleware('can:isAdmin');
+
+
 
 
 /*

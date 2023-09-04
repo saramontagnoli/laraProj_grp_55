@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Models\Faq;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Http\Request;
+use Illuminate\Validation\Rule;
 use Illuminate\Support\Facades\Log;
 
 /*
@@ -41,13 +42,13 @@ class ControllerFaq extends Controller
         // Elimina i noleggi correlati utilizzando la relazione
         $faq->delete();
 
-        return redirect()->route('/gestioneFaq')->with('message', 'Faq eliminata con successo.');
+        return redirect()->route('gestioneFaq')->with('message', 'Faq eliminata con successo.');
     }
 
 
     /*
- * Il metodo updateDatiPersonali permette di andare ad aggiornare effettivamente i dati del cliente, secondo i nuovi input
- */
+     * Il metodo updateDatiPersonali permette di andare ad aggiornare effettivamente i dati del cliente, secondo i nuovi input
+     */
     function modificaFaq(Request $request)
     {
 
@@ -68,7 +69,7 @@ class ControllerFaq extends Controller
         ]);
 
         //redirezione alla rotta del profilo dell'utente
-        return redirect()->route('/gestioneFaq')->with('message', 'Faq modificata con successo.');
+        return redirect()->route('gestioneFaq')->with('message', 'Faq modificata con successo.');
     }
 
     /*
@@ -84,9 +85,25 @@ class ControllerFaq extends Controller
         return view('modificaFaq', ['faq'=>$faq]);
     }
 
-    function aggiuntaFaq()
+    function aggiuntaFaq(Request $request)
     {
-        return view('aggiungiFaq');
+        // Valida i campi dell'auto
+        $request->validate([
+            'domanda' => ['string', 'max:600', 'required', Rule::unique('faq')],
+            'risposta' => ['string', 'max:600', 'required']
+        ]);
+
+        // Creazione di un nuovo oggetto Auto
+        $faq = new Faq();
+        $faq->domanda = $request->input('domanda');
+        $faq->risposta = $request->input('risposta');
+        $faq->admin_ref = Auth::user()->id;
+
+        // Salva l'auto nel database
+        $faq->save();
+
+        // Reindirizza o effettua altre operazioni necessarie
+        return redirect()->route('gestioneFaq')->with('message', 'Faq aggiunta con successo.');
     }
 
 }
