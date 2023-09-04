@@ -74,7 +74,7 @@ class GestioneAutoController extends Controller
     /*
      * Il metodo modificaAuto consente di andare ad aggiornare i dati dell'auto e quindi modificare le informazioni secondo la form
      */
-    public function modificaAuto(Request $request)
+    function modificaAuto(Request $request)
     {
         //estrazione del codice dell'auto da modificare
         $codice_auto = $request->input('codice_auto');
@@ -126,20 +126,31 @@ class GestioneAutoController extends Controller
         return redirect()->route('gestioneauto')->with('message', 'Auto eliminata con successo.');
     }
 
-    public function getModello()
+
+    /*
+     * Il metodo getModello permette di estrarre tutti i modelli di auto presenti nel database
+     */
+    function getModello()
     {
+        //query di estrazione dei modelli contenuti nella tabella modello del database
         $modelli = modello::all();
+
+        //return della vista di aggiunta dell'auto in cui verrà inserita una tendina per visionare i modelli
         return view('aggiungiAuto', ['modelli' => $modelli]);
     }
 
-    public function aggiuntaAuto(Request $request)
+
+    /*
+     * Il metodo aggiuntaAuto permette di andare ad aggiungere al catalogo delle auto
+     */
+    function aggiuntaAuto(Request $request)
     {
-        // Valida i campi dell'auto
+        //validazione delle informazioni inserite all'interno della form con relative regole
         $request->validate([
             'targa' => ['string', 'max:20', 'required', Rule::unique('auto')],
             'costo_giorno' => ['numeric', 'min:0'],
             'num_posti' => ['integer', 'min:2', 'max:9'],
-            'allestimento' => ['string', 'max:255'],
+            'allestimento' => ['string', 'max:600'],
             'modello_ref' => ['required'],
             'foto_auto' => ['required', 'image', 'max:2048',
                 Rule::unique('auto', 'foto_auto')->where(function ($query) use ($request) {
@@ -149,30 +160,31 @@ class GestioneAutoController extends Controller
             ],
         ]);
 
-        // Creazione di un nuovo oggetto Auto
+        //creazione di un oggetto auto
         $auto = new Auto();
+
+        //inserimento di tutte le informazioni dell'auto all'interno dell'oggetto
         $auto->targa = $request->input('targa');
         $auto->costo_giorno = $request->input('costo_giorno');
         $auto->num_posti = $request->input('num_posti');
         $auto->allestimento = $request->input('allestimento');
         $auto->modello_ref = $request->input('modello_ref');
 
-        // Gestione dell'immagine dell'auto
+        //gestione dell'immagine caricata
         if ($request->hasFile('foto_auto')) {
             $imageFile = $request->file('foto_auto');
             $imageName = $imageFile->getClientOriginalName();
-            // Salva il file nella cartella pubblica
+            //salvataggio della foto in assets/img, concatenato vi è il nome del file
             $imageFile->move(public_path('assets/img'), $imageName);
 
             // Salva solo il nome del file nel campo foto_auto
             $auto->foto_auto = 'assets/img/' . $imageName;
         }
 
-
-        // Salva l'auto nel database
+        //salvataggio dell'auto all'interno del database
         $auto->save();
 
-        // Reindirizza o effettua altre operazioni necessarie
+        //redirect alla rotta di gestioneauto con realativo messaggio di avvenuta aggiunta
         return redirect()->route('gestioneauto')->with('message', 'Auto aggiunta con successo.');
     }
 
