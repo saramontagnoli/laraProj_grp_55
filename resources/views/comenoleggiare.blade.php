@@ -24,7 +24,6 @@
         </div>
     </div>
 
-    <!-- A capo per spaziature e formato della pagina -->
     <br>
 @endsection
 
