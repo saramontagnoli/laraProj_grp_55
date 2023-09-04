@@ -62,13 +62,9 @@ class DatabaseSeeder extends Seeder
         ]);
 
 
-        /*
-         * Inserimento dei dati predefiniti all'interno della tabella stato del database mediante insert
-         */
 
-        /*
-         * Inserimento dei dati predefiniti all'interno della tabella comune del database mediante insert
-         */
+
+
 
         /*
          * Inserimento dei dati predefiniti all'interno della tabella auto del database mediante insert
@@ -89,11 +85,11 @@ class DatabaseSeeder extends Seeder
          * Inserimento dei dati predefiniti all'interno della tabella users del database mediante insert
          */
         DB::table('users')->insert([
-            ['id' => 1, 'nome' => 'Sara', 'cognome' => 'Montagnoli', 'data_nascita' => '2001-10-31', 'username' => 'clieclie', 'password' => bcrypt('3Esp6L54'), 'role' => 'user', 'email' => 'sara@gmail.com', 'indirizzo' => 'via caso 13', 'occupazione_ref' => 4, 'comune_ref' => 1001],
-            ['id' => 2, 'nome' => 'Giada', 'cognome' => 'Remedia', 'data_nascita' => '2001-09-26', 'username' => 'staffstaff', 'password' => bcrypt('3Esp6L54'), 'role' => 'staff', 'email' => 'giada@gmail.com', 'indirizzo' => 'via nulla 10', 'occupazione_ref' => 4, 'comune_ref' => 1002],
+            ['id' => 1, 'nome' => 'Sara', 'cognome' => 'Montagnoli', 'data_nascita' => '2001-10-31', 'username' => 'clieclie', 'password' => bcrypt('3Esp6L54'), 'role' => 'user', 'email' => 'sara@gmail.com', 'indirizzo' => 'via caso 13', 'occupazione_ref' => 4, 'comune_ref' => 1002],
+            ['id' => 2, 'nome' => 'Giada', 'cognome' => 'Remedia', 'data_nascita' => '2001-09-26', 'username' => 'staffstaff', 'password' => bcrypt('3Esp6L54'), 'role' => 'staff', 'email' => 'giada@gmail.com', 'indirizzo' => 'via nulla 10', 'occupazione_ref' => 4, 'comune_ref' => 1004],
             ['id' => 3, 'nome' => 'Admin', 'cognome' => 'Admin', 'data_nascita' => '1990-11-11', 'username' => 'adminadmin', 'password' => bcrypt('3Esp6L54'), 'role' => 'admin', 'email' => 'admin@gmail.com', 'indirizzo' => 'via roma 11', 'occupazione_ref' => 1, 'comune_ref' => 1003],
-            ['id' => 4, 'nome' => 'Luca', 'cognome' => 'Bianchi', 'data_nascita' => '1997-06-11', 'username' => 'lucabianchi', 'password' => bcrypt('ciao01!'), 'role' => 'user', 'email' => 'lucabianchi@gmail.com', 'indirizzo' => 'via napoli 11', 'occupazione_ref' => 2, 'comune_ref' => 1004],
-            ['id' => 5, 'nome' => 'Marco', 'cognome' => 'Verdi', 'data_nascita' => '1998-01-27', 'username' => 'marcoverdi98', 'password' => bcrypt('ciaociao01!'), 'role' => 'user', 'email' => 'marcoverdi@gmail.com', 'indirizzo' => 'via torino 5', 'occupazione_ref' => 3, 'comune_ref' => 1005]
+            ['id' => 4, 'nome' => 'Luca', 'cognome' => 'Bianchi', 'data_nascita' => '1997-06-11', 'username' => 'lucabianchi', 'password' => bcrypt('ciao01!'), 'role' => 'user', 'email' => 'lucabianchi@gmail.com', 'indirizzo' => 'via napoli 11', 'occupazione_ref' => 2, 'comune_ref' => 1005],
+            ['id' => 5, 'nome' => 'Marco', 'cognome' => 'Verdi', 'data_nascita' => '1998-01-27', 'username' => 'marcoverdi98', 'password' => bcrypt('ciaociao01!'), 'role' => 'user', 'email' => 'marcoverdi@gmail.com', 'indirizzo' => 'via torino 5', 'occupazione_ref' => 3, 'comune_ref' => 1006]
         ]);
 
 

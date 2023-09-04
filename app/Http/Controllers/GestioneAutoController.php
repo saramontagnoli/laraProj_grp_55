@@ -8,6 +8,8 @@ use App\Models\Noleggio;
 use Illuminate\Http\Request;
 use Illuminate\Support\Carbon;
 use Illuminate\Validation\Rule;
+use Illuminate\Support\Facades\DB;
+
 
 
 class GestioneAutoController extends Controller
@@ -53,7 +55,30 @@ class GestioneAutoController extends Controller
         return view('visualizzanoleggi', ['listaNoleggi' => $dbQuery, 'annoCorrente' => $annoCorrente]);
     }
 
+    function riepilogoannuo()
+    {
+        $annoCorrente = Carbon::now()->year;
 
+        $mesiNoleggi = Noleggio::select(DB::raw('MONTH(noleggio.data_inizio) as mese'), DB::raw('COUNT(*) as num_noleggi'))
+            ->leftJoin('auto', 'noleggio.auto_ref', '=', 'auto.codice_auto')
+            ->groupBy('mese')
+            ->get();
+
+        $mesiDesiderati = range(1, 12); // Tutti i mesi da gennaio a dicembre
+        $mesiNoleggi = $mesiNoleggi->keyBy('mese')->toArray();
+
+        $risultatiFinali = [];
+
+        foreach ($mesiDesiderati as $mese) {
+            $numNoleggi = isset($mesiNoleggi[$mese]) ? $mesiNoleggi[$mese]['num_noleggi'] : 0;
+            $risultatiFinali[] = [
+                'mese' => $mese,
+                'num_noleggi' => $numNoleggi
+            ];
+        }
+
+        return view('riepilogoannuo', ['risultatiFinali' => $risultatiFinali, 'annoCorrente' => $annoCorrente]);
+    }
     /*
      * Il metodo getDatiAuto permette di estrarre i dati correnti dell'auto selezionata per la modifica, in modo ad riempire i campi con i dati da modificare
      */

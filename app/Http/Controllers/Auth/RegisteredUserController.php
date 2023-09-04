@@ -34,20 +34,43 @@ class RegisteredUserController extends Controller
     public function store(Request $request)
     {
         $request->validate([
-            'name' => ['required', 'string', 'max:255'],
-            'surname' => ['required', 'string', 'max:255'],
-            'email' => ['required', 'string', 'email', 'max:255', 'unique:users'],
+            'nome' => ['required', 'string', 'max:50'],
+            'cognome' => ['required', 'string', 'max:70'],
+            'data_nascita' => ['required', 'date'],
             'username' => ['required', 'string', 'min:8', 'unique:users'],
             'password' => ['required', 'confirmed', Rules\Password::defaults()],
+            'email'=>['required', 'email'],
+            'occupazione'=>['required'],
+            'stato'=>['required'],
+            'regione'=>['required'],
+            'provincia'=>['required'],
+            'citta'=>['required'],
+            'indirizzo'=>['required', 'string']
         ]);
 
         $user = User::create([
-            'name' => $request->name,
-            'surname' => $request->surname,
-            'email' => $request->email,
-            'username' => $request->username,
-            'password' => Hash::make($request->password),
+
+            'nome' => $request->input('nome'),
+            'cognome' => $request->input('cognome'),
+            'data_nascita' => $request->input('data_nascita'),
+            'username' => $request->input('username'),
+            'password' => $request->input('password'),
+            'email'=>$request->input('email'),
+            'occupazione'=>$request->input('occupazione'),
+            'stato'=>$request->input('stato'),
+            'regione'=>$request->input('regione'),
+            'provincia'=>$request->input('provincia'),
+            'citta'=>$request->input('citta'),
+            'indirizzo'=>$request->input('indirizzo'),
+
         ]);
+        $stati = Stati::all();
+        $regioni= Regioni
+        ->join("stato", "stato.codice_stato", "=", "regioni.id_stato")
+        all();
+        $province=Province::all();
+        $comuni=Comuni::all();
+        $occupazioni=Occupazione::all();
 
         event(new Registered($user));
 
@@ -55,4 +78,6 @@ class RegisteredUserController extends Controller
 
         return redirect(RouteServiceProvider::HOME);
     }
+
+
 }

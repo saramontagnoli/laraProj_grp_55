@@ -107,4 +107,6 @@ INSERT INTO `province` (`id`, `id_regione`, `nome`, `sigla`, `latitudine`, `long
 (107, 20, 'Carbonia-Iglesias', 'CI', '39.253466', '8.572102'),
 (108, 3, 'Monza e della Brianza', 'MB', '45.623599', '9.258802'),
 (109, 11, 'Fermo', 'FM', '43.093137', '13.589973'),
-(110, 16, 'Barletta-Andria-Trani', 'BT', '41.200454', '16.205148');
+(110, 16, 'Barletta-Andria-Trani', 'BT', '41.200454', '16.205148'),
+(111, 21, 'Regione Europea', 'EU', '1', '1'),
+(112, 22, 'Regione non Europea', 'NE', '1', '1');
