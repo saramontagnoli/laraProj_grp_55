@@ -68,7 +68,7 @@ class ControllerFaq extends Controller
 
         //validazione dei dati della form di modifica
         $request->validate([
-            'domanda' => ['required','string','max:600', Rule::unique('faq')],
+            'domanda' => ['required','string','max:600'],
             'risposta' => ['required','string','max:600']
         ]);
 

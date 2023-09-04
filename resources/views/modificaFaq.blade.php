@@ -11,7 +11,7 @@
 
             <div>
                 <!-- Button indietro che permette di tornare alla pagina di gestione delle F.A.Q. -->
-                <a href="{{ route('/gestioneFaq') }}" class="bottone">&laquo; INDIETRO </a>
+                <a href="{{ route('gestioneFaq') }}" class="bottone">&laquo; INDIETRO </a>
             </div>
 
             <br>

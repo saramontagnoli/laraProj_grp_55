@@ -152,12 +152,7 @@ class GestioneAutoController extends Controller
             'num_posti' => ['integer', 'min:2', 'max:9'],
             'allestimento' => ['string', 'max:600'],
             'modello_ref' => ['required'],
-            'foto_auto' => ['required', 'image', 'max:2048',
-                Rule::unique('auto', 'foto_auto')->where(function ($query) use ($request) {
-                    // Verifica l'unicità del nome del file dell'immagine
-                    return $query->where('foto_auto', $request->file('foto_auto')->getClientOriginalName());
-                }),
-            ],
+            'foto_auto' => ['required', 'image', 'max:2048']
         ]);
 
         //creazione di un oggetto auto
@@ -181,6 +176,14 @@ class GestioneAutoController extends Controller
             $auto->foto_auto = 'assets/img/' . $imageName;
         }
 
+        //query per l estrazione del databese per verificare se la foto è gia presente nel db
+        $dati = Auto::select('auto.foto_auto')
+            ->get();
+        foreach ($dati as $dato){
+            if($dato->foto_auto==$auto->foto_auto){
+                return redirect()->route('gestioneauto')->with('message', 'Foto auto già presente nel db.');
+            }
+        }
         //salvataggio dell'auto all'interno del database
         $auto->save();
 
