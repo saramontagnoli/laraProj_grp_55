@@ -113,17 +113,23 @@ class GestioneAutoController extends Controller
      */
     function eliminaAuto($codice_auto)
     {
-        //query di estrazione
+        //query di estrazione dell'auto da eliminare avente codice $codice_auto, trova anche i noleggi SE l'auto è stata noleggiata
         $auto = Auto::with('noleggio')->findOrFail($codice_auto);
 
-        // Elimina i noleggi correlati utilizzando la relazione
+        //eliminazione dei noleggi a carico dell'auto
         $auto->noleggio()->delete();
 
-        // Elimina l'auto stessa
+        //eliminazione effettiva dell'auto
         $auto->delete();
+
+        //redirect alla rotta di gestioneauto con messaggio di avvenuta eliminazione
         return redirect()->route('gestioneauto')->with('message', 'Auto eliminata con successo.');
     }
 
+
+    /*
+     * Il metodo getAggiuntaAuto permette di
+     */
     function getAggiuntaAuto()
     {
         $data = Auto::join("modello", "auto.modello_ref", "=", "modello.codice_modello")
