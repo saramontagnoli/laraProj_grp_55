@@ -148,7 +148,7 @@ Route::post('/homestaff/visualizzanoleggi', [GestioneAutoController::class, 'vis
 Route::put('/aggiuntaAuto', [GestioneAutoController::class, 'aggiuntaAuto'])
     ->name('aggiuntaAuto')->middleware('can:isStaff');
 
-Route::get('/aggiuntaAuto', [GestioneAutoController::class, 'getAggiuntaAuto'])
+Route::view('/aggiuntaAuto', 'aggiungiAuto')
     ->name('aggiuntaAuto')->middleware('can:isStaff');
 
 Route::get('/aggiuntaAuto', [GestioneAutoController::class, 'getModello'])

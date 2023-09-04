@@ -126,17 +126,6 @@ class GestioneAutoController extends Controller
         return redirect()->route('gestioneauto')->with('message', 'Auto eliminata con successo.');
     }
 
-
-    /*
-     * Il metodo getAggiuntaAuto permette di
-     */
-    function getAggiuntaAuto()
-    {
-        $data = Auto::join("modello", "auto.modello_ref", "=", "modello.codice_modello")
-                 ->join("marca", "modello.marca_ref", "=", "marca.codice_marca");
-        return view('aggiungiAuto', ['ListaNomi'=>$data]);
-    }
-
     public function getModello()
     {
         $modelli = modello::all();
@@ -184,7 +173,7 @@ class GestioneAutoController extends Controller
         $auto->save();
 
         // Reindirizza o effettua altre operazioni necessarie
-        return view('gestioneauto');
+        return redirect()->route('gestioneauto')->with('message', 'Auto aggiunta con successo.');
     }
 
 
