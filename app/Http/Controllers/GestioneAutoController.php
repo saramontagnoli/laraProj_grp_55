@@ -2,42 +2,54 @@
 
 namespace App\Http\Controllers;
 
-
 use App\Models\Auto;
-use App\Models\Marca;
 use App\Models\Modello;
 use App\Models\Noleggio;
 use Illuminate\Http\Request;
 use Illuminate\Support\Carbon;
 use Illuminate\Validation\Rule;
-use Illuminate\Support\Facades\Storage;
 
 
 class GestioneAutoController extends Controller
 {
-    //funzione che gestisce le azioni CRUD per le auto
+    /*
+     * Il metodo gestioneAuto consente di andare ad estrarre tutte le auto comrpese di marca e modello per visualizzare la tabella di gestione
+     */
     function gestioneAuto(){
+
+        //query di estrazione delle auto comprese di marca e modello
         $dbQuery = Auto::select("auto.*", "marca.nome_marca", "modello.nome_modello")
             ->join("modello", "auto.modello_ref", "=", "modello.codice_modello")
             ->join("marca", "modello.marca_ref", "=", "marca.codice_marca")
             ->get();
-        return view('/gestioneauto', ['listaNoleggi' => $dbQuery]);
+
+        //return della vista di gestione delle auto con la lista delle auto estratte in precedenza
+        return view('gestioneauto', ['listaNoleggi' => $dbQuery]);
     }
 
+
+    /*
+     * Il metodo visualizzanoleggi permette di andare a selezionare un mese dell'anno corrente e visualizzare tutti i noleggi effettuati in quel mese
+     */
     function visualizzanoleggi(Request $request)
     {
+        //estrazione del mese selezionato
         $mese = $request->input("mese");
+
+        //estrazione dell'anno corrente
         $annoCorrente = Carbon::now()->year;
-            $dbQuery = Noleggio::select("auto.targa", "marca.nome_marca", "modello.nome_modello", "noleggio.data_inizio", "noleggio.data_fine", "users.username")
-                ->join("auto", "auto.codice_auto", "=", "noleggio.auto_ref")
-                ->join("modello", "auto.modello_ref", "=", "modello.codice_modello")
-                ->join("marca", "modello.marca_ref", "=", "marca.codice_marca")
-                ->join("users", "users.id", "=", "noleggio.utente_ref")
-                ->where(function ($query) use ($mese, $annoCorrente) {
-                    $query->whereMonth('noleggio.data_inizio', $mese)
-                        ->whereYear('noleggio.data_fine', $annoCorrente);
-                })
-                ->get();
+
+
+        $dbQuery = Noleggio::select("auto.targa", "marca.nome_marca", "modello.nome_modello", "noleggio.data_inizio", "noleggio.data_fine", "users.username")
+            ->join("auto", "auto.codice_auto", "=", "noleggio.auto_ref")
+            ->join("modello", "auto.modello_ref", "=", "modello.codice_modello")
+            ->join("marca", "modello.marca_ref", "=", "marca.codice_marca")
+            ->join("users", "users.id", "=", "noleggio.utente_ref")
+            ->where(function ($query) use ($mese, $annoCorrente) {
+                $query->whereMonth('noleggio.data_inizio', $mese)
+                    ->whereYear('noleggio.data_fine', $annoCorrente);
+            })
+            ->get();
         return view('visualizzanoleggi', ['listaNoleggi' => $dbQuery]);
     }
 
@@ -81,7 +93,7 @@ class GestioneAutoController extends Controller
                 'allestimento'=>$request->input('allestimento'),
             ]);
         // Redirezione alla rotta desiderata dopo la modifica
-        return redirect()->route('/gestioneauto');
+        return redirect()->route('gestioneauto');
     }
 
     function eliminaAuto($codice_auto)
@@ -93,7 +105,7 @@ class GestioneAutoController extends Controller
 
         // Elimina l'auto stessa
         $auto->delete();
-        return redirect()->route('/gestioneauto')->with('message', 'Auto eliminata con successo.');
+        return redirect()->route('gestioneauto')->with('message', 'Auto eliminata con successo.');
     }
 
     function getAggiuntaAuto()
