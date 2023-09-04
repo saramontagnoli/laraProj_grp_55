@@ -8,7 +8,7 @@
     <br>
 
     <!-- Button di aggiunta di un nuovo membro dello staff, porta alla rotta definita per l'aggiunta -->
-    <a href="{{route('aggiuntaFaq')}}" class="bottone">Aggiungi Membro Staff</a>
+    <a href="{{route('aggiuntaStaff')}}" class="bottone">Aggiungi Membro Staff</a>
     <br><br>
 
     <!-- Definizione della tabella contenente tutti i membri dello staff estratti dal db -->
