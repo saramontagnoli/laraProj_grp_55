@@ -8,7 +8,7 @@
     <br>
 
     <!-- Button di aggiunta di un nuovo membro dello staff, porta alla rotta definita per l'aggiunta -->
-    <a href="{{route('aggiuntaFaq')}}" class="bottone">Aggiungi Membro Staff</a>
+    <a href="{{route('aggiuntaStaff')}}" class="bottone">Aggiungi Membro Staff</a>
     <br><br>
 
     <!-- Definizione della tabella contenente tutti i membri dello staff estratti dal db -->
@@ -20,7 +20,6 @@
             <th>Username</th> <!-- Username -->
             <th>Nome</th> <!-- Nome -->
             <th>Cognome</th> <!-- Cognome -->
-            <th>Data_nascita</th> <!-- Data di nascita -->
             <th>Modifica</th> <!-- Link di modifica dello staff -->
             <th>Elimina</th> <!-- Link di eliminazione dello staff -->
         </tr>
@@ -37,7 +36,6 @@
                 <td>{{$st['username']}}</td>
                 <td>{{$st['nome']}}</td>
                 <td>{{$st['cognome']}}</td>
-                <td>{{$st['data_nascita']}}</td>
                 <td><a href="{{ route('getdatistaff', ['id' => $st['id']]) }}" class="tabella_link">Modifica</a></td>
                 <td><a href="{{ route('eliminaStaff', ['id' => $st['id']]) }}" onclick="return deleteStaff()" class="tabella_link">Elimina</a></td>
             </tr>

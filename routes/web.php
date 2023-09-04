@@ -84,6 +84,14 @@ Route::get('/homeadmin/gestioneClienti/{id}', [UserController::class, 'eliminaCl
 Route::get('/homeadmin/gestionestaff', [UserController::class, 'gestioneStaff'])
     ->name('gestionestaff')->middleware('can:isAdmin');
 
+//Rotta per l'aggiunta di uno staff (admin)
+Route::view('/aggiuntaStaff', 'aggiungiStaff')
+    ->name('aggiuntaStaff')->middleware('can:isAdmin');
+
+//Rotta per l'aggiunta di una F.A.Q. (admin)
+Route::put('/aggiuntaStaff', [UserController::class, 'aggiungiStaff'])
+    ->name('aggiuntaStaff')->middleware('can:isAdmin');
+
 //Rotta per la modifica delle auto (staff)
 Route::put('/modificadatistaff', [UserController::class, 'modificaStaff'])
     ->middleware('can:isAdmin');
@@ -103,7 +111,6 @@ Route::view('/aggiuntaFaq', 'aggiungiFaq')
 //Rotta per l'aggiunta di una F.A.Q. (admin)
 Route::put('/aggiuntaFaq', [ControllerFaq::class, 'aggiuntaFaq'])
     ->name('aggiuntaFaq')->middleware('can:isAdmin');
-
 
 
 
