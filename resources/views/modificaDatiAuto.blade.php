@@ -9,6 +9,10 @@
             <h2 class="titolo_info">Modifica dati dell'auto {{$dati['nome_marca']}} - {{$dati['nome_modello']}}</h2>
 
             <br>
+            <div>
+                <!-- Button indietro che permette di tornare alla pagina di gestione delle F.A.Q. -->
+                <a href="{{ route('gestioneauto') }}" class="bottone">&laquo; INDIETRO </a>
+            </div>
             @csrf
             {{ Form::open(array('url' => '/modificadatiauto', 'enctype' => 'multipart/form-data', 'method' => 'PUT')) }}
             <div class="posizione_cx">

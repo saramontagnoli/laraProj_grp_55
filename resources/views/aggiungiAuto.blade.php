@@ -5,12 +5,16 @@
 
 <!-- Definizione della sezione del contenuto della pagina del login -->
 @section('content')
+
     <div style="text-align: center">
         <!-- Intestazione della form di login -->
         <h1 class="titolo_info">Aggiungi Auto</h1>
         <p>Utilizza questa form per aggiungere un'auto:</p>
         <br>
-
+        <div style="text-align: left">
+            <!-- Button indietro che permette di tornare alla pagina di gestione delle F.A.Q. -->
+            <a href="{{ route('gestioneauto') }}" class="bottone">&laquo; INDIETRO </a>
+        </div>
         <div>
             <div>
                 <!-- Apertura della form per il login con redirezione alla rotta di login -->

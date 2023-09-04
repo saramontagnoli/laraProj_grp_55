@@ -113,16 +113,17 @@ class GestioneAutoController extends Controller
      */
     function eliminaAuto($codice_auto)
     {
-        //query di estrazione dell'auto da eliminare avente codice $codice_auto, trova anche i noleggi SE l'auto è stata noleggiata
+        // Query di estrazione dell'auto da eliminare avente codice $codice_auto, trova anche i noleggi SE l'auto è stata noleggiata
         $auto = Auto::with('noleggio')->findOrFail($codice_auto);
-
-        //eliminazione dei noleggi a carico dell'auto
+        // Eliminazione dei noleggi a carico dell'auto
         $auto->noleggio()->delete();
+        // Ottieni il percorso del file immagine
+        unlink($auto->foto_auto);
+        // Verifica se il file esiste e quindi eliminane se presente
 
-        //eliminazione effettiva dell'auto
+        // Eliminazione effettiva dell'auto
         $auto->delete();
-
-        //redirect alla rotta di gestioneauto con messaggio di avvenuta eliminazione
+        // Redirect alla rotta di gestioneauto con messaggio di avvenuta eliminazione
         return redirect()->route('gestioneauto')->with('message', 'Auto eliminata con successo.');
     }
 
@@ -133,7 +134,7 @@ class GestioneAutoController extends Controller
     function getModello()
     {
         //query di estrazione dei modelli contenuti nella tabella modello del database
-        $modelli = modello::all();
+        $modelli = modello::orderBy('nome_modello')->get();
 
         //return della vista di aggiunta dell'auto in cui verrà inserita una tendina per visionare i modelli
         return view('aggiungiAuto', ['modelli' => $modelli]);
