@@ -2,7 +2,10 @@
 
 <!-- Definizione della sezione del contenuto della pagina del catalogo generale delle auto -->
 @section('content')
-    <br><br>
+
+    <h1 class="titolo_info">VISUALIZZAZIONE NOLEGGI DIVISI PER MESE</h1>
+    <br>
+    <p style="font-size: 14pt; font-weight: bolder;">Anno corrente di riepilogo: {{$annoCorrente}}</p>
 
     <!-- Definizione della form per la visualizzazione dei noleggi in anno corrente per mese -->
     <form method="POST" action="{{ route('visualizzanoleggi') }}">
