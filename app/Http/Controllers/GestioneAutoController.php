@@ -72,13 +72,14 @@ class GestioneAutoController extends Controller
 
 
     /*
-     * Il metodo modificaAuto
+     * Il metodo modificaAuto consente di andare ad aggiornare i dati dell'auto e quindi modificare le informazioni secondo la form
      */
     public function modificaAuto(Request $request)
     {
-        // Recupera l'auto in base al codice_auto
+        //estrazione del codice dell'auto da modificare
         $codice_auto = $request->input('codice_auto');
-        // Valida i dati della form di modifica
+
+        //validazione dei campi della form
         $request->validate([
             'targa' => [
                 'string',
@@ -88,9 +89,10 @@ class GestioneAutoController extends Controller
             ],
             'costo_giorno' => ['numeric', 'min:0'],
             'num_posti' => ['integer', 'min:2', 'max:9'],
-            'allestimento' => ['string', 'max:255'],
+            'allestimento' => ['string', 'max:500'],
         ]);
 
+        //query di updatee dei dati dell'auto precedentemente validati
         Auto::join("modello", "auto.modello_ref", "=", "modello.codice_modello")
             ->join("marca", "modello.marca_ref", "=", "marca.codice_marca")
             ->where('codice_auto', $codice_auto)->update(
@@ -100,12 +102,18 @@ class GestioneAutoController extends Controller
                 'num_posti'=>$request->input('num_posti'),
                 'allestimento'=>$request->input('allestimento'),
             ]);
-        // Redirezione alla rotta desiderata dopo la modifica
-        return redirect()->route('gestioneauto');
+
+        //redirect alla rotta di gestione delle auto con messaggio di avvenuta modifica
+        return redirect()->route('gestioneauto')->with('message', 'Auto modificata con successo.');
     }
 
+
+    /*
+     * Il metodo eliminaAuto permette di andare ad eliminare l'auto selezionata dalla tabella di gestione
+     */
     function eliminaAuto($codice_auto)
     {
+        //query di estrazione
         $auto = Auto::with('noleggio')->findOrFail($codice_auto);
 
         // Elimina i noleggi correlati utilizzando la relazione
