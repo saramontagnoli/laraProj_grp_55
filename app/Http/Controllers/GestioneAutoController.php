@@ -188,8 +188,6 @@ class GestioneAutoController extends Controller
         return redirect()->route('gestioneauto')->with('message', 'Auto aggiunta con successo.');
     }
 
-
-
 }
 
 
