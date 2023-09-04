@@ -9,6 +9,8 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\DB;
+use Illuminate\Validation\Rule;
+
 class UserController extends Controller {
 
     /*
@@ -321,5 +323,31 @@ class UserController extends Controller {
 
         //redirezione alla rotta di gestione dello staff
         return redirect()->route('gestionestaff');
+    }
+
+
+    function aggiungiStaff(Request $request)
+    {
+        //validazione delle informazioni inserite all'interno della form con relative regole
+        $request->validate([
+            'username' => ['string', 'max:50', 'required', Rule::unique('users')],
+            'nome' => ['string', 'max:50'],
+            'cognome' => ['string', 'max:70'],
+            'password' => ['string', 'max:65']
+        ]);
+
+        $user = new User();
+
+        $user->username = $request->input('username');
+        $user->nome = $request->input('nome');
+        $user->cognome = $request->input('cognome');
+        $user->password = Hash::make($request->input('password'));
+        $user->role = 'staff';
+
+        //salvataggio dell'auto all'interno del database
+        $user->save();
+
+        //redirect alla rotta di gestioneauto con realativo messaggio di avvenuta aggiunta
+        return redirect()->route('gestionestaff')->with('message', 'Staff aggiunto con successo.');
     }
 }
