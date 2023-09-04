@@ -6,37 +6,47 @@ use App\Models\Faq;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Http\Request;
 use Illuminate\Validation\Rule;
-use Illuminate\Support\Facades\Log;
 
 /*
  * Definizione del Controller delle F.A.Q.
  */
 class ControllerFaq extends Controller
 {
-    //Il metodo showFaq permette di estrarre tutte le FAQ dalla tabella relativa nel database
+    /*
+     * Il metodo showFaq permette di andare ad estrarre tutte le F.A.Q. contenute nel sito
+     */
     function showFaq()
     {
-        //query di estrazione del database
-        $data = faq::all();
+        //query di estrazione di tutte le F.A.Q. dal database
+        $data = Faq::all();
 
-        //ritorno della vista contenente tutte le FAQ
+        //return della vista faq contenente tutte le F.A.Q. appena estratte
         return view('faq', ['faq'=>$data]);
     }
 
+
+    /*
+     * Il metodo gestioneFaq consente di andare ad estrarre tutte le F.A.Q. per visualizzarle in una tabella di gestione
+     */
     function gestioneFaq()
     {
-        //query di estrazione di tutte le auto, query con due join per estrazione di informazioni riguardanti marca e modello dell'auto
-        $faq = Faq::get();
+        //query di estrazione di tutte le F.A.Q.
+        $faq = Faq::all();
 
-        //inserimento del risultato della query all'interno di un oggetto $cardAuto
+        //inserimento del risultato della query all'interno di un oggetto $cardFaq
         $cardFaq["cardFaq"] = $faq;
 
-        //return della vista contenente il catalogo completo
+        //return della vista di gestione delle F.A.Q. contenente l'insieme di tutte le F.A.Q. estratte
         return view('gestionefaq', $cardFaq);
     }
 
+
+    /*
+     * Il metodo eliminaFaq consente di andare ad eliminare la F.A.Q. con codice $codice_faq selezionata dalla tabella di gestione
+     */
     function eliminaFaq($codice_faq)
     {
+        //
         $faq = Faq::where('faq.codice_faq', '=', $codice_faq);
 
         // Elimina i noleggi correlati utilizzando la relazione
