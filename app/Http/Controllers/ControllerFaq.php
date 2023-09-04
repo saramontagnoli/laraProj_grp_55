@@ -85,36 +85,41 @@ class ControllerFaq extends Controller
     }
 
     /*
- * Il metodo getDatiPersonali consente di estrarre i dati del cliente che ha intenzione di modificare i dati
- * Questo serve per riempire i campi di modifica con i campi precedentemente impostati
- */
+     * Il metodo getDatiFaq consente di estrarre i dati della F.A.Q. selezionata per andare a riempire i campi con i dati attuali
+     */
     function getDatiFaq($codice_faq){
 
-        //query di estrazione dell'utente dal database
+        //query di estrazione della F.A.Q. selezionata per la modifica
         $faq = Faq::where('codice_faq', $codice_faq)->first();
 
-        //return della vista di modifica dei dati, compilando i campi di modifica con i dati vecchi estratti dal DB
+        //return della vista di modifica della F.A.Q., compilando i campi di modifica con i dati vecchi estratti dal DB
         return view('modificaFaq', ['faq'=>$faq]);
     }
 
+
+    /*
+     * Il metodo aggiuntaFaq permette di andare ad aggiungere una nuova F.A.Q. all'interno del database
+     */
     function aggiuntaFaq(Request $request)
     {
-        // Valida i campi dell'auto
+        //validazione dei campi riempiti dall'admin con le informazioni della nuova F.A.Q.
         $request->validate([
             'domanda' => ['string', 'max:600', 'required', Rule::unique('faq')],
             'risposta' => ['string', 'max:600', 'required']
         ]);
 
-        // Creazione di un nuovo oggetto Auto
+        //creazione di un oggetto F.A.Q.
         $faq = new Faq();
+
+        //riempimento dei campi domanda e risposta secondo la form e codice dell'admin
         $faq->domanda = $request->input('domanda');
         $faq->risposta = $request->input('risposta');
         $faq->admin_ref = Auth::user()->id;
 
-        // Salva l'auto nel database
+        //salvataggio della F.A.Q. all'interno della tabella F.A.Q.
         $faq->save();
 
-        // Reindirizza o effettua altre operazioni necessarie
+        //redirect alla rotta di gestioneFaq con relativo messaggio di conferma di inserimento
         return redirect()->route('gestioneFaq')->with('message', 'Faq aggiunta con successo.');
     }
 
