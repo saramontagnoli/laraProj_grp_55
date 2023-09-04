@@ -13,6 +13,7 @@
             <p>Per poter usufruire del nostro servizio online di noleggio auto è necessario registrarsi alla piattaforma mediante l'apposita form di registrazione.</p>
             <p>Una volta completata la registrazione al sito ed aver effettuato l'accesso alla propria area personale, è possibile noleggiare un'auto specificando il periodo di noleggio.</p>
             <p>Per facilitare la ricerca sono stati predisposti inoltre anche dei filtri di ricerca sia in base al periodo di noleggio, ma anche in base alla fascia di prezzo desiderata, specificando il minimo e il massimo.</p>
+            <p>Una volta cliccato il bottone per il noleggio si apre una scheda di avvenuto noleggio che riepiloga tutte le informazioni dell'auto scelta e il periodo in cui si può usufruire del servizio.</p>
             <p>Nella propria area personale (PROFILO) è inoltre possibile modificare tutte le informazioni personali ed aggiornarle in base alle esigenze del cliente stesso.</p>
         </div>
 
