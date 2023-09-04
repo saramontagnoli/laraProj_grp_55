@@ -58,20 +58,21 @@ class ControllerFaq extends Controller
 
 
     /*
-     * Il metodo updateDatiPersonali permette di andare ad aggiornare effettivamente i dati del cliente, secondo i nuovi input
+     * Il metodo updateDatiPersonali permette di andare ad aggiornare i dati della F.A.Q. selezionata, secondo i nuovi input
      */
     function modificaFaq(Request $request)
     {
 
+        //estrazione del codice della F.A.Q. selezionata
         $codice_faq = $request->input('codice_faq');
 
         //validazione dei dati della form di modifica
         $request->validate([
-            'domanda' => ['required','string','max:600'],
+            'domanda' => ['required','string','max:600', Rule::unique('faq')],
             'risposta' => ['required','string','max:600']
         ]);
 
-        //query di update delle informazioni dell'utente senza password
+        //query di update delle informazioni della F.A.Q. secondo i nuovi input
         Faq::where('codice_faq', $codice_faq)->update(
             [
                 'domanda'=>$request->input('domanda'),
@@ -79,7 +80,7 @@ class ControllerFaq extends Controller
                 'admin_ref' => Auth::user()->id
         ]);
 
-        //redirezione alla rotta del profilo dell'utente
+        //redirezione alla rotta di gestioneFaq con messaggio di avvenuta aggiunta
         return redirect()->route('gestioneFaq')->with('message', 'Faq modificata con successo.');
     }
 
