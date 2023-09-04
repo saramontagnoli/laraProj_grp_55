@@ -53,19 +53,27 @@ class GestioneAutoController extends Controller
         return view('visualizzanoleggi', ['listaNoleggi' => $dbQuery, 'annoCorrente' => $annoCorrente]);
     }
 
-    //fIl metodo getDatiAuto consente di estrarre i dati delle auto che lo staff ha intenzione di modificare
-    //     * Questo serve per riempire i campi di modifica con i campi precedentemente impostati
+
+    /*
+     * Il metodo getDatiAuto permette di estrarre i dati correnti dell'auto selezionata per la modifica, in modo ad riempire i campi con i dati da modificare
+     */
     function getDatiAuto($codice_auto)
     {
-       // $auto = Auto::findOrFail($codice_auto);
+       //estrazione delle informazioni dell'auto con $codice_auto da modificare
         $dati = Auto::join("modello", "auto.modello_ref", "=", "modello.codice_modello")
             ->join("marca", "modello.marca_ref", "=", "marca.codice_marca")
             ->where('auto.codice_auto', $codice_auto)
             ->first();
+
+        //return della vista di modifica delle auto con i relativi dati
         return view('modificaDatiAuto', ['dati' => $dati]);
 
     }
 
+
+    /*
+     * Il metodo modificaAuto
+     */
     public function modificaAuto(Request $request)
     {
         // Recupera l'auto in base al codice_auto
