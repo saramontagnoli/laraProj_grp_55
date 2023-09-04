@@ -135,6 +135,8 @@
                     <!-- Bottone di submit per l'invio dei dati inseriti nella form -->
                     {{ Form::submit('Aggiungi Auto', ['class' => 'bottone']) }}
                 </div>
+
+
                 {{ Form::close() }}
             </div>
         </div>
