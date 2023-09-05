@@ -1,7 +1,10 @@
+<!-- Si estende la struttura definita per le pagine del sito web -->
 @extends('layouts.struttura')
 
+<!-- Definizione della sezione del contenuto della pagina di aggiunta di una F.A.Q. -->
 @section('content')
 
+    <!-- Definizione del titolo della pagina di aggiunta delle F.A.Q. -->
     <h1 class="titolo_info">AGGIUNTA F.A.Q.</h1>
 
     <br>
@@ -9,14 +12,15 @@
     <p class="posizione_cx">Utilizza questa form per aggiungere una nuova F.A.Q. al sito:</p>
     <br>
 
+    <!-- Definizione della sezione della form di aggiunta di una nuova F.A.Q., con redirezione alla rotta di aggiuntaFaq -->
     <div class="posizione_cx">
         {{ Form::open(array('url' => '/aggiuntaFaq', 'enctype' => 'multipart/form-data', 'method' => 'PUT')) }}
 
         <div>
-            <!-- Definizione della label per l'inserimento dello username -->
+            <!-- Definizione della label per l'inserimento della domanda -->
             {{ Form::label('domanda', 'Domanda') }}
             <br>
-            <!-- Campo di inserimento dello username, avente come id "username" -->
+            <!-- Campo di inserimento della domanda, avente come id "domanda" -->
             {{ Form::text('domanda', '', ['id' => 'domanda', 'required' => 'required', 'class' => 'campo_form']) }}
 
             <!-- Se vengono rilevati degli errori allora vengono stampati -->
@@ -32,10 +36,10 @@
         <br>
 
         <div>
-            <!-- Definizione della label per l'inserimento dello username -->
+            <!-- Definizione della label per l'inserimento della risposta -->
             {{ Form::label('risposta', 'Risposta') }}
             <br>
-            <!-- Campo di inserimento dello username, avente come id "username" -->
+            <!-- Campo di inserimento della risposta, avente come id "risposta" -->
             {{ Form::text('risposta', '', ['id' => 'risposta', 'required' => 'required', 'class' => 'campo_form']) }}
 
             <!-- Se vengono rilevati degli errori allora vengono stampati -->
@@ -51,7 +55,7 @@
         <br>
 
         <div>
-            <!-- Bottone di submit per l'invio dei dati inseriti nella form -->
+            <!-- Bottone di submit per l'invio dei dati inseriti nella form di aggiunta della F.A.Q. -->
             {{ Form::submit('Aggiungi F.A.Q.', ['class' => 'bottone']) }}
         </div>
 
