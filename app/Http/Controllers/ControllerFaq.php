@@ -102,12 +102,6 @@ class ControllerFaq extends Controller
      */
     function aggiuntaFaq(Request $request)
     {
-        //validazione dei campi riempiti dall'admin con le informazioni della nuova F.A.Q.
-        $request->validate([
-            'domanda' => ['string', 'max:600', 'required', Rule::unique('faq')],
-            'risposta' => ['string', 'max:600', 'required']
-        ]);
-
         //creazione di un oggetto F.A.Q.
         $faq = new Faq();
 
