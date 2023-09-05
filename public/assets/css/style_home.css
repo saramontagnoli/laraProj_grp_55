@@ -473,3 +473,20 @@ footer{
     }
 }
 
+.colonna_filtro
+{
+    width: 100%; /* larghezza che la colonna deve occupare */
+    height: fit-content;/* altezza della colonna definita */
+}
+
+
+@media (max-width:800px){
+
+    .colonna_filtro
+    {
+        display:block;
+        margin:10px 0;
+        text-align:left;
+        width: 100%;
+    }
+}

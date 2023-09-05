@@ -10,48 +10,58 @@
     <!-- Form predisposta per la ricerca delle auto all'interno del catalogo -->
     <form method="POST" action="{{ route('catalogoauto') }}">
         @csrf
-        <h3>Filtri di ricerca:</h3>
 
-        <!-- Input per il filtro di ricerca prezzo minimo -->
-        <label>
-            Inserire prezzo min:
-            <input type="number" step="0.01" name="min" placeholder="Prezzo min" min="0">
-        </label>
+        <!-- Definizione della sezione dei filtri di ricerca -->
+        <h3 class="titolo posizione_cx">Filtri di ricerca:</h3>
 
-        <!-- Input per il filtro di ricerca prezzo massimo -->
-        <label>
-            Inserire prezzo max:
-            <input type="number" step="0.01" name="max" placeholder="Prezzo max" min="0">
-        </label>
+        <div class="rigacatalogo">
+            <div class="colonna colonna_filtro ">
+                <!-- Input per il filtro di ricerca prezzo minimo -->
+                <label class="titolo">
+                    Inserire prezzo min:
+                    <br>
+                    <input class="campo_form" type="number" step="0.01" name="min" placeholder="Prezzo min" min="0">
+                </label>
 
-        <br><br>
+                <br>
 
-        <!-- Se l'utente autenticato è di tipo 'user' si aggiungono i filtri per data -->
+                <!-- Input per il filtro di ricerca prezzo massimo -->
+                <label class="titolo">
+                    Inserire prezzo max:
+                    <br>
+                    <input class="campo_form" type="number" step="0.01" name="max" placeholder="Prezzo max" min="0">
+                </label>
+            </div>
 
-        @if(auth()->check() && (Auth::user()->role=='staff' || Auth::user()->role=='admin' || Auth::user()->role=='user') )
-            <!-- Input per il filtro di ricerca data inizio -->
-            <label>
-                Data inizio noleggio:
-                <input type="date" name="inizio">
-            </label>
+            <!-- Se l'utente autenticato è di tipo 'user' si aggiungono i filtri per data -->
+            @if(auth()->check() && (Auth::user()->role=='staff' || Auth::user()->role=='admin' || Auth::user()->role=='user') )
+                <div class="colonna colonna_filtro">
+                    <!-- Input per il filtro di ricerca data inizio -->
+                    <label class="titolo">
+                        DA:&nbsp;
+                        <input class="campo_form" type="date" name="inizio">
+                    </label>
 
-            <!-- Input per il filtro di ricerca prezzo massimo -->
-            <label>
-                Data fine noleggio:
-                <input type="date" name="fine">
-            </label>
+                    <!-- Input per il filtro di ricerca prezzo massimo -->
+                    <label class="titolo">
+                        A:
+                        <input class="campo_form" type="date" name="fine">
+                    </label>
+                </div>
 
-
-            @if(session('popupMessage'))
-                <script>
-                    alert("{{ session('popupMessage') }}");
-                </script>
+                @if(session('popupMessage'))
+                    <script>
+                        alert("{{ session('popupMessage') }}");
+                    </script>
+                @endif
             @endif
-        @endif
+        </div>
 
+        <div class="rigacatalogo">
+            <!-- Button di submit per l'invio dei dati inseriti nella form -->
+            <button type="submit" class="bottone" name="action" value="submit1">Cerca</button>
+        </div>
 
-        <!-- Button di submit per l'invio dei dati inseriti nella form -->
-        <button type="submit" name="action" value="submit1">Cerca</button>
     </form>
 
     <!-- Definizione della riga del catalogo -->
