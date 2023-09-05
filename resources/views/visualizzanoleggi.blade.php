@@ -1,10 +1,14 @@
+<!-- Si estende la struttura definita per le pagine del sito web -->
 @extends('layouts.struttura')
 
 <!-- Definizione della sezione del contenuto della pagina del catalogo generale delle auto -->
 @section('content')
 
+    <!-- Definizione del titolo della visualizzazione dei noleggi divisi per mese -->
     <h1 class="titolo_info">VISUALIZZAZIONE NOLEGGI DIVISI PER MESE</h1>
     <br>
+
+    <!-- Stampa dell'anno corrente, ovvero l'anno di riferimento di visualizzazione -->
     <p style="font-size: 14pt; font-weight: bolder;">Anno corrente di riepilogo: {{$annoCorrente}}</p>
 
     <!-- Definizione della form per la visualizzazione dei noleggi in anno corrente per mese -->
@@ -13,6 +17,8 @@
         <!-- Input per indicare il mese di cui visualizzare i noleggi -->
         <label>
             Inserisci il mese:
+
+            <!-- Selezione del mese desiderato -->
             <select name="mese">
                 <option value="0"></option>
                 <option value="1">Gennaio</option>
@@ -29,31 +35,37 @@
                 <option value="12">Dicembre</option>
             </select>
         </label>
+
         <!-- Button di submit per estrazione dei dati dei noleggi del mese indicato e anno corrente -->
         <button type="submit" name="action" value="submit">Cerca</button>
     </form>
+
     <br>
+
+    <!-- Definizione della tabella di visualizzazione  -->
     <table class="tabella_noleggi">
+
+        <!-- Definizione dell'intestazione della tabella dei noleggi effettuati per un mese specifico -->
         <thead>
         <tr>
-            <th>Targa Auto</th>
-            <th>Marca Auto</th>
-            <th>Modello Auto</th>
-            <th>Data inizio noleggio</th>
-            <th>Data fine noleggio</th>
-            <th>Utente</th>
+            <th>Targa Auto</th> <!-- Targa dell'auto -->
+            <th>Marca Auto</th> <!-- Marca dell'auto -->
+            <th>Modello Auto</th> <!-- Modello dell'auto -->
+            <th>Data inizio noleggio</th> <!-- Data di inizio noleggio -->
+            <th>Data fine noleggio</th> <!-- Data di fine noleggio -->
+            <th>Utente</th> <!-- Utente che ha noleggiato l'auto -->
         </tr>
         </thead>
         <tbody>
         <!-- Righe della tabella -->
         @foreach($listaNoleggi as $noleggio)
             <tr>
-                <td>{{$noleggio['targa']}}</td>
-                <td>{{$noleggio['nome_marca']}}</td>
-                <td>{{$noleggio['nome_modello']}}</td>
-                <td>{{$noleggio['data_inizio']}}</td>
-                <td>{{$noleggio['data_fine']}}</td>
-                <td>{{$noleggio['username']}}</td>
+                <td>{{$noleggio['targa']}}</td> <!-- Targa dell'auto -->
+                <td>{{$noleggio['nome_marca']}}</td> <!-- Marca dell'auto -->
+                <td>{{$noleggio['nome_modello']}}</td> <!-- Modello dell'auto -->
+                <td>{{$noleggio['data_inizio']}}</td> <!-- Data di inizio noleggio -->
+                <td>{{$noleggio['data_fine']}}</td> <!-- Data di fine noleggio -->
+                <td>{{$noleggio['username']}}</td> <!-- Utente che ha noleggiato l'auto -->
             </tr>
         @endforeach
         <!-- Altre righe... -->
