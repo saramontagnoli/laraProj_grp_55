@@ -176,10 +176,10 @@ Route::get('/home/profilo', [UserController::class, 'profilo'])
 
 // Rotta per accedere alla modifica dei dati personali (livello 1).
 Route::get('/home/profilo/dati', [UserController::class, 'getDatiPersonali1'])
-    ->name('modificaDatiL1')->middleware('can:isUser');
+    ->name('modificaDatiUtente')->middleware('can:isUser');
 
 // Rotta che aggiorna i dati.
-Route::put('/modificaDatiL1', [UserController::class, 'updateDatiPersonali1'])->middleware('can:isUser');
+Route::put('/modificaDatiUtente', [UserController::class, 'updateDatiPersonali1'])->middleware('can:isUser');
 
 // Rotta per accedere alla pagina di conferma del noleggio dell'auto scelta.
 Route::post('/catalogoauto/{codice_auto}/noleggio', [UserController::class, 'noleggioAuto'])->middleware('can:isUser');
