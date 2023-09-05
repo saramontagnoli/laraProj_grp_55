@@ -473,6 +473,10 @@ footer{
     }
 }
 
+
+/*
+Classe di formattazione per incolonnare i filtri nel catalogo auto
+ */
 .colonna_filtro
 {
     width: 100%; /* larghezza che la colonna deve occupare */
@@ -480,6 +484,9 @@ footer{
 }
 
 
+/*
+    Quando lo schermo diventa più piccolo di 800 pixel allora le colonne finiscono una sotto l'altra
+*/
 @media (max-width:800px){
 
     .colonna_filtro
