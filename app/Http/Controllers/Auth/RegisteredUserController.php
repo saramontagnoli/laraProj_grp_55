@@ -23,31 +23,18 @@ class RegisteredUserController extends Controller
      * @return \Illuminate\View\View
      */
 
-    public function create(Request $request)
+    public function create()
     {
         $occupazioni = Occupazione::all();
-        $stati= Stato::all();
-        $regioni= Regioni::select('regioni.*', 'stato.codice_stato')
-            ->join("stato", "stato.codice_stato", "=", "regioni.stato_ref")
-            ->get();
-        $province=Province::select('province.*', 'regioni.id')
-            ->join("regioni", "regioni.id", "=", "province.id_regione")
-            ->get();
         $comuni=Comuni::select('comuni.*', 'province.id')
             ->join("regioni", "regioni.id", "=", "comuni.id_regione")
             ->join("province", "province.id", "=", "comuni.id_provincia")
             ->get();
 
-        return view('auth.register', ['occupazioni' => $occupazioni],
-            ['stati' => $stati,
-            'regioni' => $regioni,
-            'province'=>$province,
-            'comuni'=>$comuni]);
+        return view('auth.register',
+            ['occupazioni' => $occupazioni],
+            ['comuni'=>$comuni]);
     }
-
-    // Altre funzioni del controller...
-
-    // Altre funzioni del controller...
 
 
 /**
@@ -87,8 +74,7 @@ class RegisteredUserController extends Controller
         ]);
 
         event(new Registered($user));
-
-        return redirect(route('login'));
+        return redirect()->route('login')->with('message', 'Registrazione effettuata.');
     }
 
 

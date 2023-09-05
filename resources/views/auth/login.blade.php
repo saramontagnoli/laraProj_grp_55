@@ -8,6 +8,12 @@
     <div style="text-align: center">
         <!-- Intestazione della form di login -->
         <h1 class="titolo_info">Login</h1>
+        <!-- messaggio -->
+        @if(session('message'))
+            <div class="alert alert-success">
+                {{ session('message') }}
+            </div>
+        @endif
         <p>Utilizza questa form per autenticarti al sito:</p>
         <br>
 
