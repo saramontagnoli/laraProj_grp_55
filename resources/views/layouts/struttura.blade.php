@@ -18,8 +18,6 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
 
     <!-- Inclusione di tutti i file JS esterni -->
-
-
     <script src="{{ asset('assets/js/app.js') }}"></script>
 
 </head>
