@@ -26,10 +26,8 @@
             <!-- A capo di spaziatura per l'allineamento del testo -->
             <br><br>
             <!-- Paragrafi descrittivi di CHI SIAMO -->
-            <p>Formula Rent s.p.a. nasce nel 1995 per offrire ai clienti il servizio migliore di noleggio auto.</p>
-            <p>L'azienda offre tutti i range di prezzo e di auto presenti sul mercato.</p>
-            <p>Le proposte spaziano dalle comuni auto fino alle auto sportive.</p>
-            <p>Formula Rent ha come priorità il cliente e un servizio di qualità.</p>
+            <p>Formula Rent s.p.a. nasce nel 1995 per offrire ai clienti il servizio migliore di noleggio auto. L'azienda offre tutti i range di prezzo e di auto presenti sul mercato.</p>
+            <p>Le proposte spaziano dalle comuni auto fino alle auto sportive, infatti Formula Rent ha come priorità assoluta il cliente e la qualità del servizio offerto.</p>
             <p>La nostra consolidata esperienza di 28 anni si distingue dalle altre compagnie di noleggio.</p>
             <p>La missione della nostra azienda è quella di fornire un servizio di noleggio veicoli di alta qualità, conveniente ed efficiente.
                 Siamo impegnati a soddisfare le esigenze dei nostri clienti offrendo una vasta selezione di auto moderne e ben mantenute, adatte a tutti i tipi di viaggi e preferenze.</p>
