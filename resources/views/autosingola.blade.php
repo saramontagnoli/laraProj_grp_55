@@ -41,17 +41,17 @@
                             <!-- Campo input type=date per l'inserimento dell'inizio del noleggio -->
                             <label>
                                 Da:
-                                <input type="date" name="inizioNoleggio" required>
+                                <input class="campo_form" type="date" name="inizioNoleggio" required>
                             </label>
 
                             <!-- Campo input type=date per l'inserimento della fine del noleggio -->
                             <label>
                                 A:
-                                <input type="date" name="fineNoleggio" required>
+                                <input class="campo_form" type="date" name="fineNoleggio" required>
                             </label>
 
                             <!-- Button di submit per l'invio dei dati inseriti all'interno della form -->
-                            <button type="submit" name="action" value="submit1">Noleggia</button>
+                            <button type="submit" class="bottone" name="action" value="submit1">Noleggia</button>
                         </form>
                     @endcan
                 </div>
