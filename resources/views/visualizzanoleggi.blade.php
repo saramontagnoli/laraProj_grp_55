@@ -1,7 +1,7 @@
 <!-- Si estende la struttura definita per le pagine del sito web -->
 @extends('layouts.struttura')
 
-<!-- Definizione della sezione del contenuto della pagina del catalogo generale delle auto -->
+<!-- Definizione della sezione del contenuto della pagina di visualizzazione dei noleggi divisi per mese, con scelta del mese -->
 @section('content')
 
     <!-- Definizione del titolo della visualizzazione dei noleggi divisi per mese -->
