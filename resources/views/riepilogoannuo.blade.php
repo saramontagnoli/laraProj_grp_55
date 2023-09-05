@@ -26,53 +26,53 @@
 
             <!-- Corpo della tabella, contenente tutti i valori estratti dal Controller del riepilogo annuo -->
             <tbody>
-            @foreach($risultatiFinali as $ris)
-                <!-- Righe della tabella -->
-                <tr>
-                    <!-- Switch per la scrittura estesa del nome del mese a posto del numero del mese -->
-                    @switch($ris['mese'])
-                        @case(1)
-                            <td>Gennaio</td> <!-- Gennaio -->
-                        @break
-                        @case(2)
-                            <td>Febbraio</td> <!-- Febbraio -->
+                @foreach($risultatiFinali as $ris)
+                    <!-- Righe della tabella -->
+                    <tr>
+                        <!-- Switch per la scrittura estesa del nome del mese a posto del numero del mese -->
+                        @switch($ris['mese'])
+                            @case(1)
+                                <td>Gennaio</td> <!-- Gennaio -->
                             @break
-                        @case(3)
-                            <td>Marzo</td> <!-- Marzo -->
-                            @break
-                        @case(4)
-                            <td>Aprile</td> <!-- Aprile -->
-                            @break
-                        @case(5)
-                            <td>Maggio</td> <!-- Maggio -->
-                            @break
-                        @case(6)
-                            <td>Giugno</td> <!-- Giugno -->
-                            @break
-                        @case(7)
-                            <td>Luglio</td> <!-- Luglio -->
-                            @break
-                        @case(8)
-                            <td>Agosto</td> <!-- Agosto -->
-                            @break
-                        @case(9)
-                            <td>Settembre</td> <!-- Settembre -->
-                            @break
-                        @case(10)
-                            <td>Ottobre</td> <!-- Ottobre -->
-                            @break
-                        @case(11)
-                            <td>Novembre</td> <!-- Novembre -->
-                            @break
-                        @case(12)
-                            <td>Dicembre</td> <!-- Dicembre -->
-                            @break
-                    @endswitch
+                            @case(2)
+                                <td>Febbraio</td> <!-- Febbraio -->
+                                @break
+                            @case(3)
+                                <td>Marzo</td> <!-- Marzo -->
+                                @break
+                            @case(4)
+                                <td>Aprile</td> <!-- Aprile -->
+                                @break
+                            @case(5)
+                                <td>Maggio</td> <!-- Maggio -->
+                                @break
+                            @case(6)
+                                <td>Giugno</td> <!-- Giugno -->
+                                @break
+                            @case(7)
+                                <td>Luglio</td> <!-- Luglio -->
+                                @break
+                            @case(8)
+                                <td>Agosto</td> <!-- Agosto -->
+                                @break
+                            @case(9)
+                                <td>Settembre</td> <!-- Settembre -->
+                                @break
+                            @case(10)
+                                <td>Ottobre</td> <!-- Ottobre -->
+                                @break
+                            @case(11)
+                                <td>Novembre</td> <!-- Novembre -->
+                                @break
+                            @case(12)
+                                <td>Dicembre</td> <!-- Dicembre -->
+                                @break
+                        @endswitch
 
-                    <!-- Stampa del numero dei noleggi effettuati nel mese relativo -->
-                    <td>{{$ris['num_noleggi']}}</td>
-                </tr>
-            @endforeach
+                        <!-- Stampa del numero dei noleggi effettuati nel mese relativo -->
+                        <td>{{$ris['num_noleggi']}}</td>
+                    </tr>
+                @endforeach
             </tbody>
         </table>
         <br><br>
