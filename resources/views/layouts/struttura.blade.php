@@ -19,9 +19,7 @@
 
     <!-- Inclusione di tutti i file JS esterni -->
     <script src="{{ asset('assets/js/app.js') }}"></script>
-
 </head>
-
 
 <!-- Definizione della sezione body del sito -->
 <body>
