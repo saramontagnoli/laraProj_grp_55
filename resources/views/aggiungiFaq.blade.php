@@ -37,7 +37,7 @@
             {{ Form::label('domanda', 'Domanda') }}
             <br>
             <!-- Campo di inserimento della domanda, avente come id "domanda" -->
-            {{ Form::text('domanda', '', ['id' => 'domanda', 'required' => 'required', 'class' => 'campo_form']) }}
+            {{ Form::text('domanda', '', ['id' => 'domanda', 'class' => 'campo_form']) }}
 
             <!-- Se vengono rilevati degli errori allora vengono stampati -->
             @if ($errors->first('domanda'))
@@ -56,7 +56,7 @@
             {{ Form::label('risposta', 'Risposta') }}
             <br>
             <!-- Campo di inserimento della risposta, avente come id "risposta" -->
-            {{ Form::text('risposta', '', ['id' => 'risposta', 'required' => 'required', 'class' => 'campo_form']) }}
+            {{ Form::text('risposta', '', ['id' => 'risposta', 'class' => 'campo_form']) }}
 
             <!-- Se vengono rilevati degli errori allora vengono stampati -->
             @if ($errors->first('risposta'))

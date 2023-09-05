@@ -105,9 +105,8 @@ class ControllerFaq extends Controller
         //creazione di un oggetto F.A.Q.
         $faq = new Faq();
 
-        //riempimento dei campi domanda e risposta secondo la form e codice dell'admin
-        $faq->domanda = $request->input('domanda');
-        $faq->risposta = $request->input('risposta');
+        $faq->fill($request->validated());
+
         $faq->admin_ref = Auth::user()->id;
 
         //salvataggio della F.A.Q. all'interno della tabella F.A.Q.
