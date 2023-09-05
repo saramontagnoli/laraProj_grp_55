@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\Auth\RegisteredUserController;
 use App\Http\Controllers\ControllerCatalogoAuto;
 use App\Http\Controllers\ControllerFaq;
 use App\Http\Controllers\GestioneAutoController;
@@ -181,7 +182,7 @@ Route::get('/home/profilo/dati', [UserController::class, 'getDatiPersonali1'])
 Route::put('/modificaDatiL1', [UserController::class, 'updateDatiPersonali1'])->middleware('can:isUser');
 
 // Rotta per accedere alla pagina di conferma del noleggio dell'auto scelta.
-Route::post('/catalogoauto/{codice_auto}/noleggio', [UserController::class, 'noleggioAuto'])->middleware('can:isUser');;
+Route::post('/catalogoauto/{codice_auto}/noleggio', [UserController::class, 'noleggioAuto'])->middleware('can:isUser');
 
 require __DIR__.'/auth.php';
 

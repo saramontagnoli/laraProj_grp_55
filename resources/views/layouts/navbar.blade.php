@@ -15,7 +15,7 @@
 
         <!-- Se non c'è nessun utente autenticato allora si stampato i due bottoni di login e registrazione -->
         @if (! auth()->check())
-            <a href="" class="element_navbar ">Registrazione</a> <!-- Visualizzazione pagina registrazione -->
+            <a href="{{ url('/register') }}" class="element_navbar ">Registrazione</a> <!-- Visualizzazione pagina registrazione -->
             <a href="{{url('/login')}}" class="element_navbar">Login</a> <!-- Visualizzazione pagina login -->
         @endif
 

@@ -3,6 +3,10 @@
 namespace App\Http\Controllers\Auth;
 
 use App\Http\Controllers\Controller;
+use App\Models\Comuni;
+use App\Models\Occupazione;
+use App\Models\Province;
+use App\Models\Regioni;
 use App\Models\User;
 use App\Providers\RouteServiceProvider;
 use Illuminate\Auth\Events\Registered;
@@ -10,6 +14,7 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Validation\Rules;
+use App\Models\Stato;
 
 class RegisteredUserController extends Controller
 {
@@ -27,11 +32,47 @@ class RegisteredUserController extends Controller
      * Handle an incoming registration request.
      *
      * @param  \Illuminate\Http\Request  $request
-     * @return \Illuminate\Http\RedirectResponse
+     * @return \Illuminate\Contracts\Foundation\Application|\Illuminate\Contracts\View\Factory|\Illuminate\Contracts\View\View
      *
      * @throws \Illuminate\Validation\ValidationException
      */
-    public function store(Request $request)
+
+    public function getOccupazione(){
+        $occupazioni = Occupazione::get();
+        return view('auth.register', ['occupazioni' => $occupazioni]);
+    }
+
+    public function getStato(){
+        $stati= Stato::all();
+        return view('auth.register', ['stati' => $stati]);
+    }
+
+    public function getRegione(){
+        $regioni= Regioni::select('regioni.*', 'stato.nome_stato')
+            ->join("stato", "stato.codice_stato", "=", "regioni.stato_ref")
+
+            ->get();
+        return view('auth.register', ['regioni' => $regioni]);
+    }
+
+    public function getProvincia(){
+        $province=Province::select('province.*', 'regioni.nome')
+            ->join("regioni", "regioni.id", "=", "regioni.id_regione")
+
+            ->get();
+        return view('auth.register', ['province' => $province]);
+    }
+
+    public function getComune(){
+        $comuni=Comuni::select('comuni.*', 'province.nome')
+            ->join("regioni", "regioni.id", "=", "comuni.id_regione")
+            ->join("province", "province.id", "=", "comuni.id_regione")
+
+            ->get();
+        return view('auth.register', ['province' => $comuni]);
+    }
+
+    public function store(Request $request, $nome_stato, $nome_regione, $nome_provincia)
     {
         $request->validate([
             'nome' => ['required', 'string', 'max:50'],
@@ -64,19 +105,12 @@ class RegisteredUserController extends Controller
             'indirizzo'=>$request->input('indirizzo'),
 
         ]);
-        $stati = Stati::all();
-        $regioni= Regioni
-        ->join("stato", "stato.codice_stato", "=", "regioni.id_stato")
-        all();
-        $province=Province::all();
-        $comuni=Comuni::all();
-        $occupazioni=Occupazione::all();
 
         event(new Registered($user));
 
         Auth::login($user);
 
-        return redirect(RouteServiceProvider::HOME);
+        return redirect(route('login'));
     }
 
 
