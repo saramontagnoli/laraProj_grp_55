@@ -46,6 +46,46 @@ Route::get('/comenoleggiare', function () {
     return view('comenoleggiare');
 });
 
+//Rotta di definizione per la visualizzazione delle auto noleggiate (staff)
+Route::get('/visualizzanoleggi', [GestioneAutoController::class, 'visualizzanoleggi'])
+    ->name('visualizzanoleggi');
+
+//Rotta di definizione per la visualizzazione delle auto noleggiate (staff)
+Route::post('/visualizzanoleggi', [GestioneAutoController::class, 'visualizzanoleggi'])
+    ->name('visualizzanoleggi');
+
+
+//Rotta di definizione per la gestione delle auto (staff)
+Route::get('/gestioneauto', [GestioneAutoController::class, 'gestioneAuto'])
+    ->name('gestioneauto');
+
+//Rotta per la modifica delle auto (staff)
+Route::put('/modificadatiauto', [GestioneAutoController::class, 'modificaAuto']);
+
+//Rotta per la modifica dei dati delle auto per la modifica (staff)
+Route::get('/gestioneauto/modificadatiauto/{codice_auto}', [GestioneAutoController::class, 'getDatiAuto'])
+    ->name('getdatiauto');
+
+
+//Rotta per l'eliminazione delle auto (staff)
+Route::get('/gestioneauto/{codice_auto}', [GestioneAutoController::class, 'eliminaAuto'])
+    ->name('eliminaauto');
+
+//Rotta per eliminare un auto (staff)
+Route::put('/gestioneauto/{codice_auto}', [GestioneAutoController::class, 'eliminaAuto'])
+    ->name('eliminaauto');
+
+
+//Rotta per l'aggiunta di un'auto (staff)
+Route::put('/aggiuntaAuto', [GestioneAutoController::class, 'aggiuntaAuto'])
+    ->name('aggiuntaAuto');
+
+Route::view('/aggiuntaAuto', 'aggiungiAuto')
+    ->name('aggiuntaAuto');
+
+Route::get('/aggiuntaAuto', [GestioneAutoController::class, 'getModello'])
+    ->name('getModello');
+
 
 /*
  * ROTTE ADMIN
@@ -121,46 +161,6 @@ Route::put('/aggiuntaFaq', [ControllerFaq::class, 'aggiuntaFaq'])
 //Rotte di definizione dell'utente di livello 3 (staff)
 Route::get('/homestaff', [UserController::class, 'index'])
     ->name('staff')->middleware('can:isStaff');
-
-//Rotta di definizione per la gestione delle auto (staff)
-Route::get('/homestaff/gestioneauto', [GestioneAutoController::class, 'gestioneAuto'])
-    ->name('gestioneauto')->middleware('can:isStaff');
-
-//Rotta per la modifica delle auto (staff)
-Route::put('/modificadatiauto', [GestioneAutoController::class, 'modificaAuto'])
-    ->middleware('can:isStaff');
-
-//Rotta per la modifica dei dati delle auto per la modifica (staff)
-Route::get('/homestaff/gestioneauto/modificadatiauto/{codice_auto}', [GestioneAutoController::class, 'getDatiAuto'])
-    ->name('getdatiauto')->middleware('can:isStaff');
-
-
-//Rotta per l'eliminazione delle auto (staff)
-Route::get('/homestaff/gestioneauto/{codice_auto}', [GestioneAutoController::class, 'eliminaAuto'])
-    ->name('eliminaauto')->middleware('can:isStaff');
-
-//Rotta per eliminare un auto (staff)
-Route::put('/homestaff/gestioneauto/{codice_auto}', [GestioneAutoController::class, 'eliminaAuto'])
-    ->name('eliminaauto')->middleware('can:isStaff');
-
-
-//Rotta di definizione per la visualizzazione delle auto noleggiate (staff)
-Route::get('/homestaff/visualizzanoleggi', [GestioneAutoController::class, 'visualizzanoleggi'])
-    ->name('visualizzanoleggi')->middleware('can:isStaff');
-
-//Rotta di definizione per la visualizzazione delle auto noleggiate (staff)
-Route::post('/homestaff/visualizzanoleggi', [GestioneAutoController::class, 'visualizzanoleggi'])
-    ->name('visualizzanoleggi')->middleware('can:isStaff');
-
-//Rotta per l'aggiunta di un'auto (staff)
-Route::put('/aggiuntaAuto', [GestioneAutoController::class, 'aggiuntaAuto'])
-    ->name('aggiuntaAuto')->middleware('can:isStaff');
-
-Route::view('/aggiuntaAuto', 'aggiungiAuto')
-    ->name('aggiuntaAuto')->middleware('can:isStaff');
-
-Route::get('/aggiuntaAuto', [GestioneAutoController::class, 'getModello'])
-    ->name('getModello')->middleware('can:isStaff');
 
 
 /*
