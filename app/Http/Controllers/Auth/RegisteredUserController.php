@@ -65,7 +65,8 @@ class RegisteredUserController extends Controller
         $request->validate([
             'nome' => ['required', 'string', 'max:50'],
             'cognome' => ['required', 'string', 'max:70'],
-            'data_nascita' => ['required', 'date'],
+            //la data di nascita non può essere dopo il giorno odierno
+            'data_nascita' => ['required', 'date', 'before_or_equal:today'],
             'username' => ['required', 'string', 'min:8', 'unique:users'],
             'password' => ['required'],
             'email' => ['required', 'email', 'unique:users'],
