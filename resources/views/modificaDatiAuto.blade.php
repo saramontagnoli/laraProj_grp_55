@@ -84,7 +84,7 @@
                     <br>
 
                     <!-- Campo di inserimento del numero di posti, avente come id "num_posti" -->
-                    {{ Form::text('num_posti', $dati['num_posti'], ['class' => 'campo_form', 'id' => 'num_posti', 'rules' => 'num_posti', 'required' => 'required']) }}
+                    {{ Form::number('num_posti', $dati['num_posti'], ['class' => 'campo_form', 'id' => 'num_posti', 'rules' => 'num_posti', 'required' => 'required']) }}
 
                     <!-- Se vengono rilevati degli errori allora vengono stampati -->
                     @if ($errors->first('num_posti'))
