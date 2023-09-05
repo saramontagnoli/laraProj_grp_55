@@ -35,6 +35,7 @@
         <!-- Se l'utente autenticato è un 'admin' allora si stampano i bottoni di gestione clienti, staff, faq e riepilogo annuo -->
         @can('isAdmin')
 
+            <!-- Dichiarazione sezione di gestione dell'ADMIN, si raggruppano le gestioni di clienti, staff e F.A.Q. -->
             <div class="dropdown" style="padding-left: 250px">
                 <a class="dropbtn">Gestione<i class="fa fa-caret-down"></i></a>
                 <div class="dropdown-content">
