@@ -81,5 +81,8 @@
         </a>
     </div>
 
+    <!-- Inclusione dello script JS che permette di far scorrere in automatico le immagini-->
+    <script src="{{ asset('assets/js/carosello.js') }}"></script>
+
     <br> <br>
 @endsection

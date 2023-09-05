@@ -22,8 +22,6 @@
 
     <script src="{{ asset('assets/js/app.js') }}"></script>
 
-    <!-- Inclusione dello script JS che permette di far scorrere in automatico le immagini-->
-    <script src="{{ asset('assets/js/carosello.js') }}"></script>
 </head>
 
 

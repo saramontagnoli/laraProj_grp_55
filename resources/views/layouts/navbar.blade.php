@@ -34,10 +34,18 @@
 
         <!-- Se l'utente autenticato è un 'admin' allora si stampano i bottoni di gestione clienti, staff, faq e riepilogo annuo -->
         @can('isAdmin')
-            <a href="{{url('/homeadmin/gestioneClienti')}}" class="element_navbar">Gestione clienti</a> <!-- Visualizzazione clienti ed eventuale eliminazione -->
-            <a href="{{url('/homeadmin/gestionestaff')}}" class="element_navbar">Gestione staff</a> <!-- Visualizzazione pagina di inserimento, modifica ed eliminazione dello staff -->
+            <div class="dropdown">
+                <button class="dropbtn">Dropdown
+                    <i class="fa fa-caret-down"></i>
+                </button>
+                <div class="dropdown-content">
+                    <a href="{{url('/homeadmin/gestioneClienti')}}" class="element_navbar">Gestione clienti</a> <!-- Visualizzazione clienti ed eventuale eliminazione -->
+                    <a href="{{url('/homeadmin/gestionestaff')}}" class="element_navbar">Gestione staff</a> <!-- Visualizzazione pagina di inserimento, modifica ed eliminazione dello staff -->
+                    <a href="{{url('/homeadmin/gestioneFaq')}}" class="element_navbar">Gestione F.A.Q.</a> <!-- Visualizzazione pagina inserimento, modifica ed elimianzione delle F.A.Q. -->
+                </div>
+            </div>
             <a href="{{url('/homeadmin/riepilogoannuo')}}" class="element_navbar">Riepilogo annuo</a> <!-- Visualizzazione totale noleggi per ogni mese dell'anno corrente -->
-            <a href="{{url('/homeadmin/gestioneFaq')}}" class="element_navbar">Gestione F.A.Q.</a> <!-- Visualizzazione pagina inserimento, modifica ed elimianzione delle F.A.Q. -->
+
         @endcan
 
         <!-- Se una delle tre tipologie di utenti è autenticata si mostra il button per il logout che riporta alla rotta di logout -->
