@@ -22,7 +22,7 @@ class Occupazione extends Model
     protected $fillable =
         [
             'codice_occupazione',
-            'dnome_occupazione'
+            'nome_occupazione'
         ];
 
 }

@@ -1,4 +1,4 @@
-@extends('layouts.skel')
+@extends('layouts.struttura')
 
 @section('title', 'Registrazione')
 
@@ -10,7 +10,7 @@
             <h2>Registrazione</h2>
 
             <!-- effettiva form di input -->
-            {{ Form::open(array('route' => 'register', 'class' => 'contact-form')) }}
+            {{ Form::open(array('url' => '/register', 'enctype' => 'multipart/form-data', 'class' => 'contact-form')) }}
             <div class="form-row">
                 <div>
                     {{ Form::label('nome', 'Nome', ['class' => 'label-input']) }}
@@ -83,90 +83,9 @@
                     <select name="occupazione" id="occupazione" class="campo_form">
                         <option value="">Seleziona la tua occupazione</option> <!-- Opzione predefinita -->
                         @foreach ($occupazioni as $occupazione)
-                            <option value="{{ $occupazione->codice_occupazione }}">{{ $occupazione->nome_occupazione }}</option>
+                            <option value="{{ $occupazione['codice_occupazione'] }}">{{ $occupazione['nome_occupazione'] }}</option>
                         @endforeach
                     </select>
-                </div>
-
-                <div>
-                    <select name="stato" id="stato" class="campo_form">
-                        <option value="">Seleziona il tuo stato d'appartenza</option> <!-- Opzione predefinita -->
-                        @foreach ($stati as $stato)
-                            <option value="{{ $stato->codice_stato }}">{{ $stato->nome_stato}}</option>
-                        @endforeach
-                    </select>
-                    <!-- Se vengono rilevati degli errori, vengono stampati -->
-                    @if ($errors->first('stato'))
-                        <ul>
-                            @foreach ($errors->get('stato') as $message)
-                                <li>{{ $message }}</li>
-                            @endforeach
-                        </ul>
-                    @endif
-                </div>
-
-                <div>
-                    <select name="regione" id="regione" class="campo_form">
-                        <option value="">Seleziona la tua regione d'appartenza</option> <!-- Opzione predefinita -->
-                        @foreach ($regioni as $regione)
-                            <option value="{{ $regione->id }}">{{ $regione->nome}}</option>
-                        @endforeach
-                    </select>
-                    <!-- Se vengono rilevati degli errori, vengono stampati -->
-                    @if ($errors->first('regione'))
-                        <ul>
-                            @foreach ($errors->get('regione') as $message)
-                                <li>{{ $message }}</li>
-                            @endforeach
-                        </ul>
-                    @endif
-                </div>
-
-                <div>
-                    <select name="provincia" id="provincia" class="campo_form">
-                        <option value="">Seleziona la tua provincia d'appartenza</option> <!-- Opzione predefinita -->
-                        @foreach ($province as $provincia)
-                            <option value="{{ $provincia->id }}">{{ $stato->nome}}</option>
-                        @endforeach
-                    </select>
-                    <!-- Se vengono rilevati degli errori, vengono stampati -->
-                    @if ($errors->first('provincia'))
-                        <ul>
-                            @foreach ($errors->get('provincia') as $message)
-                                <li>{{ $message }}</li>
-                            @endforeach
-                        </ul>
-                    @endif
-                </div>
-
-                <div>
-                    <select name="comune" id="comune" class="campo_form">
-                        <option value="">Seleziona la tua città d'appartenza</option> <!-- Opzione predefinita -->
-                        @foreach ($comuni as $comune)
-                            <option value="{{ $cit->id }}">{{ $cit->nome}}</option>
-                        @endforeach
-                    </select>
-                    <!-- Se vengono rilevati degli errori, vengono stampati -->
-                    @if ($errors->first('comune'))
-                        <ul>
-                            @foreach ($errors->get('comune') as $message)
-                                <li>{{ $message }}</li>
-                            @endforeach
-                        </ul>
-                    @endif
-                </div>
-                <br>
-                <div>
-                    {{ Form::label('password', 'Password') }}
-                    <br>
-                    {{ Form::password('password', array('required' => 'required')) }}
-                    @if ($errors->first('password'))
-                        <ul class="errors">
-                            @foreach ($errors->get('password') as $message)
-                                <li>{{ $message }}</li>
-                            @endforeach
-                        </ul>
-                    @endif
                 </div>
             </div>
 
