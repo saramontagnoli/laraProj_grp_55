@@ -3,7 +3,7 @@
 
 @section('title', 'Login')
 
-<!-- Definizione della sezione del contenuto della pagina del login -->
+<!-- Definizione della sezione del contenuto della pagina di aggiunta dello staff -->
 @section('content')
     <div style="text-align: center">
         <!-- Intestazione della form di login -->
@@ -94,6 +94,7 @@
                     {{ Form::submit('Aggiungi Membro Staff', ['class' => 'bottone']) }}
                 </div>
 
+                <!-- Tag di chiusura della FORM -->
                 {{ Form::close() }}
             </div>
         </div>
