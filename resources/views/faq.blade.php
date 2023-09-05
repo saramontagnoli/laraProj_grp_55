@@ -9,8 +9,9 @@
 
     <!-- Sezione della pagina della F.A.Q. destinata alla spiegazione di cosa sono le F.A.Q. e quali argomenti riguardano -->
     <div class="posizione_cx margini_testo">
-        In questa sezione gli amministratori del sisto cercano di rispondere a tutte le domande più frequenti da parte degli utenti.
-        Le domande sono inerenti la modalità di noleggio dei clienti, il noleggio stesso, informazioni sull'azienda e sul team.
+        In questa sezione gli amministratori del sisto rispondono alle domande più frequenti poste dagli utenti del sito e dai clienti.
+        <br>Le domande spaziano in tutti gli ambiti, dalla modalità di noleggio al noleggio stesso, ma anche informazioni sull'azienda e sul team.
+        <br><br>Per visionare la risposta ad una specifica domanda è sufficiente cliccare sopra la stessa.
     </div>
 
     <br><br>

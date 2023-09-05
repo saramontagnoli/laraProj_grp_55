@@ -15,9 +15,10 @@
             <!-- Immagine di CHI SIAMO -->
             <img src="{{asset("assets/img/ferrari_portofino.webp")}}" alt="come noleggiare un'auto" class="immagine_chisiamo">
             <br><br>
+            <p>E' possibile mettersi in contatto con Formula Rent direttamente utilizzando i seguenti modi:</p>
             <p>Recapito telefonico: +39 340 9381154</p>
+            <p>E-mail: formularent@azienda.com</p>
             <br><br>
-            <p>Dove trovarci: Via Brecce Bianche, 12, 60131 Ancona AN </p> <a class="bottone" href="https://www.google.com/maps/place/Universit%C3%A0+Politecnica+delle+Marche+-+Facolt%C3%A0+di+Ingegneria/@43.6032916,13.4943825,14z/data=!4m10!1m2!2m1!1suniversit%C3%A0+politecnica+delle+marche!3m6!1s0x132d80233dd931ef:0x161719e4f3f5daaf!8m2!3d43.586779!4d13.516595!15sCiR1bml2ZXJzaXTDoCBwb2xpdGVjbmljYSBkZWxsZSBtYXJjaGUiA4gBAZIBCnVuaXZlcnNpdHngAQA!16s%2Fg%2F11gz9y_j2?entry=ttu"> Clicca qui per visionare Google Maps</a>
 
         </div>
         <!-- Sezione definita per la colonna di destra contenente la descrizione di CHI SIAMO -->
@@ -26,10 +27,8 @@
             <!-- A capo di spaziatura per l'allineamento del testo -->
             <br><br>
             <!-- Paragrafi descrittivi di CHI SIAMO -->
-            <p>Formula Rent s.p.a. nasce nel 1995 per offrire ai clienti il servizio migliore di noleggio auto.</p>
-            <p>L'azienda offre tutti i range di prezzo e di auto presenti sul mercato.</p>
-            <p>Le proposte spaziano dalle comuni auto fino alle auto sportive.</p>
-            <p>Formula Rent ha come priorità il cliente e un servizio di qualità.</p>
+            <p>Formula Rent s.p.a. nasce nel 1995 per offrire ai clienti il servizio migliore di noleggio auto. L'azienda offre tutti i range di prezzo e di auto presenti sul mercato.</p>
+            <p>Le proposte spaziano dalle comuni auto fino alle auto sportive, infatti Formula Rent ha come priorità assoluta il cliente e la qualità del servizio offerto.</p>
             <p>La nostra consolidata esperienza di 28 anni si distingue dalle altre compagnie di noleggio.</p>
             <p>La missione della nostra azienda è quella di fornire un servizio di noleggio veicoli di alta qualità, conveniente ed efficiente.
                 Siamo impegnati a soddisfare le esigenze dei nostri clienti offrendo una vasta selezione di auto moderne e ben mantenute, adatte a tutti i tipi di viaggi e preferenze.</p>
@@ -39,6 +38,7 @@
                 Con una gestione efficiente e una flotta di veicoli di qualità, vogliamo diventare il partner di fiducia per tutte le esigenze di noleggio auto dei nostri clienti.</p>
             <p>A vostra disposizione è presente un team di specialisti del noleggio, per offrire la miglior assistenza possibile prima, durante e dopo la prenotazione. </p>
             <br><br>
+            <p>Dove trovarci: Via Brecce Bianche, 12, 60131 Ancona AN </p> <a class="bottone" href="https://www.google.com/maps/place/Universit%C3%A0+Politecnica+delle+Marche+-+Facolt%C3%A0+di+Ingegneria/@43.6032916,13.4943825,14z/data=!4m10!1m2!2m1!1suniversit%C3%A0+politecnica+delle+marche!3m6!1s0x132d80233dd931ef:0x161719e4f3f5daaf!8m2!3d43.586779!4d13.516595!15sCiR1bml2ZXJzaXTDoCBwb2xpdGVjbmljYSBkZWxsZSBtYXJjaGUiA4gBAZIBCnVuaXZlcnNpdHngAQA!16s%2Fg%2F11gz9y_j2?entry=ttu"> Clicca qui per Google Maps</a>
 
         </div>
     </div>

@@ -27,8 +27,11 @@
 
         <!-- Titolo centrato nel carosello con sfondo scuro opaco -->
         <div class="titolo_centrato">
+            <!-- Titolo nome azienda -->
             <h1 class="nomeazienda"><span class="formato_azienda"><b>FR</b></span> <span class="formato_azienda">Formula Rent</span></h1>
             <br>
+
+            <!-- Se un utente è loggato viene stampato anche il benvenuto con il nome utente -->
             @if(auth()->check())
                 <h1 class="nomeazienda"><span class="formato_azienda">Benvenuto {{ Auth::user()->username }}</span></h1>
             @endif
@@ -78,9 +81,8 @@
         </a>
     </div>
 
-    <br> <br>
-
     <!-- Inclusione dello script JS che permette di far scorrere in automatico le immagini-->
     <script src="{{ asset('assets/js/carosello.js') }}"></script>
 
+    <br> <br>
 @endsection

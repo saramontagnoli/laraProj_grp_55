@@ -1,5 +1,8 @@
 <!DOCTYPE html>
 <html lang="it">
+<!-- Definizione della struttura della pagina del sito -->
+
+<!-- Definizione della sezione head, contenente il titolo, le inclusioni di fogli di stile e codice javascript -->
 <head>
     <title>Formula Rent</title>
     <meta charset="UTF-8">
@@ -16,11 +19,9 @@
 
     <!-- Inclusione di tutti i file JS esterni -->
     <script src="{{ asset('assets/js/app.js') }}"></script>
-
-
 </head>
 
-<!-- Body della pagina -->
+<!-- Definizione della sezione body del sito -->
 <body>
 
 <!-- Inclusione della navbar del sito dalla vista definita nella cartella layouts -->
