@@ -13,9 +13,8 @@
     @if(count($cardAuto) < 1)
         <!-- Viene stampato un messaggio di errore -->
         <div>
-            <strong>Sorry!</strong> No Product Found.
+            <strong>Sorry!</strong> No Car Found.
         </div>
-
     <!-- Se non c'è alcun errore si procede a stampare tutte le informazioni dell'auto -->
     @else
         @foreach($cardAuto as $auto)
