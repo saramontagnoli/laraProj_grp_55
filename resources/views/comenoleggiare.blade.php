@@ -10,10 +10,15 @@
     <div class="riga">
         <div class="colonna colonna2">
             <br><br>
-            <p>Per poter usufruire del nostro servizio online di noleggio auto è necessario registrarsi alla piattaforma mediante l'apposita form di registrazione.</p>
-            <p>Una volta completata la registrazione al sito ed aver effettuato l'accesso alla propria area personale, è possibile noleggiare un'auto specificando il periodo di noleggio.</p>
-            <p>Per facilitare la ricerca sono stati predisposti inoltre anche dei filtri di ricerca sia in base al periodo di noleggio, ma anche in base alla fascia di prezzo desiderata, specificando il minimo e il massimo.</p>
-            <p>Una volta cliccato il bottone per il noleggio si apre una scheda di avvenuto noleggio che riepiloga tutte le informazioni dell'auto scelta e il periodo in cui si può usufruire del servizio.</p>
+            <p>Per garantire un servizio efficiente e sicuro, è indispensabile registrarsi come cliente presso la nostra azienda. La registrazione è un processo semplice e veloce, che vi consentirà di accedere al nostro completo catalogo auto, con tariffe competitive e senza sorprese. </p>
+
+
+            <p>Una volta eseguito il login, avrete l'opportunità di filtrare il nostro catalogo auto in base al periodo di noleggio desiderato e alla fascia di prezzo prescelta.
+                Potrete scegliere tra un assortimento di veicoli di diverse categorie, dai piccoli city car alle spaziose auto familiari, dai veicoli green a quelli più sportivi. </p>
+
+            <p>Siamo consapevoli che ognuno ha esigenze diverse, per questo ci impegniamo a fornire un catalogo personalizzato, filtrabile sia per periodo di noleggio, sia per fascia di prezzo (min-max).</p>
+            <p>Per completare il noleggio desiderato è necessario reinserire le date di interesse per verificare la disponibilità effettiva dell'auto. Si verrà poi rindirizzati ad una pagina di avvenuto noleggio se c'è disponibilità nelle date specificate.</p>
+            <p>Una volta completato il noleggio dell'auto si aprirà una scheda di ariepilogo che indica tutte le informazioni dell'auto scelta e il periodo in cui si può usufruire del servizio.</p>
             <p>Nella propria area personale (PROFILO) è inoltre possibile modificare tutte le informazioni personali ed aggiornarle in base alle esigenze del cliente stesso.</p>
         </div>
 
