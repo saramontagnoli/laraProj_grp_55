@@ -1,7 +1,7 @@
 <!-- Si estende la struttura definita per le pagine del sito web -->
 @extends('layouts.struttura')
 
-<!-- Definizione della sezione del contenuto della pagina del login -->
+<!-- Definizione della sezione del contenuto della pagina di gestione delle auto -->
 @section('content')
     <br>
     <!-- Button per l'aggiunta di una nuova auto, redirezione alla rotta definita -->

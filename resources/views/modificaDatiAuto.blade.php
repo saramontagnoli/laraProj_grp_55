@@ -2,7 +2,8 @@
 @extends('layouts.struttura')
 
 @section('title', 'Modifica dati di un auto')
-<!-- Definizione della sezione del contenuto della pagina della singola auto -->
+
+<!-- Definizione della sezione del contenuto della pagina di modifica della singola auto -->
 @section('content')
     <div>
         <div>
