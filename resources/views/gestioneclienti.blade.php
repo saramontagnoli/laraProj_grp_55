@@ -1,3 +1,4 @@
+<!-- Si estende la struttura definita per le pagine del sito web -->
 @extends('layouts.struttura')
 
 <!-- Definizione della sezione del contenuto della pagina della gestione dei clienti -->
@@ -25,20 +26,20 @@
         <!-- Scorrimento dell'array contenente tutti i cienti estratti -->
         @foreach($clienti as $clie)
             <tr>
-                <td>{{$clie['username']}}</td>
-                <td>{{$clie['nome']}}</td>
-                <td>{{$clie['cognome']}}</td>
-                <td>{{$clie['data_nascita']}}</td>
-                <td><a href="{{ route('eliminaCliente', ['id' => $clie['id']]) }}" onclick="return deleteCliente()" class="tabella_link">Elimina</a></td>
+                <td>{{$clie['username']}}</td> <!-- Username -->
+                <td>{{$clie['nome']}}</td> <!-- Nome -->
+                <td>{{$clie['cognome']}}</td> <!-- Cognome -->
+                <td>{{$clie['data_nascita']}}</td> <!-- Data di nascita -->
+                <td><a href="{{ route('eliminaCliente', ['id' => $clie['id']]) }}" onclick="return deleteCliente()" class="tabella_link">Elimina</a></td> <!-- Link di eliminazione del cliente con redirezione -->
             </tr>
         @endforeach
         </tbody>
     </table>
     <br><br>
 
-    <!-- Messaggio di errore -->
+    <!-- Stampa di eventuali messaggi che vengono rimandati a questa vista -->
     @if(session('message'))
-        <div class="alert alert-success">
+        <div>
             {{ session('message') }}
         </div>
     @endif

@@ -1,3 +1,4 @@
+<!-- Si estende la struttura definita per le pagine del sito web -->
 @extends('layouts.struttura')
 
 @section('title', 'Modifica dati personali del cliente')
