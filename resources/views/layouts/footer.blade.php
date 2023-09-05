@@ -15,10 +15,10 @@
         <div class="rigafooter">
             <!-- Lista di link ai contenuti della pagina auto noleggiabili, come noleggiare, contatti e privacy policy -->
             <ul class="listafooter">
-                <li><a href="#" class="link_footer">Auto</a></li>
-                <li><a href="#" class="link_footer">Come noleggiare</a></li>
-                <li><a href="#" class="link_footer">Contatti</a></li>
-                <li><a href="#" class="link_footer">Privacy Policy</a></li>
+                <li><a href="{{ url('/catalogoauto') }}" class="link_footer">Auto</a></li>
+                <li><a href="{{ url('/comenoleggiare') }}" class="link_footer">Come noleggiare</a></li>
+                <li><a href="{{ url('/chisiamo') }}" class="link_footer">Chi siamo</a></li>
+                <li><a href="{{ url('/faq') }}" class="link_footer">F.A.Q.</a></li>
             </ul>
         </div>
 
