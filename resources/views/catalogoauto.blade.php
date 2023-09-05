@@ -72,6 +72,7 @@
 
                 <!-- Definizione della colonna del catalogo -->
                 <div class="colonnacatalogo">
+
                     <!-- Definizione del link cliccabile per ogni auto -->
                     <a href="{{ url('/catalogoauto/'.$auto->codice_auto)}}" style="text-decoration: none; color:black">
 
