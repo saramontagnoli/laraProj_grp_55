@@ -8,6 +8,8 @@
 
     <!-- Opzioni di navigazione del sito sempre disponibili nella barra di navigazione in alto -->
     <div class="posizione_dx">
+
+        <!-- Link della navbar visibili a tutti gli utenti -->
         <a href="{{ url('/catalogoauto') }}" class="element_navbar ">Auto</a> <!-- Visualizzazione catalogo completo -->
         <a href="{{ url('/comenoleggiare') }}" class="element_navbar ">Come noleggiare</a>  <!-- Visualizzazione metodo di noleggio del sito -->
         <a href="{{ url('/chisiamo') }}" class="element_navbar ">Chi siamo</a> <!-- Visualizzazione informazioni azienda -->
@@ -30,6 +32,7 @@
             <a href="{{url('/homestaff/visualizzanoleggi')}}" class="element_navbar">Visualizza noleggi</a> <!-- Visualizzazione noleggi per mese dell'anno corrente -->
         @endcan
 
+        <!-- Se l'utente autenticato è un 'admin' allora si stampano i bottoni di gestione clienti, staff, faq e riepilogo annuo -->
         @can('isAdmin')
             <a href="{{url('/homeadmin/gestioneClienti')}}" class="element_navbar">Gestione clienti</a> <!-- Visualizzazione clienti ed eventuale eliminazione -->
             <a href="{{url('/homeadmin/gestionestaff')}}" class="element_navbar">Gestione staff</a> <!-- Visualizzazione pagina di inserimento, modifica ed eliminazione dello staff -->
