@@ -68,6 +68,23 @@
                 </div>
 
                 <div>
+                    <!-- Definizione della label per l'inserimento dell'e-mail dell'utente -->
+                    {{ Form::label('email', 'Email') }}
+                    <br>
+                    <!-- Campo di inserimento dell'e-mail, avente come id "email" -->
+                    {{ Form::email('email', '', ['class' => 'campo_form', 'id' => 'email', 'required' => 'required']) }}
+
+                    <!-- Se vengono rilevati degli errori allora vengono stampati -->
+                    @if ($errors->first('email'))
+                        <ul>
+                            @foreach ($errors->get('email') as $message)
+                                <li>{{ $message }}</li>
+                            @endforeach
+                        </ul>
+                    @endif
+                </div>
+
+                <div>
                     <!-- Definizione della label per l'inserimento della data di nascita dell'utente -->
                     {{ Form::label('data_nascita', 'Data di nascita') }}
                     <br>
