@@ -2,7 +2,7 @@
 
 @section('title', 'Modifica dati personali del cliente')
 
-<!-- Definizione della sezione del contenuto della pagina dela modifica delle F.A.Q. -->
+<!-- Definizione della sezione del contenuto della pagina della modifica delle F.A.Q. -->
 @section('content')
     <div>
         <div>
