@@ -19,7 +19,7 @@
     </thead>
     <tbody>
     <!-- Auto presenti nella tabella autoS -->
-    @foreach($listaNoleggi as $auto)
+    @foreach($listaAuto as $auto)
         <tr>
             <td>{{$auto['targa']}}</td>
             <td>{{$auto['nome_marca']}}</td>

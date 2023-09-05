@@ -26,7 +26,7 @@ class GestioneAutoController extends Controller
             ->get();
 
         //return della vista di gestione delle auto con la lista delle auto estratte in precedenza
-        return view('gestioneauto', ['listaNoleggi' => $dbQuery]);
+        return view('gestioneauto', ['listaAuto' => $dbQuery]);
     }
 
 

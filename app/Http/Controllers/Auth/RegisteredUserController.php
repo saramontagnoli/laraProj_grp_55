@@ -3,11 +3,16 @@
 namespace App\Http\Controllers\Auth;
 
 use App\Http\Controllers\Controller;
+use App\Models\Comuni;
 use App\Models\Occupazione;
+use App\Models\Province;
+use App\Models\Regioni;
+use App\Models\Stato;
 use App\Models\User;
 use Illuminate\Auth\Events\Registered;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Hash;
 use Illuminate\Validation\Rules;
 
 class RegisteredUserController extends Controller
@@ -17,15 +22,35 @@ class RegisteredUserController extends Controller
      *
      * @return \Illuminate\View\View
      */
-    public function create()
+
+    public function create(Request $request)
     {
         $occupazioni = Occupazione::all();
+        $stati= Stato::all();
+        $regioni= Regioni::select('regioni.*', 'stato.codice_stato')
+            ->join("stato", "stato.codice_stato", "=", "regioni.stato_ref")
+            ->get();
+        $province=Province::select('province.*', 'regioni.id')
+            ->join("regioni", "regioni.id", "=", "province.id_regione")
+            ->get();
+        $comuni=Comuni::select('comuni.*', 'province.id')
+            ->join("regioni", "regioni.id", "=", "comuni.id_regione")
+            ->join("province", "province.id", "=", "comuni.id_provincia")
+            ->get();
 
-
-        return view('auth.register', ['occupazioni' => $occupazioni]);
+        return view('auth.register', ['occupazioni' => $occupazioni],
+            ['stati' => $stati,
+            'regioni' => $regioni,
+            'province'=>$province,
+            'comuni'=>$comuni]);
     }
 
-    /**
+    // Altre funzioni del controller...
+
+    // Altre funzioni del controller...
+
+
+/**
      * Handle an incoming registration request.
      *
      * @param  \Illuminate\Http\Request  $request
@@ -42,8 +67,8 @@ class RegisteredUserController extends Controller
             'cognome' => ['required', 'string', 'max:70'],
             'data_nascita' => ['required', 'date'],
             'username' => ['required', 'string', 'min:8', 'unique:users'],
-            'password' => ['required', 'confirmed', Rules\Password::defaults()],
-            'email'=>['required', 'email'],
+            'password' => ['required'],
+            'email' => ['required', 'email', 'unique:users'],
             'occupazione'=>['required']
         ]);
 
@@ -53,15 +78,14 @@ class RegisteredUserController extends Controller
             'cognome' => $request->input('cognome'),
             'data_nascita' => $request->input('data_nascita'),
             'username' => $request->input('username'),
-            'password' => $request->input('password'),
+            'password' => Hash::make($request->input('password')),
             'email'=>$request->input('email'),
-            'occupazione'=>$request->input('occupazione')
+            'occupazione_ref'=>$request->input('occupazione'),
+            'role'=>'user'
 
         ]);
 
         event(new Registered($user));
-
-        Auth::login($user);
 
         return redirect(route('login'));
     }
