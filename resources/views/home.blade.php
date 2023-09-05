@@ -10,19 +10,19 @@
         <!-- Sezione della prima immagine dello slideshow -->
         <div class="mySlides fade">
             <!-- Prima immagine slideshow -->
-            <img src="{{ asset('assets/img/ferrari_portofino.webp') }}" alt="immagine prima auto" class="immaginecarosello">
+            <img src="{{ asset('assets/img/slideshow/ferrari_portofino.webp') }}" alt="immagine prima auto" class="immaginecarosello">
         </div>
 
         <!-- Sezione della seconda immagine dello slideshow -->
         <div class="mySlides fade">
             <!-- Seconda immagine slideshow -->
-            <img src="{{ asset('assets/img/lancia_ypsilon.png') }}" alt="immagine seconda auto" class="immaginecarosello">
+            <img src="{{ asset('assets/img/slideshow/lancia_ypsilon.png') }}" alt="immagine seconda auto" class="immaginecarosello">
         </div>
 
         <!-- Sezione della terza immagine dello slideshow -->
         <div class="mySlides fade">
             <!-- Terza immagine slideshow -->
-            <img src="{{ asset('assets/img/bmw_m4.jpg') }}" alt="immagine terza auto" class="immaginecarosello">
+            <img src="{{ asset('assets/img/slideshow/bmw_m4.jpg') }}" alt="immagine terza auto" class="immaginecarosello">
         </div>
 
         <!-- Titolo centrato nel carosello con sfondo scuro opaco -->
