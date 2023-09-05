@@ -12,7 +12,7 @@
         <!-- Titolo di riepilogo delle info del noleggio -->
         <p class="titolo_info">Riepilogo auto noleggiata: </p>
 
-        <!-- Stamap delle informazioni del noleggio avvenuto -->
+        <!-- Stampa delle informazioni del noleggio avvenuto -->
         @foreach($cardAuto as $data)
             <div>
                 <p><b>Marca auto:</b>{{$data->nome_marca}}</p> <!--Nome della marca dell'auto noleggiata -->
@@ -23,7 +23,5 @@
             </div>
         @endforeach
     </div>
-
     <br><br>
-
 @endsection
