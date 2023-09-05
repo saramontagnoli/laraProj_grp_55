@@ -1,3 +1,4 @@
+<!-- Si estende la struttura definita per le pagine del sito web -->
 @extends('layouts.struttura')
 
 <!-- Definizione della sezione del contenuto della pagina della gestione dei clienti -->
@@ -16,37 +17,36 @@
 
         <!-- Definizione intestazione della tabella dei membri dello staff -->
         <thead>
-        <tr>
-            <th>Username</th> <!-- Username -->
-            <th>Nome</th> <!-- Nome -->
-            <th>Cognome</th> <!-- Cognome -->
-            <th>Modifica</th> <!-- Link di modifica dello staff -->
-            <th>Elimina</th> <!-- Link di eliminazione dello staff -->
-        </tr>
+            <tr>
+                <th>Username</th> <!-- Username -->
+                <th>Nome</th> <!-- Nome -->
+                <th>Cognome</th> <!-- Cognome -->
+                <th>Modifica</th> <!-- Link di modifica dello staff -->
+                <th>Elimina</th> <!-- Link di eliminazione dello staff -->
+            </tr>
         </thead>
 
         <!-- Definizione sezione del contenuto della tabella, la tabella conterrà come righe l'insieme dei membri dello staff del sito -->
         <tbody>
+            <!-- Vengono scorse stampate tutte le informazioni di ciascun membro dello staff -->
+            @foreach($staff as $st)
 
-        <!-- Vengono scorse stampate tutte le informazioni di ciascun membro dello staff -->
-        @foreach($staff as $st)
-
-            <!-- Informazioni dei membri dello staff -->
-            <tr>
-                <td>{{$st['username']}}</td>
-                <td>{{$st['nome']}}</td>
-                <td>{{$st['cognome']}}</td>
-                <td><a href="{{ route('getdatistaff', ['id' => $st['id']]) }}" class="tabella_link">Modifica</a></td>
-                <td><a href="{{ route('eliminaStaff', ['id' => $st['id']]) }}" onclick="return deleteStaff()" class="tabella_link">Elimina</a></td>
-            </tr>
-        @endforeach
+                <!-- Informazioni dei membri dello staff -->
+                <tr>
+                    <td>{{$st['username']}}</td> <!-- Username -->
+                    <td>{{$st['nome']}}</td> <!-- Nome -->
+                    <td>{{$st['cognome']}}</td> <!-- Cognome -->
+                    <td><a href="{{ route('getdatistaff', ['id' => $st['id']]) }}" class="tabella_link">Modifica</a></td> <!-- Link di modifica dello staff -->
+                    <td><a href="{{ route('eliminaStaff', ['id' => $st['id']]) }}" onclick="return deleteStaff()" class="tabella_link">Elimina</a></td> <!-- Link di eliminazione dello staff con redirezione -->
+                </tr>
+            @endforeach
         </tbody>
     </table>
     <br><br>
 
-    <!-- Stampa messaggi di errore -->
+    <!-- Stampa di eventuali messaggi che vengono rimandati alla vista -->
     @if(session('message'))
-        <div class="alert alert-success">
+        <div>
             {{ session('message') }}
         </div>
     @endif
