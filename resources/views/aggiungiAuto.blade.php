@@ -3,7 +3,7 @@
 
 @section('title', 'Login')
 
-<!-- Definizione della sezione del contenuto della pagina del login -->
+<!-- Definizione della sezione del contenuto della pagina di aggiunta auto -->
 @section('content')
 
     <div style="text-align: center">
