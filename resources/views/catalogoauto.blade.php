@@ -3,67 +3,70 @@
 
 <!-- Definizione della sezione del contenuto della pagina del catalogo generale delle auto -->
 @section('content')
-
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <script src="{{ asset('assets/js/filtri_catalogo.js') }}"></script>
     <!-- Sezione dedicata al catalogo delle auto noleggiabili -->
     <h1 class="titolo_info">CATALOGO AUTO NOLEGGIABILI</h1>
 
+    <button type="button" id="mostra_filtri" class="bottone" name="action" value="submit1">Mostra Filitri</button>
     <!-- Form predisposta per la ricerca delle auto all'interno del catalogo -->
-    <form method="POST" action="{{ route('catalogoauto') }}">
-        @csrf
+    <div id="filtri">
+        <form method="POST" action="{{ route('catalogoauto') }}">
+            @csrf
 
-        <!-- Definizione della sezione dei filtri di ricerca -->
-        <h3 class="titolo posizione_cx">Filtri di ricerca:</h3>
+            <!-- Definizione della sezione dei filtri di ricerca -->
+            <h3 class="titolo posizione_cx">Filtri di ricerca:</h3>
 
-        <div class="rigacatalogo">
-            <div class="colonna colonna_filtro ">
-                <!-- Input per il filtro di ricerca prezzo minimo -->
-                <label class="titolo">
-                    Inserire prezzo min:
-                    <br>
-                    <input class="campo_form" type="number" step="0.01" name="min" placeholder="Prezzo min" min="0">
-                </label>
-
-                <br>
-
-                <!-- Input per il filtro di ricerca prezzo massimo -->
-                <label class="titolo">
-                    Inserire prezzo max:
-                    <br>
-                    <input class="campo_form" type="number" step="0.01" name="max" placeholder="Prezzo max" min="0">
-                </label>
-            </div>
-
-            <!-- Se l'utente autenticato è di tipo 'user' si aggiungono i filtri per data -->
-            @if(auth()->check() && (Auth::user()->role=='staff' || Auth::user()->role=='admin' || Auth::user()->role=='user') )
-                <div class="colonna colonna_filtro">
-                    <!-- Input per il filtro di ricerca data inizio -->
+            <div class="rigacatalogo">
+                <div class="colonna colonna_filtro ">
+                    <!-- Input per il filtro di ricerca prezzo minimo -->
                     <label class="titolo">
-                        DA:&nbsp;
-                        <input class="campo_form" type="date" name="inizio">
+                        Inserire prezzo min:
+                        <br>
+                        <input class="campo_form" type="number" step="0.01" name="min" placeholder="Prezzo min" min="0">
                     </label>
+
+                    <br>
 
                     <!-- Input per il filtro di ricerca prezzo massimo -->
                     <label class="titolo">
-                        A:
-                        <input class="campo_form" type="date" name="fine">
+                        Inserire prezzo max:
+                        <br>
+                        <input class="campo_form" type="number" step="0.01" name="max" placeholder="Prezzo max" min="0">
                     </label>
                 </div>
 
-                @if(session('popupMessage'))
-                    <script>
-                        alert("{{ session('popupMessage') }}");
-                    </script>
+                <!-- Se l'utente autenticato è di tipo 'user' si aggiungono i filtri per data -->
+                @if(auth()->check() && (Auth::user()->role=='staff' || Auth::user()->role=='admin' || Auth::user()->role=='user') )
+                    <div class="colonna colonna_filtro">
+                        <!-- Input per il filtro di ricerca data inizio -->
+                        <label class="titolo">
+                            DA:&nbsp;
+                            <input class="campo_form" type="date" name="inizio">
+                        </label>
+
+                        <!-- Input per il filtro di ricerca prezzo massimo -->
+                        <label class="titolo">
+                            A:
+                            <input class="campo_form" type="date" name="fine">
+                        </label>
+                    </div>
+
+                    @if(session('popupMessage'))
+                        <script>
+                            alert("{{ session('popupMessage') }}");
+                        </script>
+                    @endif
                 @endif
-            @endif
-        </div>
+            </div>
 
-        <div class="rigacatalogo">
-            <!-- Button di submit per l'invio dei dati inseriti nella form -->
-            <button type="submit" class="bottone" name="action" value="submit1">Cerca</button>
-        </div>
+            <div class="rigacatalogo">
+                <!-- Button di submit per l'invio dei dati inseriti nella form -->
+                <button type="submit" class="bottone" name="action" value="submit1">Cerca</button>
+            </div>
 
-    </form>
-
+        </form>
+    </div>
     <!-- Definizione della riga del catalogo -->
     <div class="rigacatalogo">
         <!-- Per ogni auto estratta dalla tabella del database viene stampata la relativa card -->
