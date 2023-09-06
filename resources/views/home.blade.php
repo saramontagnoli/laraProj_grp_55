@@ -49,8 +49,15 @@
 
     <br> <br>
     <hr>
-    <br> <br>
 
+
+    <div class="riga posizione_cx">
+        <a class="bottone" href="{{asset('assets/Tecnologie_Web_grp_55.pdf')}}">SCARICA TESINA</a>
+    </div>
+
+    <hr>
+
+    <br><br>
     <!-- Sezione che identifica la riga per le colonne COME NOLEGGIARE, CHI SIAMO e FAQ -->
     <div class="riga">
         <!-- Prima sezione cliccabile contenente immagine e titolo della colonna -->
