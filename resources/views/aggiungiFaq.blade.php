@@ -1,22 +1,25 @@
 <!-- Si estende la struttura definita per le pagine del sito web -->
 @extends('layouts.struttura')
 @section('content')
-<script src="{{ asset('assets/js/aggiungi_faq.js') }}" ></script>
+
+    <script src="{{ asset('assets/js/aggiungi_faq.js') }}" ></script>
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
 <script>
+    var homeRoute = '{{ route('gestioneFaq') }}';
+
     $(function () {
 
         var actionUrl = "{{ route('aggiuntaFaq') }}";
 
         var formId = 'addfaq';
-        $(":input").on('blur', function (event) {
+        $(":input:not([type='submit'])").on('blur', function (event) {
 
             var formElementId = $(this).attr('id');
 
             doElemValidation(formElementId, actionUrl, formId);
 
         });
-        $("#addfaq").on(function (event) {
+        $("#addfaq").on('submit',function (event) {
 
             event.preventDefault();
 

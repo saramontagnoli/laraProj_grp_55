@@ -23,11 +23,6 @@ function doElemValidation(id, actionUrl, formId) {
             type: 'POST',
             url: 'gestioneFaq',
             data: formElems,
-            success: function(data) {
-                if (data.status === 200) {
-                    window.location.replace(data.url);
-                }
-            },
             error: function (data) {
                 if (data.status === 422) {
                     var errMsgs = JSON.parse(data.responseText);
@@ -67,8 +62,8 @@ function doFormValidation(actionUrl, formId) {
                 });
             }
         },
-        success: function (data) {
-            window.location.replace(data.redirect);
+        success: function (data){
+            window.location.href = homeRoute;
         },
         contentType: false,
         processData: false

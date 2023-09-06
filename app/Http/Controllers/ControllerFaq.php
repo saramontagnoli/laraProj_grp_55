@@ -117,7 +117,7 @@ class ControllerFaq extends Controller
         $faq->save();
 
         //redirect alla rotta di gestioneFaq con relativo messaggio di conferma di inserimento
-        return response()->json(['url' => route('gestioneFaq')]);
+        return response()->json(['message'=>'FAQ creata con successo'], 200);
     }
 
 
