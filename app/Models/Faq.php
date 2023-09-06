@@ -15,4 +15,8 @@ class Faq extends Model {
     //definizione della primary key = codice_faq
     protected $primaryKey = 'codice_faq';
     public $timestamps = false;
+    protected $fillable = [
+        'domanda',
+        'risposta'
+    ];
 }

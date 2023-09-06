@@ -1,24 +1,32 @@
 <!-- Si estende la struttura definita per le pagine del sito web -->
 @extends('layouts.struttura')
-<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
-<script src="{{ asset('js/aggiuntaFaq.js') }}" ></script>
-<!-- Definizione della sezione del contenuto della pagina di aggiunta di una F.A.Q. -->
 @section('content')
+<script src="{{ asset('assets/js/aggiungi_faq.js') }}" ></script>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+<script>
+    $(function () {
 
-    <script>
-        $(function () {
-            var url = "{{ route('aggiuntaFaq') }}";
-            var form = 'addfaq';
-            $(":input").on('blur', function (event) {
-                var formElementId = $(this).attr('id');
-                doElemValidation(formElementId, url, formId);
-            });
-            $("#addproduct").on('submit', function (event) {
-                event.preventDefault();
-                doFormValidation(url, formId);
-            });
+        var actionUrl = "{{ route('aggiuntaFaq') }}";
+
+        var formId = 'addfaq';
+        $(":input").on('blur', function (event) {
+
+            var formElementId = $(this).attr('id');
+
+            doElemValidation(formElementId, actionUrl, formId);
+
         });
-    </script>
+        $("#addfaq").on(function (event) {
+
+            event.preventDefault();
+
+            doFormValidation(actionUrl, formId);
+
+        });
+
+    });
+
+</script>
 
     <!-- Definizione del titolo della pagina di aggiunta delle F.A.Q. -->
     <h1 class="titolo_info">AGGIUNTA F.A.Q.</h1>
@@ -30,7 +38,7 @@
 
     <!-- Definizione della sezione della form di aggiunta di una nuova F.A.Q., con redirezione alla rotta di aggiuntaFaq -->
     <div class="posizione_cx">
-        {{ Form::open(array('url' => '/aggiuntaFaq', 'enctype' => 'multipart/form-data', 'method' => 'PUT')) }}
+        {{ Form::open(array('url' => '/aggiuntaFaq', 'id'=>"addfaq", 'enctype' => 'multipart/form-data')) }}
 
         <div>
             <!-- Definizione della label per l'inserimento della domanda -->

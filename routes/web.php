@@ -146,11 +146,11 @@ Route::get('/homeadmin/gestionestaff/{id}', [UserController::class, 'eliminaStaf
     ->name('eliminaStaff')->middleware('can:isAdmin');
 
 //Rotta per l'aggiunta di una F.A.Q. (admin)
-Route::view('/aggiuntaFaq', 'aggiungiFaq')
-    ->name('aggiuntaFaq')->middleware('can:isAdmin');
+Route::get('/aggiuntaFaq', [ControllerFaq::class, 'vistafaq'] )
+   ->middleware('can:isAdmin');
 
 //Rotta per l'aggiunta di una F.A.Q. (admin)
-Route::put('/aggiuntaFaq', [ControllerFaq::class, 'aggiuntaFaq'])
+Route::post('/aggiuntaFaq', [ControllerFaq::class, 'aggiuntaFaq'])
     ->name('aggiuntaFaq')->middleware('can:isAdmin');
 
 

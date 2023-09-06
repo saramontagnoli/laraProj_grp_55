@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Http\Requests\NewFaqRequest;
 use App\Models\Faq;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Http\Request;
@@ -12,6 +13,9 @@ use Illuminate\Validation\Rule;
  */
 class ControllerFaq extends Controller
 {
+    function vistafaq(){
+        return view('aggiungiFaq');
+    }
     /*
      * Il metodo showFaq permette di andare ad estrarre tutte le F.A.Q. contenute nel sito
      */
@@ -100,10 +104,10 @@ class ControllerFaq extends Controller
     /*
      * Il metodo aggiuntaFaq permette di andare ad aggiungere una nuova F.A.Q. all'interno del database
      */
-    function aggiuntaFaq(Request $request)
+    function aggiuntaFaq(NewFaqRequest $request)
     {
         //creazione di un oggetto F.A.Q.
-        $faq = new Faq();
+        $faq = new Faq;
 
         $faq->fill($request->validated());
 
@@ -113,7 +117,8 @@ class ControllerFaq extends Controller
         $faq->save();
 
         //redirect alla rotta di gestioneFaq con relativo messaggio di conferma di inserimento
-        return redirect()->route('gestioneFaq')->with('message', 'Faq aggiunta con successo.');
+        return response()->json(['url' => route('gestioneFaq')]);
     }
+
 
 }
