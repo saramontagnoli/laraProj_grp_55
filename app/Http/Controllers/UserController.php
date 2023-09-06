@@ -27,7 +27,7 @@ class UserController extends Controller {
      */
     public function profilo() {
         //return della vista del profilo del cliente
-        return view('profilo');
+        return view('user.profilo');
     }
 
 
@@ -43,7 +43,7 @@ class UserController extends Controller {
         $data = User::where('username', $username)->first();
 
         //return della vista di modifica dei dati, compilando i campi di modifica con i dati vecchi estratti dal DB
-        return view('modificaDati', ['dati'=>$data]);
+        return view('user.modificaDati', ['dati'=>$data]);
     }
 
 
@@ -175,7 +175,7 @@ class UserController extends Controller {
                 $cardAuto["cardAuto"] = $dbQuery;
 
                 //ritorno della vista di conferma di noleggio con i dati del noleggio
-                return view("noleggio", $cardAuto);
+                return view("user.noleggio", $cardAuto);
 
             } else {
                 //se quell'auto è occupata nel periodo specificato appare un popup di errore

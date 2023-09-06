@@ -16,7 +16,7 @@
             <br>
             @csrf
             <!-- Apertura del tag FORM per la modifica dei dati dell'utente, metodo PUT per inserimento dati -->
-            {{ Form::open(array('url' => '/modificaDatiL1', 'enctype' => 'multipart/form-data', 'method' => 'PUT')) }}
+            {{ Form::open(array('url' => '/modificaDatiUtente', 'enctype' => 'multipart/form-data', 'method' => 'PUT')) }}
             <div>
                 <div class="posizione_cx">
                     <!-- Definizione della label per la modifica del nome dell'utente -->

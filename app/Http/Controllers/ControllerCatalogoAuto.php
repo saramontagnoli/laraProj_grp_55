@@ -152,7 +152,7 @@ class ControllerCatalogoAuto extends Controller
                             ->whereBetween('data_inizio', [$filtro_inizio, $filtro_fine])
                             ->orWhereBetween('data_fine', [$filtro_inizio, $filtro_fine]);
                     })
-                        ->groupBy('marca.nome_marca', 'modello.nome_modello', 'auto.codice_auto', 'auto.costo_giorno', 'auto.foto_auto')
+                        ->groupBy('marca.nome_marca', 'modello.nome_modello', 'auto.codice_auto', 'auto.costo_giorno', 'auto.foto_auto' , 'auto.num_posti')
                         ->get();
 
                     //viene inserito il risultato della query nell'array per ritornare i dati alla view
