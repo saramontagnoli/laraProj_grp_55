@@ -14,8 +14,9 @@ use Illuminate\Validation\Rule;
 class ControllerFaq extends Controller
 {
     function vistafaq(){
-        return view('aggiungiFaq');
+        return view('admin.aggiungiFaq');
     }
+
     /*
      * Il metodo showFaq permette di andare ad estrarre tutte le F.A.Q. contenute nel sito
      */
@@ -41,7 +42,7 @@ class ControllerFaq extends Controller
         $cardFaq["cardFaq"] = $faq;
 
         //return della vista di gestione delle F.A.Q. contenente l'insieme di tutte le F.A.Q. estratte
-        return view('gestionefaq', $cardFaq);
+        return view('admin.gestionefaq', $cardFaq);
     }
 
 
@@ -97,7 +98,7 @@ class ControllerFaq extends Controller
         $faq = Faq::where('codice_faq', $codice_faq)->first();
 
         //return della vista di modifica della F.A.Q., compilando i campi di modifica con i dati vecchi estratti dal DB
-        return view('modificaFaq', ['faq'=>$faq]);
+        return view('admin.modificaFaq', ['faq'=>$faq]);
     }
 
 
