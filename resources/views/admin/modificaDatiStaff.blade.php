@@ -14,6 +14,7 @@
             {{ Form::open(array('url' => '/modificadatistaff', 'enctype' => 'multipart/form-data', 'method' => 'PUT')) }}
             <div>
                 <div class="posizione_cx">
+                    {{ Form::hidden('id', $dati['id'], ['id' => 'id', 'class' => 'campo_form']) }}
                     {{ Form::hidden('username', $dati['username'], ['id' => 'username', 'class' => 'campo_form']) }}
                     <!-- Definizione della label per la modifica del nome dell'utente -->
                     {{ Form::label('nome', 'Nome') }}

@@ -55,13 +55,14 @@ class UserController extends Controller {
 
         //estrazione dello username del cliente
         $username = Auth::user()->username;
+        $id = Auth::user()->id;
 
         //validazione dei dati della form di modifica
         $request->validate([
-            'nome' => ['required','string','max:20'],
-            'cognome' => ['required','string','max:20'],
+            'nome' => ['required','string','max:50'],
+            'cognome' => ['required','string','max:70'],
             'data_nascita' => ['required', 'date_format:Y-m-d'],
-            'email' => ['string','email','max:30']
+            'email' => ['string','email','max:60', Rule::unique('users', 'email')->ignore($id, 'id')]
         ]);
 
 
@@ -282,12 +283,14 @@ class UserController extends Controller {
         //estrazione dello username dello staff
         $username = $request->input("username");
 
+        $id = $request->input("id");
+
         //validazione dei dati della form di modifica
         $request->validate([
-            'nome' => ['required','string','max:20'],
-            'cognome' => ['required','string','max:20'],
+            'nome' => ['required','string','max:50'],
+            'cognome' => ['required','string','max:70'],
             'data_nascita' => ['required', 'date_format:Y-m-d'],
-            'email' => ['string','email','max:30']
+            'email' => ['string','email','max:60', Rule::unique('users', 'email')->ignore($id, 'id')]
         ]);
 
 
@@ -333,7 +336,7 @@ class UserController extends Controller {
             'username' => ['string', 'max:50', 'required', Rule::unique('users')],
             'nome' => ['string', 'max:50'],
             'cognome' => ['string', 'max:70'],
-            'password' => ['string', 'max:65']
+            'password' => ['string', 'max:65', 'min:8']
         ]);
 
         $user = new User();

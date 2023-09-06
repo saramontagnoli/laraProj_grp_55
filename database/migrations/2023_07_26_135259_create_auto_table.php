@@ -18,7 +18,7 @@ return new class extends Migration
     {
         Schema::create('auto', function (Blueprint $table) {
             $table->bigIncrements('codice_auto')->unsigned()->index();
-            $table->string('targa', 7)->unique();
+            $table->string('targa', 20)->unique();
             $table->string('foto_auto', 500)->unique();
             $table->string('allestimento', 500);
             $table->double('costo_giorno', 8, 2);
