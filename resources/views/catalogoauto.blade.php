@@ -10,6 +10,7 @@
 
     <button type="button" id="mostra_filtri" class="bottone" name="action" value="submit1">Mostra Filitri</button>
     <!-- Form predisposta per la ricerca delle auto all'interno del catalogo -->
+
     <div id="filtri">
         <form method="POST" action="{{ route('catalogoauto') }}">
             @csrf
@@ -36,6 +37,26 @@
                     </label>
                 </div>
 
+                <div class="colonna colonna_filtro ">
+                    <!-- Input per il filtro di ricerca per numero posti -->
+                    <label class="titolo">
+                        Seleziona il numero di posti:
+                        <br>
+                        <select class="campo_form" name="num_posti">
+                            <option value="0"></option>
+                            <option value="1">1 posto</option>
+                            <option value="2">2 posti</option>
+                            <option value="3">3 posti</option>
+                            <option value="4">4 posti</option>
+                            <option value="5">5 posti</option>
+                            <option value="6">6 posti</option>
+                            <option value="7">7 posti</option>
+                            <option value="8">8 posti</option>
+                            <option value="9">9 posti</option>
+                        </select>
+                    </label>
+                    <br>
+                </div>
                 <!-- Se l'utente autenticato è di tipo 'user' si aggiungono i filtri per data -->
                 @if(auth()->check() && (Auth::user()->role=='staff' || Auth::user()->role=='admin' || Auth::user()->role=='user') )
                     <div class="colonna colonna_filtro">

@@ -101,7 +101,7 @@ class ControllerCatalogoAuto extends Controller
             //Altrimenti se almeno uno dei filtri è stato settato si procede con il ritrno della vista in base ai filtri specificati
 
             //query di base di estrazione di tutte le auto comprese di marce e modello (grazie ai due join)
-            $dbQuery = Auto::select('auto.costo_giorno', 'auto.foto_auto', 'auto.codice_auto', 'marca.nome_marca', 'modello.nome_modello')
+            $dbQuery = Auto::select('auto.costo_giorno', 'auto.foto_auto', 'auto.codice_auto', 'auto.num_posti', 'marca.nome_marca', 'modello.nome_modello')
                 ->join("modello", "auto.modello_ref", "=", "modello.codice_modello")
                 ->join("marca", "modello.marca_ref", "=", "marca.codice_marca");
 
@@ -160,7 +160,15 @@ class ControllerCatalogoAuto extends Controller
                 }
             }
         }
+        //filtro per numero di posti
+        //funziona solo se viene inserito un numero di posti
+        $filtro_num_posti = $request->input("num_posti");
+        if($filtro_num_posti!='0'){
 
+            $posti=$dbQuery->where('auto.num_posti',$filtro_num_posti)
+            ->get();
+            $cardAuto["cardAuto"] = $posti;
+        }
         // Ritorno la View con i dati inseriti nell'array, che verranno visualizzati sulla View stessa.
         return view("catalogoauto", $cardAuto);
     }
