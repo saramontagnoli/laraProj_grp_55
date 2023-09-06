@@ -80,7 +80,7 @@ Route::put('/gestioneauto/{codice_auto}', [GestioneAutoController::class, 'elimi
 Route::put('/aggiuntaAuto', [GestioneAutoController::class, 'aggiuntaAuto'])
     ->name('aggiuntaAuto');
 
-Route::view('/aggiuntaAuto', 'aggiungiAuto')
+Route::view('/aggiuntaAuto', 'staff.aggiungiAuto')
     ->name('aggiuntaAuto');
 
 Route::get('/aggiuntaAuto', [GestioneAutoController::class, 'getModello'])

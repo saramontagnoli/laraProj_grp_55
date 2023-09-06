@@ -6,11 +6,12 @@
 
     @if(auth()->check() && (Auth::user()->role=='staff' || Auth::user()->role=='admin'))
 
+        <h1 class="titolo_info">GESTIONE DELLE AUTO DEL CATALOGO</h1>
         <br>
         <!-- Button per l'aggiunta di una nuova auto, redirezione alla rotta definita -->
-        <a href="{{ route('aggiuntaAuto') }}">Aggiungi Auto</a>
+        <a class="bottone" href="{{ route('aggiuntaAuto') }}">Aggiungi Auto</a>
 
-        <br>
+        <br><br>
 
         <!-- Definizione della tabella di gestione delle auto -->
         <table class="tabella_noleggi">
@@ -40,8 +41,8 @@
                     <td>{{$auto['num_posti']}}</td> <!-- Numero posti dell'auto -->
                     <td>{{$auto['allestimento']}}</td> <!-- Descrizione dell'allestimento dell'auto -->
                     <td>{{$auto['costo_giorno']}}€</td> <!-- Costo al giorno dell'auto -->
-                    <td><a href="{{ route('getdatiauto', ['codice_auto' => $auto['codice_auto']]) }}">Modifica</a></td> <!-- Link di redirezione alla rotta di modifica dell'auto selezionata -->
-                    <td><a href="{{ route('eliminaauto', ['codice_auto' => $auto['codice_auto']]) }}" onclick="return confirmDelete()">Elimina</a></td> <!-- Link di eliminazione dell'auto selezionata -->
+                    <td><a href="{{ route('getdatiauto', ['codice_auto' => $auto['codice_auto']]) }}" class="tabella_link">Modifica</a></td> <!-- Link di redirezione alla rotta di modifica dell'auto selezionata -->
+                    <td><a href="{{ route('eliminaauto', ['codice_auto' => $auto['codice_auto']]) }}" class="tabella_link" onclick="return confirmDelete()">Elimina</a></td> <!-- Link di eliminazione dell'auto selezionata -->
                 </tr>
             @endforeach
             </tbody>

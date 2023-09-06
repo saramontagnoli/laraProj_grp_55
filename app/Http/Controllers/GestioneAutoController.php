@@ -26,7 +26,7 @@ class GestioneAutoController extends Controller
             ->get();
 
         //return della vista di gestione delle auto con la lista delle auto estratte in precedenza
-        return view('gestioneauto', ['listaAuto' => $dbQuery]);
+        return view('staff.gestioneauto', ['listaAuto' => $dbQuery]);
     }
 
 
@@ -52,7 +52,7 @@ class GestioneAutoController extends Controller
             ->get();
 
         //return della vista di visualizzazione con i noleggi effettuati nel mese dell'anno corrente e l'anno corrente
-        return view('visualizzanoleggi', ['listaNoleggi' => $dbQuery, 'annoCorrente' => $annoCorrente]);
+        return view('staff.visualizzanoleggi', ['listaNoleggi' => $dbQuery, 'annoCorrente' => $annoCorrente]);
     }
 
 
@@ -107,7 +107,7 @@ class GestioneAutoController extends Controller
             ->first();
 
         //return della vista di modifica delle auto con i relativi dati
-        return view('modificaDatiAuto', ['dati' => $dati]);
+        return view('staff.modificaDatiAuto', ['dati' => $dati]);
 
     }
 
@@ -180,7 +180,7 @@ class GestioneAutoController extends Controller
         $modelli = modello::orderBy('nome_modello')->get();
 
         //return della vista di aggiunta dell'auto in cui verrà inserita una tendina per visionare i modelli
-        return view('aggiungiAuto', ['modelli' => $modelli]);
+        return view('staff.aggiungiAuto', ['modelli' => $modelli]);
     }
 
 
