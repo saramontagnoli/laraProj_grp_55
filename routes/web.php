@@ -126,7 +126,7 @@ Route::get('/homeadmin/gestionestaff', [UserController::class, 'gestioneStaff'])
     ->name('gestionestaff')->middleware('can:isAdmin');
 
 //Rotta per l'aggiunta di uno staff (admin)
-Route::view('/aggiuntaStaff', 'aggiungiStaff')
+Route::view('/aggiuntaStaff', 'admin.aggiungiStaff')
     ->name('aggiuntaStaff')->middleware('can:isAdmin');
 
 //Rotta per l'aggiunta di una F.A.Q. (admin)

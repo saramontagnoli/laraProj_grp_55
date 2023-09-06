@@ -236,7 +236,7 @@ class UserController extends Controller {
             ->get();
 
         //si ritorna la vista di gestionestaff contenente tutti i membri dello staff estratti nell'oggetto staff
-        return view('gestionestaff', ['staff' => $dbQuery]);
+        return view('admin.gestionestaff', ['staff' => $dbQuery]);
     }
 
 
@@ -270,7 +270,7 @@ class UserController extends Controller {
         $data = User::where('id', $id)->first();
 
         //return della vista di modifica dei dati, compilando i campi di modifica con i dati vecchi estratti dal DB
-        return view('modificaDatiStaff', ['dati'=>$data]);
+        return view('admin.modificaDatiStaff', ['dati'=>$data]);
     }
 
 
