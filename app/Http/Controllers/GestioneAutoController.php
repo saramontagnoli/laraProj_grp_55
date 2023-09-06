@@ -91,7 +91,7 @@ class GestioneAutoController extends Controller
         }
 
         //return alla vista di riepilogo annuo con i dati di mesi e numero noleggi, e anno corrente
-        return view('riepilogoannuo', ['risultatiFinali' => $risultatiFinali, 'annoCorrente' => $annoCorrente]);
+        return view('admin.riepilogoannuo', ['risultatiFinali' => $risultatiFinali, 'annoCorrente' => $annoCorrente]);
     }
 
 
