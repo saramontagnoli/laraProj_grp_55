@@ -126,7 +126,7 @@ class GestioneAutoController extends Controller
                 'string',
                 'max:20',
                 'required',
-                Rule::unique('auto', 'targa')->ignore($codice_auto, 'codice_auto')
+                Rule::unique('auto', 'targa')->ignore($codice_auto, 'codice_auto') //regola di unique per la targa dell'auto
             ],
             'costo_giorno' => ['numeric', 'min:0'],
             'num_posti' => ['integer', 'min:2', 'max:9'],
@@ -156,15 +156,17 @@ class GestioneAutoController extends Controller
     {
         // Query di estrazione dell'auto da eliminare avente codice $codice_auto, trova anche i noleggi SE l'auto è stata noleggiata
         $auto = Auto::with('noleggio')->findOrFail($codice_auto);
+
         // Eliminazione dei noleggi a carico dell'auto
         $auto->noleggio()->delete();
-        // Ottieni il percorso del file immagine
-        unlink($auto->foto_auto);
-        // Verifica se il file esiste e quindi eliminane se presente
 
-        // Eliminazione effettiva dell'auto
+        //eliminazione della foto dell'auto
+        unlink($auto->foto_auto);
+
+        //eliminazione effettiva dell'auto
         $auto->delete();
-        // Redirect alla rotta di gestioneauto con messaggio di avvenuta eliminazione
+
+        //redirect alla rotta di gestioneauto con messaggio di avvenuta eliminazione
         return redirect()->route('gestioneauto')->with('message', 'Auto eliminata con successo.');
     }
 
