@@ -33,7 +33,7 @@
                 <td>{{$faq['domanda']}}</td> <!-- Domanda della F.A.Q. -->
                 <td>{{$faq['risposta']}}</td> <!-- Risposta della F.A.Q. -->
                 <td><a href="{{ route('modificadatiFaq', ['codice_faq' => $faq['codice_faq']]) }}" class="tabella_link">Modifica</a></td> <!-- Link di modifica della F.A.Q., redirezione alla rotta di modifica -->
-                <td><a href="{{ route('eliminaFaq', ['codice_faq' => $faq['codice_faq']]) }}" class="tabella_link" onclick="return confirmDelete()">Elimina</a></td> <!-- Link di eliminazione della F.A.Q. -->
+                <td><a href="{{ route('eliminaFaq', ['codice_faq' => $faq['codice_faq']]) }}" class="tabella_link" onclick="return myFunction2()">Elimina</a></td> <!-- Link di eliminazione della F.A.Q. -->
             </tr>
         @endforeach
         </tbody>
