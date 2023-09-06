@@ -55,30 +55,46 @@ class GestioneAutoController extends Controller
         return view('visualizzanoleggi', ['listaNoleggi' => $dbQuery, 'annoCorrente' => $annoCorrente]);
     }
 
+
+    /*
+     * Il metodo di riepilogoannuo permette di andare a effettuare un riepilogo del numero di noleggi per ogni mese dell'anno corrente
+     */
     function riepilogoannuo()
     {
+        //estrazione dell'anno corrente mediante Carbon
         $annoCorrente = Carbon::now()->year;
 
+        //estrazione delle informazioni del numero dei noleggi dell'anno corrente, raggruppati per mese
         $mesiNoleggi = Noleggio::select(DB::raw('MONTH(noleggio.data_inizio) as mese'), DB::raw('COUNT(*) as num_noleggi'))
             ->leftJoin('auto', 'noleggio.auto_ref', '=', 'auto.codice_auto')
             ->groupBy('mese')
             ->get();
 
-        $mesiDesiderati = range(1, 12); // Tutti i mesi da gennaio a dicembre
+        //predisposizione variabile con i mesi da 1 a 12
+        $mesiDesiderati = range(1, 12);
+
+        //conversione in array avente come key il mese
         $mesiNoleggi = $mesiNoleggi->keyBy('mese')->toArray();
 
+        //dichiarazione della variabile array risultatiFinali che permette di inserire il mese con il realtivo numero di noleggi
         $risultatiFinali = [];
 
         foreach ($mesiDesiderati as $mese) {
+            //se il numero di noleggi è settato viene inserito, altrimenti se è 0 viene inserito 0
             $numNoleggi = isset($mesiNoleggi[$mese]) ? $mesiNoleggi[$mese]['num_noleggi'] : 0;
+
+            //inserimento all'intenro dell'array del mese e del numero di noleggi
             $risultatiFinali[] = [
                 'mese' => $mese,
                 'num_noleggi' => $numNoleggi
             ];
         }
 
+        //return alla vista di riepilogo annuo con i dati di mesi e numero noleggi, e anno corrente
         return view('riepilogoannuo', ['risultatiFinali' => $risultatiFinali, 'annoCorrente' => $annoCorrente]);
     }
+
+
     /*
      * Il metodo getDatiAuto permette di estrarre i dati correnti dell'auto selezionata per la modifica, in modo ad riempire i campi con i dati da modificare
      */
