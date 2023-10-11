@@ -336,7 +336,7 @@ class UserController extends Controller {
             'username' => ['string', 'max:50', 'required', Rule::unique('users')],
             'nome' => ['string', 'max:50'],
             'cognome' => ['string', 'max:70'],
-            'password' => ['string', 'max:65', 'min:8']
+            'password' => ['string', 'min:8']
         ]);
 
         $user = new User();
