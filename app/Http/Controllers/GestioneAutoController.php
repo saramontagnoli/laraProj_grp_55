@@ -131,7 +131,7 @@ class GestioneAutoController extends Controller
             ],
             'costo_giorno' => ['numeric', 'min:0'],
             'num_posti' => ['integer', 'min:2', 'max:9'],
-            'allestimento' => ['string', 'max:500'],
+            'allestimento' => ['string', 'max:500']
         ]);
 
         //query di updatee dei dati dell'auto precedentemente validati
@@ -143,6 +143,7 @@ class GestioneAutoController extends Controller
                 'costo_giorno'=>$request->input('costo_giorno'),
                 'num_posti'=>$request->input('num_posti'),
                 'allestimento'=>$request->input('allestimento'),
+                'foto_auto'=>$request->input('foto_auto')
             ]);
 
         //redirect alla rotta di gestione delle auto con messaggio di avvenuta modifica
