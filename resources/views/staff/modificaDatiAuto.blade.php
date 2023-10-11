@@ -37,7 +37,7 @@
                         <br>
 
                         <!-- Se vengono rilevati degli errori allora vengono stampati -->
-                        @if ($errors->first('nome'))
+                        @if ($errors->first('targa'))
                             <ul>
                                 @foreach ($errors->get('targa') as $message)
                                     <li>{{ $message }}</li>

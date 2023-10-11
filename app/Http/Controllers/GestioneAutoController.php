@@ -124,8 +124,9 @@ class GestioneAutoController extends Controller
         $request->validate([
             'targa' => [
                 'string',
-                'max:20',
+                'max:7',
                 'required',
+                'regex:/^[A-Z]{2}[0-9]{3}[A-Z]{2}$/',
                 Rule::unique('auto', 'targa')->ignore($codice_auto, 'codice_auto') //regola di unique per la targa dell'auto
             ],
             'costo_giorno' => ['numeric', 'min:0'],
@@ -191,13 +192,15 @@ class GestioneAutoController extends Controller
     {
         //validazione delle informazioni inserite all'interno della form con relative regole
         $request->validate([
-            'targa' => ['string', 'max:20', 'required', Rule::unique('auto')],
+            'targa' => ['string', 'max:7', 'required', 'regex:/^[A-Z]{2}[0-9]{3}[A-Z]{2}$/', Rule::unique('auto')],
             'costo_giorno' => ['numeric', 'min:0'],
             'num_posti' => ['integer', 'min:2', 'max:9'],
             'allestimento' => ['string', 'max:600'],
             'modello_ref' => ['required'],
             'foto_auto' => ['required', 'image', 'max:2048']
         ]);
+
+
 
         //creazione di un oggetto auto
         $auto = new Auto();
