@@ -139,6 +139,7 @@
 
                         <!-- Campo di inserimento della targa, avente come id "targa" -->
                         {{ Form::file('foto_auto', [ 'id' => 'foto_auto', 'required' => 'required']) }}
+                        <p>Immagine caricata: {{$dati['foto_auto']}}</p>
                         <br>
 
                         <!-- Se vengono rilevati degli errori allora vengono stampati -->
