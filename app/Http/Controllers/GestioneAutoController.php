@@ -106,7 +106,6 @@ class GestioneAutoController extends Controller
             ->where('auto.codice_auto', $codice_auto)
             ->first();
 
-
         //return della vista di modifica delle auto con i relativi dati
         return view('staff.modificaDatiAuto', ['dati' => $dati]);
 

@@ -62,7 +62,7 @@ class UserController extends Controller {
             'nome' => ['required','string','max:50'],
             'cognome' => ['required','string','max:70'],
             'data_nascita' => ['required', 'date_format:Y-m-d'],
-            'email' => ['string','email','max:60', Rule::unique('users', 'email')->ignore($id, 'id')]
+            'email' => ['string','email','max:60', 'regex:/^[a-zA-Z0-9]+[@][a-zA-Z]+[.][a-zA-Z0-9]+$/', Rule::unique('users', 'email')->ignore($id, 'id')]
         ]);
 
 

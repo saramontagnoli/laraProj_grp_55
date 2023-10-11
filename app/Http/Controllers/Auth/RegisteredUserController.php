@@ -56,7 +56,7 @@ class RegisteredUserController extends Controller
             'data_nascita' => ['required', 'date', 'before_or_equal:today'],
             'username' => ['required', 'string', 'max:50', 'unique:users'],
             'password' => ['required', 'min:8'],
-            'email' => ['required', 'email', 'unique:users'],
+            'email' => ['required', 'email', 'regex:/^[a-zA-Z0-9]+[@][a-zA-Z]+[.][a-zA-Z0-9]+$/', 'unique:users'],
             'occupazione'=>['required']
         ]);
 
