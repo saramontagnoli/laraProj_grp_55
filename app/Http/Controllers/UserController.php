@@ -107,7 +107,7 @@ class UserController extends Controller {
     function noleggioAuto($codice_auto, Request $request)
     {
         //query di estrazione dell'auto selezionata (con codice $codice_auto) comprese di informazioni di marca e modello
-        $dbQuery = DB:: table('Auto')
+        $dbQuery = DB:: table('auto')
             ->join("modello", "auto.modello_ref", "=", "modello.codice_modello")
             ->join("marca", "modello.marca_ref", "=", "marca.codice_marca")
             ->where ('codice_auto', $codice_auto)
