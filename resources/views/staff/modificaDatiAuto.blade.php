@@ -143,9 +143,9 @@
                         <br>
 
                         <!-- Se vengono rilevati degli errori allora vengono stampati -->
-                        @if ($errors->first('targa'))
+                        @if ($errors->first('foto_auto'))
                             <ul>
-                                @foreach ($errors->get('targa') as $message)
+                                @foreach ($errors->get('foto_auto') as $message)
                                     <li>{{ $message }}</li>
                                 @endforeach
                             </ul>
