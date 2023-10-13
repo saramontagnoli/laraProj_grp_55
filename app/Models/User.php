@@ -25,7 +25,7 @@ class User extends Authenticatable
         'email',
         'data_nascita',
         'occupazione_ref',
-        'id_comune',
+        'comune_ref',
         'indirizzo',
         'password',
         'role'

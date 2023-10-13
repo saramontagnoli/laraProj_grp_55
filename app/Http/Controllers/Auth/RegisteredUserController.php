@@ -37,7 +37,7 @@ class RegisteredUserController extends Controller
     }
 
 
-/**
+    /**
      * Handle an incoming registration request.
      *
      * @param  \Illuminate\Http\Request  $request
@@ -52,12 +52,15 @@ class RegisteredUserController extends Controller
         $request->validate([
             'nome' => ['required', 'string', 'max:50'],
             'cognome' => ['required', 'string', 'max:70'],
-            //la data di nascita non può essere dopo il giorno odierno
             'data_nascita' => ['required', 'date', 'before_or_equal:today'],
             'username' => ['required', 'string', 'max:50', 'unique:users'],
             'password' => ['required', 'min:8'],
-            'email' => ['required', 'email', 'regex:/^[a-zA-Z0-9]+[@][a-zA-Z]+[.][a-zA-Z0-9]+$/', 'unique:users'],
-            'occupazione'=>['required']
+            'conferma_password' => ['required', 'same:password'], // Aggiungi questa regola
+            'email' => ['required', 'email', 'unique:users'],
+            'occupazione' => ['required'],
+            'indirizzo'=>['required']
+        ], [
+            'conferma_password.same' => 'Le password non corrispondono.'
         ]);
 
         $user = User::create([
@@ -67,10 +70,12 @@ class RegisteredUserController extends Controller
             'data_nascita' => $request->input('data_nascita'),
             'username' => $request->input('username'),
             'password' => Hash::make($request->input('password')),
+            'conferma_password' => Hash::make($request->input('conferma_password')),
             'email'=>$request->input('email'),
             'occupazione_ref'=>$request->input('occupazione'),
+            'indirizzo'=>$request->input('indirizzo'),
+            'comune_ref'=>$request->input('comune_ref'),
             'role'=>'user'
-
         ]);
 
         event(new Registered($user));

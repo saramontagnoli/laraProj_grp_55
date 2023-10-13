@@ -184,6 +184,22 @@
                     </ul>
                 @endif
             </div>
+
+            <div>
+                <!-- Definizione della label per l'inserimento della password dell'utente -->
+                {{ Form::label('conferma_password', 'Conferma password') }}
+                <br>
+
+                <!-- Campo di inserimento della password, avente come id "password" -->
+                {{ Form::password('conferma password', ['class' => 'campo_form', 'id' => 'password', 'required' => 'required'] )}}
+
+            </div>
+            <!-- Se vengono rilevati degli errori allora vengono stampati -->
+            @if($errors->has('conferma_password'))
+                <span class="text-danger">{{ $errors->first('conferma_password') }}</span>
+            @endif
+
+
         </div>
 
         <!-- Bottone di submit per l'invio dei dati inseriti nella form -->

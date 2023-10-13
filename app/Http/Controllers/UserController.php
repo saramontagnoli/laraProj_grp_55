@@ -26,8 +26,16 @@ class UserController extends Controller {
      * Il metodo profilo consente di accedere al profilo dedll'utente che si è autenticato ed ha effettuato il login al sito
      */
     public function profilo() {
+        //estrazione dello username del cliente
+        $username = Auth::user()->username;
+        //query di estrazione dell'utente dal database
+        $data = User::select("users.*", "occupazione.nome_occupazione", "comuni.nome as nome_comune")
+        ->join("occupazione", "occupazione.codice_occupazione","=", "users.occupazione_ref")
+        ->join("comuni", "comuni.id", "=", "users.comune_ref")
+        ->where('username', $username)->get();
+
         //return della vista del profilo del cliente
-        return view('user.profilo');
+        return view('user.profilo', ['dati'=>$data]);
     }
 
 
