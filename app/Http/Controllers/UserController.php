@@ -3,7 +3,9 @@
 namespace App\Http\Controllers;
 
 use App\Models\Auto;
+use App\Models\Comuni;
 use App\Models\Noleggio;
+use App\Models\Occupazione;
 use App\Models\User;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
@@ -48,10 +50,21 @@ class UserController extends Controller {
         $username = Auth::user()->username;
 
         //query di estrazione dell'utente dal database
-        $data = User::where('username', $username)->first();
+        $data = User::select("users.*", "occupazione.nome_occupazione", "comuni.nome as nome_comune")
+            ->join("occupazione", "occupazione.codice_occupazione","=", "users.occupazione_ref")
+            ->join("comuni", "comuni.id", "=", "users.comune_ref")
+            ->where('username', $username)->get();
+        $occupazioni = Occupazione::all();
+        $comuni=Comuni::select('comuni.id','comuni.nome')->get();
+
 
         //return della vista di modifica dei dati, compilando i campi di modifica con i dati vecchi estratti dal DB
-        return view('user.modificaDati', ['dati'=>$data]);
+        return view('user.modificaDati', [
+            'data' => $data,
+            'occupazioni' => $occupazioni,
+            'comuni' => $comuni,
+        ]);
+
     }
 
 
@@ -70,6 +83,8 @@ class UserController extends Controller {
             'nome' => ['required','string','max:50'],
             'cognome' => ['required','string','max:70'],
             'data_nascita' => ['required', 'date_format:Y-m-d'],
+            'comune'=>['required'],
+            'occupazione'=>['required'],
             'email' => ['string','email','max:60', 'regex:/^[a-zA-Z0-9]+[@][a-zA-Z]+[.][a-zA-Z0-9]+$/', Rule::unique('users', 'email')->ignore($id, 'id')]
         ]);
 
@@ -83,7 +98,9 @@ class UserController extends Controller {
                     'nome'=>$request->input('nome'),
                     'cognome'=>$request->input('cognome'),
                     'data_nascita'=>$request->input('data_nascita'),
-                    'email'=>$request->input('email')
+                    'email'=>$request->input('email'),
+                    'occupazione'=>$request->input('occupazione'),
+                    'comune'=>$request->input('comune')
                 ]);
         }
         else
