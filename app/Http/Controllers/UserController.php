@@ -83,8 +83,6 @@ class UserController extends Controller {
             'nome' => ['required','string','max:50'],
             'cognome' => ['required','string','max:70'],
             'data_nascita' => ['required', 'date_format:Y-m-d'],
-            'comune'=>['required'],
-            'occupazione'=>['required'],
             'email' => ['string','email','max:60', 'regex:/^[a-zA-Z0-9]+[@][a-zA-Z]+[.][a-zA-Z0-9]+$/', Rule::unique('users', 'email')->ignore($id, 'id')]
         ]);
 
@@ -95,12 +93,13 @@ class UserController extends Controller {
             //query di update delle informazioni dell'utente senza password
             User::where('username', $username)->update(
                 [
-                    'nome'=>$request->input('nome'),
-                    'cognome'=>$request->input('cognome'),
-                    'data_nascita'=>$request->input('data_nascita'),
+                    'nome' => $request->input('nome'),
+                    'cognome' => $request->input('cognome'),
+                    'data_nascita' => $request->input('data_nascita'),
                     'email'=>$request->input('email'),
-                    'occupazione'=>$request->input('occupazione'),
-                    'comune'=>$request->input('comune')
+                    'occupazione_ref'=>$request->input('occupazione_ref'),
+                    'indirizzo'=>$request->input('indirizzo'),
+                    'comune_ref'=>$request->input('comune_ref'),
                 ]);
         }
         else
@@ -117,6 +116,8 @@ class UserController extends Controller {
                     'cognome'=>$request->input('cognome'),
                     'data_nascita'=>$request->input('data_nascita'),
                     'password'=>Hash::make($request->input('password')),
+                    'comune'=>$request->input('comune_ref'),
+                    'occupazione'=>$request->input('occupazione'),
                     'email'=>$request->input('email')
                 ]);
         }

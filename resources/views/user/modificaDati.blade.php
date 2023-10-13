@@ -89,46 +89,42 @@
                                 @endforeach
                             </ul>
                         @endif
-
                         <br>
-                        <!-- Definizione della label per la modifica dell'email dell'utente -->
-                        {{ Form::label('email', 'Email') }}
-
+                        <!-- Definizione della label per la modifica dell'indirizzo dell'utente -->
+                        {{ Form::label('indirizzo', 'Indirizzo') }}
                         <br>
 
-                        <!-- Campo di inserimento dell'email dell'utente, avente come id "email" -->
-                        {{ Form::text('email', $dati['email'], ['class' => 'campo_form', 'id' => 'email', 'rules' => 'email', 'required' => 'required']) }}
+                        <!-- Campo di inserimento del cognome dell'utente, avente come id "cognome" -->
+                        {{ Form::text('indirizzo', $dati['indirizzo'], ['class' => 'campo_form', 'id' => 'indirizzo', 'required' => 'required']) }}
 
                         <!-- Se vengono rilevati degli errori, vengono stampati sotto al campo relativo -->
-                        @if ($errors->first('email'))
-                            <ul class="errors">
-                                @foreach ($errors->get('email') as $message)
+                        @if ($errors->first('indirizzo'))
+                            <ul>
+                                @foreach ($errors->get('indirizzo') as $message)
                                     <li>{{ $message }}</li>
                                 @endforeach
                             </ul>
                         @endif
 
-                        <br>
-
                         <div>
                             <!-- Definizione della label per l'inserimento dell'occupazione dell'utente -->
-                            {{ Form::label('occupazione', 'Occupazione') }}
+                            {{ Form::label('occupazione_ref', 'Occupazione') }}
                             <br>
 
                             <!-- Campo di inserimento dell'occupazione, avente come id "occupazione" -->
                             @if ($data->isNotEmpty())
                                 @php $firstUser = $data->first(); @endphp
-                                <select name="occupazione" id="occupazione" class="campo_form">
-                                    <option value="{{ $firstUser['occupazione_ref'] }}">{{ $firstUser['occupazione_ref'] }}</option>
+                                <select name="occupazione_ref" id="occupazione_ref" class="campo_form">
+                                    <option value="{{ $firstUser['occupazione_ref'] }}">{{ $firstUser['nome_occupazione'] }}</option>
                                     @foreach ($occupazioni as $occupazione)
                                         <option value="{{ $occupazione['codice_occupazione'] }}" @if($firstUser['occupazione_ref'] == $occupazione['codice_occupazione']) selected @endif>{{ $occupazione['nome_occupazione'] }}</option>
                                     @endforeach
                                 </select>
 
                                 <!-- Se vengono rilevati degli errori allora vengono stampati -->
-                                @if ($errors->first('occupazione'))
+                                @if ($errors->first('occupazione_ref'))
                                     <ul>
-                                        @foreach ($errors->get('occupazione') as $message)
+                                        @foreach ($errors->get('occupazione_ref') as $message)
                                             <li>{{ $message }}</li>
                                         @endforeach
                                     </ul>
@@ -142,7 +138,7 @@
 
                                 <!-- Campo di inserimento del comune di residenza, avente come id "comune" -->
                                 <select name="comune_ref" id="comune_ref" class="campo_form">
-                                    <option value="{{ $firstUser['comune_ref'] }}">{{ $firstUser['comune_ref'] }}</option>
+                                    <option value="{{ $firstUser['comune_ref']  }}">{{$firstUser['nome_comune']  }}</option>
                                     @foreach ($comuni as $comune)
                                         <option value="{{ $comune['id'] }}">{{ $comune['nome'] }}</option>
                                     @endforeach
