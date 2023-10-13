@@ -26,10 +26,7 @@ class RegisteredUserController extends Controller
     public function create()
     {
         $occupazioni = Occupazione::all();
-        $comuni=Comuni::select('comuni.*', 'province.id')
-            ->join("regioni", "regioni.id", "=", "comuni.id_regione")
-            ->join("province", "province.id", "=", "comuni.id_provincia")
-            ->get();
+        $comuni=Comuni::select('comuni.id','comuni.nome')->get();
 
         return view('auth.register',
             ['occupazioni' => $occupazioni],

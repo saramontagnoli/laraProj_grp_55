@@ -126,11 +126,11 @@
 
                 <div>
                     <!-- Definizione della label per l'inserimento del comune di residenza dell'utente -->
-                    {{ Form::label('comune', 'Comune') }}
+                    {{ Form::label('comune_ref', 'Comune') }}
                     <br>
 
                     <!-- Campo di inserimento del comune di residenza, avente come id "comune" -->
-                    <select name="comune" id="comune" class="campo_form">
+                    <select name="comune_ref" id="comune_ref" class="campo_form">
                         <option value="">Seleziona il tuo comune</option> <!-- Opzione predefinita -->
                         @foreach ($comuni as $comune)
                             <option value="{{ $comune['id'] }}">{{ $comune['nome'] }}</option>
@@ -138,9 +138,9 @@
                     </select>
 
                     <!-- Se vengono rilevati degli errori allora vengono stampati -->
-                    @if ($errors->first('comune'))
+                    @if ($errors->first('comune_ref'))
                         <ul>
-                            @foreach ($errors->get('comune') as $message)
+                            @foreach ($errors->get('comune_ref') as $message)
                                 <li>{{ $message }}</li>
                             @endforeach
                         </ul>
