@@ -117,9 +117,9 @@
 
                     <!-- Campo di inserimento dell'occupazione, avente come id "occupazione" -->
                     <select name="occupazione" id="occupazione" class="campo_form">
-                        <option value="">Seleziona la tua occupazione</option> <!-- Opzione predefinita -->
+                        <option value="">Seleziona la tua occupazione</option>
                         @foreach ($occupazioni as $occupazione)
-                            <option value="{{ $occupazione['codice_occupazione'] }}">{{ $occupazione['nome_occupazione'] }}</option>
+                            <option value="{{ $occupazione['codice_occupazione'] }}"{{ old('occupazione') == $occupazione['codice_occupazione'] ? 'selected' : '' }}>{{ $occupazione['nome_occupazione'] }}</option>
                         @endforeach
                     </select>
 
@@ -140,12 +140,11 @@
 
                     <!-- Campo di inserimento del comune di residenza, avente come id "comune" -->
                     <select name="comune_ref" id="comune_ref" class="campo_form">
-                        <option value="">Seleziona il tuo comune</option> <!-- Opzione predefinita -->
+                        <option value="">Seleziona il tuo comune</option>
                         @foreach ($comuni as $comune)
-                            <option value="{{ $comune['id'] }}">{{ $comune['nome'] }}</option>
+                            <option value="{{ $comune['id'] }}"{{ old('comune_ref') == $comune['id'] ? 'selected' : '' }}>{{ $comune['nome'] }}</option>
                         @endforeach
                     </select>
-
                     <!-- Se vengono rilevati degli errori allora vengono stampati -->
                     @if ($errors->first('comune_ref'))
                         <ul>

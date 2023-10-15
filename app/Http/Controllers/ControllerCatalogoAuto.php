@@ -88,7 +88,8 @@ class ControllerCatalogoAuto extends Controller
         }
 
         //si controlla se tutti e 4 i filtri non sono stati settati contemporaneamente
-        if($request->isNotFilled('min') && $request->isNotFilled('max') && $request->isNotFilled('inizio') && $request->isNotFilled('fine'))
+        if($request->isNotFilled('min') && $request->isNotFilled('max') && $request->isNotFilled('inizio')
+            && $request->isNotFilled('fine') && $request->isNotFilled('num_posti'))
         {
             //se tutti i filtri sono notFilled allora viene stampato un popup di errore
             $popupMessage = "Errore. Nessun filtro selezionato";

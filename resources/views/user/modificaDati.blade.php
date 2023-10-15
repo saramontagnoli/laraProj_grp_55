@@ -57,10 +57,11 @@
                         <!-- Definizione della label per la modifica della data di nascita dell'utente -->
                         {{ Form::label('data_nascita', 'Data di nascita') }}
 
+
                         <br>
 
                         <!-- Campo di inserimento della data di nascita dell'utente, avente come id "data_nascita" -->
-                        {{ Form::date('data_nascita', '', ['class' => 'campo_form', 'id' => 'data_nascita', 'rules' => 'date_format:d-m-Y', 'required' => 'required', 'max' => now()->format('Y-m-d') ,'min' => now()->subYears(100)->format('Y-m-d')]) }}
+                        {{ Form::date('data_nascita', $dati['data_nascita'], ['class' => 'campo_form', 'id' => 'data_nascita', 'rules' => 'date_format:d-m-Y', 'required' => 'required', 'max' => now()->format('Y-m-d') ,'min' => now()->subYears(100)->format('Y-m-d')]) }}
 
                         <!-- Se vengono rilevati degli errori, vengono stampati sotto al campo relativo -->
                         @if ($errors->first('data_nascita'))
@@ -129,31 +130,34 @@
                                         @endforeach
                                     </ul>
                                 @endif
-                            </div>
+                            @endif
+                        </div>
 
                             <div>
                                 <!-- Definizione della label per l'inserimento del comune di residenza dell'utente -->
                                 {{ Form::label('comune_ref', 'Comune') }}
                                 <br>
-
-                                <!-- Campo di inserimento del comune di residenza, avente come id "comune" -->
-                                <select name="comune_ref" id="comune_ref" class="campo_form">
-                                    <option value="{{ $firstUser['comune_ref']  }}">{{$firstUser['nome_comune']  }}</option>
-                                    @foreach ($comuni as $comune)
-                                        <option value="{{ $comune['id'] }}">{{ $comune['nome'] }}</option>
-                                    @endforeach
-                                </select>
-
-                                <!-- Se vengono rilevati degli errori allora vengono stampati -->
-                                @if ($errors->first('comune_ref'))
-                                    <ul>
-                                        @foreach ($errors->get('comune_ref') as $message)
-                                            <li>{{ $message }}</li>
+                                @if ($data->isNotEmpty())
+                                    @php $firstUser = $data->first(); @endphp
+                                    <!-- Campo di inserimento del comune di residenza, avente come id "comune" -->
+                                    <select name="comune_ref" id="comune_ref" class="campo_form">
+                                        <option value="{{ $firstUser['comune_ref']  }}">{{$firstUser['nome_comune']  }}</option>
+                                        @foreach ($comuni as $comune)
+                                            <option value="{{ $comune['id'] }}">{{ $comune['nome'] }}</option>
                                         @endforeach
-                                    </ul>
+                                    </select>
+
+                                    <!-- Se vengono rilevati degli errori allora vengono stampati -->
+                                    @if ($errors->first('comune_ref'))
+                                        <ul>
+                                            @foreach ($errors->get('comune_ref') as $message)
+                                                <li>{{ $message }}</li>
+                                            @endforeach
+                                        </ul>
+                                    @endif
                                 @endif
                             </div>
-                        @endif
+
                         <!-- Definizione della label per la modifica della password dell'utente -->
                         {{ Form::label('password', 'Password') }}
 

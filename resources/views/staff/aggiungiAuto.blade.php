@@ -52,7 +52,7 @@
                         <select name="modello_ref" id="modello_ref" class="campo_form">
                             <option value="">Seleziona un modello</option> <!-- Opzione predefinita -->
                             @foreach ($modelli as $modello)
-                                <option value="{{ $modello->codice_modello }}">{{ $modello->nome_modello }}</option>
+                                <option value="{{ $modello->codice_modello }}"{{ old('modello_ref') == $modello['codice_modello'] ? 'selected' : '' }}>{{ $modello['nome_modello'] }}</option>
                             @endforeach
                         </select>
 
