@@ -60,7 +60,7 @@
                         <br>
 
                         <!-- Campo di inserimento della data di nascita dell'utente, avente come id "data_nascita" -->
-                        {{ Form::date('data_nascita', $dati['data_nascita'], ['class' => 'campo_form', 'id' => 'data_nascita', 'rules' => 'date_format:d-m-Y', 'required' => 'required']) }}
+                        {{ Form::date('data_nascita', '', ['class' => 'campo_form', 'id' => 'data_nascita', 'rules' => 'date_format:d-m-Y', 'required' => 'required', 'max' => now()->format('Y-m-d') ,'min' => now()->subYears(100)->format('Y-m-d')]) }}
 
                         <!-- Se vengono rilevati degli errori, vengono stampati sotto al campo relativo -->
                         @if ($errors->first('data_nascita'))

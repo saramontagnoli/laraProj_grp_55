@@ -6,6 +6,8 @@
 <!-- Definizione della sezione del contenuto della pagina del login -->
 @section('content')
 
+    <!-- Script JavaScript per impedire l'input manuale e abilitare il calendario -->
+
     <!-- Definizione della sezione della form di registrazione dell'utente -->
     <div style="text-align: center">
         <div>
@@ -84,12 +86,19 @@
                     @endif
                 </div>
 
+                <?php
+                    // Calcola la data di 100 anni fa da oggi
+                    $dataMinima = date('Y-m-d', strtotime('-100 years'));
+                    // Imposta la data minima nel campo di input date
+                ?>
+
+
                 <div>
                     <!-- Definizione della label per l'inserimento della data di nascita dell'utente -->
                     {{ Form::label('data_nascita', 'Data di nascita') }}
                     <br>
                     <!-- Campo di inserimento della data di nascita, avente come id "data_nascita" -->
-                    {{ Form::date('data_nascita', '', ['class' => 'campo_form', 'id' => 'data_nascita', 'rules' => 'date_format:d-m-Y', 'required' => 'required', 'max' => now()->format('Y-m-d')]) }}
+                    {{ Form::date('data_nascita', '', ['class' => 'campo_form', 'id' => 'data_nascita', 'rules' => 'date_format:d-m-Y', 'required' => 'required', 'max' => now()->format('Y-m-d') ,'min' => now()->subYears(100)->format('Y-m-d')]) }}
 
                     <!-- Se vengono rilevati degli errori allora vengono stampati -->
                     @if ($errors->first('data_nascita'))
