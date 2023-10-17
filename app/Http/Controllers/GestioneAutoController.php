@@ -9,6 +9,7 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Carbon;
 use Illuminate\Validation\Rule;
 use Illuminate\Support\Facades\DB;
+use Illuminate\Support\Facades\Validator;
 
 
 
@@ -146,6 +147,17 @@ class GestioneAutoController extends Controller
                 'foto_auto'=>$request->input('foto_auto')
             ]);
 
+        //serve per non fare ammettere lettere nel campo "costo_giornaliero"
+        $rules = [
+            'costo_giorno' => 'numeric', // Accetta solo valori numerici
+        ];
+
+        $validator = Validator::make($request->all(), $rules);
+
+        if ($validator->fails()) {
+            return redirect('aggiungiAuto')->withErrors($validator)->withInput();
+        }
+
         //redirect alla rotta di gestione delle auto con messaggio di avvenuta modifica
         return redirect()->route('gestioneauto')->with('message', 'Auto modificata con successo.');
     }
@@ -232,6 +244,18 @@ class GestioneAutoController extends Controller
                 return redirect()->route('gestioneauto')->with('message', 'Foto auto già presente nel db.');
             }
         }
+
+        //serve per non fare ammettere lettere nel campo "costo_giornaliero"
+        $rules = [
+            'costo_giorno' => 'numeric', // Accetta solo valori numerici
+        ];
+
+        $validator = Validator::make($request->all(), $rules);
+
+        if ($validator->fails()) {
+            return redirect('aggiungiAuto')->withErrors($validator)->withInput();
+        }
+
         //salvataggio dell'auto all'interno del database
         $auto->save();
 

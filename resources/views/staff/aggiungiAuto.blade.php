@@ -92,7 +92,7 @@
                         {{ Form::label('costo_giorno', 'Costo Giornaliero') }}
                         <br>
                         <!-- Campo di inserimento del costo giornaliero, avente come id "costo_giorno" -->
-                        {{ Form::number('costo_giorno','', ['id' => 'costo_giorno' , 'class' => 'campo_form']) }}
+                        {{ Form::number('costo_giorno','', ['id' => 'costo_giorno' , 'class' => 'campo_form', 'step'=>1]) }}
 
                         <!-- Se vengono rilevati degli errori allora vengono stampati -->
                         @if ($errors->first('costo_giorno'))
