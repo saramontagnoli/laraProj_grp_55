@@ -132,22 +132,24 @@
                         @endif
                         <br>
 
-                        <div>
-                            <!-- Definizione della label per l'inserimento dell'immagine dell'auto -->
-                            {{ Form::label('foto_auto','Immagine auto', ['class' => 'label-input']) }}
+                        <!-- Definizione della label per la modifica della targa -->
+                        {{ Form::label('foto_auto', 'Foto Auto') }}
 
-                            <!-- Campo di inserimento dell'immagine dell'auto, avente come id "foto_auto" -->
-                            {{ Form::file('foto_auto', array('required' => 'required')) }}
+                        <br>
 
-                            <!-- Se vengono rilevati degli errori allora vengono stampati -->
-                            @if ($errors->first('foto_auto'))
-                                <ul>
-                                    @foreach ($errors->get('foto_auto') as $message)
-                                        <li>{{ $message }}</li>
-                                    @endforeach
-                                </ul>
-                            @endif
-                        </div>
+                        <!-- Campo di inserimento della targa, avente come id "targa" -->
+                        {{ Form::file('foto_auto', [ 'id' => 'foto_auto', 'required' => 'required']) }}
+                        <p>Immagine caricata: {{$dati['foto_auto']}}</p>
+                        <br>
+
+                        <!-- Se vengono rilevati degli errori allora vengono stampati -->
+                        @if ($errors->first('foto_auto'))
+                            <ul>
+                                @foreach ($errors->get('foto_auto') as $message)
+                                    <li>{{ $message }}</li>
+                                @endforeach
+                            </ul>
+                        @endif
                     </div>
                 </div>
                 @csrf
