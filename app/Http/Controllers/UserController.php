@@ -87,7 +87,7 @@ class UserController extends Controller {
                 'string',
                 'email',
                 'max:60',
-                'regex:/^[a-zA-Z0-9._-]+@[a-zA-Z]+\.[a-zA-Z]$/',
+                'regex:/^[A-Za-z0-9]+@[A-Za-z0-9]+\.[A-Za-z]+$/',
                 Rule::unique('users', 'email')->ignore($id, 'id')
             ]
         ]);
