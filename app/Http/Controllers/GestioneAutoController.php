@@ -132,19 +132,53 @@ class GestioneAutoController extends Controller
             ],
             'costo_giorno' => ['numeric', 'min:0'],
             'num_posti' => ['integer', 'min:2', 'max:9'],
-            'allestimento' => ['string', 'max:500']
+            'allestimento' => ['string', 'max:500'],
+            'foto_auto' => ['required', 'image', 'max:2048']
         ]);
+
+
+        //creazione di un oggetto auto
+        $auto = new Auto();
+
+        //inserimento di tutte le informazioni dell'auto all'interno dell'oggetto
+        $auto->targa = $request->input('targa');
+        $auto->costo_giorno = $request->input('costo_giorno');
+        $auto->num_posti = $request->input('num_posti');
+        $auto->allestimento = $request->input('allestimento');
+        $auto->modello_ref = $request->input('modello_ref');
+
+        //gestione dell'immagine caricata
+        if ($request->hasFile('foto_auto')) {
+            $imageFile = $request->file('foto_auto');
+            $imageName = $imageFile->getClientOriginalName();
+            //salvataggio della foto in assets/img, concatenato vi è il nome del file
+            $imageFile->move(public_path('assets/img'), $imageName);
+
+            // Salva solo il nome del file nel campo foto_auto
+            $auto->foto_auto = 'assets/img/' . $imageName;
+        }
+
+        //query per l estrazione del databese per verificare se la foto è gia presente nel db
+        $dati = Auto::select('auto.foto_auto')
+            ->get();
+        foreach ($dati as $dato){
+            if($dato->foto_auto==$auto->foto_auto){
+                return redirect()->route('gestioneauto')->with('message', 'Foto auto già presente nel db.');
+            }
+        }
+
+
 
         //query di updatee dei dati dell'auto precedentemente validati
         Auto::join("modello", "auto.modello_ref", "=", "modello.codice_modello")
             ->join("marca", "modello.marca_ref", "=", "marca.codice_marca")
             ->where('codice_auto', $codice_auto)->update(
             [
-                'targa'=>$request->input('targa'),
-                'costo_giorno'=>$request->input('costo_giorno'),
-                'num_posti'=>$request->input('num_posti'),
-                'allestimento'=>$request->input('allestimento'),
-                'foto_auto'=>$request->input('foto_auto')
+                'targa'=>$auto->targa,
+                'costo_giorno'=>$auto->costo_giorno,
+                'num_posti'=>$auto->num_posti,
+                'allestimento'=>$auto->allestimento,
+                'foto_auto'=>$auto->foto_auto
             ]);
 
         //serve per non fare ammettere lettere nel campo "costo_giornaliero"
