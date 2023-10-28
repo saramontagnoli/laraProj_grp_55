@@ -53,7 +53,7 @@ class RegisteredUserController extends Controller
             'username' => ['required', 'string', 'max:50', 'unique:users'],
             'password' => ['required', 'min:8'],
             'conferma_password' => ['required', 'same:password'], // Aggiungi questa regola
-            'email' => ['required', 'email', 'max:60', 'regex:/^[A-Za-z0-9]+@[A-Za-z0-9]+\.[A-Za-z]+$/', 'unique:users'],
+            'email' => ['required', 'email', 'max:60', 'regex:/^[A-Za-z0-9.-_]+@[A-Za-z0-9]+\.[A-Za-z]+$/', 'unique:users'],
             'occupazione' => ['required'],
             'indirizzo'=>['required']
         ], [
