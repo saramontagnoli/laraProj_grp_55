@@ -113,7 +113,7 @@ class ControllerCatalogoAuto extends Controller
             $cardAuto["cardAuto"] = $dbQuery;
 
 
-            if($filtro_min < $filtro_max)
+            if($request->isNotFilled('max') || ($filtro_min < $filtro_max))
             {
                 //se è stato settato il $filtro_max (ovvero il prezzo massimo per le auto)
                 if($filtro_max != null)
