@@ -126,7 +126,8 @@
                 <!-- Campo di inserimento della targa, avente come id "targa" -->
                 {{ Form::file('foto_auto', [ 'id' => 'foto_auto', 'required' => 'required']) }}
                 <br><br>
-                <p>Immagine attualmente utilizzata</p>
+                <p>Immagine attualmente caricata: {{$dati['foto_auto']}}</p>
+                <br>
                 @if (!empty($dati['foto_auto']))
                     <img style="height: 200px; align-content: center" src="{{ asset($dati['foto_auto']) }}" alt="Foto Auto">
                 @else

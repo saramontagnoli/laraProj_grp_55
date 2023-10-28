@@ -11,6 +11,7 @@ use Illuminate\Validation\Rule;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Validator;
 
+use Illuminate\Support\Facades\File;
 
 
 class GestioneAutoController extends Controller
@@ -130,7 +131,7 @@ class GestioneAutoController extends Controller
                 'regex:/^[A-Z]{2}[0-9]{3}[A-Z]{2}$/',
                 Rule::unique('auto', 'targa')->ignore($codice_auto, 'codice_auto') //regola di unique per la targa dell'auto
             ],
-            'costo_giorno' => ['numeric', 'min:0'],
+            'costo_giorno' => ['numeric',  'not_regex:/e/i', 'min:0'],
             'num_posti' => ['integer', 'min:2', 'max:9'],
             'allestimento' => ['string', 'max:500'],
             'foto_auto' => ['required', 'image', 'max:2048']
@@ -209,7 +210,9 @@ class GestioneAutoController extends Controller
         $auto->noleggio()->delete();
 
         //eliminazione della foto dell'auto
-        unlink($auto->foto_auto);
+        if (file_exists(public_path($auto->foto_auto))) {
+            unlink(public_path($auto->foto_auto));
+        }
 
         //eliminazione effettiva dell'auto
         $auto->delete();
@@ -240,7 +243,7 @@ class GestioneAutoController extends Controller
         //validazione delle informazioni inserite all'interno della form con relative regole
         $request->validate([
             'targa' => ['string', 'max:7', 'required', 'regex:/^[A-Z]{2}[0-9]{3}[A-Z]{2}$/', Rule::unique('auto')],
-            'costo_giorno' => ['numeric', 'min:0'],
+            'costo_giorno' => ['integer',  'not_regex:/e/i', 'min:0'],
             'num_posti' => ['integer', 'min:2', 'max:9'],
             'allestimento' => ['string', 'max:600'],
             'modello_ref' => ['required'],
