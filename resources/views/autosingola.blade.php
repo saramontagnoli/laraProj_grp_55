@@ -41,14 +41,23 @@
                             <!-- Campo input type=date per l'inserimento dell'inizio del noleggio -->
                             <label>
                                 Da:
-                                <input class="campo_form" type="date" name="inizioNoleggio" required>
+                                <input class="campo_form" type="date" name="inizioNoleggio" required id="inizioNoleggio">
                             </label>
+
+                            <script>
+                                // Ottieni la data odierna in formato "AAAA-MM-GG"
+                                const today = new Date().toISOString().split('T')[0];
+                                // Imposta la data minima come attributo "min" dell'elemento input
+                                document.getElementById("inizioNoleggio").setAttribute("min", today);
+                            </script>
+
 
                             <!-- Campo input type=date per l'inserimento della fine del noleggio -->
                             <label>
                                 A:
                                 <input class="campo_form" type="date" name="fineNoleggio" required>
                             </label>
+
 
                             <!-- Button di submit per l'invio dei dati inseriti all'interno della form -->
                             <button type="submit" class="bottone" name="action" value="submit1">Noleggia</button>
