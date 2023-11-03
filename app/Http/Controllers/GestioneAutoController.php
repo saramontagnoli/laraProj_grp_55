@@ -169,18 +169,32 @@ class GestioneAutoController extends Controller
         }
 
 
+        if ($auto->foto_auto)
+        {
+            //query di updatee dei dati dell'auto precedentemente validati
+            Auto::join("modello", "auto.modello_ref", "=", "modello.codice_modello")
+                ->join("marca", "modello.marca_ref", "=", "marca.codice_marca")
+                ->where('codice_auto', $codice_auto)->update(
+                    [
+                        'targa'=>$auto->targa,
+                        'costo_giorno'=>$auto->costo_giorno,
+                        'num_posti'=>$auto->num_posti,
+                        'allestimento'=>$auto->allestimento,
+                        'foto_auto'=>$auto->foto_auto
+                    ]);
+        }else{
+            //query di updatee dei dati dell'auto precedentemente validati
+            Auto::join("modello", "auto.modello_ref", "=", "modello.codice_modello")
+                ->join("marca", "modello.marca_ref", "=", "marca.codice_marca")
+                ->where('codice_auto', $codice_auto)->update(
+                    [
+                        'targa'=>$auto->targa,
+                        'costo_giorno'=>$auto->costo_giorno,
+                        'num_posti'=>$auto->num_posti,
+                        'allestimento'=>$auto->allestimento
+                    ]);
+        }
 
-        //query di updatee dei dati dell'auto precedentemente validati
-        Auto::join("modello", "auto.modello_ref", "=", "modello.codice_modello")
-            ->join("marca", "modello.marca_ref", "=", "marca.codice_marca")
-            ->where('codice_auto', $codice_auto)->update(
-            [
-                'targa'=>$auto->targa,
-                'costo_giorno'=>$auto->costo_giorno,
-                'num_posti'=>$auto->num_posti,
-                'allestimento'=>$auto->allestimento,
-                'foto_auto'=>$auto->foto_auto
-            ]);
 
         //serve per non fare ammettere lettere nel campo "costo_giornaliero"
         $rules = [
