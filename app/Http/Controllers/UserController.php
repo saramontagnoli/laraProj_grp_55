@@ -321,8 +321,6 @@ class UserController extends Controller {
         $request->validate([
             'nome' => ['required','string','max:50'],
             'cognome' => ['required','string','max:70'],
-            'data_nascita' => ['required', 'date_format:Y-m-d'],
-            'email' => ['string','email','max:60', Rule::unique('users', 'email')->ignore($id, 'id')]
         ]);
 
 
@@ -334,8 +332,6 @@ class UserController extends Controller {
                 [
                     'nome'=>$request->input('nome'),
                     'cognome'=>$request->input('cognome'),
-                    'data_nascita'=>$request->input('data_nascita'),
-                    'email'=>$request->input('email')
                 ]);
         }
         else
@@ -350,9 +346,7 @@ class UserController extends Controller {
                 [
                     'nome'=>$request->input('nome'),
                     'cognome'=>$request->input('cognome'),
-                    'data_nascita'=>$request->input('data_nascita'),
                     'password'=>Hash::make($request->input('password')),
-                    'email'=>$request->input('email')
                 ]);
         }
 
