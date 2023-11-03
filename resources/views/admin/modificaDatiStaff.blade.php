@@ -50,44 +50,6 @@
 
                     <br>
 
-                    <!-- Definizione della label per la modifica della data di nascita dell'utente -->
-                    {{ Form::label('data_nascita', 'Data di nascita') }}
-
-                    <br>
-
-                    <!-- Campo di inserimento della data di nascita dell'utente, avente come id "data_nascita" -->
-                    {{ Form::date('data_nascita', $dati['data_nascita'], ['class' => 'campo_form', 'id' => 'data_nascita', 'rules' => 'date_format:d-m-Y', 'required' => 'required', 'max' => now()->format('Y-m-d') ,'min' => now()->subYears(100)->format('Y-m-d')]) }}
-
-                    <!-- Se vengono rilevati degli errori, vengono stampati sotto al campo relativo -->
-                    @if ($errors->first('data_nascita'))
-                        <ul>
-                            @foreach ($errors->get('data_nascita') as $message)
-                                <li>{{ $message }}</li>
-                            @endforeach
-                        </ul>
-                    @endif
-
-                    <br>
-
-                    <!-- Definizione della label per la modifica dell'email dell'utente -->
-                    {{ Form::label('email', 'Email') }}
-
-                    <br>
-
-                    <!-- Campo di inserimento dell'email dell'utente, avente come id "email" -->
-                    {{ Form::text('email', $dati['email'], ['class' => 'campo_form', 'id' => 'email', 'rules' => 'email', 'required' => 'required']) }}
-
-                    <!-- Se vengono rilevati degli errori, vengono stampati sotto al campo relativo -->
-                    @if ($errors->first('email'))
-                        <ul class="errors">
-                            @foreach ($errors->get('email') as $message)
-                                <li>{{ $message }}</li>
-                            @endforeach
-                        </ul>
-                    @endif
-
-                    <br>
-
                     <!-- Definizione della label per la modifica della password dell'utente -->
                     {{ Form::label('password', 'Password') }}
 

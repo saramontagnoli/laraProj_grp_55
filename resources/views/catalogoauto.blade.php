@@ -66,6 +66,13 @@
                             <input class="campo_form" type="date" name="inizio">
                         </label>
 
+                        <script>
+                            // Ottieni la data odierna in formato "AAAA-MM-GG"
+                            const today = new Date().toISOString().split('T')[0];
+                            // Imposta la data minima come attributo "min" dell'elemento input
+                            document.getElementById("inizio").setAttribute("min", today);
+                        </script>
+
                         <!-- Input per il filtro di ricerca prezzo massimo -->
                         <label class="titolo">
                             A:

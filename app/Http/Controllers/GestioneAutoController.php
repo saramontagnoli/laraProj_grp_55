@@ -134,7 +134,7 @@ class GestioneAutoController extends Controller
             'costo_giorno' => ['numeric',  'not_regex:/e/i', 'min:0'],
             'num_posti' => ['integer', 'min:2', 'max:9'],
             'allestimento' => ['string', 'max:500'],
-            'foto_auto' => ['required', 'image', 'max:2048']
+            'foto_auto' => ['image', 'max:2048']
         ]);
 
 

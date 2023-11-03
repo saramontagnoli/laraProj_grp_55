@@ -124,7 +124,7 @@
                 {{ Form::label('foto_auto', 'Foto Auto') }}
                 <br>
                 <!-- Campo di inserimento della targa, avente come id "targa" -->
-                {{ Form::file('foto_auto', [ 'id' => 'foto_auto', 'required' => 'required']) }}
+                {{ Form::file('foto_auto', [ 'id' => 'foto_auto']) }}
                 <br><br>
                 <p>Immagine attualmente caricata: {{$dati['foto_auto']}}</p>
                 <br>
