@@ -61,9 +61,10 @@
                 @if(auth()->check() && (Auth::user()->role=='staff' || Auth::user()->role=='admin' || Auth::user()->role=='user') )
                     <div class="colonna colonna_filtro">
                         <!-- Input per il filtro di ricerca data inizio -->
-                        <label class="titolo">
-                            DA:&nbsp;
-                            <input class="campo_form" type="date" name="inizio">
+                        <!-- Campo input type=date per l'inserimento dell'inizio del noleggio -->
+                        <label>
+                            Da:
+                            <input class="campo_form" type="date" name="inizio" required id="inizio">
                         </label>
 
                         <script>
